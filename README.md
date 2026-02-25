@@ -1,6 +1,9 @@
 # Chroot
 A fictional coffee shop. This website was developed with three pages with external links to social media pages and more.
 
+## 🔗 Link
+[chroot](https://cfy98.github.io/CodeNation-Chroot-Coffee-Shop/)
+
 ## 🌐 Website structure
 ```
 chroot
@@ -17,15 +20,12 @@ chroot
 ```
 
 ## ✨ Features
-- **Multi-page navigation** — a nav bar linking to dedicated Drinks and Pastries pages, keeping content cleanly separated
-- **Image carousel/slider** — a rotating hero section showcasing the café's interior, coffee beans, and latte art with previous/next controls
+- **Multi-page navigation** — a nav bar linking to dedicated Drinks and Pastries pages, keeping content cleanly separated.
+- **Image carousel/slider** — a rotating hero section showcasing the café's interior, coffee beans, and latte art with previous/next controls.
 - **Terminal-inspired branding** — A Hidden Easter-Egg which leans into a developer aesthetic.
-- **Responsive hero images with text overlays** — full-width lifestyle photography with descriptive captions baked into the images
-- **Social media links** — footer links to Facebook, Twitter/X, Instagram, and LinkedIn
-- **Thematic copywriting** — the tagline "It's time to change the root of your trajectory with coffee" ties the tech theme into the brand voice
-
-## 🔗 Link
-[chroot](https://cfy98.github.io/CodeNation-Chroot-Coffee-Shop/)
+- **Responsive hero images with text overlays** — full-width lifestyle photography with descriptive captions baked into the images.
+- **Social media links** — footer links to Facebook, Twitter/X, Instagram, and LinkedIn.
+- **Thematic copywriting** — the tagline "It's time to change the root of your trajectory with coffee" ties the tech theme into the brand voice.
 
 # Project Structure
 ```
