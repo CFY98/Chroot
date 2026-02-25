@@ -27,7 +27,7 @@ chroot
 - **Social media links** — footer links to Facebook, Twitter/X, Instagram, and LinkedIn.
 - **Thematic copywriting** — the tagline "It's time to change the root of your trajectory with coffee" ties the tech theme into the brand voice.
 
-# Project Structure
+## Project Structure
 ```
 chroot/
 │
