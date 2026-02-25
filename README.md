@@ -48,4 +48,4 @@ chroot/
 - **JavaScript**: Used to create an automatic slideshow with navigation buttons.
 
 ## 📄 License
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
