@@ -6,13 +6,14 @@ A fictional coffee shop. This website was developed with three pages,
 chroot
  └── Landing Page
       ├── Navbar
-          ├── Drinks Page
-          └── Pastries Page
+      |    ├── Drinks Page
+      |    └── Pastries Page
+      |
       ├── Social Media Navbar
           ├── Facebook
           ├── Twitter/X
           ├── Instagram
-          └── LinkedIn
+          └── LinkedIn 
 ```
 
 ## ✨ Features
@@ -42,9 +43,9 @@ chroot/
 └── README.md
 ```
 ## ⛏️ Built With
-**HTML**: Provides basic structure and layout of the website.
-**CSS**: Used for styling the website and hiding easter eggs.
-**JavaScript**: Used to create an automatic slideshow with navigation buttons.
+- **HTML**: Provides basic structure and layout of the website.
+- **CSS**: Used for styling the website and hiding easter eggs.
+- **JavaScript**: Used to create an automatic slideshow with navigation buttons.
 
 ## 📄 License
 This project is licensed under the MIT License.
