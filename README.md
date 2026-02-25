@@ -1,5 +1,5 @@
 # Chroot
-A fictional coffee shop. This website was developed with three pages with external links to social media pages and more.
+A fictional coffee shop loosely inspired by the command line terminal.
 
 ## 🔗 Link
 [chroot](https://cfy98.github.io/CodeNation-Chroot-Coffee-Shop/)
