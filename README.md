@@ -20,7 +20,7 @@ chroot
 ```
 
 ## ✨ Features
-![Landing Page Screenshot](images/landingpage.png)
+![Landing Page Screenshot](Images/landingpage.png)
 - **Multi-page navigation** — a nav bar linking to dedicated Drinks and Pastries pages, keeping content cleanly separated.
 - **Image carousel/slider** — a rotating hero section showcasing the café's interior, coffee beans, and latte art with previous/next controls.
 - **Terminal-inspired branding** — A Hidden Easter-Egg which leans into a developer aesthetic.
