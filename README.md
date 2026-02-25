@@ -12,7 +12,7 @@ chroot
       |    ├── Drinks Page
       |    └── Pastries Page
       |
-      ├── Social Media Navbar
+      └── Social Media Navbar
           ├── Facebook
           ├── Twitter/X
           ├── Instagram
