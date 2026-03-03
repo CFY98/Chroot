@@ -4,9 +4,10 @@ A fictional coffee shop loosely inspired by the command line terminal.
 ## TO-DO
 - [x] Make a functional Terminal.
 - [x] Embed webpages via iframes.
-- [ ] Create Equipment Page.
-- [ ] Design Basket Page.
-- [ ] Design Coffee Beans Page.   
+- [x] Create Equipment Page.
+- [x] Design Basket Page.
+- [x] Design Coffee Beans Page.
+- [ ] Develop Responsive Web Principles for Baskets Page. 
 
 ## 🔗 Link
 Currently updating to V2
