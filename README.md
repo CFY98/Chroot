@@ -1,8 +1,15 @@
 # Chroot
 A fictional coffee shop loosely inspired by the command line terminal.
 
+## TO-DO
+- [x] Make a functional Terminal.
+- [x] Embed webpages via iframes.
+- [ ] Create Equipment Page.
+- [ ] Design Basket Page.
+- [ ] Design Coffee Beans Page.   
+
 ## 🔗 Link
-[chroot](https://cfy98.github.io/CodeNation-Chroot-Coffee-Shop/)
+Currently updating to V2
 
 ## 🌐 Website structure
 ```
@@ -30,7 +37,7 @@ chroot
 
 ## Project Structure
 ```
-chroot/
+chroot/V1
 │
 ├── Fonts              # Folder for the fonts used on the site
 ├── Images             # Folder for the images used on the site
