@@ -1,5 +1,5 @@
 # Chroot
-A fictional coffee shop loosely inspired by the command line terminal.
+A fictional e-commerce shopping experience built around a terminal interface. Users interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
 
 ## TO-DO
 - [x] Make a functional Terminal.
@@ -16,45 +16,42 @@ Currently updating to V2
 ```
 chroot
  └── Landing Page
-      ├── Navbar
-      |    ├── Drinks Page
+      ├── Terminal
+      |    ├── Beans Page
+      |    ├── Equipment Page
       |    └── Pastries Page
       |
       └── Social Media Navbar
-          ├── Facebook
-          ├── Twitter/X
-          ├── Instagram
-          └── LinkedIn 
+          └── GitHub
 ```
 
 ## ✨ Features
-![Landing Page Screenshot](Images/landingpage.png)
-- **Multi-page navigation** — a nav bar linking to dedicated Drinks and Pastries pages, keeping content cleanly separated.
-- **Image carousel/slider** — a rotating hero section showcasing the café's interior, coffee beans, and latte art with previous/next controls.
-- **Terminal-inspired branding** — A Hidden Easter-Egg which leans into a developer aesthetic.
-- **Responsive hero images with text overlays** — full-width lifestyle photography with descriptive captions baked into the images.
-- **Social media links** — footer links to Facebook, Twitter/X, Instagram, and LinkedIn.
-- **Thematic copywriting** — the tagline "It's time to change the root of your trajectory with coffee" ties the tech theme into the brand voice.
+- **Terminal Input** — Git-style terminal for adding and removing items.
+- **Responsive Basket UI** — Dynamic cart rendering with item quantities.
+- **Local Storage** — Live basket updates across pages via localStorage
+- **webpages as iframes** — webpages load on the same page without the need to leave the landing page.
+- **Social media links** — Header links to this GitHub page.
+- **Thematic copywriting** — Terminal as a metaphor for purchasing coffee ties the tech theme into the brand voice.
 
 ## Project Structure
 ```
-chroot/V1
+chroot/V2
 │
-├── Fonts              # Folder for the fonts used on the site
 ├── Images             # Folder for the images used on the site
 ├── favicon.ico        # Web icon
-├── index.html         # The landing page
-├── drinks.html        # The drinks page
-├── pastries.html      # The pastries page
-├── style.css          # Encompasses the styling
-├── slideshow.js       # Encompasses the carousel for landing page
-├── LICENSE       
-└── README.md
+├── home.html          # The landing page and terminal interface
+├── beans.html         # Coffee Beans selection
+├── equipment.html     # Equipment selection
+├── basket.html        # Shopping basket view
+├── styling.css        # Encompasses the styling for website
+├── terminal.js        # Encompasses the carousel for landing page
+├── LICENSE            # MIT License
+└── README.md          # This page
 ```
-## ⛏️ Built With
+## ⛏️ Tech Stack
 - **HTML**: Provides basic structure and layout of the website.
-- **CSS**: Used for styling the website and hiding easter eggs.
-- **JavaScript**: Used to create an automatic slideshow with navigation buttons.
+- **CSS**: Used for styling the website.
+- **JavaScript**: Used to create a functional terminal with git-style commands and infrastructure to tracks items and quantities. localStorage acts as the communication bridge between the terminal page and the basket, with a setInterval polling for changes and dynamically rendering cart items into the DOM via innerHTML and appendChild. Event delegation handles clicks on dynamically created elements.
 
 ## 📄 License
 This project is licensed under the **MIT License**.
