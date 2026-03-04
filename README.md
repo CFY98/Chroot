@@ -1,5 +1,5 @@
 # Chroot
-A fictional e-commerce shopping experience built around a terminal interface. Users interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
+A fictional e-commerce UI built around a terminal interface. Users interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
 
 ## TO-DO
 - [x] Make a functional Terminal.
