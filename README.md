@@ -1,9 +1,6 @@
 # Chroot
 A fictional coffee shop loosely inspired by the command line terminal.
 
-## 🔗 Link
-[chroot](https://cfy98.github.io/CodeNation-Chroot-Coffee-Shop/)
-
 ## 🌐 Website structure
 ```
 chroot
