@@ -379,7 +379,7 @@ body {
   text-decoration: none;
 }
 .more:hover {
-  color: var(--hover);
+  color: var(--green);
 }
 
 /* ------ BASKET ------ */
