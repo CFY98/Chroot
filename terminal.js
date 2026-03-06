@@ -1,5 +1,6 @@
 // CONFIG
 const PAGES = {
+  home: { path: "./index.html", label: "home" },
   beans: { path: "./beans.html", label: "beans" },
   equipment: { path: "./equipment.html", label: "equipment" },
   basket: { path: "./basket.html", label: "basket" },
