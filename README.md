@@ -19,7 +19,7 @@ chroot
       ├── Terminal
       |    ├── Beans Page
       |    ├── Equipment Page
-      |    └── Pastries Page
+      |    └── Basket Page
       |
       └── Social Media Navbar
           └── GitHub
