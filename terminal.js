@@ -2,7 +2,6 @@
 const PAGES = {
   beans: { path: "./beans.html", label: "beans" },
   equipment: { path: "./equipment.html", label: "equipment" },
-  home: { path: "./index.html", label: "home" },
   basket: { path: "./basket.html", label: "basket" },
 };
 
