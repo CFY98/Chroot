@@ -1,6 +1,5 @@
 // CONFIG
 const PAGES = {
-  home: { path: "./index.html", label: "home" },
   beans: { path: "./beans.html", label: "beans" },
   equipment: { path: "./equipment.html", label: "equipment" },
   basket: { path: "./basket.html", label: "basket" },
@@ -223,7 +222,7 @@ if (terminalEl) {
         addLine(block, "  hours           opening hours", "info");
         addLine(block, "  clear           clear the terminal", "info");
         blank(block);
-        addLine(block, "Pages:  home  beans  equipment", "info");
+        addLine(block, "Pages:  beans  equipment  basket", "info");
         addLine(block, "Tools:  add  reset  commit", "info");
         blank(block);
         break;
@@ -244,7 +243,7 @@ if (terminalEl) {
         if (!arg) {
           addLine(
             block,
-            `Usage: ${verb} <page> (home | beans | equipment)`,
+            `Usage: ${verb} <page> (beans | equipment | basket)`,
             "warn",
           );
           break;
