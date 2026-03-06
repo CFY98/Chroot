@@ -3,6 +3,30 @@ const PAGES = {
   beans: { path: "./beans.html", label: "beans" },
   equipment: { path: "./equipment.html", label: "equipment" },
   basket: { path: "./basket.html", label: "basket" },
+  blaze: {
+    path: "https://www.youtube.com/embed/MpYy6wwqxoo?si=QK_tnj2kMUPtz3ga",
+    label: "blaze",
+  },
+  sunshine: {
+    path: "https://www.youtube.com/embed/rTga41r3a4s?si=kPriLgWd2HvuPsBd",
+    label: "sunshine",
+  },
+  summit: {
+    path: "https://www.youtube.com/embed/H6FUBWGSOIc?si=n18MNmFHMKYvHCJd",
+    label: "summit",
+  },
+  filters: {
+    path: "https://www.youtube.com/embed/uwUt1fVLb3E?si=phg4uDlTsFlT8N3c",
+    label: "filters",
+  },
+  dripper: {
+    path: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=awBa4UjYvWhMNoZf",
+    label: "dripper",
+  },
+  grinder: {
+    path: "https://www.youtube.com/embed/avjI3_GIZBw?si=2TUiwNJORnCipseu",
+    label: "grinder",
+  },
 };
 
 const QUICK_CMDS = [
@@ -222,8 +246,13 @@ if (terminalEl) {
         addLine(block, "  hours           opening hours", "info");
         addLine(block, "  clear           clear the terminal", "info");
         blank(block);
-        addLine(block, "Pages:  beans  equipment  basket", "info");
-        addLine(block, "Tools:  add  reset  commit", "info");
+        addLine(block, "Pages:", "info");
+        addLine(block, "  beans  equipment  basket", "info");
+        addLine(block, "  blaze  sunshine  summit", "info");
+        addLine(block, "  filters  dripper  grinder", "info");
+        blank(block);
+        addLine(block, "Tools:", "info");
+        addLine(block, "  add  reset  commit", "info");
         blank(block);
         break;
 
@@ -243,7 +272,7 @@ if (terminalEl) {
         if (!arg) {
           addLine(
             block,
-            `Usage: ${verb} <page> (beans | equipment | basket)`,
+            `Usage: ${verb} <page> (beans | equipment | basket | blaze | sunshine | summit | filters | dripper | grinder)`,
             "warn",
           );
           break;
