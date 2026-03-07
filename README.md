@@ -1,10 +1,11 @@
 # Chroot
 
-A fictional e-commerce UI built around a terminal interface. Users interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
+A fictional e-commerce UI built around a terminal interface. Users interact with the shop using familiar git commands to browse, stage, and commit items to their basket. Initially, the project was hosted on GitHub Pages but has since migrated to **Vercel** for better iframe support.
 
 ## 🔗 Link
 
 [chroot](https://chroot-web.vercel.app/)
+
 
 ## 🌐 Website structure
 
