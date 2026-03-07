@@ -100,9 +100,10 @@ if (terminalEl) {
         addLine(block, "drwxr-xr-x        beans/", "info");
         addLine(block, "drwxr-xr-x        equipment/", "info");
         addLine(block, "drwxr-xr-x        basket/", "info");
-        addLine(block, "drwxr--r--r       help/", "info");
-        addLine(block, "drwxr--r--r       about/", "info");
-        addLine(block, "drwxr--r--r       hours/", "info");
+        addLine(block, "dr-xr-xr--x       receipt/", "info");
+        addLine(block, "dr-xr-xr--x       help/", "info");
+        addLine(block, "dr-xr-xr--x       about/", "info");
+        addLine(block, "dr-xr-xr--x       hours/", "info");
         blank(block);
         break;
 
