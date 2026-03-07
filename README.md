@@ -6,7 +6,6 @@ A fictional e-commerce UI built around a terminal interface. Users interact with
 
 [chroot](https://chroot-web.vercel.app/)
 
-
 ## 🌐 Website structure
 
 ```
@@ -27,6 +26,7 @@ chroot
 - **Responsive Basket UI** — Dynamic cart rendering with item quantities.
 - **Local Storage** — Live basket updates across pages via localStorage.
 - **Webpages as iframes** — Webpages load on the same page without the need to leave the landing page.
+- **PDF Generation** — Client-side PDF generation via the brower's native window.print() API.
 
 ## Project Structure
 
@@ -39,10 +39,12 @@ chroot/V2
 ├── beans.html         # Coffee Beans selection
 ├── equipment.html     # Equipment selection
 ├── basket.html        # Shopping basket view
+├── receipt.html       # Invoice with the option to print
 ├── style.css          # Encompasses the styling for website
 ├── terminal.js        # Encompasses the terminal interface for the landing page
 ├── assets.js          # Encompasses the pages, item selection, and suggestion buttons
-├── basket.js          # Encompasses tbasket.html responsive design elements
+├── basket.js          # Encompasses the responsive design elements for the basket page
+├── receipt.js         # Encompasses the buttons and receipt generation for the receipt page
 ├── LICENSE            # MIT License
 └── README.md          # This page
 ```
