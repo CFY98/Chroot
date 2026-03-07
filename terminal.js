@@ -1,8 +1,8 @@
 // LINK TO BASKET IFRAME
-const basket = document.getElementById("page");
+const basket = document.querySelector(".webpage-link");
 
 // IMPORTS
-import { BEANS, EQUIPMENT, PAGES, QUICK_CMDS, NAVIGATION } from "./assets.js";
+import { BEANS, EQUIPMENT, PAGES, QUICK_CMDS } from "./assets.js";
 
 // TERMINAL HISTORY
 const history = [];
@@ -20,8 +20,9 @@ window.addEventListener("storage", (e) => {
 // DOM
 const output = document.getElementById("terminal-output");
 const input = document.getElementById("cmd-input");
-
+const NAVIGATION = document.getElementById("suggestions");
 const terminalEl = document.querySelector(".terminal");
+
 // PRINT LINES AS BLOCKS
 if (terminalEl) {
   function createBlock() {
@@ -329,15 +330,17 @@ if (terminalEl) {
   }
 
   // SUGGESTION BUTTONS
+
   if (QUICK_CMDS && NAVIGATION) {
     QUICK_CMDS.forEach((cmd) => {
       const suggestion = document.createElement("button");
-      suggestion.style.width = "8rem";
+      // suggestion.style.width = "8rem";
       suggestion.className = "suggestion";
       suggestion.textContent = cmd;
       suggestion.addEventListener("click", () => {
-        input.value = cmd;
-        run(cmd);
+        const fullCmd = PAGES[cmd] ? `cd ${cmd}` : cmd;
+        input.value = fullCmd;
+        run(fullCmd);
         input.value = "";
       });
       NAVIGATION.appendChild(suggestion);
