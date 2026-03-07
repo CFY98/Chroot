@@ -334,7 +334,7 @@ if (terminalEl) {
   if (QUICK_CMDS && NAVIGATION) {
     QUICK_CMDS.forEach((cmd) => {
       const suggestion = document.createElement("button");
-      // suggestion.style.width = "8rem";
+      suggestion.style.width = "8rem";
       suggestion.className = "suggestion";
       suggestion.textContent = cmd;
       suggestion.addEventListener("click", () => {
