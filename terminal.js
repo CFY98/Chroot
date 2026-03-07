@@ -1,46 +1,10 @@
-// CONFIG
-const PAGES = {
-  beans: { path: "./beans.html", label: "beans" },
-  equipment: { path: "./equipment.html", label: "equipment" },
-  basket: { path: "./basket.html", label: "basket" },
-  blaze: {
-    path: "https://www.youtube.com/embed/MpYy6wwqxoo?si=QK_tnj2kMUPtz3ga",
-    label: "blaze",
-  },
-  sunshine: {
-    path: "https://www.youtube.com/embed/rTga41r3a4s?si=kPriLgWd2HvuPsBd",
-    label: "sunshine",
-  },
-  summit: {
-    path: "https://www.youtube.com/embed/H6FUBWGSOIc?si=n18MNmFHMKYvHCJd",
-    label: "summit",
-  },
-  filters: {
-    path: "https://www.youtube.com/embed/uwUt1fVLb3E?si=phg4uDlTsFlT8N3c",
-    label: "filters",
-  },
-  dripper: {
-    path: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=awBa4UjYvWhMNoZf",
-    label: "dripper",
-  },
-  grinder: {
-    path: "https://www.youtube.com/embed/avjI3_GIZBw?si=2TUiwNJORnCipseu",
-    label: "grinder",
-  },
-};
+// LINK TO BASKET IFRAME
+const basket = document.getElementById("page");
 
-const QUICK_CMDS = [
-  "help",
-  "ls",
-  "cd beans",
-  "cd equipment",
-  "cd basket",
-  "about",
-  "hours",
-  "clear",
-];
+// IMPORTS
+import { BEANS, EQUIPMENT, PAGES, QUICK_CMDS, NAVIGATION } from "./assets.js";
 
-// HISTORY
+// TERMINAL HISTORY
 const history = [];
 let histIdx = -1;
 
@@ -53,135 +17,9 @@ window.addEventListener("storage", (e) => {
   }
 });
 
-// ITEMS
-
-const BEANS = ["blaze", "sunshine", "summit"];
-const EQUIPMENT = ["filters", "dripper", "grinder"];
-
 // DOM
 const output = document.getElementById("terminal-output");
 const input = document.getElementById("cmd-input");
-const flash = document.getElementById("flash");
-const chipsE1 = document.getElementById("suggestions");
-
-// BASKET SETTINGS
-const product = document.querySelector(".cart-items");
-// BASKET BUTTONS
-const add = document.querySelector(".plus-btn");
-const minus = document.querySelector(".minus-btn");
-const eliminate = document.querySelector(".delete");
-const remove = document.querySelector(".remove");
-
-if (product) {
-  product.addEventListener("click", (e) => {
-    if (e.target.classList.contains("plus-btn")) {
-      const cartItem = e.target.closest(".cart-items");
-      const itemName = cartItem.querySelector(".name").textContent;
-      const count = cartItem.querySelector(".count");
-      count.textContent = parseInt(count.textContent || "0") + 1;
-
-      const stagingArea = JSON.parse(
-        localStorage.getItem("stagingArea") || "{}",
-      );
-      stagingArea[itemName] = (stagingArea[itemName] || 0) + 1;
-      localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
-    }
-
-    if (e.target.classList.contains("minus-btn")) {
-      const cartItem = e.target.closest(".cart-items");
-      const itemName = cartItem.querySelector(".name").textContent;
-      const count = cartItem.querySelector(".count");
-      const newCount = Math.max(0, parseInt(count.textContent || "0") - 1);
-      count.textContent = newCount;
-
-      const stagingArea = JSON.parse(
-        localStorage.getItem("stagingArea") || "{}",
-      );
-      stagingArea[itemName] = newCount;
-      if (newCount === 0) {
-        delete stagingArea[itemName];
-        const basketItems = JSON.parse(
-          localStorage.getItem("basketItems") || "[]",
-        );
-        const itemIndex = basketItems.findIndex((i) => i === itemName);
-        if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
-        localStorage.setItem("basketItems", JSON.stringify(basketItems));
-        cartItem.remove();
-      }
-    }
-    if (e.target.closest(".remove")) {
-      const cartItem = e.target.closest(".cart-items");
-      const itemName = cartItem.querySelector(".name").textContent;
-
-      const basketItems = JSON.parse(
-        localStorage.getItem("basketItems") || "[]",
-      );
-      const itemIndex = basketItems.findIndex((i) => i === itemName);
-      if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
-      localStorage.setItem("basketItems", JSON.stringify(basketItems));
-
-      const stagingArea = JSON.parse(
-        localStorage.getItem("stagingArea") || "{}",
-      );
-      const itemQty = stagingArea[itemName] || 1;
-      delete stagingArea[itemName];
-      localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
-
-      const prev = parseInt(localStorage.getItem("itemCount") || "0");
-      localStorage.setItem("itemCount", Math.max(0, prev - itemQty));
-
-      cartItem.remove();
-    }
-  });
-}
-
-if (eliminate) {
-  eliminate.onclick = function () {
-    localStorage.removeItem("basketItems");
-    localStorage.removeItem("stagingArea");
-    localStorage.setItem("itemCount", "0");
-    if (product) product.innerHTML = "";
-  };
-}
-
-// ITEMS IN BASKET
-if (product) {
-  let prevBasketItems = "";
-
-  setInterval(() => {
-    const current = localStorage.getItem("basketItems") || "[]";
-
-    if (current === prevBasketItems) return;
-    prevBasketItems = current;
-
-    const basketItems = JSON.parse(current);
-    const stagingArea = JSON.parse(localStorage.getItem("stagingArea") || "{}");
-
-    product.innerHTML = "";
-    basketItems.forEach((item) => {
-      const div = document.createElement("div");
-      div.classList.add("cart-item");
-      div.innerHTML = `
-        <div class="image-box">
-          <img src="./Images/${item}.jpg" alt="${item}" />
-        </div>
-        <div class="about">
-          <h4 class="name">${item}</h4>
-        </div>
-        <div class="counter">
-          <div class="plus-btn">+</div>
-          <div class="count">${stagingArea[item] || 1}</div>
-          <div class="minus-btn">-</div>
-        </div>
-        <div class="cost">
-          <div class="amount">£11.99</div>
-          <div class="remove"><u>Remove</u></div>
-        </div>
-      `;
-      product.appendChild(div);
-    });
-  }, 500);
-}
 
 const terminalEl = document.querySelector(".terminal");
 // PRINT LINES AS BLOCKS
@@ -209,11 +47,8 @@ if (terminalEl) {
 
   function navigate(block, page) {
     addLine(block, `site@chroot ~/${PAGES[page].label} $`, "prompt");
-    //   flash.classList.add("active");
-    // flash.classList.remove("active");
-    const frame = document.getElementById("item");
+    const frame = document.getElementById("page");
     frame.src = PAGES[page].path;
-    // window.location.href = PAGES[page].path;
   }
 
   // BOOT MESSAGE
@@ -341,6 +176,10 @@ if (terminalEl) {
                 );
               }
 
+              basket.contentWindow.postMessage(
+                { action: "updateBasket", item: item },
+                "*",
+              );
               addLine(block, `${item} staged for commit`, "info");
             } else {
               addLine(block, `fatal: '${item}' not found`, "error");
@@ -377,6 +216,7 @@ if (terminalEl) {
           localStorage.removeItem("stagingArea");
           localStorage.setItem("itemCount", "0");
           stagingArea = {};
+          basket.contentWindow.postMessage({ action: "updateBasket" }, "*");
           break;
         } else if (action === "reset") {
           const items = parts.slice(2);
@@ -384,19 +224,28 @@ if (terminalEl) {
           items.forEach((item) => {
             if (stagingArea[item]) {
               stagingArea[item] -= 1;
-              if (stagingArea[item] === 0) delete stagingArea[item];
-              localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
 
               const prev = parseInt(localStorage.getItem("itemCount") || "0");
-              localStorage.setItem("itemCount", Math.max(0, prev - 1));
+              localStorage.setItem("itemCount", prev - 1);
 
-              const basketItems = JSON.parse(
-                localStorage.getItem("basketItems") || "[]",
+              if (stagingArea[item] === 0) {
+                delete stagingArea[item];
+                const basketItems = JSON.parse(
+                  localStorage.getItem("basketItems") || "[]",
+                );
+                const itemIndex = basketItems.findIndex((i) => i === item);
+                if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
+                localStorage.setItem(
+                  "basketItems",
+                  JSON.stringify(basketItems),
+                );
+              }
+
+              localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+              basket.contentWindow.postMessage(
+                { action: "updateBasket", item: item },
+                "*",
               );
-              const itemIndex = basketItems.findIndex((i) => i === item);
-              if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
-              localStorage.setItem("basketItems", JSON.stringify(basketItems));
-
               addLine(block, `${item} unstaged`, "info");
             } else {
               addLine(block, `'${item}' not staged`, "error");
@@ -466,7 +315,7 @@ if (terminalEl) {
       } else if (e.key === "Tab") {
         e.preventDefault();
         const val = input.value.toLowerCase();
-        const pages = ["home", "beans", "equipment"];
+        const pages = ["beans", "equipment", "basket"];
         const match = pages.find((p) =>
           val.endsWith(p.slice(0, val.split(" ").at(-1).length)),
         );
@@ -479,31 +328,22 @@ if (terminalEl) {
     });
   }
 
-  // FOCUS INPUT
-  const terminal = document.querySelector(".terminal");
-
-  if (terminal) {
-    terminal.addEventListener("click", () => {
-      input.focus();
-    });
-  }
   // SUGGESTION BUTTONS
-  if (QUICK_CMDS && chipsE1) {
+  if (QUICK_CMDS && NAVIGATION) {
     QUICK_CMDS.forEach((cmd) => {
       const suggestion = document.createElement("button");
+      suggestion.style.width = "8rem";
       suggestion.className = "suggestion";
       suggestion.textContent = cmd;
       suggestion.addEventListener("click", () => {
         input.value = cmd;
         run(cmd);
         input.value = "";
-        input.focus();
       });
-      chipsE1.appendChild(suggestion);
+      NAVIGATION.appendChild(suggestion);
     });
   }
 
   // INIT
   boot();
-  input.focus();
 }
