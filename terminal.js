@@ -1,6 +1,3 @@
-// LINK TO BASKET IFRAME
-const basket = document.querySelector(".webpage-link");
-
 // IMPORTS
 import { BEANS, EQUIPMENT, PAGES, QUICK_CMDS } from "./assets.js";
 
@@ -25,6 +22,8 @@ const terminalEl = document.querySelector(".terminal");
 
 // PRINT LINES AS BLOCKS
 if (terminalEl) {
+  const basket = document.querySelector(".webpage-link");
+
   function createBlock() {
     const block = document.createElement("div");
     return block;
@@ -177,10 +176,12 @@ if (terminalEl) {
                 );
               }
 
-              basket.contentWindow.postMessage(
-                { action: "updateBasket", item: item },
-                "*",
-              );
+              if (basket && basket.contentWindow) {
+                basket.contentWindow.postMessage(
+                  { action: "updateBasket", item: item },
+                  "*",
+                );
+              }
               addLine(block, `${item} staged for commit`, "info");
             } else {
               addLine(block, `fatal: '${item}' not found`, "error");
@@ -217,7 +218,12 @@ if (terminalEl) {
           localStorage.removeItem("stagingArea");
           localStorage.setItem("itemCount", "0");
           stagingArea = {};
-          basket.contentWindow.postMessage({ action: "updateBasket" }, "*");
+          if (basket && basket.contentWindow) {
+            basket.contentWindow.postMessage(
+              { action: "updateBasket", item: item },
+              "*",
+            );
+          }
           break;
         } else if (action === "reset") {
           const items = parts.slice(2);
@@ -243,10 +249,12 @@ if (terminalEl) {
               }
 
               localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
-              basket.contentWindow.postMessage(
-                { action: "updateBasket", item: item },
-                "*",
-              );
+              if (basket && basket.contentWindow) {
+                basket.contentWindow.postMessage(
+                  { action: "updateBasket", item: item },
+                  "*",
+                );
+              }
               addLine(block, `${item} unstaged`, "info");
             } else {
               addLine(block, `'${item}' not staged`, "error");
