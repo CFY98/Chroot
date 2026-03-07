@@ -28,6 +28,12 @@
           <span class="dot dot-g"></span>
           <span class="titlebar-text">chroot - bash</span>
         </div>
+        <!-- SUGGESTION BUTTONS -->
+        <div
+          class="suggestions"
+          id="suggestions"
+          aria-label="quick commands"
+        ></div>
         <div class="input-row">
           <span class="prompt" aria-hidden="true"
             >site@chroot <span class="path"> ~ $</span></span
@@ -42,31 +48,23 @@
             aria-label="terminal input"
           />
         </div>
-        <!-- Suggestions the user can click if they don't want to use the terminal -->
-        <div
-          class="suggestions"
-          id="suggestions"
-          aria-label="quick commands"
-        ></div>
         <div
           class="terminal-output"
           id="terminal-output"
           aria-live="polite"
         ></div>
-        <!-- Command transitions -->
-        <!-- <div class="flash" id="flash"></div> -->
       </div>
       <div class="webpage-container">
         <div class="titlebar">
           <span class="dot dot-r"></span>
           <span class="dot dot-y"></span>
           <span class="dot dot-g"></span>
-          <span class="titlebar-text">chroot - pages</span>
+          <span class="titlebar-text">chroot - page</span>
         </div>
         <div class="webpage-link">
           <iframe
             name="webpage"
-            id="item"
+            id="page"
             src="/basket.html"
             frameborder="0"
             aria-label="page display"
@@ -74,6 +72,6 @@
         </div>
       </div>
     </div>
-    <script src="terminal.js"></script>
+    <script type="module" src="terminal.js"></script>
   </body>
 </html>

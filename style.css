@@ -223,43 +223,34 @@ body {
   opacity: 0.6;
 }
 
-/* SUGGESTION CHIPS */
+/* SUGGESTION BUTTONS */
 .suggestions {
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding: 0 1.5rem 1.25rem;
+  padding: 1.5rem 1.25rem;
 }
 .suggestion {
-  font-size: 0.82rem;
-  color: var(--hover);
+  font-size: 1.5rem;
+  background-color: var(--border);
+  color: var(--muted);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.2rem 0.55rem;
+  border-radius: 5px;
+  padding: 0.2rem 0.2rem;
   cursor: pointer;
   transition:
     border-color 0.15s,
     color 0.15s;
   user-select: none;
 }
+
 .suggestion:hover {
-  border-color: var(--green-dim);
+  border-color: var(--hover);
   color: var(--green);
 }
-/* ── PAGE FLASH (SIMULATE NAVIGATION */
-/* .flash {
-  position: fixed;
-  inset: 0;
-  background: var(--bg);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s;
-  z-index: 99;
-} */
-/* .flash.active {
-  opacity: 1;
-  pointer-events: all;
-} */
+
 /* ITEM MENUS AND BASKET */
 .webpage-container {
   min-height: 90vh;
@@ -350,7 +341,7 @@ body {
   flex-direction: row;
   border: yellow solid 2px;
 }
-/* ------ HOVER OVERLAY ------ */
+/* ------ MORE INFO OVERLAY ------ */
 .caption-container {
   width: 90%;
   aspect-ratio: 4/3;
@@ -379,7 +370,7 @@ body {
   text-decoration: none;
 }
 .more:hover {
-  color: var(--green);
+  color: var(--hover);
 }
 
 /* ------ BASKET ------ */
@@ -403,18 +394,17 @@ body {
   text-decoration: underline;
   cursor: pointer;
   padding-top: 2rem;
-  margin-right: 7%;
+  margin-right: 6.8%;
 }
 .cart-items {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   width: 100%;
 }
 .cart-item {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
   width: 90%;
   min-height: 30%;
   margin: auto;
@@ -432,8 +422,6 @@ body {
   object-fit: cover;
 }
 .about {
-  flex: 1;
-  height: 100%;
   margin-left: 14%;
 }
 .name {
@@ -443,11 +431,9 @@ body {
   color: var(--text);
 }
 .counter {
-  width: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 14%;
 }
 .plus-btn {
   width: 2rem;
@@ -485,9 +471,8 @@ body {
   color: var(--text);
 }
 .cost {
-  margin-left: auto;
-  margin-right: 2%;
   text-align: right;
+  margin-right: 10%;
 }
 .amount {
   font-size: 1.5rem;
@@ -632,6 +617,19 @@ hr {
     width: 100%;
     height: 100%;
   }
+  .plus-btn {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+  }
+  .minus-btn {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+  }
+  .count {
+    font-size: 1.2em;
+  }
 }
 @media only screen and (max-width: 699px) {
   .top-container {
@@ -661,7 +659,7 @@ hr {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50% 50%;
-    height: 90vh;
+    height: 92vh;
     overflow: hidden;
   }
   .terminal {
@@ -731,5 +729,53 @@ hr {
     flex-direction: column;
     padding-left: 1%;
     padding-right: 1%;
+  }
+  .delete {
+    font-size: 0.7rem;
+    padding-top: 1rem;
+  }
+  .cart-item {
+    grid-template-columns: 0 0.5fr 0.5fr 0.5fr;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .image-box img {
+    display: none;
+  }
+  .name {
+    font-size: 1rem;
+  }
+  .plus-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+  }
+  .minus-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+  }
+  .count {
+    font-size: 0.7rem;
+  }
+  .amount {
+    font-size: 1rem;
+    margin-left: auto;
+    margin-right: -6%;
+  }
+  .remove {
+    font-size: 0.7rem;
+    margin-left: auto;
+    margin-right: -6%;
+  }
+  .total-amount {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    text-align: right;
+  }
+  .button {
+    width: 80%;
+    height: 2rem;
+    font-size: 1rem;
   }
 }
