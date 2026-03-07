@@ -230,7 +230,7 @@ body {
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding: 1.5rem 1.25rem;
+  padding: 1rem 1rem;
 }
 .suggestion {
   font-size: 1.5rem;
@@ -288,7 +288,7 @@ body {
   border-radius: 2px;
 }
 
-/* ------ MENU PAGES ------ */
+/* ------ BEANS AND EQUIPMENT PAGES ------ */
 .subtitle {
   text-align: center;
   font-size: 1rem;
@@ -504,10 +504,13 @@ hr {
 }
 .total {
   width: 100%;
+  font-size: 1.5rem;
+  text-align: right;
 }
 .total-amount {
   font-size: 2rem;
   font-weight: 300;
+  margin-top: 1%;
   text-align: right;
 }
 .button {
@@ -522,10 +525,128 @@ hr {
   font-weight: 300;
   color: var(--text);
 }
+
+/* ------ RECEIPT ------ */
+.bar {
+  background-color: var(--border);
+  display: flex;
+  padding: 1em 1em;
+  border-radius: 10px;
+}
+#order {
+  margin-right: auto;
+  margin-left: 2rem;
+  text-align: center;
+  font-family: "JetBrains Mono";
+  font-size: 1.2rem;
+  padding: 1em 1em;
+  text-decoration: underline;
+}
+#print {
+  width: 20%;
+  margin-left: auto;
+  margin-right: 3em;
+  margin-top: 0.5em;
+  height: 3rem;
+  border: none;
+  background: linear-gradient(to bottom right, var(--hover), var(--path));
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "JetBrains Mono";
+  font-weight: 300;
+  color: var(--text);
+}
+.receipt-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 90%;
+  height: 100%;
+  background-color: var(--t-window);
+  border-radius: 10px;
+}
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26rem;
+  font-size: 1rem;
+  width: 94%;
+  text-align: center;
+  margin-top: 3rem;
+  margin-left: 3%;
+  border-bottom: var(--text) 2px solid;
+}
+.summary-item {
+  margin-right: auto;
+}
+.summary-quantity {
+  align-self: center;
+}
+.summary-price {
+  margin-left: auto;
+}
+.receipt-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+.receipt-item {
+  display: grid;
+  grid-template-columns: 1fr 5fr 5.2fr 1fr;
+  align-items: center;
+  width: 95%;
+  min-height: 30%;
+  margin: auto;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+.item-name {
+  font-size: 1.5rem;
+  line-height: 10px;
+  font-weight: 300;
+  color: var(--text);
+}
+.item-count {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text);
+}
+.item-amount {
+  font-size: 1.5rem;
+}
+.underline {
+  margin-right: 3%;
+  width: 94%;
+  margin-left: auto;
+}
+.receipt-checkout {
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: 3%;
+  padding-bottom: 5%;
+  width: 28%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  justify-self: flex-end;
+}
+.receipt-total {
+  width: 100%;
+  font-size: 1.8rem;
+  text-align: right;
+}
+.receipt-amount {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-top: 1%;
+  text-align: right;
+}
 /* ------ END OF HOVER OVERLAY ------ */
 /* ------ END OF MENU PAGES ------ */
 
-/* ------ PHONE SCREENS ------ */
+/* ------ ADAPTIVE FOR SCREENS ------ */
 @media only screen and (min-width: 700px) and (max-width: 1400px) {
   .top-container {
     grid-template-columns: 1fr auto 1fr;
@@ -617,6 +738,9 @@ hr {
     width: 100%;
     height: 100%;
   }
+  .cart-item {
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+  }
   .plus-btn {
     width: 3rem;
     height: 3rem;
@@ -629,6 +753,25 @@ hr {
   }
   .count {
     font-size: 1.2em;
+  }
+  #order {
+    margin-right: auto;
+    margin-left: 0.1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  #print {
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    font-size: 1rem;
   }
 }
 @media only screen and (max-width: 699px) {
@@ -735,7 +878,7 @@ hr {
     padding-top: 1rem;
   }
   .cart-item {
-    grid-template-columns: 0 0.5fr 0.5fr 0.5fr;
+    grid-template-columns: 0 0.6fr 0.5fr 0.5fr;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
@@ -756,7 +899,7 @@ hr {
     font-size: 1rem;
   }
   .count {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
   .amount {
     font-size: 1rem;
@@ -768,6 +911,9 @@ hr {
     margin-left: auto;
     margin-right: -6%;
   }
+  .total {
+    font-size: 0.8rem;
+  }
   .total-amount {
     margin-top: 0.5rem;
     font-size: 1.2rem;
@@ -777,5 +923,140 @@ hr {
     width: 80%;
     height: 2rem;
     font-size: 1rem;
+  }
+  .bar {
+    padding: 0.5em 0.5em;
+    flex-direction: column;
+    align-items: center;
+  }
+  #order {
+    margin: 0 auto;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.7rem;
+  }
+  #print {
+    width: 40%;
+    height: 40%;
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+    align-items: center;
+    font-size: 1rem;
+    font-family: "JetBrains Mono";
+    font-weight: 300;
+    color: var(--text);
+  }
+  .receipt-container {
+    display: grid;
+    width: 90%;
+    height: 100%;
+    background-color: var(--t-window);
+    border-radius: 10px;
+  }
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    font-size: 0.7rem;
+  }
+  .receipt-item {
+    grid-template-columns: 0 0.5fr 0.5fr 0.5fr;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .item-name {
+    font-size: 1rem;
+  }
+  .item-count {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  .item-amount {
+    font-size: 1rem;
+    margin-left: auto;
+    margin-right: -10%;
+  }
+  .receipt-total {
+    font-size: 0.8rem;
+  }
+  .receipt-amount {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    text-align: right;
+  }
+}
+/* ------ PDF PRINTING ------ */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    background-color: white;
+  }
+  .title {
+    color: var(--border);
+    text-decoration: underline;
+  }
+  #items {
+    font-size: 1.7rem;
+    color: var(--muted);
+    padding-top: 3%;
+  }
+  .receipt-container {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .receipt-item {
+    color: var(--muted);
+  }
+  .item-name {
+    color: var(--muted);
+  }
+  .item-count {
+    color: var(--muted);
+  }
+  .image-box img {
+    filter: grayscale(100%);
+  }
+  .bar {
+    background-color: white;
+    border-bottom: var(--muted) solid 1px;
+    border-radius: 0%;
+    width: 94%;
+    margin-left: 3%;
+  }
+  #order {
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-right: auto;
+    margin-left: -5%;
+    padding-bottom: 3%;
+    color: var(--border);
+  }
+  #print {
+    display: none;
+  }
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10rem;
+    color: var(--muted);
+    border-bottom: var(--muted) solid 1px;
+  }
+  .underline {
+    background-color: var(--muted);
+    height: 1px;
+  }
+  .receipt-total {
+    color: var(--muted);
+  }
+  .receipt-amount {
+    color: var(--muted);
   }
 }

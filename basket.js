@@ -1,15 +1,13 @@
 // BASKET SETTINGS
 const product = document.querySelector(".cart-items");
 // BASKET BUTTONS
-const add = document.querySelector(".plus-btn");
-const minus = document.querySelector(".minus-btn");
 const eliminate = document.querySelector(".delete");
-const remove = document.querySelector(".remove");
+const commit = document.querySelector(".button");
 
 // COSTS
 let subTotal = 0;
 const total = document.querySelector(".total-amount");
-const prices = {
+export const prices = {
   blaze: 11.99,
   sunshine: 13.99,
   summit: 19.99,
@@ -116,12 +114,39 @@ if (product) {
   });
 }
 
+// RESET ALL
 if (eliminate) {
   eliminate.onclick = function () {
     localStorage.removeItem("basketItems");
     localStorage.removeItem("stagingArea");
     localStorage.setItem("itemCount", "0");
     if (product) product.innerHTML = "";
+  };
+}
+
+// COMMIT ORDER
+if (commit) {
+  commit.onclick = function () {
+    const basketItems = localStorage.getItem("basketItems") || "[]";
+    const stagingArea = localStorage.getItem("stagingArea") || "{}";
+
+    const orderNumber = JSON.parse(localStorage.getItem("orderNumber") || "[]");
+    const hash = Math.random().toString(16).slice(2, 9);
+    orderNumber.push(hash);
+    localStorage.setItem("orderNumber", JSON.stringify(orderNumber));
+
+    localStorage.setItem("purchased", basketItems);
+    localStorage.setItem("committed", stagingArea);
+
+    localStorage.removeItem("basketItems");
+    localStorage.removeItem("stagingArea");
+    localStorage.setItem("itemCount", "0");
+
+    if (product) product.innerHTML = "";
+    updateTotal();
+
+    const frame = window.parent.document.getElementById("page");
+    frame.src = "./receipt.html";
   };
 }
 
