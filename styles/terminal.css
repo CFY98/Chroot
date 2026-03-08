@@ -1,0 +1,359 @@
+/* ------ TERMINAL WINDOW ------ */
+.terminal {
+  width: 100%;
+  height: 100%;
+  background: var(--t-window);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px #000,
+    0 24px 64px rgba(0, 0, 0, 0.6),
+    0 0 120px rgba(126, 201, 140, 0.04);
+}
+
+/* ------ TITLE BAR ------ */
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #111311;
+  border-bottom: 1px solid var(--border);
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.dot-r {
+  background: var(--red);
+}
+.dot-y {
+  background: var(--amber);
+}
+.dot-g {
+  background: var(--green);
+}
+.titlebar-text {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* ------ TERMINAL OUTPUT ------ */
+.terminal-output {
+  padding: 1.25rem 1.5rem;
+  max-height: 88vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.terminal-output::-webkit-scrollbar {
+  width: 4px;
+}
+.terminal-output::-webkit-scrollbar-track {
+  background: transparent;
+}
+.terminal-output::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* ------ COMMAND LINE INPUTS ------ */
+.line {
+  font-size: 1rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  opacity: 0;
+  animation: fadein 0.15s forwards;
+}
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+
+.line.prompt {
+  color: var(--green);
+}
+.line.cmd {
+  color: var(--text);
+}
+.line.info {
+  color: var(--muted);
+}
+.line.success {
+  color: var(--green);
+}
+.line.error {
+  color: var(--red);
+}
+.line.warn {
+  color: var(--amber);
+}
+.line.blank {
+  min-height: 0.8rem;
+}
+
+/* ------ INPUT ROW ------ */
+.input-row {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem 1rem;
+  border-top: 1px solid var(--border);
+  gap: 0.5rem;
+}
+
+.prompt {
+  color: var(--green);
+  font-size: 1rem;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.path {
+  color: var(--path);
+}
+
+#cmd-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  caret-color: var(--cursor);
+}
+
+/* ------ BLINKING CURSOR WHILE IDLE ------*/
+#cmd-input::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+/* ------ SUGGESTION BUTTONS ------ */
+.suggestions {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 1rem;
+}
+.suggestion {
+  font-size: 1.5rem;
+  background-color: var(--border);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.2rem 0.2rem;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+  user-select: none;
+}
+
+.suggestion:hover {
+  border-color: var(--hover);
+  color: var(--green);
+}
+
+/* ------ WEBPAGE LOADER ------ */
+.webpage-container {
+  min-height: 90vh;
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px #000,
+    0 24px 64px rgba(0, 0, 0, 0.6),
+    0 0 120px rgba(126, 201, 140, 0.04);
+}
+.webpage-link {
+  width: 100%;
+  height: 100%;
+}
+.webpage-link iframe {
+  width: 100%;
+  height: 100%;
+  max-height: 89vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border);
+}
+
+/* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS ------ */
+@media only screen and (max-width: 1280px) {
+  .terminal {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .terminal-output {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+  .terminal-input {
+    flex-shrink: 0;
+  }
+
+  .webpage-container {
+    overflow: hidden;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .webpage-link {
+    flex: 1;
+    height: 100%;
+    min-height: 0;
+  }
+  .webpage-link iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+/* ------ LAPTOPS ------ */
+@media only screen and (max-width: 1024px) {
+  .terminal {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .terminal-output {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+  .terminal-input {
+    flex-shrink: 0;
+  }
+  .webpage-container {
+    overflow: hidden;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .webpage-link {
+    flex: 1;
+    height: 100%;
+    min-height: 0;
+  }
+  .webpage-link iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+/* ------ TABLETS ------ */
+@media only screen and (max-width: 768px) {
+  .terminal {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .terminal-output {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+  .terminal-input {
+    flex-shrink: 0;
+  }
+  .prompt {
+    font-size: 1rem;
+  }
+  .line {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  #cmd-input {
+    font-family: inherit;
+    font-size: 1rem;
+  }
+  .suggestion {
+    font-size: 0.8rem;
+  }
+  .webpage-container {
+    overflow: hidden;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .webpage-link {
+    flex: 1;
+    height: 100%;
+    min-height: 0;
+  }
+  .webpage-link iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+/* ------ PHONES ------*/
+@media only screen and (max-width: 480px) {
+  .terminal {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .terminal-output {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+  .terminal-input {
+    flex-shrink: 0;
+  }
+  .prompt {
+    font-size: 0.82rem;
+  }
+  .line {
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+  #cmd-input {
+    font-family: inherit;
+    font-size: 0.82rem;
+  }
+  .suggestion {
+    font-size: 0.72rem;
+  }
+  .webpage-container {
+    overflow: hidden;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .webpage-link {
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+  }
+  .webpage-link iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}

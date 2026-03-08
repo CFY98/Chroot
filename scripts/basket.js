@@ -1,5 +1,9 @@
+// IMPORTS
+import { announce } from "./announcer.js";
+
 // BASKET SETTINGS
 const product = document.querySelector(".cart-items");
+
 // BASKET BUTTONS
 const eliminate = document.querySelector(".delete");
 const commit = document.querySelector(".button");
@@ -55,6 +59,9 @@ if (product) {
         localStorage.getItem("stagingArea") || "{}",
       );
       stagingArea[itemName] = (stagingArea[itemName] || 0) + 1;
+      announce(
+        `${itemName} quantity increased to ${stagingArea[itemName]} in the basket`,
+      );
       localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
 
       amount.textContent = `£${(stagingArea[itemName] * prices[itemName]).toFixed(2)}`;
@@ -74,10 +81,14 @@ if (product) {
         localStorage.getItem("stagingArea") || "{}",
       );
       stagingArea[itemName] = (stagingArea[itemName] || 0) - 1;
+      announce(
+        `${itemName} quantity decreased to ${stagingArea[itemName]} in the basket`,
+      );
       localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
       amount.textContent = `£${(stagingArea[itemName] * prices[itemName]).toFixed(2)}`;
       if (stagingArea[itemName] === 0) {
         delete stagingArea[itemName];
+        announce(` ${itemName} was completely removed from the basket`);
         const basketItems = JSON.parse(
           localStorage.getItem("basketItems") || "[]",
         );
@@ -104,6 +115,7 @@ if (product) {
       );
       const itemQty = stagingArea[itemName] || 1;
       delete stagingArea[itemName];
+      announce(` ${itemName} was completely removed from the basket`);
       localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
 
       const prev = parseInt(localStorage.getItem("itemCount") || "0");
@@ -121,6 +133,7 @@ if (eliminate) {
     localStorage.removeItem("stagingArea");
     localStorage.setItem("itemCount", "0");
     if (product) product.innerHTML = "";
+    announce("All items were completely removed from the basket");
   };
 }
 
@@ -143,10 +156,11 @@ if (commit) {
     localStorage.setItem("itemCount", "0");
 
     if (product) product.innerHTML = "";
+    announce(`The receipt for order ${hash} is now available to print`);
     updateTotal();
 
     const frame = window.parent.document.getElementById("page");
-    frame.src = "./receipt.html";
+    frame.src = "../pages/receipt.html";
   };
 }
 
@@ -175,19 +189,19 @@ if (product) {
       div.classList.add("cart-item");
       div.innerHTML = `
       <div class="image-box">
-        <img src="./Images/${key}.jpg" alt="${key}" />
+        <img src="../Images/${key}.jpg" alt="${key}" />
       </div>
       <div class="about">
         <h4 class="name">${key}</h4>
       </div>
       <div class="counter">
-        <div class="plus-btn">+</div>
-        <div class="count">${stagingArea[key]}</div>
-        <div class="minus-btn">-</div>
+        <div class="plus-btn" role="button" aria-label="Increases quantity by one">+</div>
+        <div class="count" aria-label="Displays number of selected item in basket">${stagingArea[key]}</div>
+        <div class="minus-btn" role="button" aria-label="Increases quantity by one">-</div>
       </div>
       <div class="cost">
         <div class="amount">£${qtyTotal.toFixed(2)}</div>
-        <div class="remove"><u>Remove</u></div>
+        <div class="remove" role="button" aria-label="Removes item from basket"><u>Remove</u></div>
       </div>
     `;
       product.appendChild(div);

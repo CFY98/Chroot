@@ -7,19 +7,25 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../styles/terminal.css" />
+    <link rel="icon" type="image/x-icon" href="./Images/favicon.ico" />
     <title>Chroot - Home</title>
   </head>
   <body>
+    <!-- ANNOUNCER -->
+    <div
+      id="announcer"
+      role="alert"
+      class="sr-only"
+      aria-atomic="true"
+      aria-live="assertive"
+    ></div>
     <!-- TITLE CONTAINER -->
     <div class="top-container">
       <p class="title">Chroot</p>
-      <div class="socials">
-        <a href="https://github.com/CFY98/Chroot" class="fa fa-github"></a>
-      </div>
     </div>
-    <!-- TERMINAL CONTAINER -->
+    <!-- TAB CONTAINER -->
     <div class="container">
       <!-- Terminal Window -->
       <div class="terminal" role="region" aria-label="terminal navigation">
@@ -46,13 +52,13 @@
             autocorrect="off"
             spellcheck="off"
             placeholder="type here"
-            aria-label="terminal input"
+            aria-hidden="true"
           />
         </div>
         <div
           class="terminal-output"
           id="terminal-output"
-          aria-live="polite"
+          aria-hidden="true"
         ></div>
       </div>
       <div class="webpage-container">
@@ -66,13 +72,17 @@
           <iframe
             name="webpage"
             id="page"
-            src="/basket.html"
+            src="../pages/basket.html"
             frameborder="0"
             aria-label="page display"
           ></iframe>
         </div>
       </div>
     </div>
-    <script type="module" src="terminal.js"></script>
+    <!-- SOCIAL MEDIA -->
+    <div class="socials">
+      <a href="https://github.com/CFY98/Chroot" class="fa fa-github"></a>
+    </div>
+    <script type="module" src="../scripts/terminal.js"></script>
   </body>
 </html>

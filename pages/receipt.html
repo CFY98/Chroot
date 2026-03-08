@@ -3,30 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../main/style.css" />
+    <link rel="stylesheet" href="../styles/receipt.css" />
+    <link rel="stylesheet" href="../styles/pdf.css" />
     <title>Receipt</title>
   </head>
   <body>
-    <p class="title">Invoice</p>
-    <p id="items">Thank you for your purchase at Chroot</p>
+    <p class="subtitle">Invoice</p>
+    <p id="items">Thank you for your purchase at Chroot!</p>
     <div class="receipt-container">
       <div class="bar">
         <p id="order">Order Number:</p>
         <button id="print">Print</button>
       </div>
-      <div class="summary">
-        <ul class="summary-item">
-          Item
-        </ul>
-        <ul class="summary-quantity">
-          Quantity
-        </ul>
-        <ul class="summary-price">
-          Price
-        </ul>
+      <div class="columns">
+        <h5 class="column-item">Item</h5>
+        <h5 class="column-quantity">Quantity</h5>
+        <h5 class="column-price">Price</h5>
       </div>
+      <hr class="column-line" />
       <div class="receipt-items"></div>
-      <hr class="underline" />
+      <hr />
       <div class="receipt-checkout">
         <div class="receipt-total">
           Total
@@ -34,6 +31,6 @@
         </div>
       </div>
     </div>
-    <script type="module" src="receipt.js"></script>
+    <script type="module" src="../scripts/receipt.js"></script>
   </body>
 </html>

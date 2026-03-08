@@ -26,7 +26,7 @@ if (print) {
     if (orderEl) orderEl.textContent = "Order Number:";
     total.textContent = "";
     const frame = window.parent.document.getElementById("page");
-    frame.src = "./basket.html";
+    frame.src = "../pages/basket.html";
   };
 }
 // RECEIPT GENERATION
@@ -43,7 +43,7 @@ if (receipt) {
     div.classList.add("receipt-item");
     div.innerHTML = `
       <div class="image-box">
-        <img src="./Images/${key}.jpg" alt="${key}" />
+        <img src="../Images/${key}.jpg" alt="${key}" />
       </div>
       <div class="about">
         <h4 class="item-name">${key}</h4>

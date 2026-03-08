@@ -1,0 +1,69 @@
+/* ------ PDF PRINTING ------ */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    background-color: white;
+  }
+  .title {
+    color: var(--border);
+    text-decoration: underline;
+  }
+  #items {
+    font-size: 1.65rem;
+    color: var(--muted);
+    padding-top: 4%;
+  }
+  .receipt-container {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .column-item,
+  .column-quantity,
+  .column-price,
+  .column-line,
+  hr,
+  .item-name,
+  .item-count,
+  .item-price {
+    color: var(--muted);
+  }
+  .receipt-item {
+    color: var(--muted);
+    margin-top: -4%;
+  }
+  .image-box img {
+    filter: grayscale(100%);
+  }
+  .bar {
+    background-color: white;
+    border-bottom: var(--muted) solid 1px;
+    border-radius: 0%;
+    width: 86%;
+    margin-bottom: -4%;
+    margin-left: 7%;
+  }
+  #order {
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-right: auto;
+    margin-left: -3.5%;
+    margin-bottom: 5%;
+    color: var(--border);
+  }
+  #print {
+    display: none;
+  }
+  .receipt-total {
+    color: var(--muted);
+  }
+  .receipt-amount {
+    color: var(--muted);
+  }
+}
