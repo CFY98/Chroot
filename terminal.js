@@ -355,7 +355,7 @@ if (terminalEl) {
 
   // FOCUS INPUT 
   
-const terminal = document.querySelector(".terminal");
+  const terminal = document.querySelector(".terminal");
 
   if (terminal) {
     terminal.addEventListener("click", () => {
@@ -374,7 +374,7 @@ const terminal = document.querySelector(".terminal");
         input.value = fullCmd;
         run(fullCmd);
         input.value = "";
-        inout.focus();
+        input.focus();
       });
       NAVIGATION.appendChild(suggestion);
     });
