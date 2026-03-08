@@ -383,7 +383,37 @@ body {
   text-decoration: underline;
   cursor: pointer;
   padding-top: 2rem;
+  padding-bottom: 2rem;
   margin-right: 6.8%;
+}
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  text-align: center;
+  gap: 1rem;
+}
+.column-item {
+  grid-column: 2;
+  margin-right: auto;
+  margin-left: 14%;
+}
+.column-quantity {
+  grid-column: 3;
+}
+.column-price {
+  grid-column: 4;
+  text-align: right;
+  margin-right: 11%;
+}
+.column-line {
+  margin-top: 0.5rem;
+  margin-right: 7%;
+  margin-bottom: 5%;
+  width: 85%;
+  margin-left: auto;
 }
 .cart-items {
   display: grid;
@@ -867,6 +897,19 @@ hr {
     font-size: 0.7rem;
     padding-top: 1rem;
   }
+  .columns {
+    grid-template-columns: 0 0.6fr 0.5fr 0.5fr;
+    font-size: 1rem;
+  }
+  .column-item {
+    margin-left: 1%;
+  }
+  .column-quantity {
+    margin-right: 12%;
+  }
+  .column-price {
+    margin-right: 7%;
+  }
   .cart-item {
     grid-template-columns: 0 0.6fr 0.5fr 0.5fr;
     padding-top: 1rem;
@@ -894,12 +937,12 @@ hr {
   .amount {
     font-size: 1rem;
     margin-left: auto;
-    margin-right: -6%;
+    margin-right: -4%;
   }
   .remove {
     font-size: 0.7rem;
     margin-left: auto;
-    margin-right: -6%;
+    margin-right: -4%;
   }
   .total {
     font-size: 0.8rem;
