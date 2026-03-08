@@ -353,6 +353,15 @@ if (terminalEl) {
     });
   }
 
+  // FOCUS INPUT 
+  
+const terminal = document.querySelector(".terminal");
+
+  if (terminal) {
+    terminal.addEventListener("click", () => {
+      input.focus();
+    });
+  }
   // SUGGESTION BUTTONS
 
   if (QUICK_CMDS && NAVIGATION) {
@@ -365,6 +374,7 @@ if (terminalEl) {
         input.value = fullCmd;
         run(fullCmd);
         input.value = "";
+        inout.focus()
       });
       NAVIGATION.appendChild(suggestion);
     });
