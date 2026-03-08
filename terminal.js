@@ -374,7 +374,7 @@ const terminal = document.querySelector(".terminal");
         input.value = fullCmd;
         run(fullCmd);
         input.value = "";
-        inout.focus()
+        inout.focus();
       });
       NAVIGATION.appendChild(suggestion);
     });
@@ -382,4 +382,5 @@ const terminal = document.querySelector(".terminal");
 
   // INIT
   boot();
+  input.focus();
 }
