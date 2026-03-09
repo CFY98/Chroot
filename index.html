@@ -21,61 +21,66 @@
       aria-atomic="true"
       aria-live="assertive"
     ></div>
-    <!-- TITLE CONTAINER -->
-    <div class="top-container">
-      <p class="title">Chroot</p>
-    </div>
-    <!-- WINDOW CONTAINER -->
-    <div class="container">
-      <!-- Terminal Window -->
-      <div class="terminal" role="region" aria-label="terminal navigation">
-        <div class="titlebar">
-          <span class="dot dot-r"></span>
-          <span class="dot dot-y"></span>
-          <span class="dot dot-g"></span>
-          <span class="titlebar-text">chroot - bash</span>
-        </div>
-        <!-- SUGGESTION BUTTONS -->
-        <div
-          class="suggestions"
-          id="suggestions"
-          aria-label="quick commands"
-        ></div>
-        <div class="input-row">
-          <span class="prompt" aria-hidden="true"
-            >site@chroot <span class="path"> ~ $</span></span
-          >
-          <input
-            id="cmd-input"
-            type="text"
-            autocomplete="off"
-            autocorrect="off"
-            spellcheck="off"
-            placeholder="type here"
-            aria-label="Input commands for the terminal here"
-          />
-        </div>
-        <div
-          class="terminal-output"
-          id="terminal-output"
-          aria-hidden="true"
-        ></div>
+    <!-- WRAPPER -->
+    <div class="wrapper">
+      <!-- TITLE CONTAINER -->
+      <div class="top-container">
+        <p class="title">Chroot</p>
       </div>
-      <div class="webpage-container">
-        <div class="titlebar">
-          <span class="dot dot-r"></span>
-          <span class="dot dot-y"></span>
-          <span class="dot dot-g"></span>
-          <span class="titlebar-text">chroot - page</span>
+      <!-- WINDOW CONTAINER -->
+      <div class="container">
+        <!-- TERMINAL WINDOW -->
+        <div class="terminal" role="region" aria-label="terminal navigation">
+          <div class="titlebar">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+            <span class="titlebar-text">chroot - bash</span>
+          </div>
+          <!-- SUGGESTION BUTTONS -->
+          <div
+            class="suggestions"
+            id="suggestions"
+            aria-label="quick commands"
+          ></div>
+          <!-- TERMINAL INPUT ROW -->
+          <div class="input-row">
+            <span class="prompt" aria-hidden="true"
+              >site@chroot <span class="path"> ~ $</span></span
+            >
+            <input
+              id="cmd-input"
+              type="text"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="off"
+              placeholder="type here"
+              aria-label="Input commands for the terminal here"
+            />
+          </div>
+          <div
+            class="terminal-output"
+            id="terminal-output"
+            aria-hidden="true"
+          ></div>
         </div>
-        <div class="webpage-link">
-          <iframe
-            name="webpage"
-            id="page"
-            src="../pages/basket.html"
-            frameborder="0"
-            aria-label="page display"
-          ></iframe>
+        <!-- PAGE WINDOW -->
+        <div class="webpage-container">
+          <div class="titlebar">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+            <span class="titlebar-text">chroot - page</span>
+          </div>
+          <div class="webpage-link">
+            <iframe
+              name="webpage"
+              id="page"
+              src="../pages/basket.html"
+              frameborder="0"
+              aria-label="page display"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
