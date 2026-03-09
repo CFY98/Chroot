@@ -1,7 +1,7 @@
 // PAGES
 export const PAGES = {
   beans: { path: "../pages/beans.html", label: "beans" },
-  equipment: { path: "../pages/equipment.html", label: "equipment" },
+  gear: { path: "../pages/gear.html", label: "gear" },
   basket: { path: "../pages/basket.html", label: "basket" },
   blaze: {
     path: "https://www.youtube.com/embed/MpYy6wwqxoo?si=QK_tnj2kMUPtz3ga",
@@ -31,13 +31,13 @@ export const PAGES = {
 
 // ITEMS
 export const BEANS = ["blaze", "sunshine", "summit"];
-export const EQUIPMENT = ["filters", "dripper", "grinder"];
+export const GEAR = ["filters", "dripper", "grinder"];
 
 // SUGGESTION BUTTONS
 export const QUICK_CMDS = [
   "help",
   "beans",
-  "equipment",
+  "gear",
   "basket",
   "about",
   "hours",
