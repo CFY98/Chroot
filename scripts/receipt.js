@@ -27,7 +27,7 @@ if (print) {
     localStorage.removeItem("committed");
     if (orderEl) orderEl.textContent = "Order Number:";
     total.textContent = "";
-    iframe.src = "../pages/basket.html";
+    webpage.src = "../pages/basket.html";
   };
 }
 // RECEIPT GENERATION
