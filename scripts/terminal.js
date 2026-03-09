@@ -413,7 +413,6 @@ if (terminalEl) {
         input.value = fullCmd;
         run(fullCmd);
         input.value = "";
-        input.focus();
       });
       NAVIGATION.appendChild(suggestion);
     });
