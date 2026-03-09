@@ -7,9 +7,10 @@
   body {
     background-color: white;
   }
-  .title {
+  .subtitle {
     color: var(--border);
     text-decoration: underline;
+    font-size: 4rem;
   }
   #items {
     font-size: 1.65rem;
