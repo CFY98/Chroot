@@ -187,6 +187,15 @@ hr {
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
+  .columns {
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    font-size: 2.1rem;
+  }
+  .column-item {
+    grid-column: 2;
+    margin-right: auto;
+    margin-left: 13%;
+  }
   .cart-item {
     grid-template-columns: 1fr 2fr 1fr 1fr;
   }
@@ -206,6 +215,15 @@ hr {
 }
 /* ------ LAPTOPS ------ */
 @media only screen and (max-width: 1024px) {
+  .columns {
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    font-size: 2rem;
+  }
+  .column-item {
+    grid-column: 2;
+    margin-right: auto;
+    margin-left: 12%;
+  }
   .cart-item {
     grid-template-columns: 1fr 2fr 1fr 1fr;
   }
@@ -225,21 +243,49 @@ hr {
 }
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
+  .columns {
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    font-size: 1.5rem;
+  }
+  .column-item {
+    grid-column: 2;
+    margin-right: auto;
+    margin-left: 4%;
+  }
+  .column-quantity {
+    margin-left: auto;
+    margin-right: 16%;
+  }
+  .column-price {
+    margin-right: 12%;
+  }
   .cart-item {
     grid-template-columns: 1fr 2fr 1fr 1fr;
   }
+  .image-box img {
+    width: 4rem;
+    height: 4rem;
+  }
+  .name {
+    font-size: 1.5rem;
+    margin-right: auto;
+    margin-left: -10%;
+  }
+  .counter {
+    margin-right: 12%;
+  }
   .plus-btn {
-    width: 3rem;
-    height: 3rem;
-    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
   }
   .minus-btn {
-    width: 3rem;
-    height: 3rem;
-    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
   }
   .count {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
 }
 /* ------ PHONES ------*/
@@ -253,13 +299,14 @@ hr {
     font-size: 1rem;
   }
   .column-item {
-    margin-left: 1%;
+    margin-right: auto;
+    margin-left: -9%;
   }
   .column-quantity {
-    margin-right: 12%;
+    margin-right: 20%;
   }
   .column-price {
-    margin-right: 7%;
+    margin-right: 8%;
   }
   .cart-item {
     grid-template-columns: 0 0.6fr 0.5fr 0.5fr;
@@ -271,6 +318,8 @@ hr {
   }
   .name {
     font-size: 1rem;
+    margin-right: auto;
+    margin-left: -10%;
   }
   .plus-btn {
     width: 1.5rem;
