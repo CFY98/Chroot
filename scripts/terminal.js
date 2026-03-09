@@ -89,12 +89,8 @@ if (terminalEl) {
         addLine(block, "  clear           clear the terminal", "info");
         blank(block);
         addLine(block, "git commands:", "info");
-        addLine(block, "  add             adds item to the basket", "info");
-        addLine(
-          block,
-          "  reset           removes item from the basket",
-          "info",
-        );
+        addLine(block, "  add             adds item to basket", "info");
+        addLine(block, "  reset           removes item from basket", "info");
         addLine(block, "  commit          proccesses orders", "info");
         blank(block);
         addLine(block, "cd commands:", "info");
