@@ -408,7 +408,8 @@ if (terminalEl) {
       const suggestion = document.createElement("button");
       suggestion.className = "suggestion";
       suggestion.textContent = cmd;
-      suggestion.addEventListener("click", () => {
+      suggestion.addEventListener("click", (e) => {
+        e.stopPropagation();
         const fullCmd = PAGES[cmd] ? `cd ${cmd}` : cmd;
         input.value = fullCmd;
         run(fullCmd);
