@@ -13,22 +13,21 @@ const orderNumber = JSON.parse(localStorage.getItem("orderNumber") || "[]");
 const purchased = JSON.parse(localStorage.getItem("purchased") || "[]");
 const committed = JSON.parse(localStorage.getItem("committed") || "{}");
 const print = document.getElementById("print");
-const page = window.parent.document.getElementById("page");
+const iframe = window.parent.document.getElementById("page");
 
 // PRINT BUTTON
 if (print) {
   const total = document.querySelector(".receipt-amount");
   print.onclick = function () {
-    page.contentWindow.focus();
-    page.contentWindow.print();
+    iframe.contentWindow.focus();
+    iframe.contentWindow.print();
     if (receipt) receipt.innerHTML = "";
     localStorage.removeItem("orderNumber");
     localStorage.removeItem("purchased");
     localStorage.removeItem("committed");
     if (orderEl) orderEl.textContent = "Order Number:";
     total.textContent = "";
-    const frame = window.parent.document.getElementById("page");
-    frame.src = "../pages/basket.html";
+    iframe.src = "../pages/basket.html";
   };
 }
 // RECEIPT GENERATION
