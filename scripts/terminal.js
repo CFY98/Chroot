@@ -89,34 +89,18 @@ if (terminalEl) {
         addLine(block, "  clear           clear the terminal", "info");
         blank(block);
         addLine(block, "git commands:", "info");
-        addLine(block, "  add             adds an item to the basket", "info");
+        addLine(block, "  add             adds item to the basket", "info");
         addLine(
           block,
-          "  reset           removes an item from the basket",
+          "  reset           removes item from the basket",
           "info",
         );
-        addLine(
-          block,
-          "  commit          proccesses orders from the basket",
-          "info",
-        );
+        addLine(block, "  commit          proccesses orders", "info");
         blank(block);
         addLine(block, "cd commands:", "info");
-        addLine(
-          block,
-          "  beans           navigates to the coffee beans catalogue",
-          "info",
-        );
-        addLine(
-          block,
-          "  equipment       navigates to the equipment catalogue",
-          "info",
-        );
-        addLine(
-          block,
-          "  basket          navigates to the shopping cart",
-          "info",
-        );
+        addLine(block, "  beans           loads coffee catalogue", "info");
+        addLine(block, "  equipment       loads equipment catalogue", "info");
+        addLine(block, "  basket          loads the shopping cart", "info");
         blank(block);
         break;
 
