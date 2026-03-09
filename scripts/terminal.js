@@ -82,23 +82,47 @@ if (terminalEl) {
         addLine(block, `site@chroot ~/${command} $`, "success");
         addLine(block, "Available commands:", "info");
         addLine(block, "  ls              lists all pages", "info");
-        addLine(block, "  git <tool>      tracks changes in order", "info");
-        addLine(block, "  cd <page>       navigate to a page", "info");
+        addLine(block, "  git [command]   tracks changes in order", "info");
+        addLine(block, "  cd [command]    navigate to a page", "info");
         addLine(block, "  about           about Chroot", "info");
         addLine(block, "  hours           opening hours", "info");
         addLine(block, "  clear           clear the terminal", "info");
         blank(block);
-        addLine(block, "Pages:", "info");
-        addLine(block, "  beans  equipment  basket", "info");
+        addLine(block, "git commands:", "info");
+        addLine(block, "  add             adds an item to the basket", "info");
+        addLine(
+          block,
+          "  reset           removes an item from the basket",
+          "info",
+        );
+        addLine(
+          block,
+          "  commit          proccesses orders from the basket",
+          "info",
+        );
         blank(block);
-        addLine(block, "Tools:", "info");
-        addLine(block, "  add  reset  commit", "info");
+        addLine(block, "cd commands:", "info");
+        addLine(
+          block,
+          "  beans           navigates to the coffee beans catalogue",
+          "info",
+        );
+        addLine(
+          block,
+          "  equipment       navigates to the equipment catalogue",
+          "info",
+        );
+        addLine(
+          block,
+          "  basket          navigates to the shopping cart",
+          "info",
+        );
         blank(block);
         break;
 
       case "ls":
         announce(
-          "The product pages are 'beans' is for our selection of coffee beans and 'equipment' for coffee equipment. The 'basket' page is for the shopping cart. For more information on our selected products, type 'cd' followed by the item name or click 'more info' on the product page",
+          "The product pages are 'beans' which houses our selection of coffee beans and 'equipment' which encompasses our coffee equipment selection. For the shopping cart, go to the 'basket' page. For more information on our selected products, type 'cd' followed by the item name or click 'more info' on the image of the desired product",
         );
         addLine(block, `site@chroot ~/${command} $`, "success");
         addLine(block, "drwxr-xr-x        home/", "info");
@@ -119,11 +143,7 @@ if (terminalEl) {
           announce(
             "A page wasn't specified. Type  'ls' for all available pages",
           );
-          addLine(
-            block,
-            `Usage: ${verb} <page> (beans | equipment | basket)`,
-            "warn",
-          );
+          addLine(block, `Usage: ${verb} [beans | equipment | basket]`, "warn");
           break;
         }
         const target = PAGES[arg];
@@ -232,7 +252,7 @@ if (terminalEl) {
           if (stagedItems.length === 0) {
             addLine(block, "No changes added to commit", "warn");
             announce(
-              "No changes were made since there were no items in the basket",
+              "No order was placed since there were no items in the basket",
             );
             break;
           }
@@ -317,11 +337,7 @@ if (terminalEl) {
 
           break;
         } else {
-          addLine(
-            block,
-            `Usage: ${verb} <tool> (add | reset | commit)`,
-            "warn",
-          );
+          addLine(block, `Usage: ${verb} [add | reset | commit]`, "warn");
           break;
         }
 
