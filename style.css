@@ -35,10 +35,12 @@ body {
 
 /* ------ TITLES ------ */
 .top-container {
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
+  background-color: var(--bg);
 }
 .title {
   text-align: center;
@@ -70,6 +72,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  background-color: var(--bg);
 }
 .fa {
   margin: 1.5rem;
@@ -87,7 +91,7 @@ body {
   color: var(--text);
 }
 
-/* ------ TAB CONTAINER ------ */
+/* ------ WINDOW CONTAINER ------ */
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -115,13 +119,13 @@ body {
     height: 100%;
   }
   .title {
-    font-size: 4em;
+    font-size: 5rem;
     align-self: center;
     text-align: center;
     justify-self: center;
   }
   .subtitle {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
@@ -151,13 +155,13 @@ body {
     top: 0;
   }
   .title {
-    font-size: 4em;
+    font-size: 5rem;
     align-self: center;
     text-align: center;
     justify-self: center;
   }
   .subtitle {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
