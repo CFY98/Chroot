@@ -39,7 +39,7 @@ Users can switch to TUI mode if they prefer working in a terminal.
 ![Basket UI](./public/screenshots/V3_basket_page.png)
 ![Terminal User Interface Example](./public/screenshots/V3_tui_mode.png)
 ![Invoice Pace](./public/screenshots/V3_invoice.png)
-![PDF Generation](./public/screenshots/V3_receipt_generation.png)
+![PDF Generation](./public/screenshots/V3-receipt_generation.png)
 ![PDF Result](./public/screenshots/V3_saved_receipt.png)
 
 ## Project Structure
