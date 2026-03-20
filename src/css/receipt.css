@@ -13,7 +13,6 @@
   justify-content: space-between;
   padding: 2% 2%;
   border-radius: 10px;
-  border: yellow solid;
 }
 #thanks {
   text-align: center;
@@ -53,7 +52,7 @@
   width: 90%;
   min-height: 30%;
   margin: auto;
-  padding-top: 4rem;
+  padding-top: min(3.5rem, 10%);
   padding-bottom: 1rem;
 }
 .image-box {
@@ -196,9 +195,6 @@ hr {
   }
   .receipt-item {
     grid-template-columns: 0 0.5fr 0.5fr 0.5fr;
-    margin-top: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
   }
   .image-box img {
     display: none;
