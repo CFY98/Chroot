@@ -56,6 +56,9 @@ export const termHistory = JSON.parse(
   localStorage.getItem("termHistory") || "[]",
 );
 
+// STATE OBJECT
+export let toAdd = {};
+
 // FUNCTIONS
 export function processOrder(orderNumber, basketItems, stagingArea) {
   localStorage.setItem("orderNumber", JSON.stringify(orderNumber));
