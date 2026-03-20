@@ -1,7 +1,6 @@
 // IMPORTS
 import {
-  coffeeBeans,
-  brewGear,
+  products,
   stagingArea,
   basketItems,
   orderNumber,
@@ -22,11 +21,11 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
   }
 
   items.forEach((item) => {
-    if (coffeeBeans.includes(item) || brewGear.includes(item)) {
+    if (products.includes(item)) {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
       localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
 
-      const prev = parseInt(localStorage.getItem("itemCount") || "0");
+      const prev = parseInt(localStorage.getItem("itemCount") || 0);
       localStorage.setItem("itemCount", prev + 1);
 
       if (!basketItems.includes(item)) {

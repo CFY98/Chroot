@@ -93,7 +93,7 @@ toggle.addEventListener("click", (e) => {
 
 // PRODUCT PAGES
 document.addEventListener("click", (e) => {
-  if (e.target.matches(".more [data-link]")) {
+  if (e.target.matches(".more")) {
     e.preventDefault();
     const page = e.target.getAttribute("href");
     history.pushState({}, "", page);

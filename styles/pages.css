@@ -25,7 +25,7 @@
 }
 
 #product-wrapper {
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -80,6 +80,7 @@
   font-size: 5em;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .more:hover {

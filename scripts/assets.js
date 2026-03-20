@@ -9,11 +9,20 @@ export const routes = {
   "/basket": { path: "./pages/basket.html", title: "basket" },
   "/tui": { path: "./pages/tui.html", title: "tui" },
   "/receipt": { path: "./pages/receipt.html", title: "receipt" },
+  "/blaze": { path: "./pages/blaze.html", title: "blaze" },
+  "/sunshine": { path: "./pages/sunshine.html", title: "sunshine" },
+  "/summit": { path: "./pages/summit.html", title: "summit" },
 };
 
 // ITEMS
-export const coffeeBeans = ["blaze", "sunshine", "summit"];
-export const brewGear = ["filters", "dripper", "grinder"];
+export const products = [
+  "blaze",
+  "sunshine",
+  "summit",
+  "filters",
+  "dripper",
+  "grinder",
+];
 
 export const prices = {
   blaze: 11.99,
