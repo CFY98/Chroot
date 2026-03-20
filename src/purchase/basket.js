@@ -27,7 +27,7 @@ export function initBasket() {
       const name = cartItem.querySelector(".name").textContent;
       const amount = cartItem.querySelector(".amount");
       const count = cartItem.querySelector(".count");
-      count.textContent = stagingArea[name] || "0";
+      count.textContent = stagingArea[name] || 0;
       amount.textContent = `£${(stagingArea[name] * prices[name]).toFixed(2)}`;
     });
 
@@ -56,9 +56,10 @@ export function initBasket() {
 
         const prev = parseInt(localStorage.getItem("itemCount") || 0);
         localStorage.setItem("itemCount", prev + delta);
-        count.textContent = parseInt(count.textContent || "0") + delta;
+        count.textContent = parseInt(count.textContent || 0) + delta;
 
-        stagingArea[itemName] += delta;
+        stagingArea[itemName] = (stagingArea[itemName] || 0) + delta;
+
         amount.textContent = `£${(stagingArea[itemName] * prices[itemName]).toFixed(2)}`;
         localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
       }
@@ -103,6 +104,7 @@ export function initBasket() {
       localStorage.setItem("itemCount", "0");
       if (product) product.innerHTML = "";
       announce("The basket is now empty");
+      updateTotal(stagingArea);
     };
   }
 
@@ -130,40 +132,29 @@ export function initBasket() {
 
   // ITEMS IN BASKET
   if (product) {
-    let prevBasketItems = "";
-    let prevStagingArea = "";
-
-    setInterval(() => {
-      const currentItems = localStorage.getItem("basketItems") || "[]";
-      const currentStaging = localStorage.getItem("stagingArea") || "{}";
-
-      if (
-        currentItems === prevBasketItems &&
-        currentStaging === prevStagingArea
-      )
-        return;
-
-      prevBasketItems = currentItems;
-      prevStagingArea = currentStaging;
-
-      const basketItems = JSON.parse(currentItems);
-      const stagingArea = JSON.parse(currentStaging);
+    function renderBasket() {
+      const renderItems = JSON.parse(
+        localStorage.getItem("basketItems") || "[]",
+      );
+      const renderStaging = JSON.parse(
+        localStorage.getItem("stagingArea") || "{}",
+      );
 
       product.innerHTML = "";
-      basketItems.forEach((key) => {
-        const qtyTotal = stagingArea[key] * prices[key];
+      renderItems.forEach((key) => {
+        const qtyTotal = renderStaging[key] * prices[key];
         const div = document.createElement("div");
         div.classList.add("cart-item");
         div.innerHTML = `
       <div class="image-box">
-        <img src="../Images/${key}.jpg" alt="${key}" />
+        <img src="/Images/${key}.jpg" alt="${key}" />
       </div>
       <div class="about">
         <h4 class="name">${key}</h4>
       </div>
       <div class="counter">
         <div class="plus-btn" role="button" aria-label="Increases quantity by one">+</div>
-        <div class="count" aria-label="Displays number of selected item in basket">${stagingArea[key]}</div>
+        <div class="count" aria-label="Displays number of selected item in basket">${renderStaging[key]}</div>
         <div class="minus-btn" role="button" aria-label="Increases quantity by one">-</div>
       </div>
       <div class="cost">
@@ -173,7 +164,8 @@ export function initBasket() {
     `;
         product.appendChild(div);
       });
-      updateTotal(stagingArea);
-    }, 300);
+      updateTotal(renderStaging);
+    }
+    renderBasket();
   }
 }

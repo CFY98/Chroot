@@ -50,10 +50,12 @@ export function initSlideshow() {
       list.style.transition = "none";
       active = 1;
       list.style.transform = `translateX(-${active * slideWidth}px)`;
+      updateDots(0);
     } else if (items[active].isSameNode(lastClone)) {
       list.style.transition = "none";
       active = items.length - 2;
       list.style.transform = `translateX(-${active * slideWidth}px)`;
+      updateDots(items.length - 3);
     }
   });
 
