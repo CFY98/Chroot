@@ -2,7 +2,7 @@ export function initSlideshow() {
   const slideshow = document.getElementById("slideshow");
   if (!slideshow) return;
   const list = slideshow.querySelector(".list");
-  let items = slideshow.querySelectorAll(".list figure");
+  let slides = slideshow.querySelectorAll(".list figure");
   const dots = document.querySelectorAll(".dots li");
   const prev = document.getElementById("prev");
   const next = document.getElementById("next");
@@ -11,16 +11,18 @@ export function initSlideshow() {
   let autoSlideInterval;
   let slideWidth;
 
-  const firstClone = items[0].cloneNode(true);
-  const lastClone = items[items.length - 1].cloneNode(true);
+  // CLONES
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
 
   list.appendChild(firstClone);
-  list.insertBefore(lastClone, items[0]);
+  list.insertBefore(lastClone, slides[0]);
 
-  items = slideshow.querySelectorAll(".list figure");
+  slides = slideshow.querySelectorAll(".list figure");
 
+  // SLIDE STARTING POSITION
   function setInitialPosition() {
-    slideWidth = items[0].offsetWidth;
+    slideWidth = slides[0].offsetWidth;
     list.style.transition = "none";
     list.style.transform = `translateX(-${active * slideWidth}px)`;
   }
@@ -28,12 +30,14 @@ export function initSlideshow() {
 
   window.addEventListener("resize", setInitialPosition);
 
+  // ARROW BUTTONS
   next.onclick = () => moveToSlide(active + 1);
   prev.onclick = () => moveToSlide(active - 1);
 
+  // SLIDE TRANSITIONS AND DOTS MATCH
   function moveToSlide(index) {
     active = index;
-    slideWidth = items[0].offsetWidth;
+    slideWidth = slides[0].offsetWidth;
     list.style.transition = "transform 0.4s ease-in-out";
     list.style.transform = `translateX(-${active * slideWidth}px)`;
 
@@ -44,23 +48,24 @@ export function initSlideshow() {
     resetAutoSlide();
   }
 
-  list.addEventListener("transitionend", () => {
-    if (!items[active]) return;
-    if (items[active].isSameNode(firstClone)) {
+  list.addEventListener("transitionend", (e) => {
+    if (e.propertyName !== "transform") return;
+    if (active >= slides.length - 1) {
       list.style.transition = "none";
       active = 1;
       list.style.transform = `translateX(-${active * slideWidth}px)`;
       updateDots(0);
-    } else if (items[active].isSameNode(lastClone)) {
+    } else if (active <= 0) {
       list.style.transition = "none";
-      active = items.length - 2;
+      active = slides.length - 2;
       list.style.transform = `translateX(-${active * slideWidth}px)`;
-      updateDots(items.length - 3);
+      updateDots(slides.length - 3);
     }
   });
 
+  // AUTOMATIC FUNCTIONS FOR SLIDES AND DOTS
   function startAutoSlide() {
-    autoSlideInterval = setTimeout(() => {
+    autoSlideInterval = setInterval(() => {
       moveToSlide(active + 1);
     }, 3000);
   }
