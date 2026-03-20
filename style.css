@@ -3,12 +3,12 @@
 
 @font-face {
   font-family: Fantasque Sans Mono;
-  src: url(./Fonts/fantasque-sans-mono/Webfonts/FantasqueSansMono-Regular.woff)
+  src: url(./Fonts/FantasqueSansMono-Regular.woff)
     format(woff);
 }
 @font-face {
   font-family: Victor Mono;
-  src: url(./Fonts/VictorMonoAll/WOFF/VictorMono-Regular.woff) format(woff);
+  src: url(./Fonts/VictorMono-Regular.woff) format(woff);
 }
 /* ------ BODY ------ */
 body {
