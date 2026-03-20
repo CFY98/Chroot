@@ -328,7 +328,11 @@ if (terminalEl) {
             iframe.contentWindow.location.pathname !== "/pages/receipt.html"
           ) {
             announce("An order hasn't been made so there is no receipt");
-            addLine(block, "fatal: no log has been found", "error");
+            addLine(
+              block,
+              "fatal: no order was processed to generate a receipt",
+              "error",
+            );
             break;
           }
 
