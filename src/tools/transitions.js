@@ -1,15 +1,19 @@
 // SCROLL EFFECTS
-document.addEventListener("scroll", function () {
-  const pageTop = window.scrollY;
-  const pageBottom = pageTop + window.innerHeight;
+document.addEventListener("DOMContentLoaded", handleScroll);
+document.addEventListener("scroll", handleScroll);
+document.addEventListener("routeChange", handleScroll);
+
+const observer = new MutationObserver(handleScroll);
+observer.observe(document.body, { childList: true, subtree: true });
+
+function handleScroll() {
   const targets = document.querySelectorAll(".fadein");
 
-  for (let i = 0; i < targets.length; i++) {
-    const target = targets[i];
-    if (target.getBoundingClientRect().top + window.scrollY < pageBottom) {
+  targets.forEach(function (target) {
+    if (target.getBoundingClientRect().top < window.innerHeight) {
       target.classList.add("visible");
     } else {
       target.classList.remove("visible");
     }
-  }
-});
+  });
+}
