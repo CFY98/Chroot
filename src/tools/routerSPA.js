@@ -4,15 +4,11 @@ import { initSlideshow } from "./slideshow.js";
 import { routes, tMode } from "./assets.js";
 
 // ROUTER FUNCTION
-let homeContent = null;
+const homeContent = document.getElementById("app").innerHTML;
 
 export function router(page) {
   const screenContent = document.getElementById("app");
   const route = routes[page];
-
-  if (!homeContent) {
-    homeContent = screenContent.innerHTML;
-  }
 
   screenContent.replaceChildren();
 
@@ -32,7 +28,6 @@ export function router(page) {
     .then((res) => res.text())
     .then((html) => {
       screenContent.innerHTML = html;
-
       if (page in routesAnnouncements) routesAnnouncements[page]();
     })
     .catch(() => {
