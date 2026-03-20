@@ -6,9 +6,16 @@ A fictional coffee shop. This website was developed with three pages with extern
 chroot
  └── Landing Page
       ├── Navbar
+<<<<<<< HEAD
           ├── Drinks Page
           └── Pastries Page
       ├── Social Media Navbar
+=======
+      |    ├── Drinks Page
+      |    └── Pastries Page
+      |
+      └── Social Media Navbar
+>>>>>>> b4eb511 (Fix indentation in README for Social Media Navbar)
           ├── Facebook
           ├── Twitter/X
           ├── Instagram
