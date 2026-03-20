@@ -1,8 +1,7 @@
 // IMPORTS
-import { routesAnnouncements } from "./announcer.js";
+import { routesAnnouncements, announce } from "./announcer.js";
 import { initSlideshow } from "./slideshow.js";
 import { routes, tMode } from "./assets.js";
-import { announce } from "./announcer.js";
 
 // ROUTER FUNCTION
 let homeContent = null;
