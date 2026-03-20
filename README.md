@@ -76,7 +76,7 @@ chroot/V3
 - **JavaScript**: Used to create a functional terminal with git-style commands and infrastructure to tracks items in the basket. localStorage acts as the communication bridge between the terminal page and the basket, with a setInterval polling for changes and dynamically rendering cart items into the DOM via innerHTML and appendChild. Event delegation handles clicks on dynamically created elements.
 - **ARIA**: Live regions, semantic roles and labels for screen reader support.
 - **Vite**: Deployment server and bundler.
-- **Vercel**: Hosta the site with a custom rewrite rule for SPA routing
+- **Vercel**: Hosts the site with a custom rewrite rule for SPA routing
 
 ## 📄 License
 
