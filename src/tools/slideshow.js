@@ -17,7 +17,7 @@ export function initSlideshow() {
   list.appendChild(firstClone);
   list.insertBefore(lastClone, items[0]);
 
-  items = document.querySelectorAll("#slideshow .list figure");
+  items = slideshow.querySelectorAll(".list figure");
 
   function setInitialPosition() {
     slideWidth = items[0].offsetWidth;
@@ -60,7 +60,7 @@ export function initSlideshow() {
   });
 
   function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
+    autoSlideInterval = setTimeout(() => {
       moveToSlide(active + 1);
     }, 3000);
   }
