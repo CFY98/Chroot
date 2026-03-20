@@ -1,5 +1,5 @@
 // IMPORTS
-import { BEANS, EQUIPMENT, PAGES, QUICK_CMDS } from "./assets.js";
+import { BEANS, GEAR, PAGES, QUICK_CMDS } from "./assets.js";
 import { announce } from "./announcer.js";
 
 // TERMINAL HISTORY
@@ -80,41 +80,45 @@ if (terminalEl) {
           "To add items to the basket, type 'git' followed by the tools add to adds items or reset to removes items followed by the item name. To place an order, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
         );
         addLine(block, `site@chroot ~/${command} $`, "success");
-        addLine(block, "Available commands:", "info");
-        addLine(block, "  ls              lists all pages", "info");
-        addLine(block, "  git [command]   tracks changes in order", "info");
-        addLine(block, "  cd [command]    navigate to a page", "info");
-        addLine(block, "  about           about Chroot", "info");
-        addLine(block, "  hours           opening hours", "info");
-        addLine(block, "  clear           clear the terminal", "info");
+        addLine(block, "Commands:", "info");
+        addLine(block, "  ls           lists all pages", "info");
+        addLine(block, "  git [tool]   tracks changes in order", "info");
+        addLine(block, "  cd [tool]    navigate to a page", "info");
+        addLine(block, "  about        about Chroot", "info");
+        addLine(block, "  hours        opening hours", "info");
+        addLine(block, "  clear        clear the terminal", "info");
         blank(block);
-        addLine(block, "git commands:", "info");
-        addLine(block, "  add             adds item to basket", "info");
-        addLine(block, "  reset           removes item from basket", "info");
-        addLine(block, "  commit          proccesses orders", "info");
+        addLine(block, "cd tools:", "info");
+        addLine(block, "  beans        loads coffee catalogue", "info");
+        addLine(block, "  gear         loads gear catalogue", "info");
+        addLine(block, "  basket       loads the shopping cart", "info");
         blank(block);
-        addLine(block, "cd commands:", "info");
-        addLine(block, "  beans           loads coffee catalogue", "info");
-        addLine(block, "  equipment       loads equipment catalogue", "info");
-        addLine(block, "  basket          loads the shopping cart", "info");
+        addLine(block, "git tools:", "info");
+        addLine(block, "  add [item]     adds item to basket", "info");
+        addLine(block, "  reset [item]   removes item from basket", "info");
+        addLine(block, "  commit         proccesses orders", "info");
+        blank(block);
+        addLine(block, "Items:", "info");
+        addLine(block, "  beans     [ blaze | sunshine | summit ]", "info");
+        addLine(block, "  gear      [ filters | dripper | grinder ]", "info");
         blank(block);
         break;
 
       case "ls":
         announce(
-          "The product pages are 'beans' which houses our selection of coffee beans and 'equipment' which encompasses our coffee equipment selection. For the shopping cart, go to the 'basket' page. For more information on our selected products, type 'cd' followed by the item name or click 'more info' on the image of the desired product",
+          "The product pages are 'beans' which houses our selection of coffee beans and 'gear' which encompasses our coffee gear selection. For the shopping cart, go to the 'basket' page. For more information on our selected products, type 'cd' followed by the item name or click 'more info' on the image of the desired product",
         );
         addLine(block, `site@chroot ~/${command} $`, "success");
-        addLine(block, "drwxr-xr-x        home/", "info");
-        addLine(block, "drwxr-xr-x        beans/", "info");
-        addLine(block, "drwxr-xr-x        equipment/", "info");
-        addLine(block, "drwxr-xr-x        basket/", "info");
-        addLine(block, "dr-xr-xr--x       blaze/", "info");
-        addLine(block, "dr-xr-xr--x       sunshine/", "info");
-        addLine(block, "dr-xr-xr--x       summit/", "info");
-        addLine(block, "dr-xr-xr--x       filters/", "info");
-        addLine(block, "dr-xr-xr--x       dripper/", "info");
-        addLine(block, "dr-xr-xr--x       grinder/", "info");
+        addLine(block, "drwxr-xr-x        home", "info");
+        addLine(block, "drwxr-xr-x        beans", "info");
+        addLine(block, "drwxr-xr-x        gear", "info");
+        addLine(block, "drwxr-xr-x        basket", "info");
+        addLine(block, "dr-xr-xr--x       blaze", "info");
+        addLine(block, "dr-xr-xr--x       sunshine", "info");
+        addLine(block, "dr-xr-xr--x       summit", "info");
+        addLine(block, "dr-xr-xr--x       filters", "info");
+        addLine(block, "dr-xr-xr--x       dripper", "info");
+        addLine(block, "dr-xr-xr--x       grinder", "info");
         blank(block);
         break;
 
@@ -123,7 +127,7 @@ if (terminalEl) {
           announce(
             "A page wasn't specified. Type  'ls' for all available pages",
           );
-          addLine(block, `Usage: ${verb} [beans | equipment | basket]`, "warn");
+          addLine(block, `Usage: ${verb} [ beans | gear | basket ]`, "warn");
           break;
         }
         const target = PAGES[arg];
@@ -185,7 +189,7 @@ if (terminalEl) {
           }
 
           items.forEach((item) => {
-            if (BEANS.includes(item) || EQUIPMENT.includes(item)) {
+            if (BEANS.includes(item) || GEAR.includes(item)) {
               stagingArea[item] = (stagingArea[item] || 0) + 1;
               localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
 
@@ -317,7 +321,7 @@ if (terminalEl) {
 
           break;
         } else {
-          addLine(block, `Usage: ${verb} [add | reset | commit]`, "warn");
+          addLine(block, `Usage: ${verb} [ add | reset | commit ]`, "warn");
           break;
         }
 
@@ -377,7 +381,7 @@ if (terminalEl) {
       } else if (e.key === "Tab") {
         e.preventDefault();
         const val = input.value.toLowerCase();
-        const pages = ["beans", "equipment", "basket"];
+        const pages = ["beans", "gear", "basket"];
         const match = pages.find((p) =>
           val.endsWith(p.slice(0, val.split(" ").at(-1).length)),
         );
