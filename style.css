@@ -325,17 +325,6 @@ h1 span {
   scrollbar-color: var(--border);
 }
 
-.webpage-link iframe:-webkit-scrollbar {
-  width: 4px;
-}
-.webpage-link iframe::-webkit-scrollbar-track {
-  background: transparent;
-}
-.webpage-link iframe::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 2px;
-}
-
 /* ------ BEANS AND EQUIPMENT PAGES ------ */
 .subtitle {
   text-align: center;
@@ -601,6 +590,7 @@ hr {
 }
 .checkout {
   margin-top: 2%;
+  margin-left: auto;
   margin-right: 7%;
   padding-bottom: 5%;
   width: 28%;
