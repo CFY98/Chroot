@@ -128,15 +128,20 @@ if (eliminate) {
 // ITEMS IN BASKET
 if (product) {
   let prevBasketItems = "";
+  let prevStagingArea = "";
 
   setInterval(() => {
-    const current = localStorage.getItem("basketItems") || "[]";
+    const currentItems = localStorage.getItem("basketItems") || "[]";
+    const currentStaging = localStorage.getItem("stagingArea") || "{}";
 
-    if (current === prevBasketItems) return;
-    prevBasketItems = current;
+    if (currentItems === prevBasketItems && currentStaging === prevStagingArea)
+      return;
 
-    const basketItems = JSON.parse(current);
-    const stagingArea = JSON.parse(localStorage.getItem("stagingArea") || "{}");
+    prevBasketItems = currentItems;
+    prevStagingArea = currentStaging;
+
+    const basketItems = JSON.parse(currentItems);
+    const stagingArea = JSON.parse(currentStaging);
 
     product.innerHTML = "";
     basketItems.forEach((key) => {
@@ -144,22 +149,22 @@ if (product) {
       const div = document.createElement("div");
       div.classList.add("cart-item");
       div.innerHTML = `
-        <div class="image-box">
-          <img src="./Images/${key}.jpg" alt="${key}" />
-        </div>
-        <div class="about">
-          <h4 class="name">${key}</h4>
-        </div>
-        <div class="counter">
-          <div class="plus-btn">+</div>
-          <div class="count">${stagingArea[key]}</div>
-          <div class="minus-btn">-</div>
-        </div>
-        <div class="cost">
-          <div class="amount">£${qtyTotal.toFixed(2)}</div>
-          <div class="remove"><u>Remove</u></div>
-        </div>
-      `;
+      <div class="image-box">
+        <img src="./Images/${key}.jpg" alt="${key}" />
+      </div>
+      <div class="about">
+        <h4 class="name">${key}</h4>
+      </div>
+      <div class="counter">
+        <div class="plus-btn">+</div>
+        <div class="count">${stagingArea[key]}</div>
+        <div class="minus-btn">-</div>
+      </div>
+      <div class="cost">
+        <div class="amount">£${qtyTotal.toFixed(2)}</div>
+        <div class="remove"><u>Remove</u></div>
+      </div>
+    `;
       product.appendChild(div);
     });
     updateTotal();
