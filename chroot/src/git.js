@@ -14,6 +14,22 @@ import { router } from "./routerSPA.js";
 
 // GIT ADD (ADD ITEMS TO BASKET)
 export function gitAdd({ items, stagingArea, basketItems, block }) {
+  if (items[0]?.replace(/^-+/, "") === "all" || "a") {
+    products.forEach((item) => {
+      stagingArea[item] = (stagingArea[item] || 0) + 1;
+      localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+
+      basketItems.push(item);
+      localStorage.setItem("basketItems", JSON.stringify(basketItems));
+
+      const prev = parseInt(localStorage.getItem("itemCount") || 0);
+      localStorage.setItem("itemCount", prev + 1);
+
+      addLine(block, `${item} staged for commit`, "info");
+      announce("One of every item was added to the basket");
+    });
+    return;
+  }
   if (items.length === 0) {
     addLine(block, "hint: try specifying the item you want to add ", "warn");
     announce("No item was specified, so nothing was added to the basket");
@@ -53,10 +69,12 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
     for (let key in stagingArea) delete stagingArea[key];
     localStorage.setItem("itemCount", "0");
     addLine(block, "All items unstaged", "info");
+    announce("The basket is now empty");
     return;
   }
   if (items.length === 0) {
     addLine(block, "hint: specifiy the item you want to remove", "warn");
+    announce("specify the items you want to remove from the basket");
     return;
   }
 
@@ -156,7 +174,11 @@ export function gitCommit({
     "info",
   );
   stagedItems.forEach((item) => {
-    addLine(block, `create mode 100644 ${item} x${stagingArea[item]}`, "info");
+    addLine(
+      block,
+      `create mode 100644 ${item} ${stagingArea[item] > 1 ? `x${stagingArea[item]}` : ""}`,
+      "info",
+    );
   });
   orderNumber.push(hash);
   processOrder(orderNumber, basketItems, stagingArea);

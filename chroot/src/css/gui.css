@@ -37,7 +37,7 @@
 }
 .roaster {
   width: 50%;
-  height: 70vh;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -65,7 +65,7 @@
 /* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
   .sub-heading {
-    font-size: 4rem;
+    font-size: clamp(4rem, 2vw, 4rem);
     margin: 2rem;
   }
   .story {
@@ -74,20 +74,20 @@
     margin-bottom: 3rem;
   }
   .ethos {
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 1vw, 1.8rem);
   }
   .roaster {
     height: 50vh;
   }
   .times {
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 1vw, 1.8rem);
     margin-bottom: 3rem;
   }
 }
 /* ------ LAPTOPS ------ */
 @media only screen and (max-width: 1024px) {
   .sub-heading {
-    font-size: 3rem;
+    font-size: clamp(3rem, 2vw, 3rem);
     margin: 2rem;
   }
   .story {
@@ -95,15 +95,20 @@
     width: 100%;
     margin-bottom: 3rem;
     gap: 1rem;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
   }
   .ethos {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 1.2vw, 1.5rem);
+    height: auto;
   }
   .roaster {
-    height: 25vh;
+    height: auto;
+    max-height: 60vh;
   }
   .times {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 1.2vw, 1.5rem);
     text-align: center;
     margin-bottom: 3rem;
   }
@@ -111,7 +116,7 @@
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
   .sub-heading {
-    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 2vw, 2.5rem);
     margin: 1rem;
   }
   .story {
@@ -121,13 +126,13 @@
     gap: 1rem;
   }
   .ethos {
-    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 2vw, 2rem);
   }
   .roaster {
-    height: 30vh;
+    max-height: 30vh;
   }
   .times {
-    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 2vw, 2rem);
     text-align: center;
     margin-bottom: 2rem;
   }
@@ -135,7 +140,7 @@
 /* ------ PHONES ------ */
 @media only screen and (max-width: 480px) {
   .sub-heading {
-    font-size: 2rem;
+    font-size: clamp(2rem, 3vw, 2rem);
     margin: 1rem;
   }
   .story {
@@ -145,13 +150,13 @@
     gap: 1rem;
   }
   .ethos {
-    font-size: 0.7rem;
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
   }
   .roaster {
-    height: 18vh;
+    max-height: 18vh;
   }
   .times {
-    font-size: 0.7rem;
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
     text-align: center;
     margin-bottom: 2rem;
   }
@@ -159,7 +164,7 @@
 /* ------ SMALL PHONES ------ */
 @media only screen and (max-width: 375px) {
   .sub-heading {
-    font-size: 2rem;
+    font-size: clamp(2rem, 2.5vw, 0.9rem);
     margin: 1rem;
   }
   .story {
@@ -169,13 +174,13 @@
     gap: 1rem;
   }
   .ethos {
-    font-size: 0.6rem;
+    font-size: clamp(0.6rem, 2.5vw, 0.9rem);
   }
   .roaster {
-    height: 20vh;
+    max-height: 23vh;
   }
   .times {
-    font-size: 0.7rem;
+    font-size: clamp(0.6rem, 2.5vw, 0.9rem);
     text-align: center;
     margin-bottom: 2rem;
   }

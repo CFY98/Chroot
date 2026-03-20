@@ -3,15 +3,18 @@ import { announce } from "./announcer.js";
 
 // ROUTES OBJECT
 export const routes = {
-  "/": { path: "./index.html", title: "home" },
-  "/beans": { path: "./pages/beans.html", title: "beans" },
-  "/equipment": { path: "./pages/equipment.html", title: "equipment" },
-  "/basket": { path: "./pages/basket.html", title: "basket" },
-  "/tui": { path: "./pages/tui.html", title: "tui" },
-  "/receipt": { path: "./pages/receipt.html", title: "receipt" },
-  "/blaze": { path: "./pages/blaze.html", title: "blaze" },
-  "/sunshine": { path: "./pages/sunshine.html", title: "sunshine" },
-  "/summit": { path: "./pages/summit.html", title: "summit" },
+  "/": { path: "/index.html", title: "home" },
+  "/beans": { path: "/src/pages/beans.html", title: "beans" },
+  "/equipment": {
+    path: "/src/pages/equipment.html",
+    title: "equipment",
+  },
+  "/basket": { path: "/src/pages/basket.html", title: "basket" },
+  "/tui": { path: "/src/pages/tui.html", title: "tui" },
+  "/receipt": { path: "/src/pages/receipt.html", title: "receipt" },
+  "/blaze": { path: "/src/pages/blaze.html", title: "blaze" },
+  "/sunshine": { path: "/src/pages/sunshine.html", title: "sunshine" },
+  "/summit": { path: "/src/pages/summit.html", title: "summit" },
 };
 
 // ITEMS

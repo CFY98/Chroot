@@ -56,13 +56,6 @@ export function initTerminal() {
           addLine(block, "  hours        opening hours", "info");
           addLine(block, "  clear        clear the terminal", "info");
           blank(block);
-          addLine(block, "git tools:", "info");
-          addLine(block, "  add <item>   adds <item> to basket", "info");
-          addLine(block, "  reset <item> removes <item> from basket", "info");
-          addLine(block, "  status       shows items in basket", "info");
-          addLine(block, "  commit       proccesses orders", "info");
-          addLine(block, "  log          prints receipt", "info");
-          blank(block);
           addLine(block, "Items:", "info");
           addLine(block, "  blaze        coffee from Columbia ", "info");
           addLine(block, "  sunshine     coffee from Ethiopia", "info");
@@ -155,11 +148,15 @@ export function initTerminal() {
               orderNumber,
             });
           } else {
-            addLine(
-              block,
-              `Usage: ${verb} [ add | reset | commit | log ]`,
-              "warn",
-            );
+            addLine(block, `Usage: ${verb} [ add ][ reset ][ status ]`, "warn");
+            addLine(block, "Usage:         [ commit ][ log ]", "warn");
+            blank(block);
+            addLine(block, "Available Git commands:", "info");
+            addLine(block, "  add <item>   adds <item> to basket", "info");
+            addLine(block, "  reset <item> removes <item> from basket", "info");
+            addLine(block, "  status       shows items in basket", "info");
+            addLine(block, "  commit       proccesses orders", "info");
+            addLine(block, "  log          prints receipt", "info");
             break;
           }
           break;
