@@ -6,10 +6,10 @@
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow:
+  /* box-shadow:
     0 0 0 1px #000,
     0 24px 64px rgba(0, 0, 0, 0.6),
-    0 0 120px rgba(126, 201, 140, 0.04);
+    0 0 120px rgba(126, 201, 140, 0.04); */
 }
 
 /* ------ TITLE BAR ------ */
@@ -105,7 +105,7 @@
 .input-row {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1.5rem 1rem;
+  padding: 1rem 1.5rem 1rem;
   border-top: 1px solid var(--border);
   gap: 0.5rem;
 }
@@ -122,6 +122,8 @@
 }
 
 #cmd-input {
+  flex: 1;
+  min-width: 0;
   background: transparent;
   border: none;
   outline: none;
@@ -142,7 +144,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.5rem;
   padding: 1rem 1rem;
 }
@@ -167,16 +169,16 @@
 
 /* ------ WEBPAGE LOADER ------ */
 .webpage-container {
-  min-height: 90vh;
+  min-height: 100vh;
   height: 100%;
   width: 100%;
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow:
+  /* box-shadow:
     0 0 0 1px #000,
     0 24px 64px rgba(0, 0, 0, 0.6),
-    0 0 120px rgba(126, 201, 140, 0.04);
+    0 0 120px rgba(126, 201, 140, 0.04); */
 }
 .webpage-link {
   width: 100%;
@@ -184,8 +186,8 @@
 }
 .webpage-link iframe {
   width: 100%;
-  height: 100%;
-  max-height: 89vh;
+  height: 97%;
+  max-height: 100vh;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--border);
@@ -230,7 +232,7 @@
 /* ------ LAPTOPS ------ */
 @media only screen and (max-width: 1024px) {
   .terminal {
-    height: 100%;
+    height: 100vh;
     min-height: 0;
     display: flex;
     flex-direction: column;
@@ -243,9 +245,12 @@
   .terminal-input {
     flex-shrink: 0;
   }
+  .suggestion {
+    font-size: 1rem;
+  }
   .webpage-container {
     overflow: hidden;
-    height: 100%;
+    height: 100vh;
     min-height: 0;
     display: flex;
     flex-direction: column;
@@ -289,7 +294,7 @@
     font-size: 1rem;
   }
   .suggestion {
-    font-size: 0.8rem;
+    font-size: 1.5rem;
   }
   .webpage-container {
     overflow: hidden;
@@ -337,7 +342,7 @@
     font-size: 0.82rem;
   }
   .suggestion {
-    font-size: 0.72rem;
+    font-size: 0.85rem;
   }
   .webpage-container {
     overflow: hidden;
@@ -355,5 +360,11 @@
     width: 100%;
     height: 100%;
     display: block;
+  }
+}
+/* ------ SMALL PHONES ------ */
+@media only screen and (max-width: 375px) {
+  .suggestion {
+    font-size: 0.8rem;
   }
 }
