@@ -43,5 +43,3 @@ export const QUICK_CMDS = [
   "hours",
   "clear",
 ];
-
-export const NAVIGATION = document.getElementById("suggestions");
