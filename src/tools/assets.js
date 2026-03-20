@@ -21,17 +21,8 @@ export const routes = {
   "/grinder": { path: "/pages/gear/grinder.html", title: "grinder" },
 };
 
-// ITEMS
-export const products = [
-  "blaze",
-  "sunshine",
-  "summit",
-  "filters",
-  "dripper",
-  "grinder",
-];
-
-export const prices = {
+// PRODUCTS
+export const productPrices = {
   blaze: 11.99,
   sunshine: 14.99,
   summit: 19.99,

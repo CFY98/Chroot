@@ -1,11 +1,10 @@
 // IMPORTS
 import {
-  products,
+  productPrices,
   stagingArea,
   basketItems,
   orderNumber,
   processOrder,
-  prices,
   removeItem,
 } from "../tools/assets.js";
 import { addLine, blank } from "../tools/utilities.js";
@@ -15,6 +14,7 @@ import { router } from "../tools/routerSPA.js";
 // GIT ADD (ADD ITEMS TO BASKET)
 export function gitAdd({ items, stagingArea, basketItems, block }) {
   const all = items[0]?.replace(/^-+/, "");
+  const products = Object.keys(productPrices);
   if (all === "all" || all.toUpperCase() === "A") {
     products.forEach((item) => {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
@@ -115,10 +115,10 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
 }
 
 // GIT STATUS (CHECKS BASKET)
-export function gitStatus({ stagingArea, prices, block }) {
+export function gitStatus({ stagingArea, productPrices, block }) {
   const stagedItems = Object.entries(stagingArea);
   let subTotal = stagedItems.reduce((sum, [key, value]) => {
-    return sum + value * prices[key];
+    return sum + value * productPrices[key];
   }, 0);
 
   if (stagedItems.length === 0) {
@@ -132,7 +132,7 @@ export function gitStatus({ stagingArea, prices, block }) {
   addLine(block, "  name         quantity       cost", "info");
   addLine(block, "  -------------------------------------", "info");
   stagedItems.forEach(([item, quantity]) => {
-    const price = prices[item] ?? "Out of Stock";
+    const price = productPrices[item] ?? "Out of Stock";
     addLine(
       block,
       `  ${item.padEnd(16)}${String(quantity).padEnd(12)}£${(quantity * price).toFixed(2)}`,

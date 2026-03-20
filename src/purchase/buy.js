@@ -1,5 +1,10 @@
 // IMPORTS
-import { products, stagingArea, basketItems, toAdd } from "../tools/assets.js";
+import {
+  productPrices,
+  stagingArea,
+  basketItems,
+  toAdd,
+} from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 
 export function initBuy(page) {
@@ -34,7 +39,7 @@ export function initBuy(page) {
 
   if (buy) {
     buy.onclick = function () {
-      if (products.includes(itemName)) {
+      if (Object.keys(productPrices).includes(itemName)) {
         Object.entries(toAdd).forEach(([key, value]) => {
           stagingArea[key] = (stagingArea[key] || 0) + value;
           const prev = parseInt(localStorage.getItem("itemCount") || 0);

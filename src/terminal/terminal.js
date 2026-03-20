@@ -2,7 +2,7 @@
 import {
   basketItems,
   stagingArea,
-  prices,
+  productPrices,
   orderNumber,
   termHistory,
 } from "../tools/assets.js";
@@ -138,7 +138,7 @@ export function initTerminal() {
               items,
               stagingArea,
               basketItems,
-              prices,
+              productPrices,
               block,
               orderNumber,
             });

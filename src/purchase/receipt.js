@@ -1,20 +1,18 @@
 // IMPORTS
 import {
-  prices,
   processOrder,
   orderNumber,
   basketItems,
   stagingArea,
   tMode,
+  productPrices,
 } from "../tools/assets.js";
 import { tuiMode } from "../tools/routerSPA.js";
 
 export function initReceipt() {
   // VALUES TO PRINT
   const print = document.getElementById("print");
-  const product__purchased = JSON.parse(
-    localStorage.getItem("product__purchased") || "[]",
-  );
+  const purchased = JSON.parse(localStorage.getItem("purchased") || "[]");
   const committed = JSON.parse(localStorage.getItem("committed") || "{}");
   const receipt = document.querySelector(".receipt-items");
   const orderEl = document.getElementById("order");
@@ -41,8 +39,8 @@ export function initReceipt() {
     if (orderEl)
       orderEl.textContent = `Order Number: ${orderNumber[orderNumber.length - 1]}`;
 
-    product__purchased.forEach((key) => {
-      const qtyTotal = committed[key] * prices[key];
+    purchased.forEach((key) => {
+      const qtyTotal = committed[key] * productPrices[key];
       const div = document.createElement("div");
       div.classList.add("receipt-item");
       div.innerHTML = `
@@ -60,7 +58,7 @@ export function initReceipt() {
       receipt.appendChild(div);
     });
     subTotal = Object.entries(committed).reduce((sum, [key, value]) => {
-      return sum + value * prices[key];
+      return sum + value * productPrices[key];
     }, 0);
 
     total.textContent = subTotal > 0 ? `£${subTotal.toFixed(2)}` : "";

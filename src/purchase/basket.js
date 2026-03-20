@@ -6,7 +6,7 @@ import {
   processOrder,
   removeItem,
   stagingArea,
-  prices,
+  productPrices,
 } from "../tools/assets.js";
 import { router } from "../tools/routerSPA.js";
 
@@ -34,11 +34,11 @@ export function initBasket() {
       const amount = cartItem.querySelector(".amount");
       const count = cartItem.querySelector(".count");
       count.textContent = stagingArea[name] || 0;
-      amount.textContent = `£${(stagingArea[name] * prices[name]).toFixed(2)}`;
+      amount.textContent = `£${(stagingArea[name] * productPrices[name]).toFixed(2)}`;
     });
 
     subTotal = Object.entries(stagingArea).reduce((sum, [key, value]) => {
-      return sum + value * prices[key];
+      return sum + value * productPrices[key];
     }, 0);
 
     total.textContent = subTotal > 0 ? `£${subTotal.toFixed(2)}` : "";
@@ -66,7 +66,7 @@ export function initBasket() {
 
         stagingArea[itemName] = (stagingArea[itemName] || 0) + delta;
 
-        amount.textContent = `£${(stagingArea[itemName] * prices[itemName]).toFixed(2)}`;
+        amount.textContent = `£${(stagingArea[itemName] * productPrices[itemName]).toFixed(2)}`;
         localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
       }
 
@@ -158,7 +158,7 @@ export function initBasket() {
       emptyState(basketItems);
 
       renderItems.forEach((key) => {
-        const qtyTotal = renderStaging[key] * prices[key];
+        const qtyTotal = renderStaging[key] * productPrices[key];
         const div = document.createElement("div");
         div.classList.add("cart-item");
         div.innerHTML = `

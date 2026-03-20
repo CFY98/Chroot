@@ -14,13 +14,14 @@ export function router(page) {
 
   if (page === "/") {
     screenContent.innerHTML = homeContent;
-    announce("The home page has loaded");
+    announce(`The ${routes[page].title} has loaded`);
     initSlideshow();
     return;
   }
 
   if (!route) {
     screenContent.innerHTML = "<p>404 - Page not found.</p>";
+    announce("404 error, page not found");
     return;
   }
 
@@ -32,6 +33,7 @@ export function router(page) {
     })
     .catch(() => {
       screenContent.innerHTML = "<p>404 - Page not found.</p>";
+      announce("404 error, page not found");
     });
 }
 
