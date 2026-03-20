@@ -1,8 +1,8 @@
 // PAGES
 export const PAGES = {
-  beans: { path: "./beans.html", label: "beans" },
-  equipment: { path: "./equipment.html", label: "equipment" },
-  basket: { path: "./basket.html", label: "basket" },
+  beans: { path: "../pages/beans.html", label: "beans" },
+  equipment: { path: "../pages/equipment.html", label: "equipment" },
+  basket: { path: "../pages/basket.html", label: "basket" },
   blaze: {
     path: "https://www.youtube.com/embed/MpYy6wwqxoo?si=QK_tnj2kMUPtz3ga",
     label: "blaze",

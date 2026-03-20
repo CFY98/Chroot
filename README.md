@@ -18,8 +18,10 @@ A fictional e-commerce UI built around a terminal interface. Users interact with
 ## 🌐 Website structure
 
 ```
-chroot
+chroot/V2
+ │
  └── Landing Page
+<<<<<<< HEAD
       ├── Navbar
 <<<<<<< HEAD
           ├── Drinks Page
@@ -28,6 +30,14 @@ chroot
 =======
       |    ├── Drinks Page
       |    └── Pastries Page
+=======
+      ├── Terminal
+      |    ├── Beans Page
+      |    ├── Equipment Page
+      |    └── Basket Page
+      |         └── Receipt Page
+      |
+>>>>>>> 138221e (Improved Accessibility and Modularity of CSS files)
       |
       └── Social Media Navbar
 >>>>>>> b4eb511 (Fix indentation in README for Social Media Navbar)
@@ -39,6 +49,7 @@ chroot
 
 ## ✨ Features
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 - **Multi-page navigation** — a nav bar linking to dedicated Drinks and Pastries pages, keeping content cleanly separated
@@ -57,10 +68,23 @@ chroot
 =======
 
 - **Terminal Input** — Git-style terminal for adding and removing items.
+=======
+- **Terminal Input** — Git-style commands for adding and removing items in the terminal window.
+>>>>>>> 138221e (Improved Accessibility and Modularity of CSS files)
 - **Responsive Basket UI** — Dynamic cart rendering with item quantities.
+- **Keyboard Navigation** — History indexes accessible via arrow-keys and tab for autocomplete, a'la inspiration from a terminal interface.
 - **Local Storage** — Live basket updates across pages via localStorage.
-- **Webpages as iframes** — Webpages load on the same page without the need to leave the landing page.
+- **Webpages as iframes** — Webpages load in-house to mimic windows on a GUI.
 - **PDF Generation** — Client-side PDF generation via the brower's native window.print() API.
+- **Screen Reader Announcer** — ARIA live regions with custom announcements to assist screen reader users.
+
+## 📸 Screenshots (Desktop View)
+
+![Landing Page](./screenshots/landing-page.png)
+![Basket UI](./screenshots/basket-ui.png)
+![Terminal Interaction Example](./screenshots/terminal-nav.png)
+![Invoice Generation](./screenshots/invoice.png)
+![PDF Generation](./screenshots/pdf-generation.png)
 
 ## Project Structure
 
@@ -69,6 +93,7 @@ chroot
 ```
 chroot/
 │
+<<<<<<< HEAD
 ├── Fonts              # Folder for the fonts used on the site
 ├── Images             # Folder for the images used on the site
 ├── favicon.ico        # Web icon
@@ -94,6 +119,36 @@ chroot/
 ├── LICENSE            # MIT License
 └── README.md          # This page
 >>>>>>> 99ba19d (Updated 07/03/2026)
+=======
+├── Images                  # Folder for the images used on the site
+│     ├──favicon.ico        # Web icon
+│     └──images.jpg*6       # 6 jpgs for products
+│
+├── main                    # Folder for the main stylesheet and landing page
+│     ├──index.html         # Landing page with terminal interface
+│     └──style.css          # Main stylesheet which contains the house style
+│
+├── styles                  # Folder for additional stylesheets
+│     ├──pages.css          # Stylesheet for beans and equipment html files
+│     ├──basket.css         # Stylesheet for basket.html
+│     ├──receipt.css        # Stylesheet for receipt.html
+│     ├──terminal.css       # Stylesheet for terminal window on index.html
+│     └──pdf.css            # Media query for PDF printing
+│
+├── scripts                 # Folder for additional javascript files
+│     ├──announcer.js       # Contains function to generate text and audio for screenreaders
+│     ├──assets.js          # Encompasses the pages, item selection, and suggestion button names
+│     ├──basket.js          # Encompasses UI features for basket.html
+│     ├──terminal.js        # Contains the functions and commands for the terminal interface
+│     └──receipt.js         # Contains receipt generation logic for the print button on receipt.html
+│
+|
+├── screenshots             # Folder for screenshots of the desktop view
+│     └──screenshots*6      # Screenshots used in this README
+│
+├── LICENSE                 # MIT License
+└── README.md               # This page
+>>>>>>> 138221e (Improved Accessibility and Modularity of CSS files)
 ```
 
 <<<<<<< HEAD
@@ -113,6 +168,7 @@ chroot/
 - **HTML**: Provides basic structure and layout of the website.
 - **CSS**: Used for styling the website.
 - **JavaScript**: Used to create a functional terminal with git-style commands and infrastructure to tracks items in the basket. localStorage acts as the communication bridge between the terminal page and the basket, with a setInterval polling for changes and dynamically rendering cart items into the DOM via innerHTML and appendChild. Event delegation handles clicks on dynamically created elements.
+- **ARIA**: Live regions, semantic roles and labels for screen reader support.
 
 ## 📄 License
 

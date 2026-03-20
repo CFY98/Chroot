@@ -1,5 +1,6 @@
 // IMPORTS
 import { BEANS, EQUIPMENT, PAGES, QUICK_CMDS } from "./assets.js";
+import { announce } from "./announcer.js";
 
 // TERMINAL HISTORY
 const history = [];
@@ -75,9 +76,12 @@ if (terminalEl) {
 
     switch (verb) {
       case "help":
+        announce(
+          "To add items to the basket, type 'git' followed by the tools add to adds items or reset to removes items followed by the item name. To place an order, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
+        );
         addLine(block, `site@chroot ~/${command} $`, "success");
         addLine(block, "Available commands:", "info");
-        addLine(block, "  ls              list all pages", "info");
+        addLine(block, "  ls              lists all pages", "info");
         addLine(block, "  git <tool>      tracks changes in order", "info");
         addLine(block, "  cd <page>       navigate to a page", "info");
         addLine(block, "  about           about Chroot", "info");
@@ -86,8 +90,6 @@ if (terminalEl) {
         blank(block);
         addLine(block, "Pages:", "info");
         addLine(block, "  beans  equipment  basket", "info");
-        addLine(block, "  blaze  sunshine  summit", "info");
-        addLine(block, "  filters  dripper  grinder", "info");
         blank(block);
         addLine(block, "Tools:", "info");
         addLine(block, "  add  reset  commit", "info");
@@ -95,38 +97,53 @@ if (terminalEl) {
         break;
 
       case "ls":
+        announce(
+          "The product pages are 'beans' is for our selection of coffee beans and 'equipment' for coffee equipment. The 'basket' page is for the shopping cart. For more information on our selected products, type 'cd' followed by the item name or click 'more info' on the product page",
+        );
         addLine(block, `site@chroot ~/${command} $`, "success");
         addLine(block, "drwxr-xr-x        home/", "info");
         addLine(block, "drwxr-xr-x        beans/", "info");
         addLine(block, "drwxr-xr-x        equipment/", "info");
         addLine(block, "drwxr-xr-x        basket/", "info");
-        addLine(block, "dr-xr-xr--x       receipt/", "info");
-        addLine(block, "dr-xr-xr--x       help/", "info");
-        addLine(block, "dr-xr-xr--x       about/", "info");
-        addLine(block, "dr-xr-xr--x       hours/", "info");
+        addLine(block, "dr-xr-xr--x       blaze/", "info");
+        addLine(block, "dr-xr-xr--x       sunshine/", "info");
+        addLine(block, "dr-xr-xr--x       summit/", "info");
+        addLine(block, "dr-xr-xr--x       filters/", "info");
+        addLine(block, "dr-xr-xr--x       dripper/", "info");
+        addLine(block, "dr-xr-xr--x       grinder/", "info");
         blank(block);
         break;
 
       case "cd": {
         if (!arg) {
+          announce(
+            "A page wasn't specified. Type  'ls' for all available pages",
+          );
           addLine(
             block,
-            `Usage: ${verb} <page> (beans | equipment | basket | blaze | sunshine | summit | filters | dripper | grinder)`,
+            `Usage: ${verb} <page> (beans | equipment | basket)`,
             "warn",
           );
           break;
         }
         const target = PAGES[arg];
         if (!target) {
+          announce(
+            "That page doesn't exist, please type 'ls' in the terminal for available pages",
+          );
           addLine(block, `bash: ${verb}: ${arg}: No such page`, "error");
-          addLine(block, `Hint: try 'ls' to see available pages`, "warn");
+          addLine(block, `Hint: type 'ls' to see available pages`, "warn");
         } else {
           navigate(block, arg);
+          announce(`${arg} has finished loading`);
         }
         break;
       }
 
       case "about":
+        announce(
+          "Chroot is a coffee roastery inspired by the Unix command line. For our opening-hours, type 'hours', 'ls' for a list of pages, and 'clear' to empty the terminal. Use the up and down arrow keys to toggle through the input history for efficiency",
+        );
         addLine(block, `site@chroot ~/${command} $`, "success");
         addLine(
           block,
@@ -144,6 +161,9 @@ if (terminalEl) {
         break;
 
       case "hours":
+        announce(
+          "Chroot is open from Monday to Friday between 7am to 6pm and 8am to 4pm on the weekends",
+        );
         addLine(block, `site@chroot ~/${command} $`, "success");
         addLine(block, "Mon–Fri   07:00 → 18:00", "info");
         addLine(block, "Sat–Sun   08:00 → 16:00", "info");
@@ -158,6 +178,9 @@ if (terminalEl) {
 
           if (items.length === 0) {
             addLine(block, "Nothing specified, nothing added", "warn");
+            announce(
+              "No item was specified, so nothing was added to the basket",
+            );
             break;
           }
 
@@ -187,8 +210,14 @@ if (terminalEl) {
                 );
               }
               addLine(block, `${item} staged for commit`, "info");
+              announce(
+                `${stagingArea[item]} ${item}${stagingArea[item] === 1 ? "" : "s"} ${stagingArea[item] > 1 ? "are" : "is"} in the basket`,
+              );
             } else {
               addLine(block, `fatal: '${item}' not found`, "error");
+              announce(
+                ` ${item} does not exist so it was not added to the basket`,
+              );
             }
           });
 
@@ -202,6 +231,9 @@ if (terminalEl) {
 
           if (stagedItems.length === 0) {
             addLine(block, "No changes added to commit", "warn");
+            announce(
+              "No changes were made since there were no items in the basket",
+            );
             break;
           }
           const hash = Math.random().toString(16).slice(2, 9);
@@ -233,7 +265,9 @@ if (terminalEl) {
           stagingArea = {};
 
           const frame = document.getElementById("page");
-          frame.src = "./receipt.html";
+          frame.src = "../pages/receipt.html";
+          frame.onload = () =>
+            announce(`The receipt for order ${hash} is now available to print`);
           if (basket && basket.contentWindow) {
             basket.contentWindow.postMessage(
               { action: "updateBasket", item: item },
@@ -272,8 +306,12 @@ if (terminalEl) {
                 );
               }
               addLine(block, `${item} unstaged`, "info");
+              announce(
+                `${stagingArea[item] > 0 ? stagingArea[item] : "no"} ${item}${stagingArea[item] > 1 ? "s" : ""} ${stagingArea[item] > 1 ? "are" : "is"} in the basket`,
+              );
             } else {
               addLine(block, `'${item}' not staged`, "error");
+              announce(`${item} was not in the basket so nothing was removed`);
             }
           });
 
@@ -289,11 +327,12 @@ if (terminalEl) {
 
       case "clear":
         output.innerHTML = "";
+        announce("The terminal window contents have been cleared");
         return;
 
       // Easter Eggs
       case "sudo":
-        addLine(block, "Coffee only come in wholebean", "warn");
+        addLine(block, "Our coffee only comes in wholebean", "warn");
         break;
 
       case "rm":
@@ -328,6 +367,7 @@ if (terminalEl) {
         e.preventDefault();
         if (histIdx < history.length - 1) histIdx++;
         input.value = history[histIdx] ?? "";
+        announce(`History: ${input.value}`);
       } else if (e.key === "ArrowDown") {
         e.preventDefault();
         if (histIdx > 0) histIdx--;
@@ -337,6 +377,7 @@ if (terminalEl) {
           return;
         }
         input.value = history[histIdx] ?? "";
+        announce(`History: ${input.value}`);
       } else if (e.key === "Tab") {
         e.preventDefault();
         const val = input.value.toLowerCase();
@@ -348,13 +389,21 @@ if (terminalEl) {
           const parts = input.value.split(" ");
           parts[parts.length - 1] = match;
           input.value = parts.join(" ");
+          announce(`Autocompleted to ${input.value}`);
         }
       }
     });
   }
+  // FOCUS INPUT
+  const terminal = document.querySelector(".terminal");
+
+  if (terminal) {
+    terminal.addEventListener("click", () => {
+      input.focus();
+    });
+  }
 
   // SUGGESTION BUTTONS
-
   if (QUICK_CMDS && NAVIGATION) {
     QUICK_CMDS.forEach((cmd) => {
       const suggestion = document.createElement("button");
@@ -365,6 +414,7 @@ if (terminalEl) {
         input.value = fullCmd;
         run(fullCmd);
         input.value = "";
+        input.focus();
       });
       NAVIGATION.appendChild(suggestion);
     });
@@ -372,4 +422,5 @@ if (terminalEl) {
 
   // INIT
   boot();
+  input.focus();
 }

@@ -87,23 +87,34 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+<<<<<<< HEAD:index.html
 <<<<<<< HEAD
     <link rel="stylesheet" href="styling.css" />
 =======
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/x-icon" href="./Images/favicon.ico" />
 >>>>>>> c88744a (Added Favicon)
+=======
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../styles/terminal.css" />
+    <link rel="icon" type="image/x-icon" href="./Images/favicon.ico" />
+>>>>>>> 138221e (Improved Accessibility and Modularity of CSS files):main/index.html
     <title>Chroot - Home</title>
   </head>
   <body>
+    <!-- ANNOUNCER -->
+    <div
+      id="announcer"
+      role="alert"
+      class="sr-only"
+      aria-atomic="true"
+      aria-live="assertive"
+    ></div>
     <!-- TITLE CONTAINER -->
     <div class="top-container">
       <p class="title">Chroot</p>
-      <div class="socials">
-        <a href="https://github.com/CFY98/Chroot" class="fa fa-github"></a>
-      </div>
     </div>
-    <!-- TERMINAL CONTAINER -->
+    <!-- TAB CONTAINER -->
     <div class="container">
       <!-- Terminal Window -->
       <div class="terminal" role="region" aria-label="terminal navigation">
@@ -124,7 +135,7 @@
             autocorrect="off"
             spellcheck="off"
             placeholder="type here"
-            aria-label="terminal input"
+            aria-hidden="true"
           />
         </div>
         <!-- Suggestions the user can click if they don't want to use the terminal -->
@@ -136,7 +147,7 @@
         <div
           class="terminal-output"
           id="terminal-output"
-          aria-live="polite"
+          aria-hidden="true"
         ></div>
         <!-- Command transitions -->
         <!-- <div class="flash" id="flash"></div> -->
@@ -150,8 +161,14 @@
         </div>
         <div class="webpage-link">
           <iframe
+<<<<<<< HEAD:index.html
             id="item"
             src="/basket.html"
+=======
+            name="webpage"
+            id="page"
+            src="../pages/basket.html"
+>>>>>>> 138221e (Improved Accessibility and Modularity of CSS files):main/index.html
             frameborder="0"
             aria-label="page display"
           ></iframe>
@@ -174,7 +191,15 @@
           </div> -->
       </div>
     </div>
+<<<<<<< HEAD:index.html
     <script src="terminal.js"></script>
 >>>>>>> a4e60fa (Changed File Name)
+=======
+    <!-- SOCIAL MEDIA -->
+    <div class="socials">
+      <a href="https://github.com/CFY98/Chroot" class="fa fa-github"></a>
+    </div>
+    <script type="module" src="../scripts/terminal.js"></script>
+>>>>>>> 138221e (Improved Accessibility and Modularity of CSS files):main/index.html
   </body>
 </html>
