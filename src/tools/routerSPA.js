@@ -5,6 +5,8 @@ import { routes, tMode } from "./assets.js";
 
 // ROUTER FUNCTION
 const homeContent = document.getElementById("app").innerHTML;
+console.log("homeContent captured:", homeContent);
+console.log("current path:", window.location.pathname);
 
 export function router(page) {
   const screenContent = document.getElementById("app");
@@ -27,6 +29,7 @@ export function router(page) {
   fetch(route.path)
     .then((res) => res.text())
     .then((html) => {
+      console.log("fetched page:", route.path, html.slice(0, 100));
       screenContent.innerHTML = html;
       if (page in routesAnnouncements) routesAnnouncements[page]();
     })
