@@ -1,9 +1,12 @@
 # Chroot
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 A fictional coffee shop. This website was developed with three pages,
 =======
 
+=======
+>>>>>>> 57b780b (doc tidied Concept section)
 A fictional e-commerce UI built around a terminal interface. Users interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
 
 ## 🔗 Link
