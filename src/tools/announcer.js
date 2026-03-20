@@ -3,6 +3,7 @@ import { initTerminal } from "../terminal/terminal.js";
 import { initBasket } from "../purchase/basket.js";
 import { initReceipt } from "../purchase/receipt.js";
 import { initBuy } from "../purchase/buy.js";
+import { routes } from "./assets.js";
 
 // ANNOUNCEMENTS
 export function announce(message) {
@@ -17,12 +18,10 @@ export function announce(message) {
 
 // PAGE ANNOUNCEMENTS
 export function uiAnnounce(page) {
-  if (page in routes) {
-    announce(`The ${routes[page].title} page has loaded`);
-    if (page === "/beans" || page === "/equipment") return;
-    else if (page === "/tui") initTerminal();
-    else if (page === "/basket") initBasket();
-    else if (page === "/receipt") initReceipt();
-    else initBuy(page);
-  }
+  announce(`The ${routes[page].title} page has loaded`);
+  if (page === "/beans" || page === "/equipment") return;
+  else if (page === "/tui") initTerminal();
+  else if (page === "/basket") initBasket();
+  else if (page === "/receipt") initReceipt();
+  else initBuy(page);
 }
