@@ -1,5 +1,5 @@
 // IMPORTS
-import { routesAnnouncements, announce } from "./announcer.js";
+import { announce, uiAnnounce } from "./announcer.js";
 import { initSlideshow } from "./slideshow.js";
 import { routes, tMode } from "./assets.js";
 
@@ -28,7 +28,7 @@ export function router(page) {
     .then((res) => res.text())
     .then((html) => {
       screenContent.innerHTML = html;
-      if (page in routesAnnouncements) routesAnnouncements[page]();
+      if (page in routesAnnouncements) uiAnnounce(page);
     })
     .catch(() => {
       screenContent.innerHTML = "<p>404 - Page not found.</p>";
@@ -83,7 +83,7 @@ title.addEventListener("click", (e) => {
 
 // PRODUCT PAGES
 document.addEventListener("click", (e) => {
-  if (e.target.matches(".more [data-link]")) {
+  if (e.target.matches("a[data-link]")) {
     e.preventDefault();
     const page = e.target.getAttribute("href");
     history.pushState({}, "", page);

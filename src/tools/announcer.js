@@ -16,58 +16,13 @@ export function announce(message) {
 }
 
 // PAGE ANNOUNCEMENTS
-export function tuiAnnounce() {
-  announce("The Terminal User Interface has loaded");
-  initTerminal();
+export function uiAnnounce(page) {
+  if (page in routes) {
+    announce(`The ${routes[page].title} page had loaded`);
+    if (page === "/beans" || page === "/equipment") return;
+    else if (page === "/tui") initTerminal();
+    else if (page === "/basket") initBasket();
+    else if (page === "/receipt") initReceipt();
+    else initBuy(page);
+  }
 }
-export function basketAnnounce() {
-  announce("The Basket page has loaded");
-  initBasket();
-}
-export function receiptAnnounce() {
-  announce("The Receipt page has loaded");
-  initReceipt();
-}
-export function equipmentAnnounce() {
-  announce("The Equipment page has loaded");
-}
-export function beansAnnounce() {
-  announce("The Beans page has loaded");
-}
-export function blazeAnnounce() {
-  announce("The Blaze coffee page has loaded");
-  initBuy();
-}
-export function sunshineAnnounce() {
-  announce("The Sunshine coffee page has loaded");
-  initBuy();
-}
-export function summitAnnounce() {
-  announce("The Summit coffee page has loaded");
-  initBuy();
-}
-export function filtersAnnounce() {
-  announce("The Chroot Filters page has loaded");
-  initBuy();
-}
-export function dripperAnnounce() {
-  announce("The Chroot Dripper page has loaded");
-  initBuy();
-}
-export function grinderAnnounce() {
-  announce("The Chroot Grinder page has loaded");
-  initBuy();
-}
-export const routesAnnouncements = {
-  "/tui": tuiAnnounce,
-  "/basket": basketAnnounce,
-  "/receipt": receiptAnnounce,
-  "/beans": beansAnnounce,
-  "/equipment": equipmentAnnounce,
-  "/blaze": blazeAnnounce,
-  "/sunshine": sunshineAnnounce,
-  "/summit": summitAnnounce,
-  "/filters": filtersAnnounce,
-  "/dripper": dripperAnnounce,
-  "/grinder": grinderAnnounce,
-};

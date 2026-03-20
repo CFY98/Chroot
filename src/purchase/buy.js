@@ -2,10 +2,10 @@
 import { products, stagingArea, basketItems, toAdd } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 
-export function initBuy() {
+export function initBuy(page) {
   const buy = document.querySelector(".buy");
   const toBuy = document.getElementById("purchase");
-  const itemName = window.location.pathname.split("/").pop();
+  const itemName = page.split("/").pop();
   const counting = document.querySelector(".counting");
   toAdd[itemName] = toAdd[itemName] || 1;
 
