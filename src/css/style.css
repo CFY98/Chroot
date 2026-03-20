@@ -432,7 +432,7 @@ figure img {
 }
 .dot-r {
   background: var(--red);
-  margin-left: 0.6rem;
+  margin-left: 0.1rem;
 }
 .dot-y {
   background: var(--amber);
@@ -450,8 +450,6 @@ figure img {
   padding: clamp(0.4rem, 1.3vw, 1.5rem);
   background: var(--bar);
   border: 1px solid var(--border);
-  /* border-top-left-radius: 10px;
-  border-top-right-radius: 10px; */
 }
 
 .titlebar-text {
@@ -546,7 +544,21 @@ figure img {
   color: var(--text);
 }
 /* ------ RESPONSIVE DESIGN ------ */
-/* ------ TABLETS - SMALL PHONES ------ */
+/* ------ DESKTOPS ------ */
+@media only screen and (max-width: 1280px) {
+  .dot-r {
+    margin-left: 0.5rem;
+  }
+}
+
+/* ------ LAPTOPS ------ */
+@media only screen and (max-width: 1024px) {
+  .dot-r {
+    margin-left: 0.7rem;
+  }
+}
+
+/* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
   .top-container {
     position: sticky;
@@ -820,5 +832,14 @@ figure img {
 >>>>>>> 03097f9 (GUI Interface Added)
 =======
 >>>>>>> adb92c6 (feat quantity controls products)
+  }
+  .dot-r {
+    margin-left: 0.9rem;
+  }
+}
+/* ------ PHONES ------ */
+@media only screen and (max-width: 480px) {
+  .dot-r {
+    margin-left: 1rem;
   }
 }

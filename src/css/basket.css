@@ -170,6 +170,12 @@ hr {
     width: 70%;
   }
 }
+/* ------ TABLETS ------ */
+@media only screen and (max-width: 768px) {
+  .cost {
+    margin-top: 1.3rem;
+  }
+}
 
 /* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
