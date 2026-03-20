@@ -77,7 +77,7 @@ if (terminalEl) {
     switch (verb) {
       case "help":
         announce(
-          "To add items to the basket, type 'git' followed by the tools add to adds items or reset to removes items followed by the item name. To place an order, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
+          "Type 'git', then add followed by the item name to add it to the basket. Git, then reset followed by the item name to removes it from the basket. To place orders, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
         );
         addLine(block, `site@chroot ~/${command} $`, "success");
         addLine(block, "Commands:", "info");
