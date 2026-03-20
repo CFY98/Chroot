@@ -140,16 +140,21 @@ if (eliminate) {
 // COMMIT ORDER
 if (commit) {
   commit.onclick = function () {
-    const basketItems = localStorage.getItem("basketItems") || "[]";
-    const stagingArea = localStorage.getItem("stagingArea") || "{}";
+    const basketItems = JSON.parse(localStorage.getItem("basketItems") || "[]");
+    const stagingArea = JSON.parse(localStorage.getItem("stagingArea") || "{}");
+
+    if (Object.keys(stagingArea).length === 0) {
+      announce("No order was placed since there were no items in the basket");
+      return;
+    }
 
     const orderNumber = JSON.parse(localStorage.getItem("orderNumber") || "[]");
     const hash = Math.random().toString(16).slice(2, 9);
     orderNumber.push(hash);
     localStorage.setItem("orderNumber", JSON.stringify(orderNumber));
 
-    localStorage.setItem("purchased", basketItems);
-    localStorage.setItem("committed", stagingArea);
+    localStorage.setItem("purchased", JSON.stringify(basketItems));
+    localStorage.setItem("committed", JSON.stringify(stagingArea));
 
     localStorage.removeItem("basketItems");
     localStorage.removeItem("stagingArea");
