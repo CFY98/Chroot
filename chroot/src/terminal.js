@@ -48,22 +48,13 @@ export function initTerminal() {
             "Type 'git', then add followed by the item name to add it to the basket. Git, then reset followed by the item name to removes it from the basket. To place orders, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
           );
           addLine(block, `site@chroot ~/${command} $`, "success");
-          addLine(block, "Commands:", "info");
+          addLine(block, "Available commands:", "info");
           addLine(block, "  ls           lists all pages", "info");
-          addLine(block, "  git <tool>   tracks changes in order", "info");
-          addLine(block, "  cd <page>    navigate to a page", "info");
+          addLine(block, "  git          tracks changes in order", "info");
+          addLine(block, "  cd           navigate to a page", "info");
           addLine(block, "  about        about Chroot", "info");
           addLine(block, "  hours        opening hours", "info");
           addLine(block, "  clear        clear the terminal", "info");
-          blank(block);
-          addLine(block, "Items:", "info");
-          addLine(block, "  blaze        coffee from Columbia ", "info");
-          addLine(block, "  sunshine     coffee from Ethiopia", "info");
-          addLine(block, "  summit       coffee from Guatemala", "info");
-          blank(block);
-          addLine(block, "  filters      coffee filters by Chroot", "info");
-          addLine(block, "  dripper      conical dripper by Chroot", "info");
-          addLine(block, "  grinder      manual grinder by Chroot", "info");
           blank(block);
           break;
 
@@ -149,14 +140,27 @@ export function initTerminal() {
             });
           } else {
             addLine(block, `Usage: ${verb} [ add ][ reset ][ status ]`, "warn");
-            addLine(block, "Usage:         [ commit ][ log ]", "warn");
+            addLine(block, "           [ commit ][ log ]", "warn");
             blank(block);
             addLine(block, "Available Git commands:", "info");
-            addLine(block, "  add <item>   adds <item> to basket", "info");
-            addLine(block, "  reset <item> removes <item> from basket", "info");
-            addLine(block, "  status       shows items in basket", "info");
-            addLine(block, "  commit       proccesses orders", "info");
-            addLine(block, "  log          prints receipt", "info");
+            addLine(block, "  add [item]        adds [item]", "info");
+            addLine(block, "                    to basket", "info");
+            addLine(block, "      [--all | -A]  adds 1 of each item", "info");
+            addLine(block, "                    to the basket", "info");
+            blank(block);
+            addLine(block, "  reset [item]      removes [item]", "info");
+            addLine(block, "                    from basket", "info");
+            addLine(block, "        [--hard]    empties the basket", "info");
+            blank(block);
+            addLine(block, "  status            shows status", "info");
+            addLine(block, "                    of basket", "info");
+            blank(block);
+            addLine(block, "  commit [-m]       proccesses order", "info");
+            addLine(block, "                    with a message", "info");
+            addLine(block, "                    [-m] is optional", "info");
+            blank(block);
+            addLine(block, "  log               shows receipt", "info");
+            blank(block);
             break;
           }
           break;

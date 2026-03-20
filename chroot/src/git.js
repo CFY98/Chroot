@@ -14,7 +14,8 @@ import { router } from "./routerSPA.js";
 
 // GIT ADD (ADD ITEMS TO BASKET)
 export function gitAdd({ items, stagingArea, basketItems, block }) {
-  if (items[0]?.replace(/^-+/, "") === "all" || "a") {
+  const all = items[0]?.replace(/^-+/, "");
+  if (all === "all" || all === "A") {
     products.forEach((item) => {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
       localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
@@ -31,6 +32,7 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
     return;
   }
   if (items.length === 0) {
+    addLine(block, "Nothing specified, nothing added", "info");
     addLine(block, "hint: try specifying the item you want to add ", "warn");
     announce("No item was specified, so nothing was added to the basket");
     return;
@@ -73,6 +75,7 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
     return;
   }
   if (items.length === 0) {
+    addLine(block, "Nothing specified, nothing removed", "info");
     addLine(block, "hint: specifiy the item you want to remove", "warn");
     announce("specify the items you want to remove from the basket");
     return;
