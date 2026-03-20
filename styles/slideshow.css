@@ -3,12 +3,25 @@
   margin: 0 auto;
   width: 80%;
 }
+#tagline {
+  font-family: "IBM Plex Sans";
+  text-align: center;
+  font-style: italic;
+  font-size: 4rem;
+  margin: 4rem 4rem;
+}
+
+#info {
+  text-align: center;
+  font-size: 2rem;
+  margin: 4rem 4rem;
+}
 #slideshow {
   overflow: hidden;
   position: relative;
   width: 85%;
   aspect-ratio: 16/9;
-  margin: 2rem auto;
+  margin: 0 auto;
   border-radius: 10px;
 }
 
@@ -106,6 +119,12 @@ figure img {
 }
 
 @media only screen and (max-width: 1024px) {
+  #tagline {
+    font-size: 2rem;
+  }
+  #info {
+    font-size: 1.5rem;
+  }
   .arrows button {
     width: 70px;
     height: 70px;
@@ -141,6 +160,15 @@ figure img {
 }
 
 @media only screen and (max-width: 375px) {
+  #tagline {
+    font-size: 1.2rem;
+    margin: 2rem 2rem;
+  }
+
+  #info {
+    font-size: 0.8rem;
+    margin: 2rem 2rem;
+  }
   .arrows button {
     width: 3rem;
     height: 3rem;

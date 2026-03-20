@@ -64,13 +64,13 @@ export function initTerminal() {
           addLine(block, "  log          prints receipt", "info");
           blank(block);
           addLine(block, "Items:", "info");
-          addLine(block, "  Beans:       blaze", "info");
-          addLine(block, "               Sunshine", "info");
-          addLine(block, "               Summit", "info");
+          addLine(block, "  blaze        coffee from Columbia ", "info");
+          addLine(block, "  sunshine     coffee from Ethiopia", "info");
+          addLine(block, "  summit       coffee from Guatemala", "info");
           blank(block);
-          addLine(block, "  Equipment:   Filters", "info");
-          addLine(block, "               Dripper", "info");
-          addLine(block, "               Grinder", "info");
+          addLine(block, "  filters      coffee filters by Chroot", "info");
+          addLine(block, "  dripper      conical dripper by Chroot", "info");
+          addLine(block, "  grinder      manual grinder by Chroot", "info");
           blank(block);
           break;
 
@@ -79,25 +79,22 @@ export function initTerminal() {
             "The product pages are 'beans' which houses our selection of coffee beans and 'gear' which encompasses our coffee gear selection. For the shopping cart, go to the 'basket' page. For more information on our selected products, type 'cd' followed by the item name or click 'more info' on the image of the desired product",
           );
           addLine(block, `site@chroot ~/${command} $`, "success");
-          addLine(block, "drwxr-xr-x        home", "info");
-          addLine(block, "drwxr-xr-x        beans", "info");
-          addLine(block, "drwxr-xr-x        equipment", "info");
-          addLine(block, "drwxr-xr-x        basket", "info");
-          addLine(block, "dr-xr-xr--x       blaze", "info");
-          addLine(block, "dr-xr-xr--x       sunshine", "info");
-          addLine(block, "dr-xr-xr--x       summit", "info");
-          addLine(block, "dr-xr-xr--x       filters", "info");
-          addLine(block, "dr-xr-xr--x       dripper", "info");
-          addLine(block, "dr-xr-xr--x       grinder", "info");
+          addLine(block, "  drwxr-xr-x        gui", "info");
+          addLine(block, "  drwxr-xr-x        beans", "info");
+          addLine(block, "  drwxr-xr-x        equipment", "info");
+          addLine(block, "  drwxr-xr-x        basket", "info");
+          addLine(block, "  dr-xr-xr--x       blaze", "info");
+          addLine(block, "  dr-xr-xr--x       sunshine", "info");
+          addLine(block, "  dr-xr-xr--x       summit", "info");
+          addLine(block, "  dr-xr-xr--x       filters", "info");
+          addLine(block, "  dr-xr-xr--x       dripper", "info");
+          addLine(block, "  dr-xr-xr--x       grinder", "info");
           blank(block);
           break;
 
         case "cd": {
           if (!arg) {
-            announce(
-              "A page wasn't specified. Type  'ls' for all available pages",
-            );
-            addLine(block, `Usage: ${verb} [ beans | gear | basket ]`, "warn");
+            addLine(block, "hint: type 'ls' for all available pages", "warn");
             break;
           }
           const target = cdPages[arg];
@@ -106,8 +103,9 @@ export function initTerminal() {
               "That page doesn't exist, please type 'ls' in the terminal for available pages",
             );
             addLine(block, `bash: ${verb}: ${arg}: No such page`, "error");
-            addLine(block, `Hint: type 'ls' to see available pages`, "warn");
+            addLine(block, `hint: type 'ls' to see available pages`, "warn");
           } else {
+            addLine(block, `site@chroot ~/${command} $`, "success");
             cdPages[arg](block);
           }
           break;
@@ -120,13 +118,13 @@ export function initTerminal() {
           addLine(block, `site@chroot ~/${command} $`, "success");
           addLine(
             block,
-            "Change the root of your trajectory with coffee.",
+            "  Change the root of your trajectory with coffee.",
             "info",
           );
           blank(block);
           addLine(
             block,
-            "Chroot is a specialty coffee roastery inspired by the Unix command line",
+            "  Chroot is a specialty coffee roastery inspired by the Unix command line",
             "info",
           );
           addLine(block, "where you commit to every cup of coffee.", "info");
@@ -135,11 +133,11 @@ export function initTerminal() {
 
         case "hours":
           announce(
-            "Chroot is open from Monday to Friday between 7am to 6pm and 8am to 4pm on the weekends",
+            "  Chroot is open from Monday to Friday between 7am to 6pm and 8am to 4pm on the weekends",
           );
           addLine(block, `site@chroot ~/${command} $`, "success");
-          addLine(block, "Mon–Fri   07:00 → 18:00", "info");
-          addLine(block, "Sat–Sun   08:00 → 16:00", "info");
+          addLine(block, "  Mon–Fri   07:00 → 18:00", "info");
+          addLine(block, "  Sat–Sun   08:00 → 16:00", "info");
           blank(block);
           break;
 
@@ -147,7 +145,7 @@ export function initTerminal() {
           const action = parts[1];
           const items = parts.slice(2);
 
-          if (action in gitCmds)
+          if (action in gitCmds) {
             gitCmds[action]({
               items,
               stagingArea,
@@ -156,7 +154,7 @@ export function initTerminal() {
               block,
               orderNumber,
             });
-          else {
+          } else {
             addLine(
               block,
               `Usage: ${verb} [ add | reset | commit | log ]`,
@@ -209,7 +207,7 @@ export function initTerminal() {
           e.preventDefault();
           if (histIdx < termHistory.length - 1) histIdx++;
           input.value = termHistory[histIdx] ?? "";
-          announce(`History: ${input.value}`);
+          announce("Previous Input:");
         } else if (e.key === "ArrowDown") {
           e.preventDefault();
           if (histIdx > 0) histIdx--;
@@ -219,7 +217,7 @@ export function initTerminal() {
             return;
           }
           input.value = termHistory[histIdx] ?? "";
-          announce(`History: ${input.value}`);
+          announce("Latest Input:");
         } else if (e.key === "Tab") {
           e.preventDefault();
           const val = input.value.toLowerCase();

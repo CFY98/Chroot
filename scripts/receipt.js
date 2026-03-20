@@ -22,11 +22,19 @@ export function initReceipt() {
     print.onclick = function () {
       window.print();
       processOrder(orderNumber, basketItems, stagingArea);
+      localStorage.removeItem("orderNumber");
+      orderNumber.length = 0;
       if (receipt) receipt.innerHTML = "";
       if (orderEl) orderEl.textContent = "Order Number:";
       total.textContent = "";
-      history.pushState({}, "", "/basket");
-      router("/basket");
+
+      if (window.location.pathname === "/tui") {
+        history.pushState({}, "", "/");
+        router("/");
+      } else {
+        history.pushState({}, "", "/tui");
+        router("/tui");
+      }
     };
   }
   // RECEIPT GENERATION

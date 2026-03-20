@@ -91,6 +91,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 50%;
+  margin-right: auto;
+  margin-left: 25%;
 }
 .plus-btn {
   width: 2rem;
@@ -419,6 +422,7 @@ hr {
     margin-left: -10%;
   }
   .counter {
+    width: 70%;
     margin-left: auto;
     margin-right: 18%;
     gap: 0.7rem;

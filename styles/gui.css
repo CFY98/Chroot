@@ -1,0 +1,99 @@
+/* ------ GUI ------ */
+.gui {
+  width: 100%;
+  height: 100%;
+}
+#app {
+  width: 100%;
+  flex: 1;
+}
+/* ------ STORY SECTION ------ */
+.story-container {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: var(--border) solid 1px;
+}
+
+.sub-heading {
+  font-size: 3rem;
+  margin: 3rem;
+  font-family: "IBM Plex Sans";
+}
+.story {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.ethos {
+  width: 50%;
+  font-size: 2rem;
+}
+.roaster {
+  width: 50%;
+  height: 65vh;
+  object-fit: cover;
+  border-radius: 10px;
+}
+/* ------ OPENING HOURS ------ */
+.hours-container {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: var(--border) solid 1px;
+}
+.times {
+  width: 80%;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+/* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS ------ */
+@media only screen and (max-width: 1280px) {
+  .ethos {
+    font-size: 1.5rem;
+  }
+}
+/* ------ LAPTOPS ------ */
+@media only screen and (max-width: 1024px) {
+  .ethos {
+    font-size: 1.5rem;
+  }
+}
+/* ------ TABLETS ------ */
+@media only screen and (max-width: 768px) {
+}
+/* ------ PHONES ------ */
+@media only screen and (max-width: 480px) {
+}
+/* ------ SMALL PHONES ------ */
+@media only screen and (max-width: 375px) {
+  .ethos {
+    font-size: 0.6rem;
+  }
+  .sub-heading {
+    font-size: 2rem;
+    margin: 1rem;
+  }
+  .story {
+    margin-bottom: 2rem;
+  }
+  .roaster {
+    height: 30vh;
+  }
+  .times {
+    font-size: 0.7rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}

@@ -88,13 +88,17 @@ export function initBasket() {
   // RESET ALL
   if (eliminate) {
     eliminate.onclick = function () {
+      if (Object.keys(stagingArea).length === 0) {
+        announce("The basket was empty to begin with");
+        return;
+      }
       localStorage.removeItem("basketItems");
       basketItems.length = 0;
       localStorage.removeItem("stagingArea");
       for (let key in stagingArea) delete stagingArea[key];
       localStorage.setItem("itemCount", "0");
       if (product) product.innerHTML = "";
-      announce("All items were completely removed from the basket");
+      announce("The basket is now empty");
     };
   }
 

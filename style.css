@@ -191,6 +191,7 @@ body {
   min-height: 100vh;
   border-radius: 10px;
 }
+<<<<<<< HEAD
 /* ------ GUI ------ */
 .gui {
   width: 100%;
@@ -202,6 +203,11 @@ body {
 >>>>>>> 03097f9 (GUI Interface Added)
 }
 #slideshow .list {
+=======
+
+/* ------ ANNOUNCER ------ */
+.sr-only {
+>>>>>>> ebba21b (TODO: Responsive Design)
   position: absolute;
   top: 0;
   left: 0;
@@ -397,7 +403,7 @@ figure img {
 .title {
   font-family: "IBM Plex Sans";
   text-align: center;
-  font-size: 5rem;
+  font-size: 6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
@@ -416,26 +422,7 @@ figure img {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-#items {
-  text-align: center;
-  font-size: 2rem;
-  margin: 3% 3%;
-}
-#tagline {
-  text-align: center;
-  font-style: italic;
-  font-size: 2rem;
-  margin: 3% 3%;
-}
-
-#info {
-  text-align: center;
-  font-size: 2rem;
-  margin: 3% 3%;
+  margin: 2rem;
 }
 
 /* ------ TITLEBAR ------ */
@@ -541,7 +528,6 @@ figure img {
 .nav-btn.active {
   background: var(--border);
 }
-
 /* ------ SOCIALS ------ */
 .socials {
   display: grid;
@@ -549,6 +535,7 @@ figure img {
   width: 100%;
   padding: 1.5% 1.5%;
   background-color: var(--bg);
+  border-top: var(--border) solid 1px;
 }
 
 .fa {
@@ -569,6 +556,7 @@ figure img {
 }
 
 /* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
   .top-container {
     width: 100%;
@@ -580,33 +568,25 @@ figure img {
   .subtitle {
     font-size: 4rem;
   }
-  #items {
-    font-size: 2em;
-    padding: 0 3% 2%;
-  }
   .fa {
     font-size: 3rem;
     width: 3rem;
   }
 }
-
+/* ------ LAPTOPS------ */
 @media only screen and (max-width: 1024px) {
   .title {
-    font-size: 4rem;
+    font-size: 5rem;
   }
   .subtitle {
-    font-size: 4rem;
-  }
-  #items {
-    font-size: 1rem;
-    padding: 0 3% 2%;
+    font-size: 3rem;
   }
   .fa {
     font-size: 2rem;
     width: 2rem;
   }
 }
-
+/* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
   .top-container {
     position: sticky;
@@ -711,11 +691,6 @@ figure img {
 =======
   .subtitle {
     font-size: 2rem;
-    margin: 1rem 0;
-  }
-  #items {
-    font-size: 1rem;
-    padding: 0 3% 2%;
   }
   .socials {
     position: sticky;
@@ -728,7 +703,7 @@ figure img {
     width: 3rem;
   }
 }
-
+/* ------ PHONES ------ */
 @media only screen and (max-width: 480px) {
   .top-container {
     position: sticky;
@@ -825,12 +800,6 @@ figure img {
 =======
   .subtitle {
     font-size: 2rem;
-    margin: 1rem 0;
-  }
-  #items {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    padding: 0 3% 1%;
   }
   .socials {
     position: sticky;
@@ -843,7 +812,7 @@ figure img {
     width: 2rem;
   }
 }
-
+/* ------ SMALL PHONES ------ */
 @media only screen and (max-width: 375px) {
   .top-container {
     position: sticky;
@@ -851,16 +820,13 @@ figure img {
     z-index: 10;
   }
   .title {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
   .subtitle {
     font-size: 2rem;
-    margin: 1rem 0;
   }
-  #items {
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-    padding: 0 3% 1%;
+  .t-dots {
+    width: 15%;
   }
   .socials {
     position: sticky;

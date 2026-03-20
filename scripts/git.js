@@ -48,8 +48,7 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
 // GIT RESET (REMOVE ITEMS FROM BASKET)
 export function gitReset({ items, stagingArea, basketItems, block }) {
   if (items.length === 0) {
-    addLine(block, "hint: try specifiying the item you want to remove", "warn");
-    announce("No item was specified, so nothing was removed from the basket");
+    addLine(block, "hint: specifiy the item you want to remove", "warn");
     return;
   }
 
@@ -107,7 +106,7 @@ export function gitStatus({ stagingArea, prices, block }) {
     const price = prices[item] ?? "Out of Stock";
     addLine(
       block,
-      `  ${item}         ${quantity}           £${(quantity * price).toFixed(2)}`,
+      `  ${item.padEnd(16)}${String(quantity).padEnd(12)}£${(quantity * price).toFixed(2)}`,
       "info",
     );
   });

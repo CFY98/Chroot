@@ -1,9 +1,15 @@
 /* ------ BEANS AND EQUIPMENT PAGES ------ */
 .information {
-  margin: 5% 5%;
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin: 1rem 1rem;
+}
+
+#items {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .itemnames {
@@ -19,13 +25,12 @@
 }
 
 #product-wrapper {
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  padding: 2%;
 }
 
 .products {
@@ -35,6 +40,8 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 }
 
 .products img {
@@ -80,10 +87,15 @@
 }
 
 /* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
   .itemnames {
     font-size: 2rem;
     margin-bottom: -2%;
+  }
+  #items {
+    font-size: 2em;
+    padding: 0 3% 2%;
   }
   .prices {
     font-size: 1.5rem;
@@ -94,10 +106,13 @@
     font-size: 5rem;
   }
 }
-
+/* ------ LAPTOPS ------ */
 @media only screen and (max-width: 1024px) {
   .itemnames {
     font-size: 2rem;
+  }
+  #items {
+    font-size: 1.5rem;
   }
   .prices {
     font-size: 1.5rem;
@@ -107,7 +122,7 @@
     font-size: 3rem;
   }
 }
-
+/* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
   #product-container {
     flex-direction: column;
@@ -119,6 +134,10 @@
   .itemnames {
     font-size: 1rem;
   }
+  #items {
+    font-size: 1rem;
+    padding: 0 3% 2%;
+  }
   .prices {
     font-size: 0.9rem;
     padding-bottom: 3%;
@@ -127,10 +146,15 @@
     font-size: 2rem;
   }
 }
-
+/* ------ PHONES ------ */
 @media only screen and (max-width: 480px) {
   .itemnames {
     font-size: 1rem;
+  }
+  #items {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 3% 1%;
   }
   .prices {
     font-size: 0.8rem;

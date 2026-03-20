@@ -1,34 +1,29 @@
 // IMPORTS
 import { addLine, blank } from "./utilities.js";
+import { router } from "./assets.js";
 
+// cdPages
+export function gui() {
+  setTimeout(() => {
+    history.pushState({}, "", "/");
+    router("/");
+  }, 100);
+}
 export function beans(block) {
-  addLine(block, "Beans:", "info");
-  blank(block);
-  addLine(
-    block,
-    "Our selection of single origin specialty coffee beans.",
-    "info",
-  );
   blank(block);
   addLine(block, "  Blaze        £11.99", "info");
-  addLine(block, "  Sunshine     £13.99", "info");
+  addLine(block, "  Sunshine     £14.99", "info");
   addLine(block, "  Summit       £19.99", "info");
   blank(block);
 }
-
 export function equipment(block) {
-  addLine(block, "Equipment:", "info");
   blank(block);
-  addLine(block, "Everything you need to brew the perfect cup.", "info");
-  blank(block);
-  addLine(block, "  Filters      paper filters for pour over brewing", "info");
-  addLine(block, "  Dripper      ceramic pour over dripper", "info");
-  addLine(block, "  Grinder      hand burr grinder", "info");
+  addLine(block, "  Filters      £9.99", "info");
+  addLine(block, "  Dripper      £14.99", "info");
+  addLine(block, "  Grinder      £129.99", "info");
   blank(block);
 }
-
 export function blaze(block) {
-  addLine(block, "Blaze:", "info");
   blank(block);
   addLine(block, "  Origin:      Huila, Colombia", "info");
   addLine(block, "  Varietal:    Pink Bourbon", "info");
@@ -36,15 +31,13 @@ export function blaze(block) {
   addLine(block, "  Process:     Washed", "info");
   addLine(block, "  Roast:       Light", "info");
   addLine(block, "  Harvest:     March — June", "info");
-  addLine(block, "  Notes:       Bright, citrus, stone fruit", "info");
-  addLine(block, "  Quantity:    200g", "info");
+  addLine(block, "  Notes:       Melon, Lemonade, Peach", "info");
   blank(block);
-  addLine(block, "  Price:       £13.99", "info");
+  addLine(block, "  Quantity:    200g", "info");
+  addLine(block, "  Price:       £11.99", "info");
   blank(block);
 }
-
 export function sunshine(block) {
-  addLine(block, "Sunshine", "info");
   blank(block);
   addLine(block, "  Origin:      Yirgacheffe, Ethiopia", "info");
   addLine(block, "  Varietal:    Heirloom", "info");
@@ -52,15 +45,13 @@ export function sunshine(block) {
   addLine(block, "  Process:     Natural", "info");
   addLine(block, "  Roast:       Light", "info");
   addLine(block, "  Harvest:     November — January", "info");
-  addLine(block, "  Notes:       Blueberry, Assam tea, Molasses", "info");
+  addLine(block, "  Notes:       Blueberry, Toffee, Cherry", "info");
   blank(block);
   addLine(block, "  Quantity:    200g", "info");
-  addLine(block, "  Price:       £15.99", "info");
+  addLine(block, "  Price:       £14.99", "info");
   blank(block);
 }
-
 export function summit(block) {
-  addLine(block, "Summit", "info");
   blank(block);
   addLine(block, "  Origin:      Antigua, Guatemala", "info");
   addLine(block, "  Varietal:    Gesha", "info");
@@ -68,15 +59,13 @@ export function summit(block) {
   addLine(block, "  Process:     Honey", "info");
   addLine(block, "  Roast:       Light", "info");
   addLine(block, "  Harvest:     December — March", "info");
-  addLine(block, "  Notes:       Jasmine, Bergamot, White Peach", "info");
+  addLine(block, "  Notes:       Jasmine, Bergamot, Pear", "info");
   blank(block);
   addLine(block, "  Quantity:    150g", "info");
   addLine(block, "  Price:       £19.99", "info");
   blank(block);
 }
-
 export function filters(block) {
-  addLine(block, "Chroot Filters", "info");
   blank(block);
   addLine(block, "  Our in-house filters are designed", "info");
   addLine(block, "  to fit household favourites such as", "info");
@@ -87,53 +76,54 @@ export function filters(block) {
   addLine(block, "  Price:       £9.99", "info");
   blank(block);
 }
-
 export function dripper(block) {
-  addLine(block, "Chroot Dripper", "info");
   blank(block);
   addLine(block, "  After years of teseting, we have", "info");
   addLine(block, "  unveiled the Chroot Dripper!", "info");
   blank(block);
   addLine(block, "  With BPA-Free Tritan Plastic chosen", "info");
-  addLine(block, "  for its high durability and heat resistance,", "info");
-  addLine(block, "  the Chroot Dripper is perfect for when", "info");
-  addLine(block, "  you're on the go or at home.", "info");
+  addLine(block, "  for its high durability and heat", "info");
+  addLine(block, "  resistance, the Chroot Dripper is", "info");
+  addLine(block, "  perfect for when you're on the go", "info");
+  addLine(block, "  or at home.", "info");
   blank(block);
   addLine(block, "  Material:    BPA-Free Tritan Plastic", "info");
   addLine(block, "  Size:        1-4 cups", "info");
   addLine(block, "  Price:       £14.99", "info");
   blank(block);
 }
-
 export function grinder(block) {
-  addLine(block, "Chroot Grinder", "info");
   blank(block);
-  addLine(block, "  Embrace the morning with the Chroot Grinder.", "info");
-  addLine(block, "  Whether you're a fan of the French Press or", "info");
-  addLine(block, "  need to dial-in for those espresso shots,", "info");
-  addLine(block, "  the precision-made 48m conical burrs are,", "info");
-  addLine(block, "  designed for all needs from the enthusiast,", "info");
-  addLine(block, "  to the professional.", "info");
+  addLine(block, "  Embrace the morning with the", "info");
+  addLine(block, "  Chroot Grinder.", "info");
   blank(block);
-  addLine(block, "  Whether on the go or at home, the compact", "info");
-  addLine(block, "  size and weight of 600g allows for a sturdy", "info");
-  addLine(block, "  yet lightweight feel to provide a premium", "info");
-  addLine(block, "  experience for the most adventurous of", "info");
-  addLine(block, "  drinkers.", "info");
+  addLine(block, "  Whether you're a fan of the French", "info");
+  addLine(block, "  Press or need to dial-in for those", "info");
+  addLine(block, "  espresso shots, the precision-made", "info");
+  addLine(block, "  48m conical burrs are designed for", "info");
+  addLine(block, "  all needs from the enthusiast to the", "info");
+  addLine(block, "  professional", "info");
   blank(block);
-  addLine(block, "Burrs:        48m Stainless steel conical burrs", "info");
-  addLine(block, "Weight:       600g", "info");
+  addLine(block, "  Whether on the go or at home, the", "info");
+  addLine(block, "  compact size and weight of 600g allows", "info");
+  addLine(block, "  for a sturdy yet lightweight feel to", "info");
+  addLine(block, "  provide a premium experience for the", "info");
+  addLine(block, "  most adventurous of drinkers.", "info");
   blank(block);
-  addLine(block, "Price:        £129.99", "info");
+  addLine(block, "  Burr Set:     48m Conical SS", "info");
+  addLine(block, "  Material:     7075 Aluminium", "info");
+  addLine(block, "  Weight:       600g", "info");
+  addLine(block, "  Price:        £129.99", "info");
   blank(block);
 }
-
 export const cdPages = {
+  gui: gui,
   beans: beans,
   equipment: equipment,
   blaze: blaze,
   sunshine: sunshine,
-  filers: filters,
+  summit: summit,
+  filters: filters,
   dripper: dripper,
   grinder: grinder,
 };
