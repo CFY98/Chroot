@@ -136,12 +136,13 @@ body {
   margin-right: min(0.5rem, 3%);
   font-family: "IBM Plex Sans";
   font-size: clamp(1rem, 1vw + 0.1rem, 1.5rem);
+  text-align: center;
   color: transparent;
   letter-spacing: 0.05em;
   cursor: pointer;
   background: var(--notification);
-  padding: 0.5rem;
-  border-radius: 10px;
+  padding: min(0.5rem, 0.5%);
+  border-radius: 5px;
 }
 
 .titlebar-text::after,

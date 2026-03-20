@@ -17,7 +17,7 @@ After sending to testers, new features were added based on user-feedback.
 The UI has been updated to feature both a GUI and a TUI mode depending on the user's preference so the user no longer has to use the terminal should they see fit.
 
 - **Toast Notifications** — Informs users when items are added to the basket.
-  **State Memory** — locally-saved object for adjusting item quanities before adding to basket.
+- **State Memory** — locally-saved object for adjusting item quantities before adding to basket.
 
 ## ⌨️ TUI Mode Features
 
