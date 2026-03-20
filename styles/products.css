@@ -1,0 +1,145 @@
+/* ------ BEANS AND EQUIPMENT PAGES ------ */
+.information {
+  margin: 5% 5%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.itemnames {
+  font-weight: 300;
+  font-size: 2rem;
+  color: var(--text);
+}
+
+.prices {
+  font-weight: 200;
+  font-size: 2rem;
+  color: var(--muted);
+}
+
+#product-wrapper {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 2%;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.products img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* ------ MORE INFO OVERLAY ------ */
+.caption-container {
+  width: 90%;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+}
+
+.caption {
+  position: absolute;
+  inset: 0;
+  background-color: var(--t-window);
+  opacity: 0.9;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.caption-container:hover .caption {
+  transform: translateY(0%);
+}
+
+.more {
+  color: var(--text);
+  font-family: "JetBrains Mono";
+  font-size: 5em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.more:hover {
+  color: var(--hover);
+}
+
+/* ------ RESPONSIVE DESIGN ------ */
+@media only screen and (max-width: 1280px) {
+  .itemnames {
+    font-size: 2rem;
+    margin-bottom: -2%;
+  }
+  .prices {
+    font-size: 1.5rem;
+    margin-top: 1em;
+    padding-bottom: 3%;
+  }
+  .more {
+    font-size: 5rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .itemnames {
+    font-size: 2rem;
+  }
+  .prices {
+    font-size: 1.5rem;
+    padding-bottom: 3%;
+  }
+  .more {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #product-container {
+    flex-direction: column;
+    padding: 2%;
+  }
+  .caption-container {
+    width: 100%;
+  }
+  .itemnames {
+    font-size: 1rem;
+  }
+  .prices {
+    font-size: 0.9rem;
+    padding-bottom: 3%;
+  }
+  .more {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .itemnames {
+    font-size: 1rem;
+  }
+  .prices {
+    font-size: 0.8rem;
+    padding-bottom: 1.5%;
+  }
+  .more {
+    font-size: 1rem;
+  }
+  #product-container {
+    padding: 1%;
+  }
+}

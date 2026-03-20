@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../styles/basket.css" />
+    <title>Basket</title>
+  </head>
+  <body>
+    <!-- TITLE -->
+    <p class="subtitle">Shopping Basket</p>
+    <div class="cart-container">
+      <div class="header">
+        <h5 class="delete">Reset All</h5>
+      </div>
+      <div class="columns">
+        <h5 class="column-item">Item</h5>
+        <h5 class="column-quantity">Quantity</h5>
+        <h5 class="column-price">Price</h5>
+      </div>
+      <hr class="column-line" />
+      <div class="cart-items"></div>
+      <hr> 
+   	 <div class="checkout">
+   	 <div class="total">Total
+   	 	<div class="total-amount"></div>
+   	 </div>
+   	 <button class="button" aria-label="commit to confirm order">Commit</button></div>
+   </div>
+    </div>
+    <script type="module" src="../scripts/basket.js"></script>
+  </body>
+</html>

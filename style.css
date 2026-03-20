@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 
@@ -134,6 +135,71 @@ h1 span {
   margin: 0 auto;
   margin-top: 80px;
   border-radius: 10px;
+=======
+/* ------ IMPORTS ------ */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+/* ------ HOUSE STYLE ------ */
+:root {
+  --bg: #0e0f0d;
+  --bar: #111311;
+  --t-window: #141714;
+  --border: #2a2e2a;
+  --green: #7ec98c;
+  --hover: #7ac3ff;
+  --amber: #c9a84c;
+  --red: #c97070;
+  --text: #d4d9d4;
+  --muted: #6b7368;
+  --cursor: #7ec98c;
+  --path: #2258ee;
+  --arrows: #ffffff33;
+}
+
+/* ------ UNIVERSAL SELECTOR ------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "JetBrains Mono";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ------ WINDOW CONTAINER ------ */
+.window-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  border-radius: 10px;
+}
+/* ------ GUI ------ */
+.gui {
+  width: 100%;
+  height: 100%;
+}
+#app {
+  width: 100%;
+  flex: 1;
+>>>>>>> 03097f9 (GUI Interface Added)
 }
 #slideshow .list {
   position: absolute;
@@ -244,6 +310,7 @@ figure img {
   overflow: hidden;
   aspect-ratio: 4/3;
 }
+<<<<<<< HEAD
 .caption {
   /* For child elements, allows the image to position relative to cloest ancestor that has rposition: relative */
   position: absolute;
@@ -314,12 +381,243 @@ figure img {
     position: fixed;
     z-index: 2;
     width: 100%;
+=======
+
+/* ------ TITLES ------ */
+.top-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg);
+}
+
+.title {
+  font-family: "IBM Plex Sans";
+  text-align: center;
+  font-size: 5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.title:hover {
+  color: var(--hover);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 4rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#items {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3% 3%;
+}
+#tagline {
+  text-align: center;
+  font-style: italic;
+  font-size: 2rem;
+  margin: 3% 3%;
+}
+
+#info {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3% 3%;
+}
+
+/* ------ TITLEBAR ------ */
+.t-dots {
+  width: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: auto;
+  margin-left: 0.6rem;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot-r {
+  background: var(--red);
+}
+.dot-y {
+  background: var(--amber);
+}
+.dot-g {
+  background: var(--green);
+}
+
+.titlebar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.8rem 0.8rem;
+  background: var(--bar);
+  border: 1px solid var(--border);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.titlebar-text {
+  margin-left: auto;
+  font-family: "IBM Plex Sans";
+  font-size: 1rem;
+  color: transparent;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.titlebar-text::after,
+.titlebar-text.active::after {
+  content: attr(data-text);
+  color: var(--muted);
+}
+
+.titlebar-text:hover::after,
+.titlebar-text.active:hover::after {
+  content: attr(data-hover);
+  color: var(--hover);
+}
+
+.titlebar-text.active {
+  color: transparent;
+}
+
+/* ------ NAVIGATION ------ */
+.nav-buttons {
+  font-family: "IBM Plex Sans";
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid var(--border);
+  border-top: none;
+  background-color: var(--t-window);
+}
+
+.nav-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.4rem;
+  font-size: 1.5rem;
+  color: var(--muted);
+  border-right: var(--border) 1px solid;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+  user-select: none;
+  list-style: none;
+}
+
+.nav-btn:last-child {
+  border-right: none;
+}
+
+.nav-btn:hover {
+  background: var(--border);
+}
+
+.nav-btn.active {
+  background: var(--border);
+}
+
+/* ------ SOCIALS ------ */
+.socials {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  width: 100%;
+  padding: 1.5% 1.5%;
+  background-color: var(--bg);
+}
+
+.fa {
+  grid-column: 2;
+  font-size: 4rem;
+  width: 4rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa:hover {
+  opacity: 0.7;
+  color: var(--cursor);
+}
+
+.fa-github {
+  color: var(--text);
+}
+
+/* ------ RESPONSIVE DESIGN ------ */
+@media only screen and (max-width: 1280px) {
+  .top-container {
+    width: 100%;
+    height: 100%;
+  }
+  .title {
+    font-size: 5rem;
+  }
+  .subtitle {
+    font-size: 4rem;
+  }
+  #items {
+    font-size: 2em;
+    padding: 0 3% 2%;
+  }
+  .fa {
+    font-size: 3rem;
+    width: 3rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .title {
+    font-size: 4rem;
+  }
+  .subtitle {
+    font-size: 4rem;
+  }
+  #items {
+    font-size: 1rem;
+    padding: 0 3% 2%;
+  }
+  .fa {
+    font-size: 2rem;
+    width: 2rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .top-container {
+    position: sticky;
+>>>>>>> 03097f9 (GUI Interface Added)
     top: 0;
   }
   #navbar span {
     padding-left: 5px;
     font-size: 31px;
   }
+<<<<<<< HEAD
   .nav {
     font-family: "Comic Neue";
     padding-right: 50px;
@@ -410,12 +708,38 @@ figure img {
     gap: 5px;
     z-index: 2;
     width: 100%;
+=======
+  .subtitle {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+  #items {
+    font-size: 1rem;
+    padding: 0 3% 2%;
+  }
+  .socials {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    padding: 1rem;
+  }
+  .fa {
+    font-size: 3rem;
+    width: 3rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .top-container {
+    position: sticky;
+>>>>>>> 03097f9 (GUI Interface Added)
     top: 0;
   }
   #navbar span {
     font-size: 15px;
     padding-left: 4px;
   }
+<<<<<<< HEAD
   .nav {
     font-family: "Comic Neue";
     padding-right: 25px;
@@ -498,5 +822,55 @@ figure img {
   #socials a {
     font-size: 15px;
     margin-right: 15px;
+=======
+  .subtitle {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+  #items {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 3% 1%;
+  }
+  .socials {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    padding: 1rem;
+  }
+  .fa {
+    font-size: 2rem;
+    width: 2rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .top-container {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
+  .subtitle {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+  #items {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    padding: 0 3% 1%;
+  }
+  .socials {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    padding: 1rem;
+  }
+  .fa {
+    font-size: 2rem;
+    width: 2rem;
+>>>>>>> 03097f9 (GUI Interface Added)
   }
 }

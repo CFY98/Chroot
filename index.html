@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css"
     />
+<<<<<<< HEAD
     <title>Chroot - Home Directory</title>
   </head>
   <body>
@@ -22,8 +23,113 @@
       <div class="nav">
         <a href="./drinks.html">Drinks</a>
         <a href="./pastries.html">Pastries</a>
+=======
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/slideshow.css" />
+    <link rel="stylesheet" href="../styles/terminal.css" />
+    <link rel="icon" type="image/x-icon" href="./Images/favicon.ico" />
+    <title>Chroot - Home</title>
+  </head>
+  <body>
+    <!-- ANNOUNCER -->
+    <div
+      id="announcer"
+      role="alert"
+      class="sr-only"
+      aria-atomic="true"
+      aria-live="assertive"
+    ></div>
+    <!-- WRAPPER -->
+    <div class="wrapper">
+      <!-- TITLE CONTAINER -->
+      <div class="top-container">
+        <p class="title">Chroot</p>
+        <div class="titlebar">
+          <div class="t-dots">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+          </div>
+          <span
+            class="titlebar-text"
+            data-text="Toggle - TUI"
+            data-hover="Toggle - GUI"
+          ></span>
+        </div>
+        <div class="nav-buttons">
+          <div class="nav-btn">Beans</div>
+          <div class="nav-btn">Equipment</div>
+          <div class="nav-btn">Basket</div>
+        </div>
+        <!-- WINDOW CONTAINER -->
+        <div class="window-container">
+          <!-- GUI INTERFACE -->
+          <div class="gui">
+            <div id="app" class="app">
+              <!-- SLIDESHOW -->
+              <div class="slideshow-container">
+                <p id="tagline">
+                  It's time to change the root of your trajectory with coffee.
+                  <br />
+                </p>
+                <div id="slideshow">
+                  <!-- Contains all images together -->
+                  <div class="list">
+                    <figure>
+                      <img
+                        src="./Images/cafebarwithtext.jpg"
+                        class="slide"
+                        alt="State-of-the-art Cafe"
+                      />
+                    </figure>
+                    <figure>
+                      <img
+                        src="./Images/coffee_beanswithtext.jpg"
+                        class="slide"
+                        alt="Fresh Coffee Beans from Source."
+                      />
+                    </figure>
+                    <figure>
+                      <img
+                        src="./Images/latte_artwithtext.jpg"
+                        class="slide"
+                        alt="Professionally trained baristas at your service."
+                      />
+                    </figure>
+                  </div>
+                  <div class="arrows">
+                    <button
+                      id="prev"
+                      aria-label="previous slide of the slideshow"
+                    >
+                      <
+                    </button>
+                    <button id="next" aria-label="next slide of the slideshow">
+                      >
+                    </button>
+                  </div>
+                  <ul class="dots">
+                    <li class="active"></li>
+                    <li class="active"></li>
+                    <li class="active"></li>
+                  </ul>
+                </div>
+                <p id="info">
+                  Our drinks are made with some of the finest, single-origin
+                  coffees the world has to offer.
+                </p>
+              </div>
+            </div>
+            <!-- APP END -->
+          </div>
+          <!-- GUI END -->
+        </div>
+        <!-- CONTAINER END -->
+>>>>>>> 03097f9 (GUI Interface Added)
       </div>
+      <!-- TOP-CONTAINER END -->
     </div>
+<<<<<<< HEAD
     <!-- SLIDESHOW -->
     <div id="slideshow">
       <!-- Contains all images together -->
@@ -77,5 +183,14 @@
       <a href="https://linkedin.com">LinkedIn</a>
     </div>
     <script src="./slideshow.js"></script>
+=======
+    <!-- WRAPPER END -->
+    <!-- SOCIAL MEDIA -->
+    <div class="socials">
+      <a href="https://github.com/CFY98/Chroot" class="fa fa-github"></a>
+    </div>
+    <script type="module" src="../scripts/routerSPA.js"></script>
+    <script type="module" src="../scripts/slideshow.js"></script>
+>>>>>>> 03097f9 (GUI Interface Added)
   </body>
 </html>

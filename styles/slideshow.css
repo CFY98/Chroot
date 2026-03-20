@@ -1,0 +1,152 @@
+/* ------ SLIDESHOW ------ */
+.slideshow-container {
+  margin: 0 auto;
+  width: 80%;
+}
+#slideshow {
+  overflow: hidden;
+  position: relative;
+  width: 85%;
+  aspect-ratio: 16/9;
+  margin: 2rem auto;
+  border-radius: 10px;
+}
+
+#slideshow .list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: max-content;
+  display: flex;
+}
+
+.list figure {
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+}
+
+figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arrows {
+  position: absolute;
+  top: 42%;
+  left: 5%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrows button {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--arrows);
+  color: var(--text);
+  border: none;
+  font-family: "JetBrains Mono";
+  font-size: 2rem;
+  transition: ease 500ms;
+}
+
+.arrows button:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.dots {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  bottom: 10px;
+  box-sizing: border-box;
+}
+
+.dots li {
+  list-style: none;
+  background-color: var(--arrows);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin: 20px;
+  border-radius: 40px;
+  display: inline-block;
+  transition:
+    background-color ease 500ms,
+    width 0.5s;
+}
+
+.dots li.active {
+  width: 40px;
+}
+
+.dots li.active:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* ------ RESPONSIVE DESIGN ------ */
+@media only screen and (max-width: 1280px) {
+  .arrows button {
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+  }
+  .dots li {
+    width: 20px;
+    height: 20px;
+    margin: 30px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .arrows button {
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+  }
+  .dots li {
+    width: 20px;
+    height: 20px;
+    margin: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .arrows button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #slideshow {
+    width: 95%;
+  }
+  .arrows button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+  .dots li {
+    margin-top: 2rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .arrows button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+  .dots li {
+    margin-top: 2rem;
+  }
+}
