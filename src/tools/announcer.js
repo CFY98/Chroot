@@ -35,27 +35,27 @@ export function beansAnnounce() {
   announce("The Beans page has loaded");
 }
 export function blazeAnnounce() {
-  announce("The Blaze coffee page had loaded");
+  announce("The Blaze coffee page has loaded");
   initBuy();
 }
 export function sunshineAnnounce() {
-  announce("The Sunshine coffee page had loaded");
+  announce("The Sunshine coffee page has loaded");
   initBuy();
 }
 export function summitAnnounce() {
-  announce("The Summit coffee page had loaded");
+  announce("The Summit coffee page has loaded");
   initBuy();
 }
 export function filtersAnnounce() {
-  announce("The Chroot Filters page had loaded");
+  announce("The Chroot Filters page has loaded");
   initBuy();
 }
 export function dripperAnnounce() {
-  announce("The Chroot Dripper page had loaded");
+  announce("The Chroot Dripper page has loaded");
   initBuy();
 }
 export function grinderAnnounce() {
-  announce("The Chroot Grinder page had loaded");
+  announce("The Chroot Grinder page has loaded");
   initBuy();
 }
 export const routesAnnouncements = {

@@ -184,18 +184,14 @@ hr {
   }
   .name {
     grid-column: 2;
-    margin-right: auto;
-    margin-left: 6%;
   }
   .counter {
     grid-column: 3;
     width: 100%;
-    margin-right: auto;
-    margin-left: 6%;
   }
   .cost {
     grid-column: 4;
-    margin-right: 17%;
+    margin-right: 15%;
     margin-top: 1rem;
   }
   .checkout {
@@ -203,10 +199,5 @@ hr {
   }
   .button {
     width: 100%;
-  }
-  .column-line,
-  hr {
-    width: 84%;
-    margin-right: 8%;
   }
 }

@@ -15,7 +15,7 @@ import { router } from "../tools/routerSPA.js";
 // GIT ADD (ADD ITEMS TO BASKET)
 export function gitAdd({ items, stagingArea, basketItems, block }) {
   const all = items[0]?.replace(/^-+/, "");
-  if (all === "all" || all === "A") {
+  if (all === "all" || all.toUpperCase() === "A") {
     products.forEach((item) => {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
       localStorage.setItem("stagingArea", JSON.stringify(stagingArea));

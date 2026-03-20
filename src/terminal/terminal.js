@@ -159,9 +159,9 @@ export function initTerminal() {
             addLine(block, "  status            shows status", "info");
             addLine(block, "                    of basket", "info");
             blank(block);
-            addLine(block, "  commit [-m]       proccesses order", "info");
+            addLine(block, "  commit [-m][msg]  proccesses order", "info");
             addLine(block, "                    with a message", "info");
-            addLine(block, "                    [-m] is optional", "info");
+            addLine(block, "                    [msg] is optional", "info");
             blank(block);
             addLine(block, "  log               shows receipt", "info");
             blank(block);
