@@ -20,7 +20,7 @@ export function initReceipt() {
     const opt = {
       filename: `chroot_receipt_${orderNumber}.pdf`,
       html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
     };
 
     try {

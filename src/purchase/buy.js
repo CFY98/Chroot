@@ -20,7 +20,7 @@ export function initBuy(page) {
       if (!itemQuantity) return;
 
       function addNumber(delta) {
-        toAdd[itemName] = (toAdd[itemName] || 1) + delta;
+        toAdd[itemName] = (toAdd[itemName] || 0) + delta;
         counting.textContent = toAdd[itemName];
       }
 
@@ -39,34 +39,32 @@ export function initBuy(page) {
 
   if (buy) {
     buy.onclick = function () {
-      if (Object.keys(productPrices).includes(itemName)) {
-        Object.entries(toAdd).forEach(([key, value]) => {
-          stagingArea[key] = (stagingArea[key] || 0) + value;
-          const prev = parseInt(localStorage.getItem("itemCount") || 0);
-          localStorage.setItem("itemCount", prev + value);
-          localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
-        });
-
-        if (!basketItems.includes(itemName)) {
-          basketItems.push(itemName);
-          localStorage.setItem("basketItems", JSON.stringify(basketItems));
-        }
-        announce(
-          `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
-        );
-        let toastBox = document.getElementById("toastbox");
-        function showToast() {
-          let toast = document.createElement("div");
-          toast.classList.add("toast");
-          toast.innerHTML = `<img src="/Images/${itemName}.jpg" alt="${itemName}"/>${toAdd[itemName] > 1 ? `${itemName} x${toAdd[itemName]}` : itemName} added to the basket`;
-          toastBox.appendChild(toast);
-
-          setTimeout(() => {
-            toast.remove();
-          }, 3000);
-        }
-        showToast();
+      if (Object.hasOwn(productPrices, itemName)) {
+        stagingArea[itemName] = (stagingArea[itemName] || 0) + toAdd[itemName];
+        const prev = parseInt(localStorage.getItem("itemCount") || 0);
+        localStorage.setItem("itemCount", prev + toAdd[itemName]);
+        localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
       }
+
+      if (!basketItems.includes(itemName)) {
+        basketItems.push(itemName);
+        localStorage.setItem("basketItems", JSON.stringify(basketItems));
+      }
+      announce(
+        `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
+      );
+      let toastBox = document.getElementById("toastbox");
+      function showToast() {
+        let toast = document.createElement("div");
+        toast.classList.add("toast");
+        toast.innerHTML = `<img src="/Images/${itemName}.jpg" alt="${itemName}"/>${toAdd[itemName] > 1 ? `${itemName} x${toAdd[itemName]}` : itemName} added to the basket`;
+        toastBox.appendChild(toast);
+
+        setTimeout(() => {
+          toast.remove();
+        }, 3000);
+      }
+      showToast();
     };
   }
 }
