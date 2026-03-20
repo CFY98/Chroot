@@ -28,7 +28,7 @@ export function router(page) {
     .then((res) => res.text())
     .then((html) => {
       screenContent.innerHTML = html;
-      if (page in routesAnnouncements) uiAnnounce(page);
+      if (page in routes) uiAnnounce(page);
     })
     .catch(() => {
       screenContent.innerHTML = "<p>404 - Page not found.</p>";

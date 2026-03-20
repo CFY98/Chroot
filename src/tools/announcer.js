@@ -18,7 +18,7 @@ export function announce(message) {
 // PAGE ANNOUNCEMENTS
 export function uiAnnounce(page) {
   if (page in routes) {
-    announce(`The ${routes[page].title} page had loaded`);
+    announce(`The ${routes[page].title} page has loaded`);
     if (page === "/beans" || page === "/equipment") return;
     else if (page === "/tui") initTerminal();
     else if (page === "/basket") initBasket();
