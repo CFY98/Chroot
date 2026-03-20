@@ -303,7 +303,8 @@ hr {
     margin-left: -9%;
   }
   .column-quantity {
-    margin-right: 20%;
+    margin-right: auto;
+    margin-left: -3%;
   }
   .column-price {
     margin-right: 8%;

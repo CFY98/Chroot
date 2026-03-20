@@ -1357,11 +1357,6 @@ hr {
 }
 /* ------ LAPTOPS ------ */
 @media only screen and (max-width: 1024px) {
-  .top-container {
-    position: sticky;
-    background-color: var(--bg);
-    top: 0;
-  }
   .title {
     font-size: 5rem;
     align-self: center;
@@ -1378,11 +1373,6 @@ hr {
     padding-bottom: 2%;
     padding-left: 3%;
     padding-right: 3%;
-  }
-  .socials {
-    position: sticky;
-    background-color: var(--bg);
-    bottom: 0;
   }
   .fa {
     font-size: 2rem;
@@ -1402,6 +1392,7 @@ hr {
     position: sticky;
     background-color: var(--bg);
     top: 0;
+    z-index: 10;
   }
   .title {
     font-size: 2rem;
@@ -1440,9 +1431,10 @@ hr {
     position: sticky;
     background-color: var(--bg);
     top: 0;
+    z-index: 10;
   }
   .title {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
   .subtitle {
     font-size: 2rem;
