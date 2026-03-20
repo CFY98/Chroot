@@ -13,12 +13,14 @@ const orderNumber = JSON.parse(localStorage.getItem("orderNumber") || "[]");
 const purchased = JSON.parse(localStorage.getItem("purchased") || "[]");
 const committed = JSON.parse(localStorage.getItem("committed") || "{}");
 const print = document.getElementById("print");
+const page = window.parent.document.getElementById("page");
 
 // PRINT BUTTON
 if (print) {
   const total = document.querySelector(".receipt-amount");
   print.onclick = function () {
-    window.print();
+    page.contentWindow.focus();
+    page.contentWindow.print();
     if (receipt) receipt.innerHTML = "";
     localStorage.removeItem("orderNumber");
     localStorage.removeItem("purchased");
