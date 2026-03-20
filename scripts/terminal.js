@@ -403,6 +403,15 @@ if (terminalEl) {
     });
   }
 
+  // FOCUS INPUT 
+  
+const terminal = document.querySelector(".terminal");
+
+  if (terminal) {
+    terminal.addEventListener("click", () => {
+      input.focus();
+    });
+  }
   // SUGGESTION BUTTONS
   if (QUICK_CMDS && NAVIGATION) {
     QUICK_CMDS.forEach((cmd) => {
@@ -414,7 +423,11 @@ if (terminalEl) {
         input.value = fullCmd;
         run(fullCmd);
         input.value = "";
+<<<<<<< HEAD:scripts/terminal.js
         input.focus();
+=======
+        inout.focus()
+>>>>>>> 34b98bf (Re-added .focus for Terminal):terminal.js
       });
       NAVIGATION.appendChild(suggestion);
     });
