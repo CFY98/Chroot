@@ -408,11 +408,13 @@ if (terminalEl) {
       const suggestion = document.createElement("button");
       suggestion.className = "suggestion";
       suggestion.textContent = cmd;
-      suggestion.addEventListener("click", () => {
+      suggestion.addEventListener("click", (e) => {
+        e.stopPropagation();
         const fullCmd = PAGES[cmd] ? `cd ${cmd}` : cmd;
         input.value = fullCmd;
         run(fullCmd);
         input.value = "";
+<<<<<<< HEAD
 <<<<<<< HEAD:scripts/terminal.js
 <<<<<<< HEAD:scripts/terminal.js
         input.focus();
@@ -422,6 +424,8 @@ if (terminalEl) {
 =======
         input.focus();
 >>>>>>> 5519923 (Spelling Error Fix):terminal.js
+=======
+>>>>>>> 81a3c78 (fix removed input.focus() from suggestio button event listener)
       });
       NAVIGATION.appendChild(suggestion);
     });
