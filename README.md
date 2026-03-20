@@ -54,16 +54,19 @@ chroot/V3
 |   README.md
 |   vercel.json
 |
-├───public — static assets served directly (images, favicon)
-│   ├───Images
-│   └───screenshots
+├───public — static assets served directly (images, favicon, pages)
+|   ├───pages — HTML pages organised by category
+│   |    ├───coffee
+│   |    ├───gear
+│   |    ├───tabs
+│   |    └───ui
+│   |
+│   ├───favicon.ico
+|   ├───Images
+|   └───screenshots
+│
 └───src
     ├───css  — stylesheets for each page/component
-    ├───pages — HTML pages organised by category
-    │   ├───coffee
-    │   ├───gear
-    │   ├───tabs
-    │   └───ui
     ├───purchase — basket, buy, and receipt logic
     ├───terminal — terminal emulator and commands
     └───tools — shared utilities, router, and state
