@@ -5,20 +5,20 @@ import { router, tuiMode } from "./routerSPA.js";
 // ROUTES OBJECT
 export const routes = {
   "/": { path: "/index.html", title: "home" },
-  "/beans": { path: "/src/pages/tabs/beans.html", title: "beans" },
+  "/beans": { path: "/pages/tabs/beans.html", title: "beans" },
   "/equipment": {
-    path: "/src/pages/tabs/equipment.html",
+    path: "/pages/tabs/equipment.html",
     title: "equipment",
   },
-  "/basket": { path: "/src/pages/tabs/basket.html", title: "basket" },
-  "/tui": { path: "/src/pages/ui/tui.html", title: "tui" },
-  "/receipt": { path: "/src/pages/ui/receipt.html", title: "receipt" },
-  "/blaze": { path: "/src/pages/coffee/blaze.html", title: "blaze" },
-  "/sunshine": { path: "/src/pages/coffee/sunshine.html", title: "sunshine" },
-  "/summit": { path: "/src/pages/coffee/summit.html", title: "summit" },
-  "/filters": { path: "/src/pages/gear/filters.html", title: "filters" },
-  "/dripper": { path: "/src/pages/gear/dripper.html", title: "dripper" },
-  "/grinder": { path: "/src/pages/gear/grinder.html", title: "grinder" },
+  "/basket": { path: "/pages/tabs/basket.html", title: "basket" },
+  "/tui": { path: "/pages/ui/tui.html", title: "tui" },
+  "/receipt": { path: "/pages/ui/receipt.html", title: "receipt" },
+  "/blaze": { path: "/pages/coffee/blaze.html", title: "blaze" },
+  "/sunshine": { path: "/pages/coffee/sunshine.html", title: "sunshine" },
+  "/summit": { path: "/pages/coffee/summit.html", title: "summit" },
+  "/filters": { path: "/pages/gear/filters.html", title: "filters" },
+  "/dripper": { path: "/pages/gear/dripper.html", title: "dripper" },
+  "/grinder": { path: "/pages/gear/grinder.html", title: "grinder" },
 };
 
 // ITEMS
