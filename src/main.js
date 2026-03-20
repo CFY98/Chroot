@@ -1,0 +1,12 @@
+// IMPORTS
+import "./tools/routerSPA.js";
+import "./tools/slideshow.js";
+import "./css/style.css";
+import "./css/slideshow.css";
+import "./css/gui.css";
+import "./css/basket.css";
+import "./css/pages.css";
+import "./css/product.css";
+import "./css/receipt.css";
+import "./css/terminal.css";
+import "./css/pdf.css";
