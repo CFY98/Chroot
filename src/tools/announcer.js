@@ -1,8 +1,8 @@
 // IMPORTS
-import { initTerminal } from "./terminal.js";
-import { initBasket } from "./basket.js";
-import { initReceipt } from "./receipt.js";
-import { initBuy } from "./buy.js";
+import { initTerminal } from "../terminal/terminal.js";
+import { initBasket } from "../purchase/basket.js";
+import { initReceipt } from "../purchase/receipt.js";
+import { initBuy } from "../purchase/buy.js";
 
 // ANNOUNCEMENTS
 export function announce(message) {

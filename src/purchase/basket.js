@@ -1,5 +1,5 @@
 // IMPORTS
-import { announce } from "./announcer.js";
+import { announce } from "../tools/announcer.js";
 import {
   basketItems,
   orderNumber,
@@ -7,8 +7,8 @@ import {
   removeItem,
   stagingArea,
   prices,
-} from "./assets.js";
-import { router } from "./routerSPA.js";
+} from "../tools/assets.js";
+import { router } from "../tools/routerSPA.js";
 
 export function initBasket() {
   // COSTS

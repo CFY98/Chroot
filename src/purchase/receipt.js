@@ -5,8 +5,9 @@ import {
   orderNumber,
   basketItems,
   stagingArea,
-} from "./assets.js";
-import { router } from "./routerSPA.js";
+  tMode,
+} from "../tools/assets.js";
+import { tuiMode } from "../tools/routerSPA.js";
 
 export function initReceipt() {
   // VALUES TO PRINT
@@ -28,13 +29,7 @@ export function initReceipt() {
       if (orderEl) orderEl.textContent = "Order Number:";
       total.textContent = "";
 
-      if (window.location.pathname === "/tui") {
-        history.pushState({}, "", "/");
-        router("/");
-      } else {
-        history.pushState({}, "", "/tui");
-        router("/tui");
-      }
+      tMode(tuiMode);
     };
   }
   // RECEIPT GENERATION

@@ -7,14 +7,14 @@
   font-family: "IBM Plex Sans";
   text-align: center;
   font-style: italic;
-  font-size: 4rem;
-  margin: 4rem 4rem;
+  font-size: clamp(1.2rem, 2vw + 1rem, 4rem);
+  padding: min(4rem, 5%);
 }
 
 #info {
   text-align: center;
-  font-size: 2rem;
-  margin: 4rem 4rem;
+  font-size: clamp(0.5rem, 1.2vw + 0.5rem, 2rem);
+  padding: min(4rem, 5%);
 }
 #slideshow {
   overflow: hidden;
@@ -55,15 +55,15 @@ figure img {
 }
 
 .arrows button {
-  width: 5rem;
-  height: 5rem;
+  width: clamp(2rem, 5vw + 1rem, 5rem);
+  height: clamp(2rem, 5vw + 1rem, 5rem);
   border-radius: 50%;
   cursor: pointer;
   background-color: var(--arrows);
   color: var(--text);
   border: none;
   font-family: "JetBrains Mono";
-  font-size: 2rem;
+  font-size: clamp(1rem, 1vw + 1rem, 2rem);
   transition: ease 500ms;
 }
 
@@ -75,10 +75,9 @@ figure img {
   position: absolute;
   display: flex;
   justify-content: center;
-  padding: 0;
   width: 100%;
-  height: 3rem;
-  bottom: 1rem;
+  height: clamp(1rem, 2vw + 1rem, 3rem);
+  bottom: clamp(1rem, 1vw + 1rem, 1.5rem);
   box-sizing: border-box;
 }
 
@@ -86,9 +85,9 @@ figure img {
   list-style: none;
   background-color: var(--arrows);
   cursor: pointer;
-  width: 2rem;
-  height: 2rem;
-  margin: 1rem;
+  width: clamp(1.5rem, 2vw + 1rem, 2rem);
+  height: clamp(1.5rem, 2vw + 1rem, 2rem);
+  margin: min(1rem, 4%);
   border-radius: 40px;
   display: inline-block;
   transition:
@@ -97,7 +96,7 @@ figure img {
 }
 
 .dots li.active {
-  width: 5rem;
+  width: clamp(2rem, 3vw + 2rem, 5rem);
 }
 
 .dots li.active:hover {
@@ -105,138 +104,12 @@ figure img {
 }
 
 /* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS - PHONES ------*/
 @media only screen and (max-width: 1280px) {
   .slideshow-container {
-    width: 100%;
+    width: 95%;
   }
   #slideshow {
     width: 90%;
-  }
-  #tagline {
-    font-size: 3rem;
-  }
-  #info {
-    font-size: 1.8rem;
-  }
-  .arrows button {
-    width: 8rem;
-    height: 8rem;
-    font-size: 5rem;
-  }
-  .dots {
-    margin: 2rem;
-  }
-  .dots li {
-    width: 3rem;
-    height: 3rem;
-    margin: 1rem;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .slideshow-container {
-    width: 100%;
-  }
-  #slideshow {
-    width: 90%;
-  }
-  #tagline {
-    font-size: 2rem;
-  }
-  #info {
-    font-size: 1.8rem;
-  }
-  .arrows button {
-    width: 6rem;
-    height: 6rem;
-    font-size: 2rem;
-  }
-  .dots {
-    margin: 1rem;
-  }
-  .dots li {
-    width: 3rem;
-    height: 3rem;
-    margin: 1rem;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .slideshow-container {
-    width: 100%;
-  }
-  #slideshow {
-    width: 90%;
-  }
-  #tagline {
-    font-size: 2rem;
-    margin: 2rem 2rem;
-  }
-  #info {
-    font-size: 1.2rem;
-    margin: 2rem 2rem;
-  }
-  .arrows button {
-    width: 5rem;
-    height: 5rem;
-    font-size: 2rem;
-  }
-  .dots {
-    margin: 0.5rem;
-  }
-  .dots li {
-    width: 2rem;
-    height: 2rem;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .slideshow-container {
-    width: 100%;
-  }
-  #slideshow {
-    width: 90%;
-  }
-  #tagline {
-    font-size: 1.2rem;
-    margin: 2rem 2rem;
-  }
-  #info {
-    font-size: 0.8rem;
-    margin: 2rem 2rem;
-  }
-  .arrows button {
-    width: 3rem;
-    height: 3rem;
-    font-size: 1rem;
-  }
-  .dots li {
-    margin-top: 2rem;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .slideshow-container {
-    width: 100%;
-  }
-  #slideshow {
-    width: 90%;
-  }
-  #tagline {
-    font-size: 1.2rem;
-    margin: 2rem 2rem;
-  }
-
-  #info {
-    font-size: 0.8rem;
-    margin: 2rem 2rem;
-  }
-  .arrows button {
-    width: 3rem;
-    height: 3rem;
-    font-size: 1rem;
-  }
-  .dots li {
-    margin-top: 2rem;
   }
 }

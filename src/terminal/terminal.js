@@ -5,11 +5,11 @@ import {
   prices,
   orderNumber,
   termHistory,
-} from "./assets.js";
-import { announce } from "./announcer.js";
+} from "../tools/assets.js";
+import { announce } from "../tools/announcer.js";
 import { gitCmds } from "./git.js";
 import { cdPages } from "./cd.js";
-import { blank, addLine, printBlock, createBlock } from "./utilities.js";
+import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 
 export function initTerminal() {
   // TERMINAL HISTORY TOGGLE
@@ -31,8 +31,8 @@ export function initTerminal() {
     // BOOT MESSAGE
     function boot() {
       const block = createBlock();
-      addLine(block, "chroot v2.0.0 - speciality coffee; go Git it!", "info");
-      addLine(block, "Type 'help' for available commands.", "info");
+      addLine(block, "chroot v3.0.0 - speciality coffee", "info");
+      addLine(block, "Type 'help' for available commands", "info");
       blank(block);
       printBlock(block);
     }
@@ -53,6 +53,7 @@ export function initTerminal() {
             "Type 'git', then add followed by the item name to add it to the basket. Git, then reset followed by the item name to removes it from the basket. To place orders, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
           );
           addLine(block, `site@chroot ~/${command} $`, "success");
+          blank(block);
           addLine(block, "Available commands:", "info");
           addLine(block, "  ls           lists all pages", "info");
           addLine(block, "  git          tracks changes in order", "info");
@@ -68,6 +69,7 @@ export function initTerminal() {
             "The product pages are 'beans' which houses our selection of coffee beans and 'gear' which encompasses our coffee gear selection. For the shopping cart, go to the 'basket' page. For more information on our selected products, type 'cd' followed by the item name or click 'more info' on the image of the desired product",
           );
           addLine(block, `site@chroot ~/${command} $`, "success");
+          blank(block);
           addLine(block, "  drwxr-xr-x        gui", "info");
           addLine(block, "  drwxr-xr-x        beans", "info");
           addLine(block, "  drwxr-xr-x        equipment", "info");
@@ -105,18 +107,14 @@ export function initTerminal() {
             "Chroot is a coffee roastery inspired by the Unix command line. For our opening-hours, type 'hours', 'ls' for a list of pages, and 'clear' to empty the terminal. Use the up and down arrow keys to toggle through the input history for efficiency",
           );
           addLine(block, `site@chroot ~/${command} $`, "success");
-          addLine(
-            block,
-            "  Change the root of your trajectory with coffee.",
-            "info",
-          );
           blank(block);
-          addLine(
-            block,
-            "  Chroot is a specialty coffee roastery inspired by the Unix command line",
-            "info",
-          );
-          addLine(block, "where you commit to every cup of coffee.", "info");
+          addLine(block, "  Change the root of your trajectory", "info");
+          addLine(block, "  with coffee.", "info");
+          blank(block);
+          addLine(block, "  Chroot is a specialty coffee roastery", "info");
+          addLine(block, "  inspired by the Unix command line", "info");
+          addLine(block, "  where you commit to every cup of", "info");
+          addLine(block, "  coffee.", "info");
           blank(block);
           break;
 
@@ -125,6 +123,7 @@ export function initTerminal() {
             "  Chroot is open from Monday to Friday between 7am to 6pm and 8am to 4pm on the weekends",
           );
           addLine(block, `site@chroot ~/${command} $`, "success");
+          blank(block);
           addLine(block, "  Mon–Fri   07:00 → 18:00", "info");
           addLine(block, "  Sat–Sun   08:00 → 16:00", "info");
           blank(block);
@@ -192,7 +191,7 @@ export function initTerminal() {
 
         default:
           addLine(block, `bash: ${verb}: command not found`, "error");
-          addLine(block, `Type  help  for available commands.`, "info");
+          addLine(block, `Type 'help' for available commands`, "info");
       }
       addLine(block, `site@chroot ~ $ ${command}`, "prompt");
       printBlock(block);
@@ -205,7 +204,7 @@ export function initTerminal() {
           const val = input.value;
           if (val.trim()) {
             termHistory.unshift(val);
-            if (termHistory.length > 15) termHistory.length = 0;
+            if (termHistory.length > 15) termHistory.pop();
             localStorage.setItem("termHistory", JSON.stringify(termHistory));
             histIdx = -1;
           }

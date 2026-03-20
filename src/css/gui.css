@@ -20,24 +20,24 @@
 }
 
 .sub-heading {
-  font-size: 4rem;
-  margin: 3rem;
+  font-size: clamp(2rem, 2.5vw + 1rem, 4rem);
+  padding: min(3rem, 5%);
   font-family: "IBM Plex Sans";
 }
 .story {
   display: flex;
   width: 80%;
   align-items: center;
-  gap: 2rem;
-  margin-bottom: 4rem;
+  gap: min(1rem, 5%);
+  margin-bottom: clamp(2rem, 2vw + 2rem, 4rem);
 }
 .ethos {
   width: 50%;
-  font-size: 2rem;
+  font-size: clamp(0.5rem, 1.2vw + 0.5rem, 2rem);
 }
 .roaster {
   width: 50%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -57,131 +57,40 @@
   text-align: center;
 }
 .times {
-  font-size: 1.5rem;
+  font-size: clamp(0.4rem, 1vw + 0.5rem, 1.5rem);
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: min(4rem, 8%);
 }
 /* ------ RESPONSIVE DESIGN ------ */
-/* ------ DESKTOPS ------ */
+/* ------ DESKTOPS - LAPTOPS ------ */
 @media only screen and (max-width: 1280px) {
-  .sub-heading {
-    font-size: clamp(4rem, 2vw, 4rem);
-    margin: 2rem;
-  }
   .story {
-    margin: 2rem;
-    width: 100%;
-    margin-bottom: 3rem;
-  }
-  .ethos {
-    font-size: clamp(1.8rem, 1vw, 1.8rem);
-  }
-  .roaster {
-    height: 50vh;
-  }
-  .times {
-    font-size: clamp(1.8rem, 1vw, 1.8rem);
-    margin-bottom: 3rem;
-  }
-}
-/* ------ LAPTOPS ------ */
-@media only screen and (max-width: 1024px) {
-  .sub-heading {
-    font-size: clamp(3rem, 2vw, 3rem);
-    margin: 2rem;
-  }
-  .story {
-    margin: 1rem;
-    width: 100%;
-    margin-bottom: 3rem;
-    gap: 1rem;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-  }
-  .ethos {
-    font-size: clamp(1.5rem, 1.2vw, 1.5rem);
-    height: auto;
-  }
-  .roaster {
-    height: auto;
-    max-height: 60vh;
-  }
-  .times {
-    font-size: clamp(1.5rem, 1.2vw, 1.5rem);
-    text-align: center;
-    margin-bottom: 3rem;
+    width: 95%;
   }
 }
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
-  .sub-heading {
-    font-size: clamp(2.5rem, 2vw, 2.5rem);
-    margin: 1rem;
-  }
   .story {
-    margin: 1rem;
-    width: 100%;
-    margin-bottom: 2rem;
-    gap: 1rem;
+    width: 95%;
+    align-items: stretch;
   }
   .ethos {
-    font-size: clamp(1.2rem, 2vw, 2rem);
-  }
-  .roaster {
-    max-height: 30vh;
-  }
-  .times {
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    text-align: center;
-    margin-bottom: 2rem;
+    width: 95%;
   }
 }
 /* ------ PHONES ------ */
 @media only screen and (max-width: 480px) {
-  .sub-heading {
-    font-size: clamp(2rem, 3vw, 2rem);
-    margin: 1rem;
-  }
   .story {
-    margin-top: 0.2rem;
-    margin-bottom: 2rem;
     width: 100%;
-    gap: 1rem;
+    flex-direction: column;
   }
   .ethos {
-    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    width: 95%;
+    text-align: center;
+    margin: 0 auto;
   }
   .roaster {
-    max-height: 18vh;
-  }
-  .times {
-    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-}
-/* ------ SMALL PHONES ------ */
-@media only screen and (max-width: 375px) {
-  .sub-heading {
-    font-size: clamp(2rem, 2.5vw, 0.9rem);
-    margin: 1rem;
-  }
-  .story {
-    margin-top: 0.2rem;
-    margin-bottom: 2rem;
-    width: 100%;
-    gap: 1rem;
-  }
-  .ethos {
-    font-size: clamp(0.6rem, 2.5vw, 0.9rem);
-  }
-  .roaster {
-    max-height: 23vh;
-  }
-  .times {
-    font-size: clamp(0.6rem, 2.5vw, 0.9rem);
-    text-align: center;
-    margin-bottom: 2rem;
+    width: 95%;
+    margin: 0 auto;
   }
 }

@@ -1,6 +1,6 @@
 // IMPORTS
-import { products, stagingArea, basketItems } from "./assets.js";
-import { announce } from "./announcer.js";
+import { products, stagingArea, basketItems } from "../tools/assets.js";
+import { announce } from "../tools/announcer.js";
 
 export function initBuy() {
   const buy = document.querySelector(".buy");

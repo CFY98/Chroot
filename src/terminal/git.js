@@ -7,10 +7,10 @@ import {
   processOrder,
   prices,
   removeItem,
-} from "./assets.js";
-import { addLine, blank } from "./utilities.js";
-import { announce } from "./announcer.js";
-import { router } from "./routerSPA.js";
+} from "../tools/assets.js";
+import { addLine, blank } from "../tools/utilities.js";
+import { announce } from "../tools/announcer.js";
+import { router } from "../tools/routerSPA.js";
 
 // GIT ADD (ADD ITEMS TO BASKET)
 export function gitAdd({ items, stagingArea, basketItems, block }) {

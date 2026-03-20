@@ -1,6 +1,6 @@
 // IMPORTS
-import { addLine, blank } from "./utilities.js";
-import { router } from "./routerSPA.js";
+import { addLine, blank } from "../tools/utilities.js";
+import { router } from "../tools/routerSPA.js";
 
 // cdPages
 export function gui() {

@@ -8,7 +8,6 @@
 }
 .header {
   width: 100%;
-  height: 15%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -16,26 +15,28 @@
 .delete {
   text-align: right;
   color: var(--red);
-  font-size: 1rem;
+  font-size: clamp(0.7rem, 1vw + 1rem, 2rem);
   text-decoration: underline;
   cursor: pointer;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  margin-right: 6.8%;
+  padding-top: clamp(1rem, 2vw + 1rem, 3rem);
+  padding-bottom: clamp(1rem, 2vw + 1rem, 3rem);
+  margin-right: 7%;
 }
-.columns {
+.columns,
+.cart-item {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr;
-  width: 90%;
+}
+.columns {
+  width: 86%;
   margin: 0 auto;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw + 0.5rem, 3rem);
   text-align: center;
-  gap: 1rem;
 }
 .column-item {
   grid-column: 2;
   margin-right: auto;
-  margin-left: 14%;
+  margin-left: 11%;
 }
 .column-quantity {
   grid-column: 3;
@@ -43,7 +44,7 @@
 .column-price {
   grid-column: 4;
   text-align: right;
-  margin-right: 11%;
+  margin: 0;
 }
 .column-line {
   margin-top: 0.5rem;
@@ -52,18 +53,11 @@
   width: 86%;
   margin-left: auto;
 }
-.cart-items {
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-}
 .cart-item {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
   align-items: center;
   width: 90%;
   min-height: 30%;
-  margin: auto;
+  margin: 0 auto;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -82,7 +76,7 @@
   margin-left: 14%;
 }
 .name {
-  font-size: 1.5rem;
+  font-size: clamp(0.5rem, 1.5vw + 0.5rem, 2rem);
   line-height: 10px;
   font-weight: 300;
   color: var(--text);
@@ -91,55 +85,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 70%;
   margin-right: auto;
-  margin-left: 25%;
+  margin-left: 10%;
 }
-.plus-btn {
-  width: 2rem;
-  height: 2rem;
+.plus-btn,
+.minus-btn {
+  width: clamp(1.5rem, 2vw + 1rem, 3rem);
+  height: clamp(1.5rem, 2vw + 1rem, 3rem);
   border-radius: 50%;
   background-color: var(--green);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw + 1rem, 2.5rem);
   font-weight: 300;
   color: var(--text);
   cursor: pointer;
 }
 .minus-btn {
   background-color: var(--red);
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  font-weight: 300;
-  color: var(--text);
-  cursor: pointer;
 }
 .btn:hover {
   color: var(--hover);
   opacity: 0.9;
 }
 .count {
-  font-size: 1rem;
+  font-size: clamp(0.3rem, 1.2vw + 0.5rem, 1.8rem);
   font-weight: 300;
   color: var(--text);
 }
 .cost {
   text-align: right;
-  margin-right: 10%;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  margin-right: 11%;
 }
 .amount {
-  font-size: 1.5rem;
-  padding-top: 1rem;
+  font-size: clamp(0.5rem, 1.5vw + 0.5rem, 2rem);
 }
 .remove {
-  font-size: 1rem;
+  font-size: clamp(0.7rem, 1.2vw + 0.5rem, 1.8rem);
   padding-top: 1%;
   cursor: pointer;
   color: var(--muted);
@@ -165,294 +151,104 @@ hr {
 }
 .total {
   width: 100%;
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 2vw + 0.5rem, 2.5rem);
   text-align: right;
 }
 .total-amount {
-  font-size: 2rem;
+  font-size: clamp(1rem, 2.5vw + 0.5rem, 3rem);
   font-weight: 300;
   margin-top: 1%;
   text-align: right;
 }
 .button {
-  width: 80%;
-  height: 3rem;
+  width: 55%;
+  height: clamp(2rem, 2vw + 2rem, 5rem);
   border: none;
   background: linear-gradient(to bottom right, var(--hover), var(--path));
   border-radius: 20px;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: clamp(0.9rem, 1vw + 0.7rem, 3rem);
   font-family: "JetBrains Mono";
   font-weight: 300;
   color: var(--text);
 }
 
 /* ------ RESPONSIVE DESIGN ------ */
-/* ------ DESKTOPS ------ */
+/* ------ DESKTOPS - TABLETS ------ */
 @media only screen and (max-width: 1280px) {
-  .columns {
-    grid-template-columns: 1fr 2fr 1fr 1fr;
-    font-size: 2.1rem;
-  }
   .column-item {
     grid-column: 2;
     margin-right: auto;
-    margin-left: 13%;
-  }
-  .cart-item {
-    grid-template-columns: 1fr 2fr 1fr 1fr;
-  }
-  .plus-btn {
-    width: 3rem;
-    height: 3rem;
-    font-size: 2rem;
-  }
-  .minus-btn {
-    width: 3rem;
-    height: 3rem;
-    font-size: 2rem;
-  }
-  .count {
-    font-size: 1.2em;
-  }
-}
-/* ------ LAPTOPS ------ */
-@media only screen and (max-width: 1024px) {
-  .columns {
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-    font-size: 2rem;
-  }
-  .column-item {
-    grid-column: 2;
-    margin-right: auto;
-    margin-left: 12%;
-  }
-  .cart-item {
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-  }
-  .counter {
-    width: 60%;
-    margin-left: auto;
-  }
-  .plus-btn {
-    width: 3rem;
-    height: 3rem;
-    font-size: 2rem;
-  }
-  .minus-btn {
-    width: 3rem;
-    height: 3rem;
-    font-size: 2rem;
-  }
-  .count {
-    font-size: 1.2em;
-  }
-}
-/* ------ TABLETS ------ */
-@media only screen and (max-width: 768px) {
-  .columns {
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-    font-size: 1.5rem;
-  }
-  .column-item {
-    grid-column: 2;
-    margin-right: auto;
-    margin-left: 2%;
+    margin-left: 11%;
   }
   .column-quantity {
-    margin-left: auto;
-    margin-right: 48%;
+    grid-column: 3;
+    margin: auto;
   }
   .column-price {
-    margin-right: 13%;
-  }
-  .cart-item {
-    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-column: 4;
+    text-align: right;
+    margin: 0;
   }
   .image-box img {
     width: 3rem;
     height: 3rem;
   }
-  .name {
-    font-size: 1.3rem;
-    margin-right: auto;
-    margin-left: -10%;
-  }
   .counter {
+    width: 90%;
     margin-left: auto;
-    margin-right: 48%;
+    margin-right: 10%;
   }
-  .plus-btn {
-    width: 2rem;
-    height: 2rem;
-    font-size: 1rem;
-  }
-  .minus-btn {
-    width: 2rem;
-    height: 2rem;
-    font-size: 1rem;
-  }
-  .count {
-    font-size: 1.1rem;
-  }
-  .amount {
-    font-size: 1.3rem;
-    margin-left: auto;
-    margin-right: 2%;
+  .cost {
+    grid-column: 4;
+    margin-top: 1.8rem;
   }
   .remove {
-    font-size: 1rem;
-    margin-left: auto;
-    margin-right: 2%;
-  }
-  .total {
-    font-size: 1rem;
-  }
-  .total-amount {
-    margin-top: 0.5rem;
-    font-size: 1.5rem;
-    text-align: right;
+    padding-top: 1%;
+    cursor: pointer;
+    color: var(--muted);
   }
   .button {
-    width: 80%;
-    height: 2.5rem;
-    font-size: 1.5rem;
+    width: 70%;
   }
 }
 /* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
-  .delete {
-    font-size: 0.7rem;
-    padding-top: 1rem;
-  }
-  .columns {
-    grid-template-columns: 0 0.6fr 0.6fr 0.5fr;
-    font-size: 1rem;
-  }
-  .column-item {
-    margin-right: auto;
-    margin-left: -9%;
-  }
-  .column-quantity {
-    margin-right: auto;
-    margin-left: 1.1%;
-  }
-  .column-price {
-    margin-right: 8%;
+  .columns,
+  .cart-item {
+    grid-template-columns: 0 1fr 1fr 1fr;
   }
   .cart-item {
-    grid-template-columns: 0 0.6fr 0.6fr 0.5fr;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-  .image-box img {
-    display: none;
-  }
-  .name {
-    font-size: 1rem;
-    margin-right: auto;
-    margin-left: -10%;
-  }
-  .counter {
-    width: 80%;
-  }
-  .plus-btn {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1rem;
-  }
-  .minus-btn {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1rem;
-  }
-  .count {
-    font-size: 0.8rem;
-  }
-  .amount {
-    font-size: 1rem;
-    margin-left: auto;
-    margin-right: -4%;
-  }
-  .remove {
-    font-size: 0.7rem;
-    margin-left: auto;
-    margin-right: -4%;
-  }
-  .total {
-    font-size: 0.8rem;
-  }
-  .total-amount {
-    margin-top: 0.5rem;
-    font-size: 1.2rem;
-    text-align: right;
-  }
-  .button {
-    width: 85%;
-    height: 2rem;
-    font-size: 1rem;
-  }
-}
-/* ------ SMALL PHONES ------ */
-@media only screen and (max-width: 375px) {
-  .columns {
-    grid-template-columns: 0 0.6fr 0.6fr 0.5fr;
-    font-size: 1rem;
-  }
-  .column-item {
-    margin-right: auto;
-    margin-left: -9%;
-  }
-  .column-quantity {
-    margin-right: auto;
-    margin-left: 1.1%;
-  }
-  .column-price {
-    margin-right: 8%;
-  }
-  .cart-item {
-    grid-template-columns: 0 0.6fr 0.6fr 0.5fr;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-  .image-box img {
-    display: none;
-  }
-  .name {
-    font-size: 1rem;
-    margin-right: auto;
-    margin-left: -10%;
-  }
-  .counter {
-    width: 70%;
-    margin-left: 10%;
-  }
-  .plus-btn {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1rem;
-  }
-  .minus-btn {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1rem;
-  }
-  .count {
-    font-size: 0.8rem;
-  }
-  .amount {
-    font-size: 1rem;
-    margin-left: auto;
-    margin-right: -4%;
-  }
-  .remove {
-    font-size: 0.7rem;
-    margin-left: auto;
-    margin-right: -4%;
-  }
-  .button {
     width: 95%;
-    height: 2rem;
-    font-size: 1rem;
+  }
+  .column-item {
+    grid-column: 2;
+    margin-left: 0%;
+  }
+  .column-quantity {
+    grid-column: 3;
+    margin: o auto;
+  }
+  .column-price {
+    grid-column: 4;
+  }
+  .image-box img {
+    display: none;
+  }
+  .name {
+    grid-column: 2;
+    margin-right: auto;
+  }
+  .counter {
+    grid-column: 3;
+    margin-left: 5%;
+  }
+  .cost {
+    grid-column: 4;
+    margin-right: 15%;
+    margin-top: 1rem;
+  }
+  .button {
+    width: 100%;
   }
 }

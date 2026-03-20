@@ -11,14 +11,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
   width: 100%;
-  margin-bottom: 3rem;
+  gap: 1.5rem;
+  margin-bottom: min(1rem, 8%);
 }
 .catalogue-item {
   width: 50%;
   aspect-ratio: 1 / 1;
-  box-sizing: border-box;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -32,30 +31,113 @@
   width: 50%;
   align-items: center;
   justify-self: center;
-  margin: 1rem;
 }
 .stats {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   font-weight: bold;
-  margin: 0.5rem;
+  font-size: clamp(1rem, 1vw + 0.2rem, 3rem);
+}
+.fluff {
+  font-weight: 300;
+  font-family: "IBM Plex Sans";
+  justify-content: center;
+  text-align: center;
+  font-size: clamp(0.8rem, 1vw + 0.5rem, 3rem);
 }
 .result {
   font-weight: 300;
-  font-family: "IBM Plex Sans";
+  font-size: clamp(1rem, 1vw + 0.1rem, 3rem);
+}
+#purchase {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  margin-top: min(3rem, 5%);
+}
+.counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
+.plus-btn,
+.minus-btn {
+  width: clamp(1.5rem, 2vw + 1rem, 3rem);
+  height: clamp(1.5rem, 2vw + 1rem, 3rem);
+  border-radius: 50%;
+  background-color: var(--green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(0.9rem, 2vw + 1rem, 2.5rem);
+  font-weight: 300;
+  color: var(--text);
+  cursor: pointer;
+}
+.minus-btn {
+  background-color: var(--red);
+}
+.btn:hover {
+  color: var(--hover);
+  opacity: 0.9;
+}
+.count {
+  font-size: clamp(0.3rem, 1.2vw + 0.5rem, 1.8rem);
+  font-weight: 300;
+  color: var(--text);
 }
 .buy {
-  margin: 2rem 2rem;
-  width: 40%;
-  height: 3rem;
+  width: 100%;
+  height: clamp(2rem, 4vw + 1rem, 4rem);
   border: none;
   background: linear-gradient(to bottom right, var(--hover), var(--path));
   border-radius: 20px;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1vw + 1rem, 2rem);
   font-family: "JetBrains Mono";
   font-weight: 300;
   color: var(--text);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS - PHONES ------ */
+@media only screen and (max-width: 1280px) {
+  #catalogue-wrapper {
+    width: 100%;
+  }
+  .catalogue-container {
+    flex-direction: column;
+    width: 90%;
+  }
+  .catalogue-item {
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 4 / 3;
+  }
+  .catalogue-item img {
+    aspect-ratio: 4 / 3;
+  }
+  .statistics {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: min(1rem, 1%);
+    margin-bottom: 3rem;
+  }
+  .stats,
+  .result {
+    font-size: calc(1vw + 0.6rem);
+  }
+  #purchase {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    margin-bottom: min(3rem, 10%);
+  }
+  .buy {
+    margin-top: 1.5rem;
+  }
 }
