@@ -250,7 +250,7 @@ hr {
   .column-item {
     grid-column: 2;
     margin-right: auto;
-    margin-left: 1%;
+    margin-left: 2%;
   }
   .column-quantity {
     margin-left: auto;
