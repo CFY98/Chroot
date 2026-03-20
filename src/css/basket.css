@@ -24,15 +24,14 @@
 }
 .cart-item {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr;
 }
 .cart-item {
   align-items: center;
   width: 90%;
   min-height: 30%;
   margin: 0 auto;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: min(7rem, 5%);
 }
 .image-box {
   text-align: center;
@@ -45,9 +44,6 @@
   border-radius: 50%;
   object-fit: cover;
 }
-.about {
-  margin-left: 14%;
-}
 .name {
   font-size: clamp(0.5rem, 1.6vw + 0.5rem, 2rem);
   line-height: 10px;
@@ -55,8 +51,9 @@
   color: var(--text);
 }
 .counter {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 .plus-btn,
@@ -86,10 +83,9 @@
   color: var(--text);
 }
 .cost {
-  text-align: right;
-  margin: 0 auto;
+  justify-self: end;
   margin-top: 1.5rem;
-  margin-right: 11%;
+  margin-right: 12%;
 }
 .amount {
   font-size: clamp(0.5rem, 1.5vw + 0.5rem, 2rem);
@@ -127,7 +123,6 @@ hr {
 .total-amount {
   font-size: clamp(1rem, 2.5vw + 0.5rem, 3rem);
   font-weight: 300;
-  margin-top: 1%;
   text-align: right;
 }
 .button {
@@ -146,9 +141,7 @@ hr {
   font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
   text-align: center;
   margin: 0 auto;
-  padding: 1rem;
-  padding-top: min(3.5rem, 6%);
-  padding-bottom: 0.2rem;
+  padding-top: 4.5%;
 }
 
 /* ------ RESPONSIVE DESIGN ------ */
@@ -175,6 +168,10 @@ hr {
 @media only screen and (max-width: 768px) {
   .cost {
     margin-top: 1.3rem;
+  }
+  .image-box img {
+    width: 3rem;
+    height: 3rem;
   }
 }
 
