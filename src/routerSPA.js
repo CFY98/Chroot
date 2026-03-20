@@ -1,7 +1,7 @@
 // IMPORTS
 import { routesAnnouncements } from "./announcer.js";
 import { initSlideshow } from "./slideshow.js";
-import { routes } from "./assets.js";
+import { routes, tMode } from "./assets.js";
 import { announce } from "./announcer.js";
 
 // ROUTER FUNCTION
@@ -57,14 +57,8 @@ document.querySelectorAll(".nav-btn").forEach((navBtn) => {
   });
 });
 
-// TITLE BUTTON
-const title = document.querySelector(".title");
-title.addEventListener("click", (e) => {
-  e.preventDefault();
-  history.pushState({}, "", "/");
-  router("/");
-  document.querySelector(".nav-btn.active")?.classList.remove("active");
-});
+// TUI MODE VARIABLE
+export let tuiMode = false;
 
 // TOGGLE
 const toggle = document.querySelector(".titlebar-text");
@@ -80,15 +74,18 @@ toggle.addEventListener("click", (e) => {
     toggle.dataset.hover = "Toggle - TUI";
   }
 
+  tuiMode = !tuiMode;
+  tMode(tuiMode);
   document.querySelector(".nav-btn.active")?.classList.remove("active");
+});
 
-  if (window.location.pathname === "/tui") {
-    history.pushState({}, "", "/");
-    router("/");
-  } else {
-    history.pushState({}, "", "/tui");
-    router("/tui");
-  }
+// TITLE BUTTON
+const title = document.querySelector(".title");
+title.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  tMode(tuiMode);
+  document.querySelector(".nav-btn.active")?.classList.remove("active");
 });
 
 // PRODUCT PAGES

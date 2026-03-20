@@ -1,13 +1,18 @@
 // IMPORTS
-import { basketItems, stagingArea, prices, orderNumber } from "./assets.js";
+import {
+  basketItems,
+  stagingArea,
+  prices,
+  orderNumber,
+  termHistory,
+} from "./assets.js";
 import { announce } from "./announcer.js";
 import { gitCmds } from "./git.js";
 import { cdPages } from "./cd.js";
 import { blank, addLine, printBlock, createBlock } from "./utilities.js";
 
 export function initTerminal() {
-  // TERMINAL HISTORY
-  const termHistory = [];
+  // TERMINAL HISTORY TOGGLE
   let histIdx = -1;
 
   // TERMINAL DOM
@@ -200,6 +205,8 @@ export function initTerminal() {
           const val = input.value;
           if (val.trim()) {
             termHistory.unshift(val);
+            if (termHistory.length > 15) termHistory.length = 0;
+            localStorage.setItem("termHistory", JSON.stringify(termHistory));
             histIdx = -1;
           }
           run(val);

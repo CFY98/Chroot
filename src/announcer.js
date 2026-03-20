@@ -17,33 +17,45 @@ export function announce(message) {
 
 // PAGE ANNOUNCEMENTS
 export function tuiAnnounce() {
-  announce("The terminal interface has loaded");
+  announce("The Terminal User Interface has loaded");
   initTerminal();
 }
 export function basketAnnounce() {
-  announce("The basket page has loaded");
+  announce("The Basket page has loaded");
   initBasket();
 }
 export function receiptAnnounce() {
-  announce("The receipt page has loaded");
+  announce("The Receipt page has loaded");
   initReceipt();
 }
 export function equipmentAnnounce() {
-  announce("The equipment page has loaded");
+  announce("The Equipment page has loaded");
 }
 export function beansAnnounce() {
-  announce("The beans page has loaded");
+  announce("The Beans page has loaded");
 }
 export function blazeAnnounce() {
-  announce("The blaze coffee page had loaded");
+  announce("The Blaze coffee page had loaded");
   initBuy();
 }
 export function sunshineAnnounce() {
-  announce("The sunshine coffee page had loaded");
+  announce("The Sunshine coffee page had loaded");
   initBuy();
 }
 export function summitAnnounce() {
-  announce("The summit coffee page had loaded");
+  announce("The Summit coffee page had loaded");
+  initBuy();
+}
+export function filtersAnnounce() {
+  announce("The Chroot Filters page had loaded");
+  initBuy();
+}
+export function dripperAnnounce() {
+  announce("The Chroot Dripper page had loaded");
+  initBuy();
+}
+export function grinderAnnounce() {
+  announce("The Chroot Grinder page had loaded");
   initBuy();
 }
 export const routesAnnouncements = {
@@ -55,4 +67,7 @@ export const routesAnnouncements = {
   "/blaze": blazeAnnounce,
   "/sunshine": sunshineAnnounce,
   "/summit": summitAnnounce,
+  "/filters": filtersAnnounce,
+  "/dripper": dripperAnnounce,
+  "/grinder": grinderAnnounce,
 };

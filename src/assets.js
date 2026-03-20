@@ -1,5 +1,6 @@
 // IMPORTS
 import { announce } from "./announcer.js";
+import { router, tuiMode } from "./routerSPA.js";
 
 // ROUTES OBJECT
 export const routes = {
@@ -12,9 +13,12 @@ export const routes = {
   "/basket": { path: "/src/pages/basket.html", title: "basket" },
   "/tui": { path: "/src/pages/tui.html", title: "tui" },
   "/receipt": { path: "/src/pages/receipt.html", title: "receipt" },
-  "/blaze": { path: "/src/pages/blaze.html", title: "blaze" },
-  "/sunshine": { path: "/src/pages/sunshine.html", title: "sunshine" },
-  "/summit": { path: "/src/pages/summit.html", title: "summit" },
+  "/blaze": { path: "/src/pages/coffee/blaze.html", title: "blaze" },
+  "/sunshine": { path: "/src/pages/coffee/sunshine.html", title: "sunshine" },
+  "/summit": { path: "/src/pages/coffee/summit.html", title: "summit" },
+  "/filters": { path: "/src/pages/gear/filters.html", title: "filters" },
+  "/dripper": { path: "/src/pages/gear/dripper.html", title: "dripper" },
+  "/grinder": { path: "/src/pages/gear/grinder.html", title: "grinder" },
 };
 
 // ITEMS
@@ -48,6 +52,10 @@ export const stagingArea = JSON.parse(
   localStorage.getItem("stagingArea") || "{}",
 );
 
+export const termHistory = JSON.parse(
+  localStorage.getItem("termHistory") || "[]",
+);
+
 // FUNCTIONS
 export function processOrder(orderNumber, basketItems, stagingArea) {
   localStorage.setItem("orderNumber", JSON.stringify(orderNumber));
@@ -58,7 +66,7 @@ export function processOrder(orderNumber, basketItems, stagingArea) {
   basketItems.length = 0;
   localStorage.removeItem("stagingArea");
   for (let key in stagingArea) delete stagingArea[key];
-  localStorage.setItem("itemCount", "0");
+  localStorage.setItem("itemCount", 0);
 }
 export function removeItem(stagingArea, basketItems, itemName, cartItem) {
   const itemQty = stagingArea[itemName] || 1;
@@ -74,4 +82,14 @@ export function removeItem(stagingArea, basketItems, itemName, cartItem) {
   localStorage.setItem("basketItems", JSON.stringify(basketItems));
   localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
   cartItem.remove();
+}
+
+export function tMode(tuiMode) {
+  if (tuiMode) {
+    history.pushState({}, "", "/tui");
+    router("/tui");
+  } else {
+    history.pushState({}, "", "/");
+    router("/");
+  }
 }

@@ -117,6 +117,9 @@ export function initBasket() {
       orderNumber.push(hash);
       processOrder(orderNumber, basketItems, stagingArea);
 
+      const activeBtn = document.getElementById("nav-btn");
+      if (activeBtn) activeBtn.classList.remove("active");
+
       if (product) product.innerHTML = "";
       announce(`The receipt for order ${hash} is now available to print`);
       updateTotal(stagingArea);
