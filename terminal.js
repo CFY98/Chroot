@@ -8,6 +8,9 @@ let histIdx = -1;
 // STAGING AREA
 let stagingArea = {};
 
+// RECEIPT NUMBER
+let orderNumber = [];
+
 window.addEventListener("storage", (e) => {
   if (e.key === "stagingArea" && e.newValue === null) {
     stagingArea = {};
@@ -192,6 +195,10 @@ if (terminalEl) {
         } else if (action === "commit") {
           const message = parts.slice(3).join(" ").replace(/"/g, "");
           const stagedItems = Object.keys(stagingArea);
+          const basketItems = JSON.parse(
+            localStorage.getItem("basketItems") || "[]",
+          );
+
           if (stagedItems.length === 0) {
             addLine(block, "No changes added to commit", "warn");
             break;
@@ -214,10 +221,18 @@ if (terminalEl) {
               "info",
             );
           });
+          orderNumber.push(hash);
+          localStorage.setItem("orderNumber", JSON.stringify(orderNumber));
+          localStorage.setItem("purchased", JSON.stringify(basketItems));
+          localStorage.setItem("committed", JSON.stringify(stagingArea));
+
           localStorage.removeItem("basketItems");
           localStorage.removeItem("stagingArea");
           localStorage.setItem("itemCount", "0");
           stagingArea = {};
+
+          const frame = document.getElementById("page");
+          frame.src = "./receipt.html";
           if (basket && basket.contentWindow) {
             basket.contentWindow.postMessage(
               { action: "updateBasket", item: item },
@@ -342,7 +357,6 @@ if (terminalEl) {
   if (QUICK_CMDS && NAVIGATION) {
     QUICK_CMDS.forEach((cmd) => {
       const suggestion = document.createElement("button");
-      suggestion.style.width = "8rem";
       suggestion.className = "suggestion";
       suggestion.textContent = cmd;
       suggestion.addEventListener("click", () => {

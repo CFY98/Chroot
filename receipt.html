@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Receipt</title>
+  </head>
+  <body>
+    <p class="title">Invoice</p>
+    <p id="items">Thank you for your purchase at Chroot</p>
+    <div class="receipt-container">
+      <div class="bar">
+        <p id="order">Order Number:</p>
+        <button id="print">Print</button>
+      </div>
+      <div class="summary">
+        <ul class="summary-item">
+          Item
+        </ul>
+        <ul class="summary-quantity">
+          Quantity
+        </ul>
+        <ul class="summary-price">
+          Price
+        </ul>
+      </div>
+      <div class="receipt-items"></div>
+      <hr class="underline" />
+      <div class="receipt-checkout">
+        <div class="receipt-total">
+          Total
+          <div class="receipt-amount"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="receipt.js"></script>
+  </body>
+</html>
