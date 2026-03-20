@@ -1,0 +1,502 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+@font-face {
+  font-family: Fantasque Sans Mono;
+  src: url(./Fonts/fantasque-sans-mono/Webfonts/FantasqueSansMono-Regular.woff)
+    format(woff);
+}
+@font-face {
+  font-family: Victor Mono;
+  src: url(./Fonts/VictorMonoAll/WOFF/VictorMono-Regular.woff) format(woff);
+}
+/* ------ BODY ------ */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fffdfa;
+}
+/* ------ BODY ------ */
+
+/* ------ NAVIGATION BAR ------ */
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background-color: #c4beb5;
+  padding: 20px;
+}
+#navbar span {
+  font-family: "Fantasque Sans Mono";
+  font-style: normal;
+  font-size: 35px;
+  padding-left: 100px;
+}
+.nav {
+  font-family: "Comic Neue";
+  padding-right: 45px;
+  margin-left: auto;
+  /* border: red 2px solid; */
+}
+.nav a:not(:last-child) {
+  margin-right: 40px;
+}
+#navbar a {
+  text-decoration: none;
+  color: #25332d;
+  font-size: 30px;
+}
+#navbar a:hover {
+  color: #c1730e;
+}
+/* ------ END OF NAVIGATION BAR ------ */
+
+/* ------ HEADINGS AND TEXTS ------ */
+/* ------ TITLE ------ */
+h1 {
+  font-family: "Quicksand";
+  color: #1b1e18;
+  text-align: center;
+  font-size: 90px;
+  font-weight: 390;
+}
+h1 span {
+  font-family: "Fantasque Sans Mono";
+  font-style: normal;
+  font-size: 90px;
+  font-weight: 200;
+}
+/* ------ END OF TITLE ------ */
+/* ------ PARAGRAPHS ------ */
+#path {
+  font-family: "Fantasque Sans Mono";
+  font-size: 35px;
+  font-style: normal;
+  color: #25332d;
+  opacity: 0;
+  /* prevent text from breaking into multiple lines, keeping it all on a single line */
+  white-space: nowrap;
+}
+#path:hover {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+#path p {
+  margin: 0;
+  padding: 0;
+}
+#passage {
+  text-align: center;
+  font-family: "Quicksand";
+  font-size: 40px;
+  padding-bottom: 50px;
+}
+#items {
+  text-align: center;
+  font-family: "Quicksand";
+  font-size: 40px;
+  padding-bottom: 50px;
+}
+.itemnames {
+  font-family: "Quicksand";
+  font-weight: 300;
+  font-size: 40px;
+  margin-bottom: -10px;
+}
+.prices {
+  font-family: "Quicksand";
+  font-weight: 200;
+  font-size: 35px;
+}
+.info {
+  color: #fffdfa;
+  font-family: "Quicksand";
+  font-size: 80px;
+  text-align: center;
+  text-decoration: none;
+}
+.info:hover {
+  color: #4d693a;
+}
+/* ------ END OF PARAGRAPHS ------ */
+/* ------ END OF HEADINGS AND TEXTS ------ */
+
+/* ------ INDEX PAGE ------ */
+/* ------ SLIDESHOW ------ */
+#slideshow {
+  /* border: red solid 2px; */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 70%;
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  margin-top: 80px;
+  border-radius: 10px;
+}
+#slideshow .list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: max-content;
+  display: flex;
+}
+.list figure {
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+}
+figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.arrows {
+  position: absolute;
+  top: 45%;
+  left: 5%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.arrows button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #fff5;
+  color: #fffdfa;
+  border: none;
+  font-family: "Comic Neue";
+  font-size: 35px;
+  transition: ease 500ms;
+}
+.arrows button:hover {
+  background-color: rgb(0, 0, 0, 0.25);
+}
+.dots {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  bottom: 10px;
+  box-sizing: border-box;
+  color: #fffdfa;
+  /* border: red 2px solid; */
+}
+.dots li {
+  list-style: none;
+  background-color: #fff5;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin: 20px;
+  border-radius: 40px;
+  display: inline-block;
+  transition: background-color ease 500ms, width 0.5s;
+}
+.dots li.active {
+  width: 40px;
+}
+.dots li.active:hover {
+  background-color: rgb(0, 0, 0, 0.25);
+}
+/* ------ END OF SLIDESHOW ------*/
+/* ------ END OF INDEX PAGE ------ */
+
+/* ------ DRINKS PAGE ------ */
+#drinks {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-bottom: 150px;
+  /* border: blue 2px solid; */
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.coffee {
+  display: flex;
+  flex-direction: column;
+  /* flex: flex-grow, flex-shrink, flex-basis */
+  /* f-basis is in height since flex-direction changes orientation */
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* border: orange 5px solid; */
+}
+.coffee img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ------ END OF DRINKS PAGE ------ */
+/* ------ HOVER OVERLAY ------ */
+.caption-container {
+  /* border: green 2px solid; */
+  max-width: 90%;
+  height: 90%;
+  /* relative allows images to move relative to where it would normally be */
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.caption {
+  /* For child elements, allows the image to position relative to cloest ancestor that has rposition: relative */
+  position: absolute;
+  /* shorthand for top, right, left and bottom */
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  transform: translateY(100%);
+  transition: transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px red solid; */
+}
+.caption-container:hover .caption {
+  transform: translateY(0%);
+}
+/* ------ END OF HOVER OVERLAY ------ */
+/* ------ PASTRIES PAGE ------ */
+#food {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-bottom: 150px;
+  padding-left: 40px;
+  padding-right: 40px;
+  /* border: blue 2px solid; */
+}
+.pastries {
+  display: flex;
+  flex-direction: column;
+  /* flex: f-grow, f-shrink, f-basis */
+  /* f-basis is in height since flex-direction changes orientation */
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* border: orange 5px solid; */
+}
+.pastries img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ------ END OF PASTRIES PAGE ------ */
+
+/* ------ SOCIAL MEDIA BAR ------ */
+#socials {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #c4beb5;
+  padding: 20px;
+}
+#socials a {
+  text-decoration: none;
+  color: #25332d;
+  font-family: "Comic Neue";
+  font-size: 30px;
+}
+#socials a:hover {
+  color: #c1730e;
+}
+/* ------ END OF SOCIAL MEDIA BAR ------ */
+
+/* ------ PHONE SCREENS ------ */
+@media only screen and (min-width: 600px) and (max-width: 1400px) {
+  #navbar {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+  }
+  #navbar span {
+    padding-left: 5px;
+    font-size: 31px;
+  }
+  .nav {
+    font-family: "Comic Neue";
+    padding-right: 50px;
+  }
+  h1 {
+    font-size: 60px;
+    margin-top: 30px;
+    padding-top: 80px;
+    margin-bottom: 10px;
+  }
+  h1 span {
+    font-size: 60px;
+  }
+  #path {
+    font-size: 30px;
+    margin-left: -10px;
+  }
+  #passage {
+    font-size: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  #items {
+    font-size: 30px;
+    padding-bottom: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .itemnames {
+    font-size: 40px;
+    margin-bottom: -20px;
+  }
+  .prices {
+    font-size: 35px;
+    padding-bottom: 35px;
+  }
+  .info {
+    font-size: 50px;
+  }
+  #drinks {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .caption-container img {
+    width: 800px;
+    height: 600px;
+  }
+  #food {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #slideshow {
+    max-width: 85%;
+    margin-top: 155px;
+    margin-bottom: -40px;
+  }
+  .arrows button {
+    width: 70px;
+    height: 70px;
+    margin-top: -5px;
+  }
+  .dots li {
+    margin: 30px;
+    margin-top: 40px;
+    width: 20px;
+    height: 20px;
+    margin-top: 30px;
+  }
+  #socials {
+    bottom: 0;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    margin-top: 10px;
+  }
+  #socials a {
+    margin-right: 30px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #navbar {
+    padding: 10px;
+    position: fixed;
+    gap: 5px;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+  }
+  #navbar span {
+    font-size: 15px;
+    padding-left: 4px;
+  }
+  .nav {
+    font-family: "Comic Neue";
+    padding-right: 25px;
+  }
+  .nav a:not(:last-child) {
+    margin-right: 10px;
+  }
+  #navbar a {
+    text-decoration: none;
+    color: #25332d;
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 25px;
+    margin-top: 30px;
+    padding-top: 30px;
+  }
+  h1 span {
+    font-size: 25px;
+  }
+  #path {
+    font-size: 15px;
+  }
+  #passage {
+    font-size: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #items {
+    font-size: 12px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .itemnames {
+    font-size: 18px;
+    margin-bottom: -10px;
+  }
+  .prices {
+    font-size: 15px;
+    padding-bottom: 35px;
+  }
+  .info {
+    font-size: 40px;
+  }
+  #drinks {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #food {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #slideshow {
+    max-width: 85%;
+    margin-top: 60px;
+    margin-bottom: -40px;
+  }
+  .arrows button {
+    width: 50px;
+    height: 50px;
+    margin-top: -15px;
+  }
+  .dots li {
+    margin: 30px;
+    margin-top: 40px;
+  }
+  #socials {
+    padding: 10px;
+    bottom: 0;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    margin-top: 10px;
+  }
+  #socials a {
+    font-size: 15px;
+    margin-right: 15px;
+  }
+}
