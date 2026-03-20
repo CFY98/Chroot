@@ -22,6 +22,12 @@ export function initBasket() {
   const checkout = document.querySelector(".button");
   const total = document.querySelector(".total-amount");
 
+  function emptyState(basketItems) {
+    if (Object.entries(basketItems).length === 0) {
+      product.innerHTML = `<div class="empty"><p>Basket is Empty</p></div>`;
+    }
+  }
+
   function updateTotal(stagingArea) {
     document.querySelectorAll(".cart-item").forEach((cartItem) => {
       const name = cartItem.querySelector(".name").textContent;
@@ -86,6 +92,7 @@ export function initBasket() {
         removeItem(stagingArea, basketItems, itemName, cartItem);
         announce(` ${itemName} was completely removed from the basket`);
         updateTotal(stagingArea);
+        emptyState(basketItems);
       }
     });
   }
@@ -105,6 +112,7 @@ export function initBasket() {
       if (product) product.innerHTML = "";
       announce("The basket is now empty");
       updateTotal(stagingArea);
+      emptyState(basketItems);
     };
   }
 
@@ -141,6 +149,9 @@ export function initBasket() {
       );
 
       product.innerHTML = "";
+
+      emptyState(basketItems);
+
       renderItems.forEach((key) => {
         const qtyTotal = renderStaging[key] * prices[key];
         const div = document.createElement("div");

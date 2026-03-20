@@ -22,37 +22,9 @@
   padding-bottom: clamp(1rem, 2vw + 1rem, 3rem);
   margin-right: 7%;
 }
-.columns,
 .cart-item {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr;
-}
-.columns {
-  margin: 0 auto;
-}
-.columns div {
-  font-size: clamp(0.7rem, 1.5vw + 0.5rem, 2rem);
-  text-align: center;
-}
-.column-item {
-  grid-column: 2;
-  margin-right: auto;
-  margin-left: 13%;
-}
-.column-quantity {
-  grid-column: 3;
-}
-.column-price {
-  grid-column: 4;
-  text-align: right;
-  margin-left: auto;
-}
-.column-line {
-  margin-top: 0.5rem;
-  margin-right: 7%;
-  margin-bottom: 5%;
-  width: 86%;
-  margin-left: auto;
 }
 .cart-item {
   align-items: center;
@@ -170,21 +142,17 @@ hr {
   font-weight: 300;
   color: var(--text);
 }
+.empty {
+  font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
+  text-align: center;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-bottom: 0.2rem;
+}
 
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DESKTOPS - LAPTOPS ------ */
 @media only screen and (max-width: 1280px) {
-  .column-item {
-    grid-column: 2;
-  }
-  .column-quantity {
-    grid-column: 3;
-  }
-  .column-price {
-    grid-column: 4;
-    text-align: right;
-    margin-left: auto;
-  }
   .image-box img {
     width: 4rem;
     height: 4rem;
@@ -205,26 +173,11 @@ hr {
 
 /* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
-  .columns {
-    grid-template-columns: repeat(3, 1fr);
-  }
   .cart-item {
     grid-template-columns: 0 1fr 1fr 1fr;
   }
   .cart-item {
     width: 95%;
-  }
-  .column-item {
-    grid-column: 1;
-  }
-  .column-quantity {
-    grid-column: 2;
-    margin-right: auto;
-    margin-left: 23%;
-  }
-  .column-price {
-    grid-column: 3;
-    margin-left: 45%;
   }
   .image-box img {
     display: none;
@@ -255,12 +208,5 @@ hr {
   hr {
     width: 84%;
     margin-right: 8%;
-  }
-}
-@media only screen and (max-width: 375px) {
-  .column-quantity {
-    grid-column: 2;
-    margin-right: auto;
-    margin-left: 15%;
   }
 }
