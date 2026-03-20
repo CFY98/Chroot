@@ -61,11 +61,11 @@ toggle.addEventListener("click", (e) => {
   toggle.classList.toggle("active");
 
   if (toggle.classList.contains("active")) {
-    toggle.dataset.text = "Toggle - TUI";
-    toggle.dataset.hover = "Toggle - GUI";
+    toggle.dataset.text = "Mode: TUI";
+    toggle.dataset.hover = "Change: GUI";
   } else {
-    toggle.dataset.text = "Toggle - GUI";
-    toggle.dataset.hover = "Toggle - TUI";
+    toggle.dataset.text = "Mode: GUI";
+    toggle.dataset.hover = "Change: TUI";
   }
 
   tuiMode = !tuiMode;
@@ -74,12 +74,11 @@ toggle.addEventListener("click", (e) => {
 });
 
 // TITLE BUTTON
-const title = document.querySelector(".title");
+const title = document.getElementById("title");
 title.addEventListener("click", (e) => {
   e.preventDefault();
 
   tMode(tuiMode);
-  document.querySelector(".nav-btn.active")?.classList.remove("active");
 });
 
 // PRODUCT PAGES

@@ -106,7 +106,7 @@
 /* ------ TOAST NOTIFICATIONS ------*/
 #toastbox {
   position: absolute;
-  top: 2vw;
+  bottom: 2vw;
   right: 2vw;
   display: flex;
   align-items: flex-end;
@@ -202,9 +202,6 @@
 }
 /* ------ TOASTBOX TABLETS ------ */
 @media only screen and (max-width: 768px) {
-  #toastbox {
-    top: 32vw;
-  }
   .toast {
     width: 40vw;
     height: 12vw;
@@ -212,9 +209,6 @@
 }
 /* ------ TOASTBOX PHONES ------ */
 @media only screen and (max-width: 480px) {
-  #toastbox {
-    top: 45vw;
-  }
   .toast {
     width: 50vw;
     height: 25vw;

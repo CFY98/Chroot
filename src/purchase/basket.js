@@ -150,7 +150,7 @@ export function initBasket() {
         <img src="/Images/${key}.jpg" alt="${key}" />
       </div>
       <div class="about">
-        <h4 class="name">${key}</h4>
+        <div class="name">${key}</div>
       </div>
       <div class="counter">
         <div class="plus-btn" role="button" aria-label="Increases quantity by one">+</div>

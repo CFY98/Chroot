@@ -450,8 +450,8 @@ figure img {
   padding: clamp(0.4rem, 1.3vw, 1.5rem);
   background: var(--bar);
   border: 1px solid var(--border);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
 }
 
 .titlebar-text {
@@ -524,7 +524,7 @@ figure img {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   width: 100%;
-  padding: min(2rem, 3%);
+  padding: min(1rem, 3%);
   background-color: var(--bg);
   border-top: var(--border) solid 1px;
 }

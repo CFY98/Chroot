@@ -45,10 +45,10 @@ export function initReceipt() {
       div.classList.add("receipt-item");
       div.innerHTML = `
       <div class="image-box">
-        <img src="../Images/${key}.jpg" alt="${key}" />
+        <img src="/Images/${key}.jpg" alt="${key}" />
       </div>
       <div class="about">
-        <h4 class="item-name">${key}</h4>
+        <div class="item-name">${key}</div>
       </div>
         <div class="item-count">${committed[key]}</div>
       <div class="cost">
