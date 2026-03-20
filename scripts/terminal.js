@@ -452,18 +452,6 @@ if (terminalEl) {
         input.value = fullCmd;
         run(fullCmd);
         input.value = "";
-<<<<<<< HEAD
-<<<<<<< HEAD:scripts/terminal.js
-<<<<<<< HEAD:scripts/terminal.js
-        input.focus();
-=======
-        inout.focus()
->>>>>>> 34b98bf (Re-added .focus for Terminal):terminal.js
-=======
-        input.focus();
->>>>>>> 5519923 (Spelling Error Fix):terminal.js
-=======
->>>>>>> 81a3c78 (fix removed input.focus() from suggestio button event listener)
       });
       NAVIGATION.appendChild(suggestion);
     });
