@@ -91,6 +91,7 @@
   font-size: clamp(0.5rem, 1.5vw + 0.5rem, 2rem);
 }
 .remove {
+  text-align: right;
   font-size: clamp(0.7rem, 1.2vw + 0.5rem, 1.8rem);
   padding-top: 1%;
   cursor: pointer;
