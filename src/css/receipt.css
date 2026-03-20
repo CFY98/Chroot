@@ -193,29 +193,6 @@ hr {
     margin: 3% 2%;
     align-items: center;
   }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  .columns {
-    grid-template-columns: auto 0.5fr 0.5fr 0.5fr;
-    font-size: 1rem;
-  }
-  .column-item {
-    margin-right: auto;
-    margin-left: -9%;
-  }
-  .column-quantity {
-    margin-right: 15%;
-  }
-  .column-price {
-    margin-right: 7%;
-  }
->>>>>>> 0dc4423 (fix changed Object.keys to Object.hasOwn for buy.onclick function)
-=======
->>>>>>> 97eb58d (feat added orderMessage variable for receipt.html class message)
->>>>>>> workshop
   .receipt-item {
     grid-template-columns: 0 0.5fr 0.5fr 0.5fr;
   }
