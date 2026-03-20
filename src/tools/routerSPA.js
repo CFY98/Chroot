@@ -63,11 +63,11 @@ toggle.addEventListener("click", (e) => {
   toggle.classList.toggle("active");
 
   if (toggle.classList.contains("active")) {
-    toggle.dataset.text = "Mode: TUI";
-    toggle.dataset.hover = "Change: GUI";
+    toggle.dataset.text = "Terminal Mode";
+    toggle.dataset.hover = "Change: Visual Mode";
   } else {
-    toggle.dataset.text = "Mode: GUI";
-    toggle.dataset.hover = "Change: TUI";
+    toggle.dataset.text = "Visual Mode";
+    toggle.dataset.hover = "Change: Terminal Mode";
   }
 
   tuiMode = !tuiMode;

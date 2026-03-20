@@ -1,5 +1,6 @@
 // IMPORTS
 import "./tools/routerSPA";
+import "./tools/transitions";
 import "./css/basket.css";
 import "./css/pages.css";
 import "./css/product.css";
