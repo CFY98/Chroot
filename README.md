@@ -1,5 +1,5 @@
 # Chroot
-A fictional coffee shop. This website was developed with three pages,
+A fictional coffee shop. This website was developed with three pages with external links to social media pages and more.
 
 ## 🌐 Website structure
 ```
