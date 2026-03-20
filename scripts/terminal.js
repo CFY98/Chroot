@@ -51,8 +51,8 @@ if (terminalEl) {
 
   function navigate(block, page) {
     addLine(block, `site@chroot ~/${PAGES[page].label} $`, "prompt");
-    const frame = document.getElementById("page");
-    frame.src = PAGES[page].path;
+    const iframe = document.getElementById("page");
+    iframe.src = PAGES[page].path;
   }
 
   // BOOT MESSAGE
@@ -97,6 +97,7 @@ if (terminalEl) {
         addLine(block, "  add [item]     adds item to basket", "info");
         addLine(block, "  reset [item]   removes item from basket", "info");
         addLine(block, "  commit         proccesses orders", "info");
+        addLine(block, "  log            prints receipt", "info");
         blank(block);
         addLine(block, "Items:", "info");
         addLine(block, "  beans     [ blaze | sunshine | summit ]", "info");
@@ -268,9 +269,9 @@ if (terminalEl) {
           localStorage.setItem("itemCount", "0");
           stagingArea = {};
 
-          const frame = document.getElementById("page");
-          frame.src = "../pages/receipt.html";
-          frame.onload = () =>
+          const iframe = document.getElementById("page");
+          iframe.src = "../pages/receipt.html";
+          iframe.onload = () =>
             announce(`The receipt for order ${hash} is now available to print`);
           if (basket && basket.contentWindow) {
             basket.contentWindow.postMessage(
@@ -320,8 +321,41 @@ if (terminalEl) {
           });
 
           break;
+        } else if (action === "log") {
+          const iframe = window.parent.document.getElementById("page");
+
+          if (
+            iframe.contentWindow.location.pathname !== "/pages/receipt.html"
+          ) {
+            announce("An order hasn't been made so there is no receipt");
+            addLine(block, "fatal: no log has been found", "error");
+            break;
+          }
+
+          iframe.contentWindow.focus();
+          iframe.contentWindow.print();
+
+          const receipt =
+            iframe.contentDocument.querySelector(".receipt-items");
+          const orderEl = iframe.contentDocument.getElementById("order");
+          const total = iframe.contentDocument.querySelector(".receipt-amount");
+
+          if (receipt) receipt.innerHTML = "";
+          if (orderEl) orderEl.textContent = "Order Number:";
+
+          localStorage.removeItem("orderNumber");
+          localStorage.removeItem("purchased");
+          localStorage.removeItem("committed");
+
+          total.textContent = "";
+          iframe.src = "../pages/basket.html";
+          break;
         } else {
-          addLine(block, `Usage: ${verb} [ add | reset | commit ]`, "warn");
+          addLine(
+            block,
+            `Usage: ${verb} [ add | reset | commit | log ]`,
+            "warn",
+          );
           break;
         }
 
