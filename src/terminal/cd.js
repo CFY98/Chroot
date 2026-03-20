@@ -110,7 +110,7 @@ export function grinder(block) {
   addLine(block, "  for the most adventurous of drinkers.", "info");
   blank(block);
   addLine(block, "  Burr Set:     48m Conical SS", "info");
-  addLine(block, "  Materials:     7075 Aluminium", "info");
+  addLine(block, "  Materials:    7075 Aluminium", "info");
   addLine(block, "  Weight:       600g", "info");
   addLine(block, "  Price:        £129.99", "info");
   blank(block);

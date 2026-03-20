@@ -72,6 +72,39 @@ chroot/V3
     └───tools — shared utilities, router, and state
 ```
 
+## Installation
+
+Prerequisites:
+
+- npm
+
+1. Clone the repository
+
+```
+git clone https://github.com/CFY98/Chroot.git
+
+```
+
+2. Install dependencies
+
+```
+npm install
+
+```
+
+3. Start development server
+
+```
+npm run dev
+
+```
+
+4. Build for production
+
+```
+npm run build
+```
+
 ## ⛏️ Tech Stack
 
 - **HTML**: Provides basic structure and layout of the website.
