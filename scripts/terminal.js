@@ -17,7 +17,7 @@ export function initTerminal() {
 
   window.addEventListener("storage", (e) => {
     if (e.key === "stagingArea" && e.newValue === null) {
-      stagingArea = {};
+      Object.keys(stagingArea).forEach((key) => delete stagingArea[key]);
     }
   });
 

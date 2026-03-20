@@ -1,12 +1,12 @@
 // IMPORTS
 import {
   prices,
-  router,
   processOrder,
   orderNumber,
   basketItems,
   stagingArea,
 } from "./assets.js";
+import { router } from "./routerSPA.js";
 
 export function initReceipt() {
   // VALUES TO PRINT

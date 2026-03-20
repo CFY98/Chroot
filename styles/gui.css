@@ -16,10 +16,11 @@
   align-items: center;
   justify-content: center;
   border-top: var(--border) solid 1px;
+  margin-top: auto;
 }
 
 .sub-heading {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 3rem;
   font-family: "IBM Plex Sans";
 }
@@ -27,7 +28,6 @@
   display: flex;
   width: 80%;
   align-items: center;
-  justify-content: center;
   gap: 2rem;
   margin-bottom: 4rem;
 }
@@ -50,9 +50,13 @@
   align-items: center;
   justify-content: center;
   border-top: var(--border) solid 1px;
+  margin-top: auto;
+}
+.opening-container {
+  width: 80%;
+  text-align: center;
 }
 .times {
-  width: 80%;
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 4rem;
@@ -60,36 +64,115 @@
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
+  .sub-heading {
+    font-size: 4rem;
+    margin: 2rem;
+  }
+  .story {
+    margin: 2rem;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
   .ethos {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+  .roaster {
+    height: 50vh;
+  }
+  .times {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
   }
 }
 /* ------ LAPTOPS ------ */
 @media only screen and (max-width: 1024px) {
+  .sub-heading {
+    font-size: 3rem;
+    margin: 2rem;
+  }
+  .story {
+    margin: 1rem;
+    width: 100%;
+    margin-bottom: 3rem;
+    gap: 1rem;
+  }
   .ethos {
     font-size: 1.5rem;
+  }
+  .roaster {
+    height: 25vh;
+  }
+  .times {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
   }
 }
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
+  .sub-heading {
+    font-size: 2.5rem;
+    margin: 1rem;
+  }
+  .story {
+    margin: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+  .ethos {
+    font-size: 1.2rem;
+  }
+  .roaster {
+    height: 30vh;
+  }
+  .times {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 }
 /* ------ PHONES ------ */
 @media only screen and (max-width: 480px) {
-}
-/* ------ SMALL PHONES ------ */
-@media only screen and (max-width: 375px) {
-  .ethos {
-    font-size: 0.6rem;
-  }
   .sub-heading {
     font-size: 2rem;
     margin: 1rem;
   }
   .story {
+    margin-top: 0.2rem;
     margin-bottom: 2rem;
+    width: 100%;
+    gap: 1rem;
+  }
+  .ethos {
+    font-size: 0.7rem;
   }
   .roaster {
-    height: 30vh;
+    height: 18vh;
+  }
+  .times {
+    font-size: 0.7rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}
+/* ------ SMALL PHONES ------ */
+@media only screen and (max-width: 375px) {
+  .sub-heading {
+    font-size: 2rem;
+    margin: 1rem;
+  }
+  .story {
+    margin-top: 0.2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    gap: 1rem;
+  }
+  .ethos {
+    font-size: 0.6rem;
+  }
+  .roaster {
+    height: 20vh;
   }
   .times {
     font-size: 0.7rem;

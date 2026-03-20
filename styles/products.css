@@ -89,18 +89,17 @@
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
+  #product-wrapper {
+    width: 100%;
+  }
   .itemnames {
     font-size: 2rem;
-    margin-bottom: -2%;
   }
   #items {
-    font-size: 2em;
-    padding: 0 3% 2%;
+    font-size: 2rem;
   }
   .prices {
-    font-size: 1.5rem;
-    margin-top: 1em;
-    padding-bottom: 3%;
+    font-size: 1.8rem;
   }
   .more {
     font-size: 5rem;
@@ -108,14 +107,17 @@
 }
 /* ------ LAPTOPS ------ */
 @media only screen and (max-width: 1024px) {
+  #product-wrapper {
+    width: 100%;
+  }
   .itemnames {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   #items {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
   .prices {
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding-bottom: 3%;
   }
   .more {
@@ -124,23 +126,17 @@
 }
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
-  #product-container {
-    flex-direction: column;
-    padding: 2%;
-  }
-  .caption-container {
+  #product-wrapper {
     width: 100%;
   }
   .itemnames {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   #items {
-    font-size: 1rem;
-    padding: 0 3% 2%;
+    font-size: 1.5rem;
   }
   .prices {
-    font-size: 0.9rem;
-    padding-bottom: 3%;
+    font-size: 1.5rem;
   }
   .more {
     font-size: 2rem;
@@ -148,22 +144,51 @@
 }
 /* ------ PHONES ------ */
 @media only screen and (max-width: 480px) {
+  #product-wrapper {
+    width: 100%;
+  }
+  .products {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
   .itemnames {
     font-size: 1rem;
   }
   #items {
     font-size: 1rem;
     margin-bottom: 1rem;
-    padding: 0 3% 1%;
   }
   .prices {
-    font-size: 0.8rem;
-    padding-bottom: 1.5%;
+    font-size: 1rem;
   }
   .more {
     font-size: 1rem;
   }
-  #product-container {
-    padding: 1%;
+}
+/* ------ SMALL PHONES ------ */
+@media only screen and (max-width: 375px) {
+  #product-wrapper {
+    width: 100%;
+  }
+  .products {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .information {
+    margin: 0.5rem;
+  }
+  .itemnames {
+    font-size: 1rem;
+  }
+  #items {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .prices {
+    font-size: 0.8rem;
+  }
+  .more {
+    font-size: 1rem;
   }
 }

@@ -8,10 +8,10 @@ import {
   processOrder,
   prices,
   removeItem,
-  router,
 } from "./assets.js";
 import { addLine, blank } from "./utilities.js";
 import { announce } from "./announcer.js";
+import { router } from "./routerSPA.js";
 
 // GIT ADD (ADD ITEMS TO BASKET)
 export function gitAdd({ items, stagingArea, basketItems, block }) {
@@ -47,31 +47,39 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
 
 // GIT RESET (REMOVE ITEMS FROM BASKET)
 export function gitReset({ items, stagingArea, basketItems, block }) {
+  if (items[0]?.replace(/^-+/, "") === "hard") {
+    localStorage.removeItem("basketItems");
+    basketItems.length = 0;
+    localStorage.removeItem("stagingArea");
+    for (let key in stagingArea) delete stagingArea[key];
+    localStorage.setItem("itemCount", "0");
+    addLine(block, "All items unstaged", "info");
+    return;
+  }
   if (items.length === 0) {
     addLine(block, "hint: specifiy the item you want to remove", "warn");
     return;
   }
 
   items.forEach((item) => {
-    if (items[0]?.replace(/^-+/, "") === "hard") {
-      localStorage.removeItem("basketItems");
-      basketItems.length = 0;
-      localStorage.removeItem("stagingArea");
-      for (let key in stagingArea) delete stagingArea[key];
-      localStorage.setItem("itemCount", "0");
-      addLine(block, "The basket is now empty", "info");
-      return;
-    }
-
     if (stagingArea[item]) {
       stagingArea[item] -= 1;
 
-      const prev = parseInt(localStorage.getItem("itemCount") || "0");
+      const prev = parseInt(localStorage.getItem("itemCount") || 0);
       localStorage.setItem("itemCount", prev - 1);
 
       if (stagingArea[item] === 0) {
-        removeItem(stagingArea, basketItems, itemName, cartItem);
-        announce(`${stagingArea[item]} was completely removed from the basket`);
+        const itemQty = stagingArea[item] || 1;
+        delete stagingArea[item];
+
+        const itemIndex = basketItems.findIndex((i) => i === item);
+        if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
+
+        localStorage.setItem("itemCount", prev - itemQty);
+        localStorage.setItem("basketItems", JSON.stringify(basketItems));
+        localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+        addLine(block, `${item} was unstaged`, "info");
+        announce(`${item} was completely removed from the basket`);
       }
 
       addLine(block, `${item} unstaged`, "info");
@@ -82,6 +90,7 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
       addLine(block, `'${item}' not staged`, "error");
       announce(`${item} was not in the basket so nothing was removed`);
     }
+    localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
   });
 }
 
@@ -93,11 +102,11 @@ export function gitStatus({ stagingArea, prices, block }) {
   }, 0);
 
   if (stagedItems.length === 0) {
-    addLine(block, "fatal: there are no items in the basket", "error");
+    addLine(block, "fatal: no items have been staged", "error");
     addLine(block, "hint: use 'git add <item>' to stage items ", "warn");
     announce("The basket is empty, try adding items to it");
+    return;
   }
-
   addLine(block, "Items to be commited:", "info");
   blank(block);
   addLine(block, "  name         quantity       cost", "info");
@@ -159,11 +168,7 @@ export function gitLog({ block }) {
   const committed = JSON.parse(localStorage.getItem("committed") || "{}");
   if (Object.keys(committed).length === 0) {
     announce("No order was placed since there were no items in the basket");
-    addLine(
-      block,
-      "fatal: no order has been placed yet to print a receipt",
-      "error",
-    );
+    addLine(block, "fatal: there are no commits yet", "error");
     addLine(block, "hint: use 'git commit' first", "warn");
     return;
   }

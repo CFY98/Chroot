@@ -26,7 +26,7 @@
 =======
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./styles/slideshow.css" />
-    <link rel="stylesheet" href="./styles/gui.css">
+    <link rel="stylesheet" href="./styles/gui.css" />
     <link rel="icon" type="image/x-icon" href="./Images/favicon.ico" />
     <title>Chroot - Home</title>
   </head>
@@ -45,11 +45,9 @@
       <div class="top-container">
         <p class="title">Chroot</p>
         <div class="titlebar">
-          <div class="t-dots">
-            <span class="dot dot-r"></span>
-            <span class="dot dot-y"></span>
-            <span class="dot dot-g"></span>
-          </div>
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
           <span
             class="titlebar-text"
             data-text="Toggle - TUI"
@@ -62,91 +60,95 @@
           <div class="nav-btn">Basket</div>
         </div>
       </div>
-        <!-- WINDOW CONTAINER -->
-        <div class="window-container">
-          <!-- GUI INTERFACE -->
-          <div class="gui">
-            <div id="app" class="app">
-              <!-- SLIDESHOW -->
-              <div class="slideshow-container">
-                <p id="tagline">
-                  Change the root of your trajectory with coffee
-                  <br />
-                </p>
-                <div id="slideshow">
-                  <div class="list">
-                    <figure>
-                      <img
-                        src="./Images/cafebarwithtext.jpg"
-                        class="slide"
-                        alt="State-of-the-art Cafe"
-                      />
-                    </figure>
-                    <figure>
-                      <img
-                        src="./Images/coffee_beanswithtext.jpg"
-                        class="slide"
-                        alt="Fresh Coffee Beans from Source."
-                      />
-                    </figure>
-                    <figure>
-                      <img
-                        src="./Images/latte_artwithtext.jpg"
-                        class="slide"
-                        alt="Professionally trained baristas at your service."
-                      />
-                    </figure>
-                  </div>
-                  <div class="arrows">
-                    <button
-                      id="prev"
-                      aria-label="previous slide of the slideshow"
+      <!-- WINDOW CONTAINER -->
+      <div class="window-container">
+        <!-- GUI INTERFACE -->
+        <div class="gui">
+          <div id="app" class="app">
+            <!-- SLIDESHOW -->
+            <div class="slideshow-container">
+              <p id="tagline">
+                Change the root of your trajectory with coffee
+                <br />
+              </p>
+              <div id="slideshow">
+                <div class="list">
+                  <figure>
+                    <img
+                      src="./Images/cafebarwithtext.jpg"
+                      class="slide"
+                      alt="State-of-the-art Cafe"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      src="./Images/coffee_beanswithtext.jpg"
+                      class="slide"
+                      alt="Fresh Coffee Beans from Source."
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      src="./Images/latte_artwithtext.jpg"
+                      class="slide"
+                      alt="Professionally trained baristas at your service."
+                    />
+                  </figure>
+                </div>
+                <div class="arrows">
+                  <button
+                    id="prev"
+                    aria-label="previous slide of the slideshow"
+                  >
+                    <
+                  </button>
+                  <button id="next" aria-label="next slide of the slideshow">
                     >
-                      <
-                    </button>
-                    <button id="next" aria-label="next slide of the slideshow">
-                      >
-                    </button>
-                  </div>
-                  <ul class="dots">
-                    <li class="active"></li>
-                    <li class="active"></li>
-                    <li class="active"></li>
-                  </ul>
+                  </button>
                 </div>
-                <p id="info">
-                  Our drinks are made with some of the finest, single-origin
-                  coffees the world has to offer.
+                <ul class="dots">
+                  <li class="active"></li>
+                  <li class="active"></li>
+                  <li class="active"></li>
+                </ul>
+              </div>
+              <p id="info">
+                Our drinks are made with some of the finest, single-origin
+                coffees the world has to offer.
+              </p>
+            </div>
+            <!-- SLIDESHOW END -->
+            <div class="story-container">
+              <h3 class="sub-heading">Our Story</h3>
+              <div class="story">
+                <p class="ethos">
+                  Founded in 2015, we aim to champion farmers and producers with
+                  a focus on sustainability and ethical practises.
+                  <br /><br />With professionals trained in-house from
+                  production to delivery, rest assured that your orders are in
+                  safe hands.<br /><br />
+                </p>
+                <img
+                  src="./Images/coffee-roaster.jpg"
+                  alt="Coffee being roasted by trained professional"
+                  class="roaster"
+                />
+              </div>
+            </div>
+            <!-- OPENING HOURS CONTAINER -->
+            <div class="hours-container">
+              <div class="opening-container">
+                <h3 class="sub-heading">Opening Hours</h3>
+                <p class="times">
+                  Mondays - Fridays: 07:00 → 18:00<br />Saturdays - Sundays:
+                  08:00 → 16:00
                 </p>
               </div>
-              <!-- SLIDESHOW END -->
-              <div class="story-container">
-                <h3 class="sub-heading">Our Story</h3>
-                <div class="story">
-                  <p class="ethos">
-                    Founded in 2015, we aim to champion farmers and producers
-                    with a focus on sustainability and ethical practises.
-                    <br><br>With professionals trained in-house from production to
-                    delivery, rest assured that your orders are in safe hands.
-                  </p>
-                  <img
-                    src="./Images/coffee-roaster.jpg"
-                    alt="Coffee being roasted by trained professional"
-                    class="roaster"
-                  />
-                </div>
-              </div>
-              <!-- STORY CONTAINER END -->
-               <div class="hours-container">
-                <h3 class="sub-heading">Opening Hours</h3>
-                  <p class="times">Mondays - Fridays: 07:00 → 18:00<br>Saturdays - Sundays: 08:00 → 16:00</p>
-                </div>
-               </div>
             </div>
-            <!-- APP END -->
           </div>
-          <!-- GUI END -->
+          <!-- APP END -->
         </div>
+<<<<<<< HEAD
         <!-- CONTAINER END -->
 <<<<<<< HEAD
 >>>>>>> 03097f9 (GUI Interface Added)
@@ -154,6 +156,11 @@
       <!-- TOP-CONTAINER END -->
 =======
 >>>>>>> ebba21b (TODO: Responsive Design)
+=======
+        <!-- GUI END -->
+      </div>
+      <!-- CONTAINER END -->
+>>>>>>> 623ad2b (Responsive Design Complete)
     </div>
 <<<<<<< HEAD
     <!-- SLIDESHOW -->

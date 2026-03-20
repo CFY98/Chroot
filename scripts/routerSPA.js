@@ -1,9 +1,49 @@
 // IMPORTS
-import { router } from "./assets.js";
+import { routesAnnouncements } from "./announcer.js";
+import { initSlideshow } from "./slideshow.js";
+import { routes } from "./assets.js";
+import { announce } from "./announcer.js";
 
-let activeBtn = null;
+// ROUTER FUNCTION
+let homeContent = null;
+
+export function router(page) {
+  const screenContent = document.getElementById("app");
+  const route = routes[page];
+
+  if (!homeContent) {
+    homeContent = screenContent.innerHTML;
+  }
+
+  screenContent.replaceChildren();
+
+  if (page === "/") {
+    screenContent.innerHTML = homeContent;
+    announce("The home page has loaded");
+    initSlideshow();
+    return;
+  }
+
+  if (!route) {
+    screenContent.innerHTML = "<p>404 - Page not found.</p>";
+    return;
+  }
+
+  fetch(route.path)
+    .then((res) => res.text())
+    .then((html) => {
+      screenContent.innerHTML = html;
+
+      if (page in routesAnnouncements) routesAnnouncements[page]();
+    })
+    .catch(() => {
+      screenContent.innerHTML = "<p>404 - Page not found.</p>";
+    });
+}
 
 // NAV BUTTONS
+let activeBtn = null;
+
 document.querySelectorAll(".nav-btn").forEach((navBtn) => {
   navBtn.addEventListener("click", (e) => {
     e.preventDefault();

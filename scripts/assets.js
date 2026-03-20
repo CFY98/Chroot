@@ -1,6 +1,5 @@
 // IMPORTS
-import { announce, routesAnnouncements } from "./announcer.js";
-import { initGUI } from "./slideshow.js";
+import { announce } from "./announcer.js";
 
 // ROUTES OBJECT
 export const routes = {
@@ -11,42 +10,6 @@ export const routes = {
   "/tui": { path: "./pages/tui.html", title: "tui" },
   "/receipt": { path: "./pages/receipt.html", title: "receipt" },
 };
-
-// ROUTER FUNCTION
-let homeContent = null;
-
-export function router(page) {
-  const screenContent = document.getElementById("app");
-  const route = routes[page];
-
-  if (!homeContent) {
-    homeContent = screenContent.innerHTML;
-  }
-
-  screenContent.replaceChildren();
-
-  if (page === "/") {
-    screenContent.innerHTML = homeContent;
-    announce("The home page has loaded");
-    initGUI();
-    return;
-  }
-
-  if (!route) {
-    screenContent.innerHTML = "<p>404 - Page not found.</p>";
-    return;
-  }
-
-  fetch(route.path)
-    .then((res) => res.text())
-    .then((html) => {
-      screenContent.innerHTML = html;
-      if (page in routesAnnouncements) routesAnnouncements[page]();
-    })
-    .catch(() => {
-      screenContent.innerHTML = "<p>404 - Page not found.</p>";
-    });
-}
 
 // ITEMS
 export const coffeeBeans = ["blaze", "sunshine", "summit"];
@@ -87,7 +50,7 @@ export function processOrder(orderNumber, basketItems, stagingArea) {
 }
 export function removeItem(stagingArea, basketItems, itemName, cartItem) {
   const itemQty = stagingArea[itemName] || 1;
-  const prev = parseInt(localStorage.getItem("itemCount") || "0");
+  const prev = parseInt(localStorage.getItem("itemCount") || 0);
 
   announce(`${itemName} was completely removed from the basket`);
 

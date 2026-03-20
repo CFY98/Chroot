@@ -7,8 +7,8 @@ import {
   removeItem,
   stagingArea,
   prices,
-  router,
 } from "./assets.js";
+import { router } from "./routerSPA.js";
 
 export function initBasket() {
   // COSTS
@@ -53,7 +53,8 @@ export function initBasket() {
 
       function updateItems(delta) {
         const count = cartItem.querySelector(".count");
-        const prev = parseInt(localStorage.getItem("itemCount") || "0");
+
+        const prev = parseInt(localStorage.getItem("itemCount") || 0);
         localStorage.setItem("itemCount", prev + delta);
         count.textContent = parseInt(count.textContent || "0") + delta;
 
@@ -70,12 +71,15 @@ export function initBasket() {
 
       if (e.target.classList.contains("minus-btn")) {
         updateItems(-1);
-        announce(`${itemName} quantity decreased to ${stagingArea[itemName]}`);
         if (stagingArea[itemName] === 0) {
           removeItem(stagingArea, basketItems, itemName, cartItem);
           announce(` ${itemName} was completely removed from the basket`);
+        } else {
+          announce(
+            `${itemName} quantity decreased to ${stagingArea[itemName]}`,
+          );
+          updateTotal(stagingArea);
         }
-        updateTotal(stagingArea);
       }
       if (e.target.closest(".remove")) {
         removeItem(stagingArea, basketItems, itemName, cartItem);
@@ -165,8 +169,8 @@ export function initBasket() {
       </div>
     `;
         product.appendChild(div);
-      }, 300);
+      });
       updateTotal(stagingArea);
-    });
+    }, 300);
   }
 }

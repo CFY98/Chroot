@@ -178,17 +178,16 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
+  min-height: 100vh;
 }
 
 /* ------ WINDOW CONTAINER ------ */
 .window-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex: 1;
   width: 100%;
-  min-height: 100vh;
   border-radius: 10px;
 }
 <<<<<<< HEAD
@@ -426,22 +425,14 @@ figure img {
 }
 
 /* ------ TITLEBAR ------ */
-.t-dots {
-  width: 4%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-right: auto;
-  margin-left: 0.6rem;
-}
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
 }
-
 .dot-r {
   background: var(--red);
+  margin-left: 0.6rem;
 }
 .dot-y {
   background: var(--amber);
@@ -563,10 +554,13 @@ figure img {
     height: 100%;
   }
   .title {
-    font-size: 5rem;
+    font-size: 6rem;
   }
   .subtitle {
     font-size: 4rem;
+  }
+  .nav-btn {
+    font-size: 1.5rem;
   }
   .fa {
     font-size: 3rem;
@@ -576,14 +570,20 @@ figure img {
 /* ------ LAPTOPS------ */
 @media only screen and (max-width: 1024px) {
   .title {
-    font-size: 5rem;
+    font-size: 6rem;
+  }
+  .titlebar {
+    padding: 1rem 1rem;
+  }
+  .nav-btn {
+    font-size: 1.5rem;
   }
   .subtitle {
-    font-size: 3rem;
+    font-size: 4rem;
   }
   .fa {
-    font-size: 2rem;
-    width: 2rem;
+    font-size: 3rem;
+    width: 3rem;
   }
 }
 /* ------ TABLETS ------ */
@@ -593,9 +593,14 @@ figure img {
 >>>>>>> 03097f9 (GUI Interface Added)
     top: 0;
   }
+<<<<<<< HEAD
   #navbar span {
     padding-left: 5px;
     font-size: 31px;
+=======
+  .title {
+    font-size: 5rem;
+>>>>>>> 623ad2b (Responsive Design Complete)
   }
 <<<<<<< HEAD
   .nav {
@@ -690,7 +695,10 @@ figure img {
     width: 100%;
 =======
   .subtitle {
-    font-size: 2rem;
+    font-size: 3rem;
+  }
+  .nav-btn {
+    font-size: 1.5rem;
   }
   .socials {
     position: sticky;
@@ -710,9 +718,14 @@ figure img {
 >>>>>>> 03097f9 (GUI Interface Added)
     top: 0;
   }
+<<<<<<< HEAD
   #navbar span {
     font-size: 15px;
     padding-left: 4px;
+=======
+  .title {
+    font-size: 4rem;
+>>>>>>> 623ad2b (Responsive Design Complete)
   }
 <<<<<<< HEAD
   .nav {
@@ -801,6 +814,9 @@ figure img {
   .subtitle {
     font-size: 2rem;
   }
+  .nav-btn {
+    font-size: 1.5rem;
+  }
   .socials {
     position: sticky;
     bottom: 0;
@@ -825,8 +841,8 @@ figure img {
   .subtitle {
     font-size: 2rem;
   }
-  .t-dots {
-    width: 15%;
+  .nav-btn {
+    font-size: 1.5rem;
   }
   .socials {
     position: sticky;

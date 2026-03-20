@@ -219,7 +219,7 @@ hr {
 /* ------ LAPTOPS ------ */
 @media only screen and (max-width: 1024px) {
   .columns {
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
     font-size: 2rem;
   }
   .column-item {
@@ -228,7 +228,11 @@ hr {
     margin-left: 12%;
   }
   .cart-item {
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+  }
+  .counter {
+    width: 60%;
+    margin-left: auto;
   }
   .plus-btn {
     width: 3rem;
@@ -248,7 +252,7 @@ hr {
 @media only screen and (max-width: 768px) {
   .columns {
     grid-template-columns: 1fr 2fr 2fr 1fr;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   .column-item {
     grid-column: 2;
@@ -257,7 +261,7 @@ hr {
   }
   .column-quantity {
     margin-left: auto;
-    margin-right: 55%;
+    margin-right: 48%;
   }
   .column-price {
     margin-right: 13%;
@@ -270,14 +274,13 @@ hr {
     height: 3rem;
   }
   .name {
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin-right: auto;
     margin-left: -10%;
   }
   .counter {
     margin-left: auto;
-    margin-right: 50%;
-    gap: 0.7rem;
+    margin-right: 48%;
   }
   .plus-btn {
     width: 2rem;
@@ -290,15 +293,15 @@ hr {
     font-size: 1rem;
   }
   .count {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .amount {
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin-left: auto;
     margin-right: 2%;
   }
   .remove {
-    font-size: 0.7rem;
+    font-size: 1rem;
     margin-left: auto;
     margin-right: 2%;
   }
@@ -312,7 +315,8 @@ hr {
   }
   .button {
     width: 80%;
-    height: 2rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
   }
 }
 /* ------ PHONES ------*/
@@ -350,9 +354,7 @@ hr {
     margin-left: -10%;
   }
   .counter {
-    margin-left: auto;
-    margin-right: 25%;
-    gap: 0.7rem;
+    width: 80%;
   }
   .plus-btn {
     width: 1.5rem;
@@ -386,7 +388,7 @@ hr {
     text-align: right;
   }
   .button {
-    width: 80%;
+    width: 85%;
     height: 2rem;
     font-size: 1rem;
   }
@@ -423,9 +425,7 @@ hr {
   }
   .counter {
     width: 70%;
-    margin-left: auto;
-    margin-right: 18%;
-    gap: 0.7rem;
+    margin-left: 10%;
   }
   .plus-btn {
     width: 1.5rem;
@@ -449,5 +449,10 @@ hr {
     font-size: 0.7rem;
     margin-left: auto;
     margin-right: -4%;
+  }
+  .button {
+    width: 95%;
+    height: 2rem;
+    font-size: 1rem;
   }
 }
