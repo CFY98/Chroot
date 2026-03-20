@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css"
+    />
+    <title>Chroot - Home Directory</title>
+  </head>
+  <body>
+    <!-- WEBNAV BAR -->
+    <div id="navbar" aria-label="navigation bar">
+      <a href="./index.html" aria-label="Go to Chroot homepage"
+        ><span>(Chroot)</span></a
+      >
+      <div id="path">
+        <p>site@web ~ $</p>
+      </div>
+      <div class="nav">
+        <a href="./drinks.html">Drinks</a>
+        <a href="./pastries.html">Pastries</a>
+      </div>
+    </div>
+    <!-- SLIDESHOW -->
+    <div id="slideshow">
+      <!-- Contains all images together -->
+      <div class="list">
+        <figure>
+          <img
+            src="./Images/cafebarwithtext.jpg"
+            class="slide"
+            alt="State-of-the-art Cafe"
+          />
+        </figure>
+        <figure>
+          <img
+            src="./Images/coffee_beanswithtext.jpg"
+            class="slide"
+            alt="Fresh Coffee Beans from Source."
+          />
+        </figure>
+        <figure>
+          <img
+            src="./Images/latte_artwithtext.jpg"
+            class="slide"
+            alt="Professionally trained baristas at your service."
+          />
+        </figure>
+      </div>
+      <div class="arrows">
+        <button id="prev" aria-label="previous slide of the slideshow">
+          <
+        </button>
+        <button id="next" aria-label="next slide of the slideshow">></button>
+      </div>
+      <ul class="dots">
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+      </ul>
+    </div>
+    <!-- TITLE -->
+    <h1>Welcome to <span>(Chroot)</span> !</h1>
+    <p id="passage">
+      It's time to change the root of your trajectory with coffee. <br />
+      Our drinks are made with some of the finest, single-origin coffees the
+      world has to offer.
+    </p>
+    <!-- SOCIAL MEDIA BAR -->
+    <div id="socials" aria-label="social media">
+      <a href="https://facebook.com">Facebook</a>
+      <a href="https://x.com">Twitter</a>
+      <a href="https://instagram.com">Instagram</a>
+      <a href="https://linkedin.com">LinkedIn</a>
+    </div>
+    <script src="./slideshow.js"></script>
+  </body>
+</html>
