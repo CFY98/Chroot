@@ -143,6 +143,8 @@ hr {
   font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
   text-align: center;
   margin: 0 auto;
+  padding: 1rem;
+  padding-top: min(3.5rem, 6%);
   padding-top: 4.5%;
 }
 
