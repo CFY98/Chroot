@@ -81,6 +81,11 @@ export function initBasket() {
         if (stagingArea[itemName] === 0) {
           removeItem(stagingArea, basketItems, itemName, cartItem);
           announce(` ${itemName} was completely removed from the basket`);
+          if (basketItems.length === 0) {
+            announce("the basket is now empty");
+            emptyState(basketItems);
+          }
+          updateTotal(stagingArea);
         } else {
           announce(
             `${itemName} quantity decreased to ${stagingArea[itemName]}`,
