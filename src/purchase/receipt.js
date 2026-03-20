@@ -58,9 +58,9 @@ export function initReceipt() {
     receipt.innerHTML = "";
     if (orderEl) orderEl.textContent = `Order Number: ${orderNumber.at(-1)}`;
     if (messageEl)
-      messageEl.textContent = /[\w\d\s.]/.test(orderMessage.at(-1))
+      messageEl.textContent = orderMessage.at(-1)
         ? `Order Message: ${orderMessage.at(-1)}`
-        : null;
+        : "";
 
     purchased.forEach((key) => {
       const qtyTotal = committed[key] * productPrices[key];

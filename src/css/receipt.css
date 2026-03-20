@@ -10,9 +10,10 @@
   background-color: var(--border);
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 2% 2%;
   border-radius: 10px;
+  border: yellow solid;
 }
 #thanks {
   text-align: center;
@@ -22,15 +23,13 @@
 #order,
 #message {
   margin-right: auto;
-  margin-left: 4%;
+  margin-left: 5%;
   text-align: center;
-  padding: 1% 1%;
   font-size: clamp(0.7rem, 1vw + 0.5rem, 1.5rem);
   text-decoration: underline;
 }
 #print {
   width: 20%;
-  margin-left: auto;
   margin-right: 5%;
   padding: 1% 1%;
   border: none;
@@ -135,6 +134,7 @@ hr {
   }
   #print {
     margin: 1% 1%;
+    margin-right: 5%;
   }
 }
 /* ------ LAPTOPS ------ */
@@ -148,10 +148,19 @@ hr {
   }
   #print {
     margin: 1% 1%;
+    width: 20%;
+    margin-right: 2%;
   }
 }
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
+  #order,
+  #message {
+    margin: 1% 1%;
+  }
+  #order {
+    margin-left: 2%;
+  }
   .image-box img {
     width: 3rem;
     height: 3rem;
@@ -178,8 +187,12 @@ hr {
     height: 40%;
     margin: 3% 2%;
     align-items: center;
-    font-size: 1rem;
-    color: var(--text);
+  }
+  #print {
+    width: 40%;
+    height: 40%;
+    margin: 3% 2%;
+    align-items: center;
   }
   .receipt-item {
     grid-template-columns: 0 0.5fr 0.5fr 0.5fr;

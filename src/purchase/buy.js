@@ -52,6 +52,7 @@ export function initBuy(page) {
         announce(
           `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
         );
+
         let toastBox = document.getElementById("toastbox");
         function showToast() {
           let toast = document.createElement("div");
@@ -65,26 +66,6 @@ export function initBuy(page) {
         }
         showToast();
       }
-
-      if (!basketItems.includes(itemName)) {
-        basketItems.push(itemName);
-        localStorage.setItem("basketItems", JSON.stringify(basketItems));
-      }
-      announce(
-        `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
-      );
-      let toastBox = document.getElementById("toastbox");
-      function showToast() {
-        let toast = document.createElement("div");
-        toast.classList.add("toast");
-        toast.innerHTML = `<img src="/Images/${itemName}.jpg" alt="${itemName}"/>${toAdd[itemName] > 1 ? `${itemName} x${toAdd[itemName]}` : itemName} added to the basket`;
-        toastBox.appendChild(toast);
-
-        setTimeout(() => {
-          toast.remove();
-        }, 3000);
-      }
-      showToast();
     };
   }
 }

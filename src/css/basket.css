@@ -123,7 +123,7 @@ hr {
   text-align: right;
 }
 .total-amount {
-  font-size: clamp(1rem, 2.5vw + 0.5rem, 3rem);
+  font-size: clamp(1.2rem, 2.5vw + 0.5rem, 3rem);
   font-weight: 300;
   text-align: right;
 }
