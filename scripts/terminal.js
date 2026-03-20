@@ -405,7 +405,7 @@ if (terminalEl) {
 
   // FOCUS INPUT 
   
-const terminal = document.querySelector(".terminal");
+  const terminal = document.querySelector(".terminal");
 
   if (terminal) {
     terminal.addEventListener("click", () => {
@@ -424,10 +424,14 @@ const terminal = document.querySelector(".terminal");
         run(fullCmd);
         input.value = "";
 <<<<<<< HEAD:scripts/terminal.js
+<<<<<<< HEAD:scripts/terminal.js
         input.focus();
 =======
         inout.focus()
 >>>>>>> 34b98bf (Re-added .focus for Terminal):terminal.js
+=======
+        input.focus();
+>>>>>>> 5519923 (Spelling Error Fix):terminal.js
       });
       NAVIGATION.appendChild(suggestion);
     });
