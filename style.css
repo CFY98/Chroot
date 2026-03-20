@@ -3,8 +3,7 @@
 
 @font-face {
   font-family: Fantasque Sans Mono;
-  src: url(./Fonts/FantasqueSansMono-Regular.woff)
-    format(woff);
+  src: url(./Fonts/FantasqueSansMono-Regular.woff) format(woff);
 }
 @font-face {
   font-family: Victor Mono;
@@ -15,6 +14,10 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fffdfa;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 /* ------ BODY ------ */
 
@@ -77,6 +80,7 @@ h1 span {
   opacity: 0;
   /* prevent text from breaking into multiple lines, keeping it all on a single line */
   white-space: nowrap;
+  margin-left: -1px;
 }
 #path:hover {
   opacity: 1;
@@ -296,6 +300,7 @@ figure img {
   align-items: center;
   background-color: #c4beb5;
   padding: 20px;
+  margin-top: auto;
 }
 #socials a {
   text-decoration: none;
@@ -334,8 +339,9 @@ figure img {
     font-size: 60px;
   }
   #path {
-    font-size: 30px;
-    margin-left: -10px;
+    font-size: 31px;
+    margin-left: -6px;
+    margin-top: 1px;
   }
   #passage {
     font-size: 30px;
@@ -384,6 +390,7 @@ figure img {
     width: 70px;
     height: 70px;
     margin-top: -5px;
+    font-size: 20px;
   }
   .dots li {
     margin: 30px;
@@ -438,6 +445,8 @@ figure img {
   }
   #path {
     font-size: 15px;
+    margin-left: 3px;
+    margin-top: 2px;
   }
   #passage {
     font-size: 12px;
@@ -479,9 +488,10 @@ figure img {
     margin-bottom: -40px;
   }
   .arrows button {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin-top: -15px;
+    font-size: 20px;
   }
   .dots li {
     margin: 30px;
