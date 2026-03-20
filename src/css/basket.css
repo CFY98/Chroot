@@ -28,7 +28,6 @@
   grid-template-columns: 1fr 2fr 1fr 1fr;
 }
 .columns {
-  width: 86%;
   margin: 0 auto;
 }
 .columns div {
@@ -38,7 +37,7 @@
 .column-item {
   grid-column: 2;
   margin-right: auto;
-  margin-left: 11%;
+  margin-left: 13%;
 }
 .column-quantity {
   grid-column: 3;
@@ -87,9 +86,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
-  margin-right: auto;
-  margin-left: 10%;
 }
 .plus-btn,
 .minus-btn {
@@ -180,12 +176,9 @@ hr {
 @media only screen and (max-width: 1280px) {
   .column-item {
     grid-column: 2;
-    margin-right: auto;
-    margin-left: 11%;
   }
   .column-quantity {
     grid-column: 3;
-    margin: auto;
   }
   .column-price {
     grid-column: 4;
@@ -193,13 +186,8 @@ hr {
     margin-left: auto;
   }
   .image-box img {
-    width: 3rem;
-    height: 3rem;
-  }
-  .counter {
-    width: 90%;
-    margin-left: auto;
-    margin-right: 10%;
+    width: 4rem;
+    height: 4rem;
   }
   .cost {
     grid-column: 4;
@@ -214,18 +202,12 @@ hr {
     width: 70%;
   }
 }
-/* ------ TABLETS ------ */
-@media only screen and (max-width: 768px) {
-  .cost {
-    margin-top: 1.1rem;
-  }
-  .counter {
-    margin-right: 10%;
-  }
-}
+
 /* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
-  .columns,
+  .columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
   .cart-item {
     grid-template-columns: 0 1fr 1fr 1fr;
   }
@@ -233,15 +215,16 @@ hr {
     width: 95%;
   }
   .column-item {
-    grid-column: 2;
-    margin-right: auto;
+    grid-column: 1;
   }
   .column-quantity {
-    grid-column: 3;
-    margin: 0 auto;
+    grid-column: 2;
+    margin-right: auto;
+    margin-left: 23%;
   }
   .column-price {
-    grid-column: 4;
+    grid-column: 3;
+    margin-left: 45%;
   }
   .image-box img {
     display: none;
@@ -249,18 +232,35 @@ hr {
   .name {
     grid-column: 2;
     margin-right: auto;
+    margin-left: 6%;
   }
   .counter {
     grid-column: 3;
+    width: 100%;
     margin-right: auto;
     margin-left: 6%;
   }
   .cost {
     grid-column: 4;
-    margin-right: 15%;
+    margin-right: 17%;
     margin-top: 1rem;
+  }
+  .checkout {
+    margin-right: 8%;
   }
   .button {
     width: 100%;
+  }
+  .column-line,
+  hr {
+    width: 84%;
+    margin-right: 8%;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .column-quantity {
+    grid-column: 2;
+    margin-right: auto;
+    margin-left: 15%;
   }
 }

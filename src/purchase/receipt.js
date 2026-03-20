@@ -12,7 +12,9 @@ import { tuiMode } from "../tools/routerSPA.js";
 export function initReceipt() {
   // VALUES TO PRINT
   const print = document.getElementById("print");
-  const purchased = JSON.parse(localStorage.getItem("purchased") || "[]");
+  const product__purchased = JSON.parse(
+    localStorage.getItem("product__purchased") || "[]",
+  );
   const committed = JSON.parse(localStorage.getItem("committed") || "{}");
   const receipt = document.querySelector(".receipt-items");
   const orderEl = document.getElementById("order");
@@ -39,7 +41,7 @@ export function initReceipt() {
     if (orderEl)
       orderEl.textContent = `Order Number: ${orderNumber[orderNumber.length - 1]}`;
 
-    purchased.forEach((key) => {
+    product__purchased.forEach((key) => {
       const qtyTotal = committed[key] * prices[key];
       const div = document.createElement("div");
       div.classList.add("receipt-item");

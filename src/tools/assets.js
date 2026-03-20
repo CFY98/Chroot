@@ -62,7 +62,7 @@ export let toAdd = {};
 // FUNCTIONS
 export function processOrder(orderNumber, basketItems, stagingArea) {
   localStorage.setItem("orderNumber", JSON.stringify(orderNumber));
-  localStorage.setItem("purchased", JSON.stringify(basketItems));
+  localStorage.setItem("product__purchased", JSON.stringify(basketItems));
   localStorage.setItem("committed", JSON.stringify(stagingArea));
 
   localStorage.removeItem("basketItems");
