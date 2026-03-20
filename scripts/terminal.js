@@ -402,16 +402,6 @@ if (terminalEl) {
       input.focus();
     });
   }
-
-  // FOCUS INPUT 
-  
-  const terminal = document.querySelector(".terminal");
-
-  if (terminal) {
-    terminal.addEventListener("click", () => {
-      input.focus();
-    });
-  }
   // SUGGESTION BUTTONS
   if (QUICK_CMDS && NAVIGATION) {
     QUICK_CMDS.forEach((cmd) => {
