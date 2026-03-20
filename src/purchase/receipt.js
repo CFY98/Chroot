@@ -74,7 +74,7 @@ export function initReceipt() {
         <div class="item-name">${key}</div>
       </div>
         <div class="item-count">${committed[key]}</div>
-      <div class="cost">
+      <div class="receipt-cost">
         <div class="item-amount">£${qtyTotal.toFixed(2)}</div>
       </div>
     `;

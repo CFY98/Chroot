@@ -83,7 +83,7 @@
   font-weight: 300;
   color: var(--text);
 }
-.cost {
+.receipt-cost {
   text-align: right;
   margin-right: 10%;
   margin-top: 0;
