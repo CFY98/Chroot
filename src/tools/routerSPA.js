@@ -87,6 +87,7 @@ document.addEventListener("click", (e) => {
     e.preventDefault();
     const page = e.target.getAttribute("href");
     history.pushState({}, "", page);
+    announce(`the ${page} has loaded`);
     router(page);
   }
 });
