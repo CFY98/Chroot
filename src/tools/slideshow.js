@@ -28,6 +28,13 @@ export function initSlideshow() {
   }
   setInitialPosition();
 
+  // FIRST CAPTION
+  slides.forEach((slide, i) => {
+    const caption = slide.querySelector(".slidecaption");
+    if (!caption) return;
+    if (i === active) caption.classList.add("show");
+  });
+
   window.addEventListener("resize", setInitialPosition);
 
   // ARROW BUTTONS
@@ -46,8 +53,21 @@ export function initSlideshow() {
     updateDots(realIndex);
 
     resetAutoSlide();
+
+    slides.forEach((slide, i) => {
+      const caption = slide.querySelector(".slidecaption");
+      if (!caption) return;
+      if (i === realIndex + 1) {
+        caption.classList.add("show");
+      } else {
+        setTimeout(() => {
+          caption.classList.remove("show");
+        }, 300);
+      }
+    });
   }
 
+  // SLIDE INDEX RELATIVE TO CLONES
   list.addEventListener("transitionend", (e) => {
     if (e.propertyName !== "transform") return;
     if (active >= slides.length - 1) {
@@ -65,7 +85,7 @@ export function initSlideshow() {
 
   // AUTOMATIC FUNCTIONS FOR SLIDES AND DOTS
   function startAutoSlide() {
-    autoSlideInterval = setTimeout(() => {
+    autoSlideInterval = setInterval(() => {
       moveToSlide(active + 1);
     }, 3000);
   }

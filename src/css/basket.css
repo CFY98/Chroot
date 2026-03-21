@@ -149,6 +149,9 @@ hr {
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DESKTOPS - LAPTOPS ------ */
 @media only screen and (max-width: 1280px) {
+  .cart-container {
+    width: 80%;
+  }
   .image-box img {
     width: 4rem;
     height: 4rem;
@@ -168,6 +171,9 @@ hr {
 }
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
+  .cart-container {
+    width: 80%;
+  }
   .cost {
     margin-top: 1.3rem;
   }
@@ -179,6 +185,9 @@ hr {
 
 /* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
+  .cart-container {
+    width: 80%;
+  }
   .cart-item {
     grid-template-columns: 0 1fr 1fr 1fr;
   }
