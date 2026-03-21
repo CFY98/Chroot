@@ -44,6 +44,26 @@ export function initBuy(page) {
         const prev = parseInt(localStorage.getItem("itemCount") || 0);
         localStorage.setItem("itemCount", prev + toAdd[itemName]);
         localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+
+        if (!basketItems.includes(itemName)) {
+          basketItems.push(itemName);
+          localStorage.setItem("basketItems", JSON.stringify(basketItems));
+        }
+        announce(
+          `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
+        );
+        let toastBox = document.getElementById("toastbox");
+        function showToast() {
+          let toast = document.createElement("div");
+          toast.classList.add("toast");
+          toast.innerHTML = `<img src="/Images/${itemName}.jpg" alt="${itemName}"/>${toAdd[itemName] > 1 ? `${itemName} x${toAdd[itemName]}` : itemName} added to the basket`;
+          toastBox.appendChild(toast);
+
+          setTimeout(() => {
+            toast.remove();
+          }, 3000);
+        }
+        showToast();
       }
 
       if (!basketItems.includes(itemName)) {
