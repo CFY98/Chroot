@@ -168,7 +168,7 @@
 /* ------ DESKTOPS - PHONES ------ */
 @media only screen and (max-width: 1280px) {
   #catalogue-wrapper {
-    width: 90%;
+    width: 95%;
   }
   .catalogue-container {
     flex-direction: column;

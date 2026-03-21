@@ -123,6 +123,9 @@ hr {
 /*------ RESPONSIVE DESIGN ------*/
 /* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
+  .receipt-container {
+    width: 85%;
+  }
   #order,
   #message {
     margin-top: 1%;
@@ -170,6 +173,9 @@ hr {
 }
 /* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
+  .receipt-container {
+    width: 80%;
+  }
   #message {
     margin-bottom: 3%;
   }

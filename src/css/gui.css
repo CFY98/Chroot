@@ -26,7 +26,7 @@
 }
 .story {
   display: flex;
-  width: 80%;
+  width: 66%;
   align-items: center;
   gap: min(1rem, 5%);
   margin-bottom: clamp(2rem, 2vw + 2rem, 4rem);
@@ -85,12 +85,12 @@
     flex-direction: column;
   }
   .ethos {
-    width: 90%;
+    width: 94%;
     text-align: center;
     margin: 0 auto;
   }
   .roaster {
-    width: 90%;
+    width: 94%;
     margin: 0 auto;
   }
 }

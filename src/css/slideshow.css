@@ -1,7 +1,7 @@
 /* ------ SLIDESHOW ------ */
 .slideshow-container {
   margin: 0 auto;
-  width: 80%;
+  width: 60%;
 }
 #tagline {
   font-family: "IBM Plex Sans";
@@ -19,7 +19,7 @@
 #slideshow {
   overflow: hidden;
   position: relative;
-  width: 85%;
+  width: 100%;
   aspect-ratio: 16/9;
   margin: 0 auto;
   border-radius: 10px;
@@ -35,7 +35,7 @@
 }
 
 .list figure {
-  margin: 0 auto;
+  flex-shrink: 0;
   aspect-ratio: 16/9;
   overflow: hidden;
   position: relative;
@@ -130,9 +130,9 @@ figure .slidecaption.show {
 }
 
 /* ------ RESPONSIVE DESIGN ------ */
-/* ------ DESKTOPS - PHONES ------*/
+/* ------ DESKTOPS - TABLETS ------*/
 @media only screen and (max-width: 1280px) {
   .slideshow-container {
-    width: 95%;
+    width: 85%;
   }
 }
