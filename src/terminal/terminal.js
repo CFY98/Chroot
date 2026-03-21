@@ -5,6 +5,7 @@ import {
   productPrices,
   orderNumber,
   termHistory,
+  orderMessage,
 } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import { gitCmds } from "./git.js";
@@ -141,6 +142,7 @@ export function initTerminal() {
               productPrices,
               block,
               orderNumber,
+              orderMessage,
             });
           } else {
             addLine(block, `Usage: ${verb} [ add ][ reset ][ status ]`, "warn");

@@ -1,5 +1,10 @@
 // IMPORTS
-import { orderNumber, tMode, productPrices } from "../tools/assets.js";
+import {
+  orderNumber,
+  orderMessage,
+  tMode,
+  productPrices,
+} from "../tools/assets.js";
 import { tuiMode } from "../tools/routerSPA.js";
 
 export function initReceipt() {
@@ -9,6 +14,7 @@ export function initReceipt() {
   const committed = JSON.parse(localStorage.getItem("committed") || "{}");
   const receipt = document.querySelector(".receipt-items");
   const orderEl = document.getElementById("order");
+  const messageEl = document.getElementById("message");
   const total = document.querySelector(".receipt-amount");
 
   async function downloadPDF() {
@@ -34,11 +40,14 @@ export function initReceipt() {
     print.onclick = async function () {
       await downloadPDF();
       localStorage.removeItem("orderNumber");
+      localStorage.removeItem("orderMessage");
       localStorage.removeItem("purchased");
       localStorage.removeItem("committed");
       orderNumber.length = 0;
+      orderMessage.length = 0;
       if (receipt) receipt.innerHTML = "";
       if (orderEl) orderEl.textContent = "Order Number:";
+      if (messageEl) messageEl.textContent = "";
       total.textContent = "";
       tMode(tuiMode);
     };
@@ -47,8 +56,11 @@ export function initReceipt() {
   if (receipt) {
     let subTotal = 0;
     receipt.innerHTML = "";
-    if (orderEl)
-      orderEl.textContent = `Order Number: ${orderNumber[orderNumber.length - 1]}`;
+    if (orderEl) orderEl.textContent = `Order Number: ${orderNumber.at(-1)}`;
+    if (messageEl)
+      messageEl.textContent = /[\w\d\s.]/.test(orderMessage.at(-1))
+        ? `Order Message: ${orderMessage.at(-1)}`
+        : null;
 
     purchased.forEach((key) => {
       const qtyTotal = committed[key] * productPrices[key];

@@ -35,7 +35,9 @@ export const productPrices = {
 export const orderNumber = JSON.parse(
   localStorage.getItem("orderNumber") || "[]",
 );
-
+export const orderMessage = JSON.parse(
+  localStorage.getItem("orderMessage") || "[]",
+);
 export const basketItems = JSON.parse(
   localStorage.getItem("basketItems") || "[]",
 );
@@ -46,14 +48,19 @@ export const stagingArea = JSON.parse(
 export const termHistory = JSON.parse(
   localStorage.getItem("termHistory") || "[]",
 );
-
 // STATE OBJECT
 export let toAdd = {};
 
 // FUNCTIONS
-export function processOrder(orderNumber, basketItems, stagingArea) {
+export function processOrder(
+  orderNumber,
+  orderMessage,
+  basketItems,
+  stagingArea,
+) {
   localStorage.setItem("orderNumber", JSON.stringify(orderNumber));
-  localStorage.setItem("product__purchased", JSON.stringify(basketItems));
+  localStorage.setItem("orderMessage", JSON.stringify(orderMessage));
+  localStorage.setItem("purchased", JSON.stringify(basketItems));
   localStorage.setItem("committed", JSON.stringify(stagingArea));
 
   localStorage.removeItem("basketItems");

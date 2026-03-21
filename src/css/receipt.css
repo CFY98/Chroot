@@ -9,6 +9,8 @@
 .bar {
   background-color: var(--border);
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   padding: 2% 2%;
   border-radius: 10px;
 }
@@ -17,12 +19,13 @@
   font-size: 2rem;
   margin-bottom: 2rem;
 }
-#order {
+#order,
+#message {
   margin-right: auto;
   margin-left: 4%;
   text-align: center;
   padding: 1% 1%;
-  font-size: 1.5rem;
+  font-size: clamp(0.7rem, 1vw + 0.5rem, 1.5rem);
   text-decoration: underline;
 }
 #print {
@@ -39,36 +42,6 @@
   font-weight: 300;
   color: var(--text);
 }
-.columns {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 2rem;
-  font-size: 1.5rem;
-  text-align: center;
-  gap: 1rem;
-}
-.column-item {
-  grid-column: 2;
-  margin-right: auto;
-  margin-left: 14%;
-}
-.column-quantity {
-  grid-column: 3;
-}
-.column-price {
-  grid-column: 4;
-  text-align: right;
-  margin-right: 11%;
-}
-.column-line {
-  margin-top: 0.5rem;
-  margin-right: 7%;
-  margin-bottom: 2%;
-  width: 86%;
-  margin-left: auto;
-}
 .receipt-items {
   display: grid;
   grid-template-columns: 1fr;
@@ -76,7 +49,7 @@
 }
 .receipt-item {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
   width: 90%;
   min-height: 30%;
@@ -105,9 +78,8 @@
   color: var(--text);
 }
 .item-count {
-  margin-right: auto;
-  margin-left: 45%;
   font-size: 1.5rem;
+  text-align: center;
   font-weight: 300;
   color: var(--text);
 }
@@ -153,53 +125,33 @@ hr {
 /*------ RESPONSIVE DESIGN ------*/
 /* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
-  #order {
+  #order,
+  #message {
     margin-top: 1%;
     margin-bottom: 1%;
-    font-size: 1.5rem;
   }
   #thanks {
     font-size: 2rem;
   }
   #print {
-    margin-top: 1%;
-    margin-bottom: 1%;
-  }
-  .summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    font-size: 1rem;
+    margin: 1% 1%;
   }
 }
 /* ------ LAPTOPS ------ */
 @media only screen and (max-width: 1024px) {
-  #order {
-    margin-top: 1%;
-    margin-bottom: 1%;
-    font-size: 1.5rem;
+  #order,
+  #message {
+    margin: 1% 1%;
   }
   #thanks {
     font-size: 2rem;
   }
   #print {
-    margin-top: 1%;
-    margin-bottom: 1%;
-  }
-  .summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    font-size: 1rem;
+    margin: 1% 1%;
   }
 }
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
-  #order {
-    margin-top: 1%;
-    margin-bottom: 1%;
-    font-size: 1rem;
-  }
   .image-box img {
     width: 3rem;
     height: 3rem;
@@ -207,19 +159,12 @@ hr {
   #thanks {
     font-size: 1.5rem;
   }
-  #print {
-    margin-top: 1%;
-    margin-bottom: 1%;
-  }
-  .summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    font-size: 1rem;
-  }
 }
 /* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
+  #message {
+    margin-bottom: 3%;
+  }
   .bar {
     padding: 0.5em 0.5em;
     flex-direction: column;
@@ -228,39 +173,18 @@ hr {
   #thanks {
     font-size: 0.9rem;
   }
-  #order {
-    margin: 0 auto;
-    margin-top: 1%;
-    margin-bottom: 3%;
-    font-size: 0.7rem;
-  }
   #print {
     width: 40%;
     height: 40%;
-    margin: 0 auto;
-    margin-bottom: 2%;
+    margin: 3% 2%;
     align-items: center;
     font-size: 1rem;
     color: var(--text);
   }
-  .columns {
-    grid-template-columns: auto 0.5fr 0.5fr 0.5fr;
-    font-size: 1rem;
-  }
-  .column-item {
-    margin-right: auto;
-    margin-left: -9%;
-  }
-  .column-quantity {
-    margin-right: 15%;
-  }
-  .column-price {
-    margin-right: 7%;
-  }
   .receipt-item {
-    grid-template-columns: auto 0.5fr 0.5fr 0.5fr;
+    grid-template-columns: 0 0.5fr 0.5fr 0.5fr;
     margin-top: 1rem;
-    padding-top: 1rem;
+    padding-top: 2rem;
     padding-bottom: 1rem;
   }
   .image-box img {
@@ -269,22 +193,22 @@ hr {
   .item-name {
     font-size: 1rem;
     margin-right: auto;
-    margin-left: -10%;
+    margin-left: -9%;
   }
   .item-count {
     font-size: 0.8rem;
   }
   .item-amount {
     font-size: 1rem;
-    margin-left: auto;
-    margin-right: -4%;
+    margin-right: auto;
+    margin-left: 10%;
   }
   .receipt-total {
     font-size: 1.2rem;
   }
   .receipt-amount {
     margin-top: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: right;
   }
 }

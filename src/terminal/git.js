@@ -4,6 +4,7 @@ import {
   stagingArea,
   basketItems,
   orderNumber,
+  orderMessage,
   processOrder,
   removeItem,
 } from "../tools/assets.js";
@@ -154,6 +155,7 @@ export function gitCommit({
   stagingArea,
   basketItems,
   orderNumber,
+  orderMessage,
   block,
 }) {
   const message = items.slice(1).join(" ").replace(/"/g, "");
@@ -184,7 +186,8 @@ export function gitCommit({
     );
   });
   orderNumber.push(hash);
-  processOrder(orderNumber, basketItems, stagingArea);
+  orderMessage.push(message);
+  processOrder(orderNumber, orderMessage, basketItems, stagingArea);
 }
 
 // GIT LOG (RECIEPT GENERATION)

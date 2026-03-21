@@ -7,6 +7,7 @@ import {
   removeItem,
   stagingArea,
   productPrices,
+  orderMessage,
 } from "../tools/assets.js";
 import { router } from "../tools/routerSPA.js";
 
@@ -130,7 +131,7 @@ export function initBasket() {
       }
       const hash = Math.random().toString(16).slice(2, 9);
       orderNumber.push(hash);
-      processOrder(orderNumber, basketItems, stagingArea);
+      processOrder(orderNumber, orderMessage, basketItems, stagingArea);
 
       const activeBtn = document.getElementById("nav-btn");
       if (activeBtn) activeBtn.classList.remove("active");

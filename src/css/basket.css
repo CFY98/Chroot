@@ -147,6 +147,7 @@ hr {
   text-align: center;
   margin: 0 auto;
   padding: 1rem;
+  padding-top: min(3.5rem, 6%);
   padding-bottom: 0.2rem;
 }
 
