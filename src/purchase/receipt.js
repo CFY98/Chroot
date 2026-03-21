@@ -1,4 +1,5 @@
 // IMPORTS
+import html2pdf from "html2pdf.js";
 import {
   processOrder,
   orderNumber,
@@ -18,17 +19,32 @@ export function initReceipt() {
   const orderEl = document.getElementById("order");
   const total = document.querySelector(".receipt-amount");
 
+  async function downloadPDF() {
+    const element = document.getElementById("invoice");
+    const clone = element.cloneNode(true);
+    clone.classList.add("printing");
+
+    const opt = {
+      filename: `chroot_receipt_${orderNumber}.pdf`,
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
+
+    await html2pdf().set(opt).from(clone).save();
+    clone.classList.remove("printing");
+    return;
+  }
   // PRINT BUTTON
   if (print) {
-    print.onclick = function () {
-      window.print();
-      processOrder(orderNumber, basketItems, stagingArea);
+    print.onclick = async function () {
+      await downloadPDF();
       localStorage.removeItem("orderNumber");
+      localStorage.removeItem("purchased");
+      localStorage.removeItem("committed");
       orderNumber.length = 0;
       if (receipt) receipt.innerHTML = "";
       if (orderEl) orderEl.textContent = "Order Number:";
       total.textContent = "";
-
       tMode(tuiMode);
     };
   }

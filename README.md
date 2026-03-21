@@ -8,9 +8,8 @@ After sending to testers, new features were added based on user-feedback.
 
 - **Responsive Basket UI** — Dynamic cart rendering with item quantities.
 - **Local Storage** — Live basket updates across pages via localStorage.
-- **State Memory** — locally-saved object for adjusting item quanities before adding to basket.
 - **SPA Routing** — Changed the iframes of V2 for convenient navigation for the GUI mode.
-- **PDF Generation** — Client-side PDF generation via the brower's native window.print() API.
+- **PDF Generation** — Client-side PDF generation via html2pdf library.
 - **Screen Reader Announcer** — ARIA live regions with custom announcements to assist screen reader users.
 
 ## 💻 GUI Mode Features
@@ -18,7 +17,7 @@ After sending to testers, new features were added based on user-feedback.
 The UI has been updated to feature both a GUI and a TUI mode depending on the user's preference so the user no longer has to use the terminal should they see fit.
 
 - **Toast Notifications** — Informs users when items are added to the basket.
-- **Quantity Box** — Users can select the desired quantity before adding to the basket via state memory.
+  **State Memory** — locally-saved object for adjusting item quanities before adding to basket.
 
 ## ⌨️ TUI Mode Features
 
@@ -41,6 +40,7 @@ Users can switch to TUI mode if they prefer working in a terminal.
 ![Terminal User Interface Example](./public/screenshots/V3_tui_mode.png)
 ![Invoice Pace](./public/screenshots/V3_invoice.png)
 ![PDF Generation](./public/screenshots/V3_receipt_generation.png)
+![PDF Result](./public/screenshots/V3_saved_receipt.png)
 
 ## Project Structure
 

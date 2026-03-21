@@ -114,6 +114,7 @@
 .cost {
   text-align: right;
   margin-right: 10%;
+  margin-top: 0;
 }
 .item-amount {
   font-size: 1.5rem;
@@ -198,6 +199,10 @@ hr {
     margin-top: 1%;
     margin-bottom: 1%;
     font-size: 1rem;
+  }
+  .image-box img {
+    width: 3rem;
+    height: 3rem;
   }
   #thanks {
     font-size: 1.5rem;

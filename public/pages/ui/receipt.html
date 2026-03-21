@@ -9,25 +9,27 @@
     <title>Receipt</title>
   </head>
   <body>
-    <p class="subtitle">Invoice</p>
-    <p id="thanks">Thank you for your purchase at Chroot!</p>
-    <div class="receipt-container">
-      <div class="bar">
-        <p id="order">Order Number:</p>
-        <button id="print" aria-label="print PDF">Print</button>
-      </div>
-      <div class="columns">
-        <h5 class="column-item">Item</h5>
-        <h5 class="column-quantity">Quantity</h5>
-        <h5 class="column-price">Price</h5>
-      </div>
-      <hr class="column-line" />
-      <div class="receipt-items"></div>
-      <hr />
-      <div class="receipt-checkout">
-        <div class="receipt-total">
-          Total
-          <div class="receipt-amount"></div>
+    <div id="invoice">
+      <p class="subtitle">Invoice</p>
+      <p id="thanks">Thank you for your purchase at Chroot!</p>
+      <div class="receipt-container">
+        <div class="bar">
+          <p id="order">Order Number:</p>
+          <button id="print" aria-label="print PDF">Print</button>
+        </div>
+        <div class="columns">
+          <h5 class="column-item">Item</h5>
+          <h5 class="column-quantity">Quantity</h5>
+          <h5 class="column-price">Price</h5>
+        </div>
+        <hr class="column-line" />
+        <div class="receipt-items"></div>
+        <hr />
+        <div class="receipt-checkout">
+          <div class="receipt-total">
+            Total
+            <div class="receipt-amount"></div>
+          </div>
         </div>
       </div>
     </div>

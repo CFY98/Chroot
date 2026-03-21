@@ -1,5 +1,5 @@
 /* ------ PDF PRINTING ------ */
-@media print {
+.printing {
   * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -12,7 +12,6 @@
   }
   .subtitle {
     color: var(--border);
-    text-decoration: underline;
     font-size: 4rem;
   }
   #thanks {
