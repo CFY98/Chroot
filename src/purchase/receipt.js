@@ -1,13 +1,5 @@
 // IMPORTS
-import html2pdf from "html2pdf.js";
-import {
-  processOrder,
-  orderNumber,
-  basketItems,
-  stagingArea,
-  tMode,
-  productPrices,
-} from "../tools/assets.js";
+import { orderNumber, tMode, productPrices } from "../tools/assets.js";
 import { tuiMode } from "../tools/routerSPA.js";
 
 export function initReceipt() {
@@ -20,6 +12,7 @@ export function initReceipt() {
   const total = document.querySelector(".receipt-amount");
 
   async function downloadPDF() {
+    const html2pdf = (await import("html2pdf.js")).default;
     const element = document.getElementById("invoice");
     const clone = element.cloneNode(true);
     clone.classList.add("printing");
@@ -30,9 +23,11 @@ export function initReceipt() {
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
 
-    await html2pdf().set(opt).from(clone).save();
-    clone.classList.remove("printing");
-    return;
+    try {
+      await html2pdf().set(opt).from(clone).save();
+    } finally {
+      clone.classList.remove("printing");
+    }
   }
   // PRINT BUTTON
   if (print) {

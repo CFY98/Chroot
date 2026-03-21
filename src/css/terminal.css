@@ -38,7 +38,8 @@
   color: var(--text);
   font-family: inherit;
   font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
-  caret-color: var(--cursor);
+  margin-left: 0.1rem;
+  caret-color: var(--green);
 }
 /* ------ TERMINAL OUTPUT ------ */
 .terminal-output {
