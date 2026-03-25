@@ -105,6 +105,16 @@ npm run dev
 npm run build
 ```
 
+<<<<<<< HEAD
+=======
+## 📌 Future Developments
+
+- **PostgreSQL**: Database to store products and orders.
+- **Wishlist**: Implement git-style command, Git stash, alongside a button for Visual mode to save products, backed by database storage.
+- **Backend Cart System**: Save carts per user, update quantities and persist data. 
+- **Backend API: Express.js to handle requests from the UI and interact with the PostgreSQL database.
+
+>>>>>>> 68b5ba1 (docs added and updated Future Developments section)
 ## ⛏️ Tech Stack
 
 - **HTML**: Provides basic structure and layout of the website.
