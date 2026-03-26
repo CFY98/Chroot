@@ -38,11 +38,7 @@ Users can switch to TUI mode if they prefer working in a terminal.
 ![Toast Notification](./public/screenshots/V3_Toast_notification.png)
 ![Basket UI](./public/screenshots/V3_basket_page.png)
 ![Terminal User Interface Example](./public/screenshots/V3_tui_mode.png)
-<<<<<<< HEAD
-![Invoice Pace](./public/screenshots/V3_invoice.png)
-=======
 ![Invoice Page](./public/screenshots/V3_invoice.png)
->>>>>>> 037b86c (docs removed merge conflicts, fixed spelling errors and formatting)
 ![PDF Generation](./public/screenshots/V3-receipt_generation.png)
 ![PDF Result](./public/screenshots/V3_saved_receipt.png)
 
@@ -114,11 +110,7 @@ npm run build
 - **PostgreSQL**: Database to store products and orders.
 - **Wishlist**: Implement git-style command, Git stash, alongside a button for Visual mode to save products, backed by database storage.
 - **Backend Cart System**: Save carts per user, update quantities and persist data. 
-<<<<<<< HEAD
-- **Backend API: Express.js to handle requests from the UI and interact with the PostgreSQL database.
-=======
 - **Backend API**: Django to handle requests from the UI and interact with the PostgreSQL database.
->>>>>>> 037b86c (docs removed merge conflicts, fixed spelling errors and formatting)
 
 ## ⛏️ Tech Stack
 
@@ -131,4 +123,4 @@ npm run build
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
+This project is licensed under **Apache-2.0**.
