@@ -3,7 +3,7 @@ import { productPrices } from "../tools/assets.js";
 import { addLine, blank } from "../tools/utilities.js";
 import { announce } from "../tools/announcer.js";
 import { router } from "../tools/routerSPA.js";
-import storage from "../tools/storage.js";
+import service, { storage } from "../tools/storage.js";
 
 // GIT ADD (ADD ITEMS TO BASKET)
 export function gitAdd({ items, stagingArea, basketItems, block }) {
@@ -12,13 +12,13 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
     if (all === "all" || all.toUpperCase() === "A") {
         products.forEach((item) => {
             stagingArea[item] = (stagingArea[item] || 0) + 1;
-            storage.saveStagingArea();
+            storage.set("stagingArea", stagingArea);
 
             if (!basketItems.includes(item)) basketItems.push(item);
-            storage.saveBasketItems();
+            storage.set("basketItems", basketItems);
 
-            const prev = parseInt(localStorage.getItem("itemCount") || 0);
-            localStorage.setItem("itemCount", prev + 1);
+            const prev = parseInt(storage.get("itemCount") || 0);
+            storage.set("itemCount", prev + 1);
 
             addLine(block, `${item} staged for commit`, "info");
             announce("One of every item was added to the basket");
@@ -39,14 +39,14 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
     items.forEach((item) => {
         if (products.includes(item)) {
             stagingArea[item] = (stagingArea[item] || 0) + 1;
-            storage.saveStagingArea();
+            storage.set("stagingArea", stagingArea);
 
-            const prev = parseInt(localStorage.getItem("itemCount") || 0);
-            localStorage.setItem("itemCount", prev + 1);
+            const prev = parseInt(storage.get("itemCount") || 0);
+            storage.set("itemCount", prev + 1);
 
             if (!basketItems.includes(item)) {
                 basketItems.push(item);
-                storage.saveBasketItems();
+                storage.set("basketItems", basketItems);
             }
 
             addLine(block, `${item} staged for commit`, "info");
@@ -65,9 +65,11 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
 // GIT RESET (REMOVE ITEMS FROM BASKET)
 export function gitReset({ items, stagingArea, basketItems, block }) {
     if (items[0]?.replace(/^-+/, "") === "hard") {
-        storage.removeBasketItems();
-        storage.removeStagingArea();
-        localStorage.setItem("itemCount", "0");
+        storage.remove("basketItems");
+        basketItems.length = 0;
+        storage.remove("stagingArea");
+        for (let key in stagingArea) delete stagingArea[key];
+        storage.set("itemCount", 0);
         addLine(block, "All items unstaged", "info");
         announce("The basket is now empty");
         return;
@@ -83,8 +85,8 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
         if (stagingArea[item]) {
             stagingArea[item] -= 1;
 
-            const prev = parseInt(localStorage.getItem("itemCount") || 0);
-            localStorage.setItem("itemCount", prev - 1);
+            const prev = parseInt(storage.get("itemCount") || 0);
+            storage.set("itemCount", prev - 1);
 
             if (stagingArea[item] === 0) {
                 const itemQty = stagingArea[item] || 1;
@@ -93,9 +95,9 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
                 const itemIndex = basketItems.findIndex((i) => i === item);
                 if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
 
-                localStorage.setItem("itemCount", prev - itemQty);
-                storage.saveBasketItems();
-                storage.saveStagingArea();
+                storage.set("itemCount", prev - itemQty);
+                storage.set("basketItems", basketItems);
+                storage.set("stagingArea", stagingArea);
                 addLine(block, `${item} was unstaged`, "info");
                 announce(`${item} was completely removed from the basket`);
             }
@@ -108,7 +110,7 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
             addLine(block, `'${item}' not staged`, "error");
             announce(`${item} was not in the basket so nothing was removed`);
         }
-        storage.saveStagingArea();
+        storage.set("stagingArea", stagingArea);
     });
 }
 
@@ -150,7 +152,6 @@ export function gitStatus({ stagingArea, productPrices, block }) {
 export function gitCommit({
     items,
     stagingArea,
-    basketItems,
     orderNumber,
     orderMessage,
     block,
@@ -183,8 +184,10 @@ export function gitCommit({
         );
     });
     orderNumber.push(hash);
+    storage.set("orderNumber", orderNumber);
     orderMessage.push(message);
-    storage.processOrder();
+    storage.set("orderMessage", orderMessage);
+    service.processOrder();
 }
 
 // GIT LOG (RECIEPT GENERATION)

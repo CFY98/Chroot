@@ -2,10 +2,12 @@
 import { announce } from "../tools/announcer.js";
 import { productPrices } from "../tools/assets.js";
 import { router } from "../tools/routerSPA.js";
-import storage from "../tools/storage.js";
+import service, { storage } from "../tools/storage.js";
 
 export function initBasket() {
-    const { stagingArea, basketItems, orderNumber } = storage;
+    const stagingArea = storage.get("stagingArea", {});
+    const basketItems = storage.get("basketItems", []);
+    const orderNumber = storage.get("orderNumber", []);
     // COSTS
     let subTotal = 0;
 
@@ -55,8 +57,8 @@ export function initBasket() {
             function updateItems(delta) {
                 const count = cartItem.querySelector(".count");
 
-                const prev = parseInt(localStorage.getItem("itemCount") || 0);
-                localStorage.setItem("itemCount", prev + delta);
+                const prev = parseInt(storage.get("itemCount") || 0);
+                storage.set("itemCount", prev + delta);
                 count.textContent = parseInt(count.textContent || 0) + delta;
 
                 stagingArea[itemName] = Math.max(
@@ -65,7 +67,7 @@ export function initBasket() {
                 );
 
                 amount.textContent = `£${(stagingArea[itemName] * productPrices[itemName]).toFixed(2)}`;
-                storage.saveStagingArea();
+                storage.set("stagingArea", stagingArea);
             }
 
             if (e.target.classList.contains("plus-btn")) {
@@ -96,10 +98,12 @@ export function initBasket() {
                 }
             }
             if (e.target.closest(".remove")) {
-                storage.removeItem(itemName, cartItem);
+                service.removeItem(itemName, cartItem);
+                const updatedBasketItems = storage.get("basketItems", []);
+                const updatedStagingArea = storage.get("stagingArea", {});
                 announce(` ${itemName} was completely removed from the basket`);
-                updateTotal(stagingArea);
-                emptyState(basketItems);
+                updateTotal(updatedStagingArea);
+                emptyState(updatedBasketItems);
             }
         });
     }
@@ -111,9 +115,11 @@ export function initBasket() {
                 announce("The basket was empty to begin with");
                 return;
             }
-            storage.removeBasketItems();
-            storage.removeStagingArea();
-            localStorage.setItem("itemCount", "0");
+            storage.remove("basketItems");
+            basketItems.length = 0;
+            storage.remove("stagingArea");
+            for (let key in stagingArea) delete stagingArea[key];
+            storage.set("itemCount", 0);
             if (product) product.innerHTML = "";
             announce("The basket is now empty");
             updateTotal(stagingArea);
@@ -132,7 +138,8 @@ export function initBasket() {
             }
             const hash = Math.random().toString(16).slice(2, 9);
             orderNumber.push(hash);
-            storage.processOrder();
+            storage.set("orderNumber", orderNumber);
+            service.processOrder();
 
             const activeBtn = document.getElementById("nav-btn");
             if (activeBtn) activeBtn.classList.remove("active");

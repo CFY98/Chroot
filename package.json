@@ -9,11 +9,11 @@
         "build": "vite build",
         "preview": "vite preview"
     },
-    "devDependencies": {
-        "vite": "^8.0.0"
-    },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.2.0",
         "html2pdf.js": "^0.14.0"
+    },
+    "devDependencies": {
+        "vite": "^8.0.3"
     }
 }

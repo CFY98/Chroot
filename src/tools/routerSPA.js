@@ -1,4 +1,4 @@
-// IMPORTS
+// IMPORTSS
 import { announce, uiAnnounce } from "./announcer.js";
 import { initSlideshow } from "./slideshow.js";
 import { routes, tMode } from "./assets.js";
@@ -7,50 +7,50 @@ import { routes, tMode } from "./assets.js";
 const homeContent = document.getElementById("app").innerHTML;
 
 export function router(page) {
-  const screenContent = document.getElementById("app");
-  const route = routes[page];
+    const screenContent = document.getElementById("app");
+    const route = routes[page];
 
-  screenContent.replaceChildren();
+    screenContent.replaceChildren();
 
-  if (page === "/") {
-    screenContent.innerHTML = homeContent;
-    announce(`The ${routes[page].title} has loaded`);
-    initSlideshow();
-    return;
-  }
+    if (page === "/") {
+        screenContent.innerHTML = homeContent;
+        announce(`The ${routes[page].title} has loaded`);
+        initSlideshow();
+        return;
+    }
 
-  if (!route) {
-    screenContent.innerHTML = "<p>404 - Page not found.</p>";
-    announce("404 error, page not found");
-    return;
-  }
+    if (!route) {
+        screenContent.innerHTML = "<p>404 - Page not found.</p>";
+        announce("404 error, page not found");
+        return;
+    }
 
-  fetch(route.path)
-    .then((res) => res.text())
-    .then((html) => {
-      screenContent.innerHTML = html;
-      uiAnnounce(page);
-    })
-    .catch(() => {
-      screenContent.innerHTML = "<p>404 - Page not found.</p>";
-      announce("404 error, page not found");
-    });
+    fetch(route.path)
+        .then((res) => res.text())
+        .then((html) => {
+            screenContent.innerHTML = html;
+            uiAnnounce(page);
+        })
+        .catch(() => {
+            screenContent.innerHTML = "<p>404 - Page not found.</p>";
+            announce("404 error, page not found");
+        });
 }
 
 // NAV BUTTONS
 let activeBtn = null;
 
 document.querySelectorAll(".nav-btn").forEach((navBtn) => {
-  navBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const page = `/${e.target.textContent.trim().toLowerCase()}`;
-    history.pushState({}, "", page);
-    router(page);
+    navBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const page = `/${e.target.textContent.trim().toLowerCase()}`;
+        history.pushState({}, "", page);
+        router(page);
 
-    if (activeBtn) activeBtn.classList.remove("active");
-    navBtn.classList.add("active");
-    activeBtn = navBtn;
-  });
+        if (activeBtn) activeBtn.classList.remove("active");
+        navBtn.classList.add("active");
+        activeBtn = navBtn;
+    });
 });
 
 // TUI MODE VARIABLE
@@ -59,38 +59,38 @@ export let tuiMode = false;
 // TOGGLE
 const toggle = document.querySelector(".titlebar-text");
 toggle.addEventListener("click", (e) => {
-  e.preventDefault();
-  toggle.classList.toggle("active");
+    e.preventDefault();
+    toggle.classList.toggle("active");
 
-  if (toggle.classList.contains("active")) {
-    toggle.dataset.text = "Terminal Mode";
-    toggle.dataset.hover = "Change: Visual Mode";
-  } else {
-    toggle.dataset.text = "Visual Mode";
-    toggle.dataset.hover = "Change: Terminal Mode";
-  }
+    if (toggle.classList.contains("active")) {
+        toggle.dataset.text = "Terminal Mode";
+        toggle.dataset.hover = "Change: Visual Mode";
+    } else {
+        toggle.dataset.text = "Visual Mode";
+        toggle.dataset.hover = "Change: Terminal Mode";
+    }
 
-  tuiMode = !tuiMode;
-  tMode(tuiMode);
-  document.querySelector(".nav-btn.active")?.classList.remove("active");
+    tuiMode = !tuiMode;
+    tMode(tuiMode);
+    document.querySelector(".nav-btn.active")?.classList.remove("active");
 });
 
 // TITLE BUTTON
 const title = document.getElementById("title");
 title.addEventListener("click", (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  tMode(tuiMode);
+    tMode(tuiMode);
 });
 
 // PRODUCT PAGES
 document.addEventListener("click", (e) => {
-  if (e.target.matches("a[data-link]")) {
-    e.preventDefault();
-    const page = e.target.getAttribute("href");
-    history.pushState({}, "", page);
-    router(page);
-  }
+    if (e.target.matches("a[data-link]")) {
+        e.preventDefault();
+        const page = e.target.getAttribute("href");
+        history.pushState({}, "", page);
+        router(page);
+    }
 });
 
 // POPSTATE
