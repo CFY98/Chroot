@@ -200,6 +200,7 @@ body {
 
 .nav-btn.active {
     background: var(--border);
+    border-right-color: var(--muted);
 }
 /* ------ SOCIALS ------ */
 .socials {

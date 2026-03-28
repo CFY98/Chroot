@@ -141,7 +141,7 @@ export function initBasket() {
             storage.set("orderNumber", orderNumber);
             service.processOrder();
 
-            const activeBtn = document.getElementById("nav-btn");
+            const activeBtn = document.getElementById("basket-btn");
             if (activeBtn) activeBtn.classList.remove("active");
 
             if (product) product.innerHTML = "";
