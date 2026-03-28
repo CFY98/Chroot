@@ -82,25 +82,21 @@ Prerequisites:
 
 ```
 git clone https://github.com/CFY98/Chroot.git
-
 ```
 
 2. Install dependencies
 
 ```
 npm install
-
 ```
 
 3. Start development server
 
 ```
 npm run dev
-
 ```
 
 4. Build for production
-
 ```
 npm run build
 ```
@@ -123,4 +119,4 @@ npm run build
 
 ## 📄 License
 
-This project is licensed under **Apache-2.0**.
+This project is licensed under **Apache 2.0**.
