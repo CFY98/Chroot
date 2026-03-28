@@ -31,60 +31,10 @@ export const productPrices = {
   grinder: 129.99,
 };
 
-// LOCAL STORAGE OBJECTS AND ARRAYS
-export const orderNumber = JSON.parse(
-  localStorage.getItem("orderNumber") || "[]",
-);
-export const orderMessage = JSON.parse(
-  localStorage.getItem("orderMessage") || "[]",
-);
-export const basketItems = JSON.parse(
-  localStorage.getItem("basketItems") || "[]",
-);
-export const stagingArea = JSON.parse(
-  localStorage.getItem("stagingArea") || "{}",
-);
-
-export const termHistory = JSON.parse(
-  localStorage.getItem("termHistory") || "[]",
-);
-// STATE OBJECT
+// QUANTIFIER STATE OBJECT
 export let toAdd = {};
 
 // FUNCTIONS
-export function processOrder(
-  orderNumber,
-  orderMessage,
-  basketItems,
-  stagingArea,
-) {
-  localStorage.setItem("orderNumber", JSON.stringify(orderNumber));
-  localStorage.setItem("orderMessage", JSON.stringify(orderMessage));
-  localStorage.setItem("purchased", JSON.stringify(basketItems));
-  localStorage.setItem("committed", JSON.stringify(stagingArea));
-
-  localStorage.removeItem("basketItems");
-  basketItems.length = 0;
-  localStorage.removeItem("stagingArea");
-  for (let key in stagingArea) delete stagingArea[key];
-  localStorage.setItem("itemCount", 0);
-}
-export function removeItem(stagingArea, basketItems, itemName, cartItem) {
-  const itemQty = stagingArea[itemName] || 1;
-  const prev = parseInt(localStorage.getItem("itemCount") || 0);
-
-  announce(`${itemName} was completely removed from the basket`);
-
-  delete stagingArea[itemName];
-  const itemIndex = basketItems.findIndex((i) => i === itemName);
-  if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
-
-  localStorage.setItem("itemCount", prev - itemQty);
-  localStorage.setItem("basketItems", JSON.stringify(basketItems));
-  localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
-  cartItem.remove();
-}
-
 export function tMode(tuiMode) {
   if (tuiMode) {
     history.pushState({}, "", "/tui");

@@ -1,17 +1,11 @@
 // IMPORTS
 import { announce } from "../tools/announcer.js";
-import {
-  basketItems,
-  orderNumber,
-  processOrder,
-  removeItem,
-  stagingArea,
-  productPrices,
-  orderMessage,
-} from "../tools/assets.js";
+import { productPrices } from "../tools/assets.js";
 import { router } from "../tools/routerSPA.js";
+import storage from "../tools/storage.js";
 
 export function initBasket() {
+  const { stagingArea, basketItems, orderNumber, order, itemCount } = storage;
   // COSTS
   let subTotal = 0;
 
@@ -65,10 +59,10 @@ export function initBasket() {
         localStorage.setItem("itemCount", prev + delta);
         count.textContent = parseInt(count.textContent || 0) + delta;
 
-        stagingArea[itemName] = (stagingArea[itemName] || 0) + delta;
+        stagingArea[itemName] = Math.max(0, (stagingArea[itemName] || 0) + delta);
 
         amount.textContent = `£${(stagingArea[itemName] * productPrices[itemName]).toFixed(2)}`;
-        localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+        storage.saveStagingArea();
       }
 
       if (e.target.classList.contains("plus-btn")) {
@@ -80,7 +74,7 @@ export function initBasket() {
       if (e.target.classList.contains("minus-btn")) {
         updateItems(-1);
         if (stagingArea[itemName] === 0) {
-          removeItem(stagingArea, basketItems, itemName, cartItem);
+          storage.removeItem(itemName, cartItem);
           announce(` ${itemName} was completely removed from the basket`);
           if (basketItems.length === 0) {
             announce("the basket is now empty");
@@ -95,7 +89,7 @@ export function initBasket() {
         }
       }
       if (e.target.closest(".remove")) {
-        removeItem(stagingArea, basketItems, itemName, cartItem);
+        storage.removeItem(itemName, cartItem);
         announce(` ${itemName} was completely removed from the basket`);
         updateTotal(stagingArea);
         emptyState(basketItems);
@@ -110,10 +104,8 @@ export function initBasket() {
         announce("The basket was empty to begin with");
         return;
       }
-      localStorage.removeItem("basketItems");
-      basketItems.length = 0;
-      localStorage.removeItem("stagingArea");
-      for (let key in stagingArea) delete stagingArea[key];
+      storage.removeBasketItems();
+      storage.removeStagingArea();
       localStorage.setItem("itemCount", "0");
       if (product) product.innerHTML = "";
       announce("The basket is now empty");
@@ -131,7 +123,7 @@ export function initBasket() {
       }
       const hash = Math.random().toString(16).slice(2, 9);
       orderNumber.push(hash);
-      processOrder(orderNumber, orderMessage, basketItems, stagingArea);
+      storage.processOrder();
 
       const activeBtn = document.getElementById("nav-btn");
       if (activeBtn) activeBtn.classList.remove("active");
@@ -147,19 +139,12 @@ export function initBasket() {
   // ITEMS IN BASKET
   if (product) {
     function renderBasket() {
-      const renderItems = JSON.parse(
-        localStorage.getItem("basketItems") || "[]",
-      );
-      const renderStaging = JSON.parse(
-        localStorage.getItem("stagingArea") || "{}",
-      );
-
       product.innerHTML = "";
 
       emptyState(basketItems);
 
-      renderItems.forEach((key) => {
-        const qtyTotal = renderStaging[key] * productPrices[key];
+      basketItems.forEach((key) => {
+        const qtyTotal = stagingArea[key] * productPrices[key];
         const div = document.createElement("div");
         div.classList.add("cart-item");
         div.innerHTML = `
@@ -171,7 +156,7 @@ export function initBasket() {
       </div>
       <div class="counter">
         <div class="plus-btn" role="button" aria-label="Increases quantity by one">+</div>
-        <div class="count" aria-label="Displays number of selected item in basket">${renderStaging[key]}</div>
+        <div class="count" aria-label="Displays number of selected item in basket">${stagingArea[key]}</div>
         <div class="minus-btn" role="button" aria-label="Increases quantity by one">-</div>
       </div>
       <div class="cost">
@@ -181,7 +166,7 @@ export function initBasket() {
     `;
         product.appendChild(div);
       });
-      updateTotal(renderStaging);
+      updateTotal(stagingArea);
     }
     renderBasket();
   }

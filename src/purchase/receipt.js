@@ -1,17 +1,12 @@
 // IMPORTS
-import {
-  orderNumber,
-  orderMessage,
-  tMode,
-  productPrices,
-} from "../tools/assets.js";
+import { tMode, productPrices } from "../tools/assets.js";
 import { tuiMode } from "../tools/routerSPA.js";
+import storage from "../tools/storage.js";
 
 export function initReceipt() {
+  const { orderNumber, orderMessage, committed, purchased } = storage
   // VALUES TO PRINT
   const print = document.getElementById("print");
-  const purchased = JSON.parse(localStorage.getItem("purchased") || "[]");
-  const committed = JSON.parse(localStorage.getItem("committed") || "{}");
   const receipt = document.querySelector(".receipt-items");
   const orderEl = document.getElementById("order");
   const messageEl = document.getElementById("message");
@@ -39,12 +34,10 @@ export function initReceipt() {
   if (print) {
     print.onclick = async function () {
       await downloadPDF();
-      localStorage.removeItem("orderNumber");
-      localStorage.removeItem("orderMessage");
-      localStorage.removeItem("purchased");
-      localStorage.removeItem("committed");
-      orderNumber.length = 0;
-      orderMessage.length = 0;
+      storage.removeOrderNumber();
+      storage.removeOrderMessage();
+      storage.removePurchased();
+      storage.removeCommitted();
       if (receipt) receipt.innerHTML = "";
       if (orderEl) orderEl.textContent = "Order Number:";
       if (messageEl) messageEl.textContent = "";

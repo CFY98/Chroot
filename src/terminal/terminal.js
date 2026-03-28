@@ -1,16 +1,10 @@
 // IMPORTS
-import {
-  basketItems,
-  stagingArea,
-  productPrices,
-  orderNumber,
-  termHistory,
-  orderMessage,
-} from "../tools/assets.js";
+import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import { gitCmds } from "./git.js";
 import { cdPages } from "./cd.js";
 import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
+import storage from "../tools/storage.js";
 
 export function initTerminal() {
   // TERMINAL HISTORY TOGGLE
@@ -47,6 +41,7 @@ export function initTerminal() {
       const parts = cmd.split(/\s+/);
       const verb = parts[0];
       const arg = parts.slice(1).join(" ");
+      const { stagingArea, basketItems, orderNumber, orderMessage, committed } = storage;
 
       switch (verb) {
         case "help":
@@ -143,6 +138,7 @@ export function initTerminal() {
               block,
               orderNumber,
               orderMessage,
+              committed,
             });
           } else {
             addLine(block, `Usage: ${verb} [ add ][ reset ][ status ]`, "warn");
@@ -201,13 +197,14 @@ export function initTerminal() {
 
     // INPUT EVENTS
     if (input) {
+      const { termHistory } = storage;
       input.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           const val = input.value;
           if (val.trim()) {
             termHistory.unshift(val);
             if (termHistory.length > 15) termHistory.pop();
-            localStorage.setItem("termHistory", JSON.stringify(termHistory));
+            storage.saveTermHistory(termHistory);
             histIdx = -1;
           }
           run(val);

@@ -1,13 +1,11 @@
 // IMPORTS
-import {
-  productPrices,
-  stagingArea,
-  basketItems,
-  toAdd,
-} from "../tools/assets.js";
+import { productPrices, toAdd } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
+import storage from "../tools/storage.js";
+
 
 export function initBuy(page) {
+  const { stagingArea, basketItems } = storage;
   const buy = document.querySelector(".buy");
   const toBuy = document.getElementById("purchase");
   const itemName = page.split("/").pop();
@@ -43,11 +41,11 @@ export function initBuy(page) {
         stagingArea[itemName] = (stagingArea[itemName] || 0) + toAdd[itemName];
         const prev = parseInt(localStorage.getItem("itemCount") || 0);
         localStorage.setItem("itemCount", prev + toAdd[itemName]);
-        localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+        storage.saveStagingArea();
 
         if (!basketItems.includes(itemName)) {
           basketItems.push(itemName);
-          localStorage.setItem("basketItems", JSON.stringify(basketItems));
+          storage.saveBasketItems();
         }
         announce(
           `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,

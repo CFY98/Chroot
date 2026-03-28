@@ -1,16 +1,11 @@
 // IMPORTS
-import {
-  productPrices,
-  stagingArea,
-  basketItems,
-  orderNumber,
-  orderMessage,
-  processOrder,
-  removeItem,
-} from "../tools/assets.js";
+import { productPrices } from "../tools/assets.js";
 import { addLine, blank } from "../tools/utilities.js";
 import { announce } from "../tools/announcer.js";
 import { router } from "../tools/routerSPA.js";
+import storage from "../tools/storage.js";
+
+const { stagingArea, basketItems, orderNumber, orderMessage, committed} = storage
 
 // GIT ADD (ADD ITEMS TO BASKET)
 export function gitAdd({ items, stagingArea, basketItems, block }) {
@@ -19,10 +14,10 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
   if (all === "all" || all.toUpperCase() === "A") {
     products.forEach((item) => {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
-      localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+      storage.saveStagingArea();
 
       basketItems.push(item);
-      localStorage.setItem("basketItems", JSON.stringify(basketItems));
+      storage.saveBasketItems();
 
       const prev = parseInt(localStorage.getItem("itemCount") || 0);
       localStorage.setItem("itemCount", prev + 1);
@@ -42,14 +37,14 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
   items.forEach((item) => {
     if (products.includes(item)) {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
-      localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+      storage.saveStagingArea();
 
       const prev = parseInt(localStorage.getItem("itemCount") || 0);
       localStorage.setItem("itemCount", prev + 1);
 
       if (!basketItems.includes(item)) {
         basketItems.push(item);
-        localStorage.setItem("basketItems", JSON.stringify(basketItems));
+        storage.saveBasketItems();
       }
 
       addLine(block, `${item} staged for commit`, "info");
@@ -66,10 +61,8 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
 // GIT RESET (REMOVE ITEMS FROM BASKET)
 export function gitReset({ items, stagingArea, basketItems, block }) {
   if (items[0]?.replace(/^-+/, "") === "hard") {
-    localStorage.removeItem("basketItems");
-    basketItems.length = 0;
-    localStorage.removeItem("stagingArea");
-    for (let key in stagingArea) delete stagingArea[key];
+    storage.removeBasketItems();
+    storage.removeStagingArea();
     localStorage.setItem("itemCount", "0");
     addLine(block, "All items unstaged", "info");
     announce("The basket is now empty");
@@ -97,8 +90,8 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
         if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
 
         localStorage.setItem("itemCount", prev - itemQty);
-        localStorage.setItem("basketItems", JSON.stringify(basketItems));
-        localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+        storage.saveBasketItems();
+        storage.saveStagingArea();
         addLine(block, `${item} was unstaged`, "info");
         announce(`${item} was completely removed from the basket`);
       }
@@ -111,7 +104,7 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
       addLine(block, `'${item}' not staged`, "error");
       announce(`${item} was not in the basket so nothing was removed`);
     }
-    localStorage.setItem("stagingArea", JSON.stringify(stagingArea));
+    storage.saveStagingArea();
   });
 }
 
@@ -187,12 +180,11 @@ export function gitCommit({
   });
   orderNumber.push(hash);
   orderMessage.push(message);
-  processOrder(orderNumber, orderMessage, basketItems, stagingArea);
+  storage.processOrder();
 }
 
 // GIT LOG (RECIEPT GENERATION)
-export function gitLog({ block }) {
-  const committed = JSON.parse(localStorage.getItem("committed") || "{}");
+export function gitLog({ block, committed }) {
   if (Object.keys(committed).length === 0) {
     announce("No order was placed since there were no items in the basket");
     addLine(block, "fatal: there are no commits yet", "error");
