@@ -8,6 +8,7 @@
     --bar: #111311;
     --t-window: #141714;
     --border: #2a2e2a;
+    --b-right: #2a2d2a;
     --green: #7ec98c;
     --hover: #7ac3ff;
     --amber: #c9a84c;
@@ -200,7 +201,7 @@ body {
 
 .nav-btn.active {
     background: var(--border);
-    border-right-color: var(--muted);
+    border-right-color: var(--b-right);
 }
 /* ------ SOCIALS ------ */
 .socials {
@@ -229,6 +230,12 @@ body {
     color: var(--text);
 }
 /* ------ RESPONSIVE DESIGN ------ */
+/* ------ DISABLE HOVER EFFECT ON TOUCH DEVICES ------ */
+@media (hover: hover) {
+    .nav-btn:hover {
+        background: var(--border);
+    }
+}
 /* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
     .dot-r {
