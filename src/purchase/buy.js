@@ -44,7 +44,7 @@ export function initBuy(page) {
             if (Object.hasOwn(productPrices, itemName)) {
                 stagingArea[itemName] =
                     (stagingArea[itemName] || 0) + toAdd[itemName];
-                const prev = parseInt(storage.get("itemCount") || 0);
+                const prev = parseInt(storage.get("itemCount", 0));
                 storage.set("itemCount", prev + toAdd[itemName]);
                 storage.set("stagingArea", stagingArea);
 

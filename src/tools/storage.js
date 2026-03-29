@@ -36,7 +36,7 @@ export class orderService {
     removeItem(itemName, cartItem) {
         const stagingArea = this.storage.get("stagingArea", {});
         const itemQty = stagingArea[itemName] || 1;
-        const count = parseInt(this.storage.get("itemCount") || 0);
+        const count = parseInt(this.storage.get("itemCount", 0));
         announce(`${itemName} was completely removed from the basket`);
 
         delete stagingArea[itemName];

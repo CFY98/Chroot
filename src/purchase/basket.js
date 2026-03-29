@@ -57,7 +57,7 @@ export function initBasket() {
             function updateItems(delta) {
                 const count = cartItem.querySelector(".count");
 
-                const prev = parseInt(storage.get("itemCount") || 0);
+                const prev = parseInt(storage.get("itemCount", 0));
                 storage.set("itemCount", prev + delta);
                 count.textContent = parseInt(count.textContent || 0) + delta;
 

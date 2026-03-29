@@ -17,7 +17,7 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
             if (!basketItems.includes(item)) basketItems.push(item);
             storage.set("basketItems", basketItems);
 
-            const prev = parseInt(storage.get("itemCount") || 0);
+            const prev = parseInt(storage.get("itemCount", 0));
             storage.set("itemCount", prev + 1);
 
             addLine(block, `${item} staged for commit`, "info");
@@ -41,7 +41,7 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
             stagingArea[item] = (stagingArea[item] || 0) + 1;
             storage.set("stagingArea", stagingArea);
 
-            const prev = parseInt(storage.get("itemCount") || 0);
+            const prev = parseInt(storage.get("itemCount", 0));
             storage.set("itemCount", prev + 1);
 
             if (!basketItems.includes(item)) {
@@ -85,7 +85,7 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
         if (stagingArea[item]) {
             stagingArea[item] -= 1;
 
-            const prev = parseInt(storage.get("itemCount") || 0);
+            const prev = parseInt(storage.get("itemCount", 0));
             storage.set("itemCount", prev - 1);
 
             if (stagingArea[item] === 0) {
