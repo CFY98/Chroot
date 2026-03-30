@@ -66,9 +66,7 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
 export function gitReset({ items, stagingArea, basketItems, block }) {
     if (items[0]?.replace(/^-+/, "") === "hard") {
         storage.remove("basketItems");
-        basketItems.length = 0;
         storage.remove("stagingArea");
-        for (let key in stagingArea) delete stagingArea[key];
         storage.set("itemCount", 0);
         addLine(block, "All items unstaged", "info");
         announce("The basket is now empty");

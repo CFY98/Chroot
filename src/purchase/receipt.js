@@ -39,13 +39,9 @@ export function initReceipt() {
         print.onclick = async function () {
             await downloadPDF();
             storage.remove("orderNumber");
-            orderNumber.length = 0;
             storage.remove("orderMessage");
-            orderMessage.length = 0;
             storage.remove("purchased");
-            purchased.length = 0;
             storage.remove("committed");
-            for (let key in committed) delete committed[key];
             if (receipt) receipt.innerHTML = "";
             if (orderEl) orderEl.textContent = "Order Number:";
             if (messageEl) messageEl.textContent = "";

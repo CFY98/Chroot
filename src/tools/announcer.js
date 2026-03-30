@@ -4,6 +4,7 @@ import { initBasket } from "../purchase/basket.js";
 import { initReceipt } from "../purchase/receipt.js";
 import { initBuy } from "../purchase/buy.js";
 import { routes } from "./assets.js";
+import { toAdd } from "./storage.js";
 
 // ANNOUNCEMENTS
 export function announce(message) {
@@ -19,6 +20,7 @@ export function announce(message) {
 // PAGE ANNOUNCEMENTS
 export function uiAnnounce(page) {
     announce(`The ${routes[page].title} page has loaded`);
+    for (let key in toAdd) delete toAdd[key];
     if (page === ("/beans" || page === "/equipment")) return;
     else if (page === "/tui") initTerminal();
     else if (page === "/basket") initBasket();

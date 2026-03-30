@@ -1,12 +1,11 @@
 // IMPORTS
 import { addLine, blank } from "../tools/utilities.js";
-import { router } from "../tools/routerSPA.js";
+import { tMode } from "../tools/assets.js";
 
 // cdPages
 export function gui() {
     setTimeout(() => {
-        history.pushState({}, "", "/");
-        router("/");
+        tMode(false);
     }, 100);
 }
 export function beans(block) {

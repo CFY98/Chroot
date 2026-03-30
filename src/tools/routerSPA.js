@@ -1,4 +1,4 @@
-// IMPORTSS
+// IMPORTS
 import { announce, uiAnnounce } from "./announcer.js";
 import { initSlideshow } from "./slideshow.js";
 import { routes, tMode } from "./assets.js";
@@ -79,7 +79,6 @@ toggle.addEventListener("click", (e) => {
 const title = document.getElementById("title");
 title.addEventListener("click", (e) => {
     e.preventDefault();
-
     tMode(tuiMode);
 });
 

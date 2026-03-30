@@ -1,17 +1,27 @@
 // IMPORTS
 import { announce } from "./announcer.js";
 
+// QUANTIFIER STATE OBJECT
+export let toAdd = {};
+
 // LOCAL STORAGE OBJECTS AND ARRAYS
 export class storageService {
+    constructor() {
+        this.cache = {};
+    }
     get(key, fallback) {
-        return JSON.parse(
-            localStorage.getItem(key) || JSON.stringify(fallback),
-        );
+        if (!(key in this.cache)) {
+            const raw = localStorage.getItem(key);
+            this.cache[key] = raw ? JSON.parse(raw) : fallback;
+        }
+        return this.cache[key];
     }
     set(key, value) {
+        this.cache[key] = value;
         localStorage.setItem(key, JSON.stringify(value));
     }
     remove(key) {
+        delete this.cache[key];
         localStorage.removeItem(key);
     }
 }
@@ -24,13 +34,15 @@ export class orderService {
         const basketItems = this.storage.get("basketItems", []);
         const stagingArea = this.storage.get("stagingArea", {});
 
-        this.storage.set("purchased", basketItems);
-        this.storage.set("committed", stagingArea);
+        const committed = this.storage.get("committed", {});
+        Object.assign(committed, stagingArea);
+        const purchased = this.storage.get("purchased", []).concat(basketItems);
+
+        this.storage.set("purchased", purchased);
+        this.storage.set("committed", committed);
 
         this.storage.remove("basketItems");
-        basketItems.length = 0;
         this.storage.remove("stagingArea");
-        for (let key in stagingArea) delete stagingArea[key];
         this.storage.set("itemCount", 0);
     }
     removeItem(itemName, cartItem) {

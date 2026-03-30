@@ -116,9 +116,7 @@ export function initBasket() {
                 return;
             }
             storage.remove("basketItems");
-            basketItems.length = 0;
             storage.remove("stagingArea");
-            for (let key in stagingArea) delete stagingArea[key];
             storage.set("itemCount", 0);
             if (product) product.innerHTML = "";
             announce("The basket is now empty");

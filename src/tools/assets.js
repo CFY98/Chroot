@@ -1,6 +1,5 @@
 // IMPORTS
-import { announce } from "./announcer.js";
-import { router, tuiMode } from "./routerSPA.js";
+import { router } from "./routerSPA.js";
 
 // ROUTES OBJECT
 export const routes = {
@@ -30,9 +29,6 @@ export const productPrices = {
     dripper: 14.99,
     grinder: 129.99,
 };
-
-// QUANTIFIER STATE OBJECT
-export let toAdd = {};
 
 // FUNCTIONS
 export function tMode(tuiMode) {

@@ -1,7 +1,7 @@
 // IMPORTS
-import { productPrices, toAdd } from "../tools/assets.js";
+import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
-import { storage } from "../tools/storage.js";
+import { storage, toAdd } from "../tools/storage.js";
 
 export function initBuy(page) {
     const buy = document.querySelector(".buy");
