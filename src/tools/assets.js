@@ -10,7 +10,7 @@ export const routes = {
         title: "equipment",
     },
     "/basket": { path: "/pages/tabs/basket.html", title: "basket" },
-    "/tui": { path: "/pages/ui/tui.html", title: "tui" },
+    "/terminal": { path: "/pages/ui/terminal.html", title: "terminal" },
     "/receipt": { path: "/pages/ui/receipt.html", title: "receipt" },
     "/blaze": { path: "/pages/coffee/blaze.html", title: "blaze" },
     "/sunshine": { path: "/pages/coffee/sunshine.html", title: "sunshine" },
@@ -33,8 +33,8 @@ export const productPrices = {
 // FUNCTIONS
 export function tMode(tuiMode) {
     if (tuiMode) {
-        history.pushState({}, "", "/tui");
-        router("/tui");
+        history.pushState({}, "", "/terminal");
+        router("/terminal");
     } else {
         history.pushState({}, "", "/");
         router("/");

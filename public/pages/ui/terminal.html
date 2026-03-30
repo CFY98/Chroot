@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/src/css/style.css" />
+        <link rel="stylesheet" href="/src/css/terminal.css" />
+        <title>Terminal</title>
+    </head>
+    <body>
+        <!-- TERMINAL WINDOW -->
+        <div
+            class="terminal fadein"
+            role="region"
+            aria-label="terminal navigation"
+        >
+            <!-- TERMINAL INPUT ROW -->
+            <div class="input-row">
+                <span class="prompt" aria-hidden="true"
+                    >site@chroot <span class="path"> ~ $</span></span
+                >
+                <input
+                    id="cmd-input"
+                    type="text"
+                    autocomplete="off"
+                    autocorrect="off"
+                    spellcheck="off"
+                    placeholder="type here"
+                    aria-label="Input commands for the terminal here"
+                />
+            </div>
+            <!-- TERMINAL OUTPUT -->
+            <div
+                class="terminal-output"
+                id="terminal-output"
+                aria-hidden="true"
+            ></div>
+        </div>
+    </body>
+</html>

@@ -22,7 +22,7 @@ export function uiAnnounce(page) {
     announce(`The ${routes[page].title} page has loaded`);
     for (let key in toAdd) delete toAdd[key];
     if (page === ("/beans" || page === "/equipment")) return;
-    else if (page === "/tui") initTerminal();
+    else if (page === "/terminal") initTerminal();
     else if (page === "/basket") initBasket();
     else if (page === "/receipt") initReceipt();
     else initBuy(page);

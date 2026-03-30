@@ -20,7 +20,7 @@ export function initTerminal() {
             Object.keys(stagingArea).forEach((key) => delete stagingArea[key]);
         }
     });
-
+    //
     // PRINT LINES AS BLOCKS
     if (terminalEl) {
         // BOOT MESSAGE
@@ -51,7 +51,7 @@ export function initTerminal() {
             switch (verb) {
                 case "help":
                     announce(
-                        "Type 'git', then add followed by the item name to add it to the basket. Git, then reset followed by the item name to removes it from the basket. To place orders, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
+                        "Type 'git', then add, followed by the item name to add it to the basket. Git, then reset, followed by the item name to removes it from the basket. To place orders, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
                     );
                     addLine(block, `site@chroot ~/${command} $`, "success");
                     blank(block);
@@ -75,7 +75,6 @@ export function initTerminal() {
                     );
                     addLine(block, `site@chroot ~/${command} $`, "success");
                     blank(block);
-                    addLine(block, "  drwxr-xr-x        gui", "info");
                     addLine(block, "  drwxr-xr-x        beans", "info");
                     addLine(block, "  drwxr-xr-x        equipment", "info");
                     addLine(block, "  drwxr-xr-x        basket", "info");
@@ -90,6 +89,7 @@ export function initTerminal() {
 
                 case "cd": {
                     if (!arg) {
+                        announce("Type 'ls' for all available pages");
                         addLine(
                             block,
                             "hint: type 'ls' for all available pages",
@@ -178,6 +178,9 @@ export function initTerminal() {
                             committed,
                         });
                     } else {
+                        announce(
+                            "Type git, then add, followed by the item name to add it or ,'--all', or ,'-A', to add one of each item to the basket. Git, then reset, followed by the item name to remove it or type ,'--hard', to remove everything from the basket. To check the basket, type git followed by 'status'. To checkout, type git followed by 'commit' and should you want a note, type '-m' afterwards followed by a note of choice. To see the receipt, type git followed by 'log'.",
+                        );
                         addLine(
                             block,
                             `Usage: ${verb} [ add ][ reset ][ status ]`,
@@ -253,6 +256,12 @@ export function initTerminal() {
                     break;
                 }
 
+                case "exit":
+                case "quit":
+                    addLine(block, "There is no escaping good coffee", "warn");
+                    announcer("There is no escaping good coffee");
+                    break;
+
                 case "clear":
                     output.innerHTML = "";
                     announce("The terminal window contents have been cleared");
@@ -265,15 +274,12 @@ export function initTerminal() {
                         "Our coffee only comes in wholebean",
                         "warn",
                     );
+                    announce("Out coffee only comes in wholebean");
                     break;
 
                 case "rm":
                     addLine(block, "Permission denied. Admins only.", "error");
-                    break;
-
-                case "exit":
-                case "quit":
-                    addLine(block, "There is no escaping good coffee.", "warn");
+                    announce("Permission denied, admins only");
                     break;
 
                 default:
@@ -283,6 +289,7 @@ export function initTerminal() {
                         `Type 'help' for available commands`,
                         "info",
                     );
+                    announce("If stuck, type 'help' for available commands");
             }
             addLine(block, `site@chroot ~ $ ${command}`, "prompt");
             printBlock(block);

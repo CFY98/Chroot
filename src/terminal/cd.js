@@ -1,13 +1,7 @@
 // IMPORTS
 import { addLine, blank } from "../tools/utilities.js";
-import { tMode } from "../tools/assets.js";
 
 // cdPages
-export function gui() {
-    setTimeout(() => {
-        tMode(false);
-    }, 100);
-}
 export function beans(block) {
     blank(block);
     addLine(block, "  Blaze        £11.99", "info");
@@ -115,7 +109,6 @@ export function grinder(block) {
     blank(block);
 }
 export const cdPages = {
-    gui: gui,
     beans: beans,
     equipment: equipment,
     blaze: blaze,
