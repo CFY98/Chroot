@@ -8,7 +8,7 @@ After sending to testers, new features were added based on user-feedback.
 
 - **Responsive Basket UI** — Dynamic cart rendering with item quantities.
 - **Local Storage** — Live basket updates across pages via localStorage.
-- **SPA Routing** — Changed the iframes of V2 for convenient navigation for the GUI mode.
+- **SPA Routing** — Updated from the iframes of V2 convenient navigation for the GUI mode.
 - **PDF Generation** — Client-side PDF generation via html2pdf library.
 - **Screen Reader Announcer** — ARIA live regions with custom announcements to assist screen reader users.
 
