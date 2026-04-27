@@ -92,12 +92,10 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
         storage.set("stagingArea", stagingArea);
         addLine(block, `${item} was unstaged`, "info");
         announce(`${item} was completely removed from the basket`);
-      }
-
-      addLine(block, `${item} unstaged`, "info");
+      } else { addLine(block, `${item} unstaged`, "info");
       announce(
         `${stagingArea[item] > 0 ? stagingArea[item] : "no"} ${item}${stagingArea[item] > 1 ? "s" : ""} ${stagingArea[item] > 1 ? "are" : "is"} in the basket`,
-      );
+      );}
     } else {
       addLine(block, `'${item}' not staged`, "error");
       announce(`${item} was not in the basket so nothing was removed`);
