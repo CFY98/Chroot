@@ -2,7 +2,9 @@
 import { announce } from "../tools/announcer.js";
 import { storage } from "../tools/storage.js";
 import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
+import { filters } from "./cd.js";
 import { termOptions } from "./options.js";
+import { pageMap } from "./autocomplete.js";
 
 // HISTORY INDEX
 let histIdx = -1;
@@ -86,17 +88,10 @@ function pressDown(e, input) {
 
 function pressTab(e, input) {
   e.preventDefault();
-  const val = input.value.toLowerCase();
-  const pages = ["beans", "gear", "basket"];
-  const match = pages.find((p) =>
-    val.endsWith(p.slice(0, val.split(" ").at(-1).length)),
-  );
-  if (match) {
-    const parts = input.value.split(" ");
-    parts[parts.length - 1] = match;
-    input.value = parts.join(" ");
-    announce(`Autocompleted to ${input.value}`);
-  }
+  const parts = input.value.toLowerCase().split(/\s+/);
+  const firstPart = parts[0];
+  const inputOpts = pageMap[firstPart];
+  if (inputOpts) inputOpts(parts, input, firstPart);
 }
 
 // KEYPRESS HANDLERS MAP
