@@ -20,22 +20,6 @@ function cdComp(parts, firstPart, input) {
   autoComp(pages, parts, input, 1);
 }
 
-function productComp(parts, input, firstPart) {
-  const pages = [
-    "dripper",
-    "filters",
-    "grinder",
-    "blaze",
-    "sunshine",
-    "summit",
-  ];
-  const actionPart = parts[1];
-
-  if (firstPart !== "git") return;
-  if (actionPart !== "add" && actionPart !== "reset") return;
-  autoComp(pages, parts, input, 2);
-}
-
 function gitComp(parts, input, firstPart) {
   const actionWords = ["add", "reset"];
   const productPages = [
