@@ -33,13 +33,8 @@ Users can switch to TUI mode if they prefer working in a terminal.
 ## 📸 Screenshots (Tablet View)
 
 ![Landing Page](./public/screenshots/V3_GUI_Landing_Page.png)
-![Coffee Page](./public/screenshots/V3_Coffee_Page.png)
-![Product Page Example](./public/screenshots/V3_product_page.png)
-![Toast Notification](./public/screenshots/V3_Toast_notification.png)
 ![Basket UI](./public/screenshots/V3_basket_page.png)
 ![Terminal User Interface Example](./public/screenshots/V3_tui_mode.png)
-![Invoice Page](./public/screenshots/V3_invoice.png)
-![PDF Generation](./public/screenshots/V3-receipt_generation.png)
 ![PDF Result](./public/screenshots/V3_saved_receipt.png)
 
 ## Project Structure
@@ -84,19 +79,25 @@ Prerequisites:
 git clone https://github.com/CFY98/Chroot.git
 ```
 
-2. Install dependencies
+2. Enter repo
+
+```
+cd Chroot
+```
+
+3. Install dependencies
 
 ```
 npm install
 ```
 
-3. Start development server
+4. Start development server
 
 ```
 npm run dev
 ```
 
-4. Build for production
+5. Build for production
 ```
 npm run build
 ```
