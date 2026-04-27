@@ -5,6 +5,13 @@ import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 import { termOptions } from "./options.js";
 
 // HELPER FUNCTONS
+function getHist() {
+    return storage.get("termHistory", []);
+}
+function setHist(termHistory) {
+    return storage.set("termHistory", termHistory)
+}
+
 // BOOT MESSAGE
 function boot() {
   const block = createBlock();
@@ -41,7 +48,6 @@ export function initTerminal() {
   let histIdx = -1;
 
   // TERMINAL DOM
-  const output = document.getElementById("terminal-output");
   const input = document.getElementById("cmd-input");
   const terminalEl = document.querySelector(".terminal");
 
@@ -57,14 +63,14 @@ export function initTerminal() {
     
       // INPUT EVENTS
     if (input) {
-      const termHistory = storage.get("termHistory", []);
-      input.addEventListener("keydown", (e) => {
+      const termHistory = getHist()
+        input.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           const val = input.value;
           if (val.trim()) {
             termHistory.unshift(val);
             if (termHistory.length > 15) termHistory.pop();
-            storage.set("termHistory", termHistory);
+            setHist(termHistory);
             histIdx = -1;
           }
           run(val);
