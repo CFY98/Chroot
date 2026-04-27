@@ -101,11 +101,11 @@ function pressTab(e, input) {
 
 // KEYPRESS HANDLERS MAP
 const keyPress = {
-    Enter: pressEnter,
-    ArrowUp: pressUp,
-    ArrowDown: pressDown,
-    Tab: pressTab,
-}
+  Enter: pressEnter,
+  ArrowUp: pressUp,
+  ArrowDown: pressDown,
+  Tab: pressTab,
+};
 
 // TERMINAL INTERFACE
 export function initTerminal() {
@@ -125,13 +125,10 @@ export function initTerminal() {
   // INPUT EVENTS
   if (input) {
     input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") return pressEnter(e, input);
-      else if (e.key === "ArrowUp") return pressUp(e, input);
-      else if (e.key === "ArrowDown") return pressUp(e, input);
-      else if (e.key === "Tab") return pressTab(e, input);
+      const pressed = keyPress[e.key];
+      if (pressed) pressed(e, input);
     });
   }
-
   // FOCUS INPUT
   terminalEl.addEventListener("click", () => {
     input.focus();
