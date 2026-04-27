@@ -1,6 +1,6 @@
 // IMPORTS
 import { blank, addLine, printBlock } from "../tools/utilities.js";
-import { productPrices} from "../tools/assets.js";
+import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import { storage } from "../tools/storage.js";
 import { gitCmds } from "./git.js";
@@ -94,9 +94,10 @@ export function git({ command, parts, verb, block }) {
   const orderNumber = storage.get("orderNumber", []);
   const orderMessage = storage.get("orderMessage", []);
   const committed = storage.get("committed", {});
+  const commands = gitCmds[action];
 
-  if (action in gitCmds) {
-    gitCmds[action]({
+  if (commands) {
+    commands({
       items,
       block,
       stagingArea,
