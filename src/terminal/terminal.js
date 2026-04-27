@@ -4,6 +4,9 @@ import { storage } from "../tools/storage.js";
 import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 import { termOptions } from "./options.js";
 
+// HISTORY INDEX
+let histIdx = -1;
+
 // HELPER FUNCTONS
 function getHist() {
   return storage.get("termHistory", []);
@@ -43,10 +46,69 @@ function run(command) {
   printBlock(block);
 }
 
-export function initTerminal() {
-  // TERMINAL HISTORY TOGGLE
-  let histIdx = -1;
+// KEYPRESS HANDLERS
+function pressEnter(e, input) {
+  const val = input.value;
+  const termHistory = getHist();
 
+  if (val.trim()) {
+    termHistory.unshift(val);
+    if (termHistory.length > 15) termHistory.pop();
+    setHist(termHistory);
+    histIdx = -1;
+  }
+  run(val);
+  input.value = "";
+}
+
+function pressUp(e, input) {
+  const termHistory = getHist();
+
+  e.preventDefault();
+  if (histIdx < termHistory.length - 1) histIdx++;
+  input.value = termHistory[histIdx] ?? "";
+  announce("Previous Input:");
+}
+
+function pressDown(e, input) {
+  const termHistory = getHist();
+
+  e.preventDefault();
+  if (histIdx > 0) histIdx--;
+  else {
+    histIdx = -1;
+    input.value = "";
+    return;
+  }
+  input.value = termHistory[histIdx] ?? "";
+  announce("Latest Input:");
+}
+
+function pressTab(e, input) {
+  e.preventDefault();
+  const val = input.value.toLowerCase();
+  const pages = ["beans", "gear", "basket"];
+  const match = pages.find((p) =>
+    val.endsWith(p.slice(0, val.split(" ").at(-1).length)),
+  );
+  if (match) {
+    const parts = input.value.split(" ");
+    parts[parts.length - 1] = match;
+    input.value = parts.join(" ");
+    announce(`Autocompleted to ${input.value}`);
+  }
+}
+
+// KEYPRESS HANDLERS MAP
+const keyPress = {
+    Enter: pressEnter,
+    ArrowUp: pressUp,
+    ArrowDown: pressDown,
+    Tab: pressTab,
+}
+
+// TERMINAL INTERFACE
+export function initTerminal() {
   // TERMINAL DOM
   const input = document.getElementById("cmd-input");
   const terminalEl = document.querySelector(".terminal");
@@ -57,54 +119,19 @@ export function initTerminal() {
     }
   });
 
-    // CHECK IF INSTANCES EXIST
+  // CHECK IF INSTANCES EXIST
   if (!input || !terminalEl) return;
 
   // INPUT EVENTS
   if (input) {
-    const termHistory = getHist();
     input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        const val = input.value;
-        if (val.trim()) {
-          termHistory.unshift(val);
-          if (termHistory.length > 15) termHistory.pop();
-          setHist(termHistory);
-          histIdx = -1;
-        }
-        run(val);
-        input.value = "";
-      } else if (e.key === "ArrowUp") {
-        e.preventDefault();
-        if (histIdx < termHistory.length - 1) histIdx++;
-        input.value = termHistory[histIdx] ?? "";
-        announce("Previous Input:");
-      } else if (e.key === "ArrowDown") {
-        e.preventDefault();
-        if (histIdx > 0) histIdx--;
-        else {
-          histIdx = -1;
-          input.value = "";
-          return;
-        }
-        input.value = termHistory[histIdx] ?? "";
-        announce("Latest Input:");
-      } else if (e.key === "Tab") {
-        e.preventDefault();
-        const val = input.value.toLowerCase();
-        const pages = ["beans", "gear", "basket"];
-        const match = pages.find((p) =>
-          val.endsWith(p.slice(0, val.split(" ").at(-1).length)),
-        );
-        if (match) {
-          const parts = input.value.split(" ");
-          parts[parts.length - 1] = match;
-          input.value = parts.join(" ");
-          announce(`Autocompleted to ${input.value}`);
-        }
-      }
+      if (e.key === "Enter") return pressEnter(e, input);
+      else if (e.key === "ArrowUp") return pressUp(e, input);
+      else if (e.key === "ArrowDown") return pressUp(e, input);
+      else if (e.key === "Tab") return pressTab(e, input);
     });
   }
+
   // FOCUS INPUT
   terminalEl.addEventListener("click", () => {
     input.focus();
