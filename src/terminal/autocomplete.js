@@ -1,0 +1,63 @@
+// IMPORTS 
+import { announce } from "../tools/announcer.js";
+
+// PRESSTAB HELPERS
+function autoComp(pages, parts, input, index) {
+  const query = parts[index];
+  if (!query) return;
+
+  const match = pages.find((p) => p.startsWith(query));
+  if (!match) return;
+
+  parts[index] = match;
+  input.value = parts.join(" ");
+  announce(`Autocompleted to ${input.value}`);
+}
+function cdComp(parts, firstPart, input) {
+  const pages = ["beans", "equipment", "basket"];
+
+  if (firstPart !== "cd") return;
+  autoComp(pages, parts, input, 1);
+}
+
+function productComp(parts, input, firstPart) {
+  const pages = [
+    "dripper",
+    "filters",
+    "grinder",
+    "blaze",
+    "sunshine",
+    "summit",
+  ];
+  const actionPart = parts[1];
+
+  if (firstPart !== "git") return;
+  if (actionPart !== "add" && actionPart !== "reset") return;
+  autoComp(pages, parts, input, 2);
+}
+
+function gitComp(parts, input, firstPart) {
+  const actionWords = ["add", "reset"];
+  const productPages = [
+    "dripper",
+    "filters",
+    "grinder",
+    "blaze",
+    "sunshine",
+    "summit",
+  ];
+  const action = parts[1];
+  const product = parts[2];
+  if (action && !product) {
+    autoComp(actionWords, parts, input, 1);
+    return;
+  }
+  if (action === "add" || action === "reset") {
+    autoComp(productPages, parts, input, 2);
+  }
+}
+
+export const pageMap = {
+  cd: cdComp,
+  git: gitComp,
+};
