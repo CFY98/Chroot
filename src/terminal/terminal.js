@@ -55,10 +55,10 @@ function pressEnter(e, input) {
     termHistory.unshift(val);
     if (termHistory.length > 15) termHistory.pop();
     setHist(termHistory);
-    histIdx = -1;
   }
   run(val);
   input.value = "";
+  histIdx = -1;
 }
 
 function pressUp(e, input) {
@@ -74,12 +74,12 @@ function pressDown(e, input) {
   const termHistory = getHist();
 
   e.preventDefault();
-  if (histIdx > 0) histIdx--;
-  else {
+  if (histIdx <= 0) {
     histIdx = -1;
     input.value = "";
     return;
   }
+  histIdx--;
   input.value = termHistory[histIdx] ?? "";
   announce("Latest Input:");
 }
@@ -123,12 +123,11 @@ export function initTerminal() {
   if (!input || !terminalEl) return;
 
   // INPUT EVENTS
-  if (input) {
-    input.addEventListener("keydown", (e) => {
-      const pressed = keyPress[e.key];
-      if (pressed) pressed(e, input);
-    });
-  }
+  input.addEventListener("keydown", (e) => {
+    const pressed = keyPress[e.key];
+    if (pressed) pressed(e, input);
+  });
+
   // FOCUS INPUT
   terminalEl.addEventListener("click", () => {
     input.focus();
