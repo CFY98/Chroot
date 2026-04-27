@@ -1,10 +1,8 @@
 // IMPORTS
-import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
-import { gitCmds } from "./git.js";
-import { cdPages } from "./cd.js";
-import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 import { storage } from "../tools/storage.js";
+import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
+import { termOptions } from "./options.js";
 
 export function initTerminal() {
   // TERMINAL HISTORY TOGGLE
@@ -41,164 +39,11 @@ export function initTerminal() {
       const parts = cmd.split(/\s+/);
       const verb = parts[0];
       const arg = parts.slice(1).join(" ");
+      const handler = termOptions[verb]
 
-      const stagingArea = storage.get("stagingArea", {});
-      const basketItems = storage.get("basketItems", []);
-      const orderNumber = storage.get("orderNumber", []);
-      const orderMessage = storage.get("orderMessage", []);
-      const committed = storage.get("committed", {});
-
-      switch (verb) {
-        case "help":
-          announce(
-            "Type 'git', then add, followed by the item name to add it to the basket. Git, then reset, followed by the item name to removes it from the basket. To place orders, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
-          );
-          addLine(block, `site@chroot ~/${command} $`, "success");
-          blank(block);
-          addLine(block, "Available commands:", "info");
-          addLine(block, "  ls           lists all pages", "info");
-          addLine(block, "  git          tracks changes in order", "info");
-          addLine(block, "  cd           navigate to a page", "info");
-          addLine(block, "  about        about Chroot", "info");
-          addLine(block, "  hours        opening hours", "info");
-          addLine(block, "  clear        clear the terminal", "info");
-          blank(block);
-          break;
-
-        case "ls":
-          announce(
-            "The product pages are 'beans' which houses our selection of coffee beans and 'gear' which encompasses our coffee gear selection. For the shopping cart, go to the 'basket' page. For more information on our selected products, type 'cd' followed by the item name or click 'more info' on the image of the desired product",
-          );
-          addLine(block, `site@chroot ~/${command} $`, "success");
-          blank(block);
-          addLine(block, "  drwxr-xr-x        beans", "info");
-          addLine(block, "  drwxr-xr-x        equipment", "info");
-          addLine(block, "  drwxr-xr-x        basket", "info");
-          addLine(block, "  dr-xr-xr--x       blaze", "info");
-          addLine(block, "  dr-xr-xr--x       sunshine", "info");
-          addLine(block, "  dr-xr-xr--x       summit", "info");
-          addLine(block, "  dr-xr-xr--x       filters", "info");
-          addLine(block, "  dr-xr-xr--x       dripper", "info");
-          addLine(block, "  dr-xr-xr--x       grinder", "info");
-          blank(block);
-          break;
-
-        case "cd": {
-          if (!arg) {
-            announce("Type 'ls' for all available pages");
-            addLine(block, "hint: type 'ls' for all available pages", "warn");
-            break;
-          }
-          const target = cdPages[arg];
-          if (!target) {
-            announce(
-              "That page doesn't exist, please type 'ls' in the terminal for available pages",
-            );
-            addLine(block, `bash: ${verb}: ${arg}: No such page`, "error");
-            addLine(block, `hint: type 'ls' to see available pages`, "warn");
-          } else {
-            addLine(block, `site@chroot ~/${command} $`, "success");
-            cdPages[arg](block);
-          }
-          break;
-        }
-
-        case "about":
-          announce(
-            "Chroot is a coffee roastery inspired by the Unix command line. For our opening-hours, type 'hours', 'ls' for a list of pages, and 'clear' to empty the terminal. Use the up and down arrow keys to toggle through the input history for efficiency",
-          );
-          addLine(block, `site@chroot ~/${command} $`, "success");
-          blank(block);
-          addLine(block, "  Change the root of your trajectory", "info");
-          addLine(block, "  with coffee.", "info");
-          blank(block);
-          addLine(block, "  Chroot is a specialty coffee roastery", "info");
-          addLine(block, "  inspired by the Unix command line", "info");
-          addLine(block, "  where you commit to every cup of", "info");
-          addLine(block, "  coffee.", "info");
-          blank(block);
-          break;
-
-        case "hours":
-          announce(
-            "  Chroot is open from Monday to Friday between 7am to 6pm and 8am to 4pm on the weekends",
-          );
-          addLine(block, `site@chroot ~/${command} $`, "success");
-          blank(block);
-          addLine(block, "  Mon–Fri   07:00 → 18:00", "info");
-          addLine(block, "  Sat–Sun   08:00 → 16:00", "info");
-          blank(block);
-          break;
-
-        case "git": {
-          const action = parts[1];
-          const items = parts.slice(2);
-
-          if (action in gitCmds) {
-            gitCmds[action]({
-              items,
-              block,
-              stagingArea,
-              basketItems,
-              productPrices,
-              orderNumber,
-              orderMessage,
-              committed,
-            });
-          } else {
-            announce(
-              "Type git, then add, followed by the item name to add it or ,'--all', or ,'-A', to add one of each item to the basket. Git, then reset, followed by the item name to remove it or type ,'--hard', to remove everything from the basket. To check the basket, type git followed by 'status'. To checkout, type git followed by 'commit' and should you want a note, type '-m' afterwards followed by a note of choice. To see the receipt, type git followed by 'log'.",
-            );
-            addLine(block, `Usage: ${verb} [ add ][ reset ][ status ]`, "warn");
-            addLine(block, "           [ commit ][ log ]", "warn");
-            blank(block);
-            addLine(block, "Available Git commands:", "info");
-            addLine(block, "  add [item]        adds [item]", "info");
-            addLine(block, "                    to basket", "info");
-            addLine(block, "      [--all | -A]  adds 1 of each item", "info");
-            addLine(block, "                    to the basket", "info");
-            blank(block);
-            addLine(block, "  reset [item]      removes [item]", "info");
-            addLine(block, "                    from basket", "info");
-            addLine(block, "        [--hard]    empties the basket", "info");
-            blank(block);
-            addLine(block, "  status            shows status", "info");
-            addLine(block, "                    of basket", "info");
-            blank(block);
-            addLine(block, "  commit [-m][msg]  proccesses order", "info");
-            addLine(block, "                    with a message", "info");
-            addLine(block, "                    [msg] is optional", "info");
-            blank(block);
-            addLine(block, "  log               shows receipt", "info");
-            blank(block);
-            break;
-          }
-          break;
-        }
-
-        case "exit":
-        case "quit":
-          addLine(block, "There is no escaping good coffee", "warn");
-          announcer("There is no escaping good coffee");
-          break;
-
-        case "clear":
-          output.innerHTML = "";
-          announce("The terminal window contents have been cleared");
-          return;
-
-        // Easter Eggs
-        case "sudo":
-          addLine(block, "Our coffee only comes in wholebean", "warn");
-          announce("Out coffee only comes in wholebean");
-          break;
-
-        case "rm":
-          addLine(block, "Permission denied. Admins only.", "error");
-          announce("Permission denied, admins only");
-          break;
-
-        default:
+      if (handler) {
+          handler({ command, arg, parts, verb, block });
+      } else {
           addLine(block, `bash: ${verb}: command not found`, "error");
           addLine(block, `Type 'help' for available commands`, "info");
           announce("If stuck, type 'help' for available commands");
