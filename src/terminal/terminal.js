@@ -4,6 +4,38 @@ import { storage } from "../tools/storage.js";
 import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 import { termOptions } from "./options.js";
 
+// HELPER FUNCTONS
+// BOOT MESSAGE
+function boot() {
+  const block = createBlock();
+  addLine(block, "chroot v3.0.0 - speciality coffee", "info");
+  addLine(block, "Type 'help' for available commands", "info");
+  blank(block);
+  printBlock(block);
+}
+
+// COMMAND HANDLER
+function run(command) {
+  const cmd = command.trim().toLowerCase();
+  if (!cmd) return;
+
+  const block = createBlock();
+  const parts = cmd.split(/\s+/);
+  const verb = parts[0];
+  const arg = parts.slice(1).join(" ");
+  const handler = termOptions[verb];
+
+  if (handler) {
+    handler({ command, arg, parts, verb, block });
+  } else {
+    addLine(block, `bash: ${verb}: command not found`, "error");
+    addLine(block, `Type 'help' for available commands`, "info");
+    announce("If stuck, type 'help' for available commands");
+  }
+  addLine(block, `site@chroot ~ $ ${command}`, "prompt");
+  printBlock(block);
+}
+
 export function initTerminal() {
   // TERMINAL HISTORY TOGGLE
   let histIdx = -1;
@@ -21,38 +53,9 @@ export function initTerminal() {
 
   // PRINT LINES AS BLOCKS
   if (terminalEl) {
-    // BOOT MESSAGE
-    function boot() {
-      const block = createBlock();
-      addLine(block, "chroot v3.0.0 - speciality coffee", "info");
-      addLine(block, "Type 'help' for available commands", "info");
-      blank(block);
-      printBlock(block);
-    }
-
-    // COMMAND HANDLER
-    function run(command) {
-      const cmd = command.trim().toLowerCase();
-      if (!cmd) return;
-
-      const block = createBlock();
-      const parts = cmd.split(/\s+/);
-      const verb = parts[0];
-      const arg = parts.slice(1).join(" ");
-      const handler = termOptions[verb]
-
-      if (handler) {
-          handler({ command, arg, parts, verb, block });
-      } else {
-          addLine(block, `bash: ${verb}: command not found`, "error");
-          addLine(block, `Type 'help' for available commands`, "info");
-          announce("If stuck, type 'help' for available commands");
-      }
-      addLine(block, `site@chroot ~ $ ${command}`, "prompt");
-      printBlock(block);
-    }
-
-    // INPUT EVENTS
+    boot();
+    
+      // INPUT EVENTS
     if (input) {
       const termHistory = storage.get("termHistory", []);
       input.addEventListener("keydown", (e) => {
