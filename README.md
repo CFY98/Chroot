@@ -79,7 +79,7 @@ Prerequisites:
 git clone https://github.com/CFY98/Chroot.git
 ```
 
-2. Enter repo
+2. Enter repository
 
 ```
 cd Chroot
