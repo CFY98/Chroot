@@ -6,10 +6,10 @@ import { termOptions } from "./options.js";
 
 // HELPER FUNCTONS
 function getHist() {
-    return storage.get("termHistory", []);
+  return storage.get("termHistory", []);
 }
 function setHist(termHistory) {
-    return storage.set("termHistory", termHistory)
+  return storage.set("termHistory", termHistory);
 }
 
 // BOOT MESSAGE
@@ -57,64 +57,60 @@ export function initTerminal() {
     }
   });
 
-  // PRINT LINES AS BLOCKS
-  if (terminalEl) {
-    boot();
-    
-      // INPUT EVENTS
-    if (input) {
-      const termHistory = getHist()
-        input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          const val = input.value;
-          if (val.trim()) {
-            termHistory.unshift(val);
-            if (termHistory.length > 15) termHistory.pop();
-            setHist(termHistory);
-            histIdx = -1;
-          }
-          run(val);
-          input.value = "";
-        } else if (e.key === "ArrowUp") {
-          e.preventDefault();
-          if (histIdx < termHistory.length - 1) histIdx++;
-          input.value = termHistory[histIdx] ?? "";
-          announce("Previous Input:");
-        } else if (e.key === "ArrowDown") {
-          e.preventDefault();
-          if (histIdx > 0) histIdx--;
-          else {
-            histIdx = -1;
-            input.value = "";
-            return;
-          }
-          input.value = termHistory[histIdx] ?? "";
-          announce("Latest Input:");
-        } else if (e.key === "Tab") {
-          e.preventDefault();
-          const val = input.value.toLowerCase();
-          const pages = ["beans", "gear", "basket"];
-          const match = pages.find((p) =>
-            val.endsWith(p.slice(0, val.split(" ").at(-1).length)),
-          );
-          if (match) {
-            const parts = input.value.split(" ");
-            parts[parts.length - 1] = match;
-            input.value = parts.join(" ");
-            announce(`Autocompleted to ${input.value}`);
-          }
-        }
-      });
-    }
-    // FOCUS INPUT
-    if (terminalEl) {
-      terminalEl.addEventListener("click", () => {
-        input.focus();
-      });
-    }
+    // CHECK IF INSTANCES EXIST
+  if (!input || !terminalEl) return;
 
-    // INIT
-    boot();
-    input.focus();
+  // INPUT EVENTS
+  if (input) {
+    const termHistory = getHist();
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const val = input.value;
+        if (val.trim()) {
+          termHistory.unshift(val);
+          if (termHistory.length > 15) termHistory.pop();
+          setHist(termHistory);
+          histIdx = -1;
+        }
+        run(val);
+        input.value = "";
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (histIdx < termHistory.length - 1) histIdx++;
+        input.value = termHistory[histIdx] ?? "";
+        announce("Previous Input:");
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (histIdx > 0) histIdx--;
+        else {
+          histIdx = -1;
+          input.value = "";
+          return;
+        }
+        input.value = termHistory[histIdx] ?? "";
+        announce("Latest Input:");
+      } else if (e.key === "Tab") {
+        e.preventDefault();
+        const val = input.value.toLowerCase();
+        const pages = ["beans", "gear", "basket"];
+        const match = pages.find((p) =>
+          val.endsWith(p.slice(0, val.split(" ").at(-1).length)),
+        );
+        if (match) {
+          const parts = input.value.split(" ");
+          parts[parts.length - 1] = match;
+          input.value = parts.join(" ");
+          announce(`Autocompleted to ${input.value}`);
+        }
+      }
+    });
   }
+  // FOCUS INPUT
+  terminalEl.addEventListener("click", () => {
+    input.focus();
+  });
+
+  // INIT
+  boot();
+  input.focus();
 }
