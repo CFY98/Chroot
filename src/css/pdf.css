@@ -1,68 +1,68 @@
 /* ------ PDF PRINTING ------ */
 .printing {
-    * {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
-    body {
-        background: white;
-    }
-    .top-container {
-        display: none;
-    }
-    .subtitle {
-        color: var(--border);
-        font-size: 4rem;
-    }
-    #thanks {
-        font-size: 1.65rem;
-        color: var(--muted);
-    }
-    .receipt-container {
-        background: white;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    .item-name,
-    .item-count,
-    .item-price {
-        color: var(--muted);
-    }
-    .receipt-item {
-        color: var(--muted);
-        margin-top: -4%;
-    }
-    .bar {
-        background: white;
-        border-bottom: var(--muted) solid 2px;
-        border-radius: 0%;
-        width: 86%;
-        margin-bottom: 3rem;
-        margin-left: 7%;
-    }
-    #order,
-    #message {
-        text-align: center;
-        font-size: 1rem;
-        text-decoration: none;
-        color: var(--border);
-    }
-    #print {
-        display: none;
-    }
-    hr,
-    .column-line {
-        background: var(--border);
-    }
-    .receipt-total {
-        color: var(--muted);
-    }
-    .receipt-amount {
-        color: var(--muted);
-    }
-    .socials {
-        display: none;
-    }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    background: white;
+  }
+  .top-container {
+    display: none;
+  }
+  .subtitle {
+    color: var(--border);
+    font-size: 4rem;
+  }
+  #thanks {
+    font-size: 1.65rem;
+    color: var(--muted);
+  }
+  .receipt-container {
+    background: white;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .item-name,
+  .item-count,
+  .item-price {
+    color: var(--muted);
+  }
+  .receipt-item {
+    color: var(--muted);
+    margin-top: -4%;
+  }
+  .bar {
+    background: white;
+    border-bottom: var(--muted) solid 2px;
+    border-radius: 0%;
+    width: 86%;
+    margin-bottom: 3rem;
+    margin-left: 7%;
+  }
+  #order,
+  #message {
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--border);
+  }
+  #print {
+    display: none;
+  }
+  hr,
+  .column-line {
+    background: var(--border);
+  }
+  .receipt-total {
+    color: var(--muted);
+  }
+  .receipt-amount {
+    color: var(--muted);
+  }
+  .socials {
+    display: none;
+  }
 }

@@ -1,208 +1,208 @@
 /* ------ BASKET ------ */
 .cart-container {
-    margin: 0 auto;
-    width: 90%;
-    background-color: var(--t-window);
-    border-radius: 10px;
-    margin-bottom: 3rem;
+  margin: 0 auto;
+  width: 90%;
+  background-color: var(--t-window);
+  border-radius: 10px;
+  margin-bottom: 3rem;
 }
 .header {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 .delete {
-    text-align: right;
-    color: var(--red);
-    font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
-    text-decoration: underline;
-    cursor: pointer;
-    padding-top: clamp(1rem, 2vw + 1rem, 3rem);
-    padding-bottom: clamp(1rem, 2vw + 1rem, 3rem);
-    margin-right: 7%;
+  text-align: right;
+  color: var(--red);
+  font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
+  text-decoration: underline;
+  cursor: pointer;
+  padding-top: clamp(1rem, 2vw + 1rem, 3rem);
+  padding-bottom: clamp(1rem, 2vw + 1rem, 3rem);
+  margin-right: 7%;
 }
 .cart-item {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr;
 }
 .cart-item {
-    align-items: center;
-    width: 90%;
-    min-height: 30%;
-    margin: 0 auto;
-    padding-top: min(7rem, 5%);
+  align-items: center;
+  width: 90%;
+  min-height: 30%;
+  margin: 0 auto;
+  padding-top: min(7rem, 5%);
 }
 .image-box {
-    text-align: center;
-    margin-right: auto;
-    margin-left: 11%;
+  text-align: center;
+  margin-right: auto;
+  margin-left: 11%;
 }
 .image-box img {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .name {
-    font-size: clamp(0.5rem, 1.6vw + 0.5rem, 2rem);
-    line-height: 10px;
-    font-weight: 300;
-    color: var(--text);
+  font-size: clamp(0.5rem, 1.6vw + 0.5rem, 2rem);
+  line-height: 10px;
+  font-weight: 300;
+  color: var(--text);
 }
 .counter {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .plus-btn,
 .minus-btn {
-    width: clamp(1.5rem, 2vw + 1rem, 3rem);
-    height: clamp(1.5rem, 2vw + 1rem, 3rem);
-    border-radius: 50%;
-    background-color: var(--green);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(0.9rem, 2vw + 1rem, 2.5rem);
-    font-weight: 300;
-    color: var(--text);
-    cursor: pointer;
+  width: clamp(1.5rem, 2vw + 1rem, 3rem);
+  height: clamp(1.5rem, 2vw + 1rem, 3rem);
+  border-radius: 50%;
+  background-color: var(--green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(0.9rem, 2vw + 1rem, 2.5rem);
+  font-weight: 300;
+  color: var(--text);
+  cursor: pointer;
 }
 .minus-btn {
-    background-color: var(--red);
+  background-color: var(--red);
 }
 .btn:hover {
-    color: var(--hover);
-    opacity: 0.9;
+  color: var(--hover);
+  opacity: 0.9;
 }
 .count {
-    font-size: clamp(0.3rem, 1.2vw + 0.5rem, 1.8rem);
-    font-weight: 300;
-    color: var(--text);
+  font-size: clamp(0.3rem, 1.2vw + 0.5rem, 1.8rem);
+  font-weight: 300;
+  color: var(--text);
 }
 .cost {
-    justify-self: end;
-    margin-top: 1.5rem;
-    margin-right: 12%;
+  justify-self: end;
+  margin-top: 1.5rem;
+  margin-right: 12%;
 }
 .amount {
-    text-align: right;
-    font-size: clamp(0.5rem, 1.5vw + 0.5rem, 2rem);
+  text-align: right;
+  font-size: clamp(0.5rem, 1.5vw + 0.5rem, 2rem);
 }
 .remove {
-    text-align: right;
-    font-size: clamp(0.7rem, 1.2vw + 0.5rem, 1.8rem);
-    padding-top: 1%;
-    cursor: pointer;
-    color: var(--muted);
+  text-align: right;
+  font-size: clamp(0.7rem, 1.2vw + 0.5rem, 1.8rem);
+  padding-top: 1%;
+  cursor: pointer;
+  color: var(--muted);
 }
 hr {
-    margin-top: 5%;
-    margin-right: 7%;
-    width: 86%;
-    margin-left: auto;
+  margin-top: 5%;
+  margin-right: 7%;
+  width: 86%;
+  margin-left: auto;
 }
 .checkout {
-    margin-top: 2%;
-    margin-left: auto;
-    margin-right: 7%;
-    padding-bottom: 5%;
-    width: 28%;
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    justify-self: flex-end;
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: 7%;
+  padding-bottom: 5%;
+  width: 28%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  justify-self: flex-end;
 }
 .total {
-    width: 100%;
-    font-size: clamp(1.2rem, 2vw + 0.5rem, 2.5rem);
-    text-align: right;
+  width: 100%;
+  font-size: clamp(1.2rem, 2vw + 0.5rem, 2.5rem);
+  text-align: right;
 }
 .total-amount {
-    font-size: clamp(1.2rem, 2.5vw + 0.5rem, 3rem);
-    font-weight: 300;
-    text-align: right;
+  font-size: clamp(1.2rem, 2.5vw + 0.5rem, 3rem);
+  font-weight: 300;
+  text-align: right;
 }
 .button {
-    width: 55%;
-    height: clamp(2rem, 2vw + 2rem, 5rem);
-    border: none;
-    background: linear-gradient(to bottom right, var(--hover), var(--path));
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: clamp(0.9rem, 1vw + 0.7rem, 3rem);
-    font-family: "JetBrains Mono";
-    font-weight: 300;
-    color: var(--text);
+  width: 55%;
+  height: clamp(2rem, 2vw + 2rem, 5rem);
+  border: none;
+  background: linear-gradient(to bottom right, var(--hover), var(--path));
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 1vw + 0.7rem, 3rem);
+  font-family: "JetBrains Mono";
+  font-weight: 300;
+  color: var(--text);
 }
 .empty {
-    font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
-    text-align: center;
-    margin: 4.5%;
+  font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
+  text-align: center;
+  margin: 4.5%;
 }
 
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DESKTOPS - LAPTOPS ------ */
 @media only screen and (max-width: 1280px) {
-    .cart-container {
-        width: 85%;
-    }
-    .image-box img {
-        width: 4rem;
-        height: 4rem;
-    }
-    .cost {
-        grid-column: 4;
-        margin-top: 1.8rem;
-    }
-    .remove {
-        padding-top: 1%;
-        cursor: pointer;
-        color: var(--muted);
-    }
-    .button {
-        width: 70%;
-    }
+  .cart-container {
+    width: 85%;
+  }
+  .image-box img {
+    width: 4rem;
+    height: 4rem;
+  }
+  .cost {
+    grid-column: 4;
+    margin-top: 1.8rem;
+  }
+  .remove {
+    padding-top: 1%;
+    cursor: pointer;
+    color: var(--muted);
+  }
+  .button {
+    width: 70%;
+  }
 }
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
-    .cost {
-        margin-top: 1.3rem;
-    }
-    .image-box img {
-        width: 3rem;
-        height: 3rem;
-    }
+  .cost {
+    margin-top: 1.3rem;
+  }
+  .image-box img {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 
 /* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
-    .cart-item {
-        grid-template-columns: 0 1fr 1fr 1fr;
-    }
-    .cart-item {
-        width: 95%;
-    }
-    .image-box img {
-        display: none;
-    }
-    .name {
-        grid-column: 2;
-    }
-    .counter {
-        grid-column: 3;
-        width: 100%;
-    }
-    .cost {
-        grid-column: 4;
-        margin-right: 15%;
-        margin-top: 1rem;
-    }
-    .button {
-        width: 100%;
-    }
+  .cart-item {
+    grid-template-columns: 0 1fr 1fr 1fr;
+  }
+  .cart-item {
+    width: 95%;
+  }
+  .image-box img {
+    display: none;
+  }
+  .name {
+    grid-column: 2;
+  }
+  .counter {
+    grid-column: 3;
+    width: 100%;
+  }
+  .cost {
+    grid-column: 4;
+    margin-right: 15%;
+    margin-top: 1rem;
+  }
+  .button {
+    width: 100%;
+  }
 }

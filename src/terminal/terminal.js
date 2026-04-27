@@ -20,7 +20,7 @@ export function initTerminal() {
             Object.keys(stagingArea).forEach((key) => delete stagingArea[key]);
         }
     });
-    //
+    
     // PRINT LINES AS BLOCKS
     if (terminalEl) {
         // BOOT MESSAGE
