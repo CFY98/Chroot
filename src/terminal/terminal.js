@@ -1,6 +1,5 @@
 // IMPORTS
 import { announce } from "../tools/announcer.js";
-import { storage } from "../tools/storage.js";
 import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 import { termOptions } from "./options.js";
 import { pageMap } from "./autocomplete.js";
@@ -45,22 +44,22 @@ export function run(command) {
 }
 
 // KEYPRESS HANDLERS
-function pressEnter(e, input) {
+function pressEnter({ input }) {
   const val = input.value;
   pushHist(val, input);
 }
 
-function pressUp(e, input) {
+function pressUp({ e, input }) {
   e.preventDefault();
   lastHist(input);
 }
 
-function pressDown(e, input) {
+function pressDown({ e, input }) {
   e.preventDefault();
   nextHist(input);
 }
 
-function pressTab(e, input) {
+function pressTab({ e, input }) {
   e.preventDefault();
   const parts = input.value.toLowerCase().split(/\s+/);
   const firstPart = parts[0];
@@ -94,7 +93,7 @@ export function initTerminal() {
   // INPUT EVENTS
   input.addEventListener("keydown", (e) => {
     const pressed = keyPress[e.key];
-    if (pressed) pressed(e, input);
+    if (pressed) pressed({ e, input });
   });
 
   // FOCUS INPUT
