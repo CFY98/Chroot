@@ -45,7 +45,7 @@ export class orderService {
     this.storage.remove("stagingArea");
     this.storage.set("itemCount", 0);
   }
-  removeItem(itemName, cartItem) {
+  removeItem(cartItem, itemName) {
     const stagingArea = this.storage.get("stagingArea", {});
     const itemQty = stagingArea[itemName] || 1;
     const count = parseInt(this.storage.get("itemCount", 0));
