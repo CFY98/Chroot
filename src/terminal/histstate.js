@@ -3,48 +3,45 @@ import { announce } from "../tools/announcer.js";
 import { storage } from "../tools/storage.js";
 import { run } from "./terminal.js";
 
-// TERMINAL HISTORY FUNCTONS
-function getHist() {
-  return storage.get("termHistory", []);
-}
-function setHist(termhistory) {
-  return storage.set("termhistory", termhistory);
-}
-
-// HISTORY INDEX
-export const histIdx = {
-  termHist: getHist,
-  index: -1,
-};
-
-// TERMINAL HISTORY HANDLERS
-export function pushHist(val, input) {
-  const termHistory = histIdx.termHist();
-  if (val.trim()) {
-    termHistory.unshift(val);
-    if (termHistory.length > 15) termHistory.pop();
-    setHist(termHistory);
+class HistIdx {
+  constructor() {
+    this.index = -1;
   }
-  run(val);
-  input.value = "";
-  return histIdx.index;
-}
-
-export function lastHist(input) {
-  const termHistory = histIdx.termHist();
-  if (histIdx.index < termHistory.length - 1) histIdx.index++;
-  input.value = termHistory[histIdx.index] ?? "";
-  announce("Previous Input:");
-}
-
-export function nextHist(input) {
-  const termHistory = histIdx.termHist();
-  if (histIdx.index <= 0) {
-    histIdx.index = -1;
+  getHist() {
+    return storage.get("termHistory", []);
+  }
+  setHist(termhistory) {
+    return storage.set("termhistory", termhistory);
+  }
+  pushHist(val, input) {
+    const termHistory = this.getHist();
+    if (val.trim()) {
+      termHistory.unshift(val);
+      if (termHistory.length > 15) termHistory.pop();
+      this.setHist(termHistory);
+    }
+    run(val);
     input.value = "";
-    return;
+    return this.index;
   }
-  histIdx.index--;
-  input.value = termHistory[histIdx.index] ?? "";
-  announce("Latest Input:");
+
+  lastHist(input) {
+    const termHistory = this.termHist();
+    if (this.index < termHistory.length - 1) this.index++;
+    input.value = termHistory[this.index] ?? "";
+    announce("Previous Input:");
+  }
+  nextHist(input) {
+    const termHistory = this.termHist();
+    if (this.index <= 0) {
+      this.index = -1;
+      input.value = "";
+      return;
+    }
+    this.index--;
+    input.value = termHistory[this.index] ?? "";
+    announce("Latest Input:");
+  }
 }
+
+export const histIdx = new HistIdx();
