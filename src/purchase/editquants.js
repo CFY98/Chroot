@@ -1,6 +1,5 @@
 // IMPORTS
 import { announce } from "../tools/announcer.js";
-import { router } from "../tools/routerSPA.js";
 import service  from "../tools/storage.js";
 import { basket } from "./baskstate.js";
 
@@ -40,3 +39,9 @@ export const basketDom = {
   "plus-btn": incAmount,
   "minus-btn": decAmount,
 };
+
+export function basketHandler(e, product, cartItem, itemName, amount) {
+  const editBasket = basketDom[e.target.className];
+  if (editBasket) editBasket({ product, cartItem, itemName, amount });
+  if (e.target.closest(".remove")) remItem({ product, cartItem, itemName });
+}

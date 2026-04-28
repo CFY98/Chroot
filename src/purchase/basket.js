@@ -4,8 +4,9 @@ import { productPrices } from "../tools/assets.js";
 import { router } from "../tools/routerSPA.js";
 import service, { storage } from "../tools/storage.js";
 import { basket } from "./baskstate.js";
-import { remItem, basketDom } from "./editquants.js";
+import { remItem, basketDom, basketHandler } from "./editquants.js";
 
+// PROCESS ORDER FUNCTIONS
 function genOrderNo(product) {
   const hash = Math.random().toString(16).slice(2, 9);
   const orderNumber = basket.orderNo();
@@ -15,11 +16,6 @@ function genOrderNo(product) {
   if (product) product.innerHTML = "";
   announce(`The receipt for order ${hash} is now available to print`);
   basket.updateTotal();
-}
-
-function exitBasket() {
-  const activeBtn = document.getElementById("basket-btn");
-  if (activeBtn) activeBtn.classList.remove("active");
 }
 
 function genCartItem(key) {
@@ -47,10 +43,9 @@ function genCartItem(key) {
   return div;
 }
 
-function basketHandler(e, product, cartItem, itemName, amount) {
-  const editBasket = basketDom[e.target.className];
-  if (editBasket) editBasket({ product, cartItem, itemName, amount });
-  if (e.target.closest(".remove")) remItem({ product, cartItem, itemName });
+function exitBasket() {
+  const activeBtn = document.getElementById("basket-btn");
+  if (activeBtn) activeBtn.classList.remove("active");
 }
 
 function resetBasket(product) {
