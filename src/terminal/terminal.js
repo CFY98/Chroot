@@ -5,15 +5,33 @@ import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 import { termOptions } from "./options.js";
 import { pageMap } from "./autocomplete.js";
 
-// HISTORY INDEX
 let histIdx = -1;
 
 // HELPER FUNCTONS
 function getHist() {
   return storage.get("termHistory", []);
 }
-function setHist(termHistory) {
-  return storage.set("termHistory", termHistory);
+function sethist(termhistory) {
+  return storage.set("termhistory", termhistory);
+}
+
+function termHandler(verb, command) {
+  const handler = termOptions[verb];
+  
+    if (handler) {
+    handler({ command, arg, parts, verb, block });
+  } else {
+    addLine(block, `bash: ${verb}: command not found`, "error");
+    addLine(block, `Type 'help' for available commands`, "info");
+    announce("If stuck, type 'help' for available commands");
+  }
+  addLine(block, `site@chroot ~ $ ${command}`, "prompt");
+  printBlock(block);
+}
+// HISTORY INDEX
+const termHistIdx = {
+    termHist: getHist,
+    index: -1,
 }
 
 // BOOT MESSAGE
@@ -34,17 +52,8 @@ function run(command) {
   const parts = cmd.split(/\s+/);
   const verb = parts[0];
   const arg = parts.slice(1).join(" ");
-  const handler = termOptions[verb];
 
-  if (handler) {
-    handler({ command, arg, parts, verb, block });
-  } else {
-    addLine(block, `bash: ${verb}: command not found`, "error");
-    addLine(block, `Type 'help' for available commands`, "info");
-    announce("If stuck, type 'help' for available commands");
-  }
-  addLine(block, `site@chroot ~ $ ${command}`, "prompt");
-  printBlock(block);
+  termHandler(verb, command);
 }
 
 // KEYPRESS HANDLERS
