@@ -90,7 +90,7 @@ function decAmount({ product, cartItem, itemName, amount }) {
   }
 }
 
-function remItem({ product, cartItem, itemName, amount }) {
+function remItem({ product, cartItem, itemName }) {
   service.removeItem(cartItem, itemName);
   announce(` ${itemName} was completely removed from the basket`);
   updateTotal();
@@ -117,7 +117,7 @@ function exitBasket() {
   if (activeBtn) activeBtn.classList.remove("active");
 }
 
-function genCartItem(key, product) {
+function genCartItem(key) {
   const stagingArea = basket.stagArea();
   const qtyTotal = stagingArea[key] * productPrices[key];
   const div = document.createElement("div");
@@ -139,7 +139,7 @@ function genCartItem(key, product) {
         <div class="remove" role="button" aria-label="Removes item from basket"><u>Remove</u></div>
       </div>
     `;
-    return div;
+  return div;
 }
 export function initBasket() {
   const stagingArea = basket.stagArea();
@@ -168,7 +168,7 @@ export function initBasket() {
     const editBasket = basketDom[e.target.className];
     if (editBasket) editBasket({ product, cartItem, itemName, amount });
     if (e.target.closest(".remove"))
-      remItem({ product, cartItem, itemName, amount });
+      remItem({ product, cartItem, itemName });
   });
 
   // RESET ALL
@@ -203,7 +203,7 @@ export function initBasket() {
     product.innerHTML = "";
     emptyState(product);
     basketItems.forEach((key) => {
-        product.appendChild(genCartItem(key, product));
+      product.appendChild(genCartItem(key));
     });
     updateTotal();
   }
