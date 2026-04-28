@@ -25,6 +25,7 @@ Users can switch to TUI mode if they prefer working in a terminal.
 
 - **Keyboard Navigation** — History indexes accessible via arrow-keys and tab for autocomplete, a'la inspiration from a terminal interface.
 - **Git commands** — Inspired use of Git Commands to interact with the basket via add, reset, status, commit, and log.
+- **Autocomplete** - Tab completion for commands and arguments based on the current input.
 
 ## 🔗 Link
 
