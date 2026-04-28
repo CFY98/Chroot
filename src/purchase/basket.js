@@ -141,6 +141,11 @@ function genCartItem(key) {
     `;
   return div;
 }
+function basketHandler(e, product, cartItem, itemName, amount) {
+  const editBasket = basketDom[e.target.className];
+  if (editBasket) editBasket({ product, cartItem, itemName, amount });
+  if (e.target.closest(".remove")) remItem({ product, cartItem, itemName });
+}
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
@@ -165,10 +170,7 @@ export function initBasket() {
     if (!cartItem) return;
     const itemName = cartItem.querySelector(".name").textContent;
     const amount = cartItem.querySelector(".amount");
-    const editBasket = basketDom[e.target.className];
-    if (editBasket) editBasket({ product, cartItem, itemName, amount });
-    if (e.target.closest(".remove"))
-      remItem({ product, cartItem, itemName });
+    basketHandler(e, product, cartItem, itemName, amount);
   });
 
   // RESET ALL
