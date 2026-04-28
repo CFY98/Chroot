@@ -3,98 +3,39 @@ import { announce } from "../tools/announcer.js";
 import { productPrices } from "../tools/assets.js";
 import { router } from "../tools/routerSPA.js";
 import service, { storage } from "../tools/storage.js";
+import { basket } from "./baskstate.js";
 
-// HELPER FUNCTIONS
-function getStage() {
-  return storage.get("stagingArea", {});
-}
-
-function getBasket() {
-  return storage.get("basketItems", []);
-}
-
-function getOrderNo() {
-  return storage.get("orderNumber", []);
-}
-
-// BASKET STATE OBJECT MANAGER
-const basket = {
-  stagArea: getStage,
-  baskItem: getBasket,
-  orderNo: getOrderNo,
-  subtotal: 0,
-};
-
-function emptyState(product) {
-  const basketItems = basket.baskItem();
-  if (Object.entries(basketItems).length === 0) {
-    storage.set("itemCount", 0);
-    product.innerHTML = `<div class="empty"><p>Basket is Empty</p></div>`;
-  }
-}
-
-function updateTotal() {
-  const stagingArea = basket.stagArea();
-  const total = document.querySelector(".total-amount");
-  document.querySelectorAll(".cart-item").forEach((cartItem) => {
-    const name = cartItem.querySelector(".name").textContent;
-    const amount = cartItem.querySelector(".amount");
-    const count = cartItem.querySelector(".count");
-    count.textContent = stagingArea[name] || 0;
-    amount.textContent = `£${(stagingArea[name] * productPrices[name]).toFixed(2)}`;
-  });
-
-  basket.subtotal = Object.entries(stagingArea).reduce((sum, [key, value]) => {
-    return sum + value * productPrices[key];
-  }, 0);
-
-  total.textContent =
-    basket.subtotal > 0 ? `£${basket.subtotal.toFixed(2)}` : "";
-}
-
-function updateItems(delta, cartItem, itemName, amount) {
-  const stagingArea = basket.stagArea();
-  const count = cartItem.querySelector(".count");
-  const prev = parseInt(storage.get("itemCount", 0));
-  storage.set("itemCount", prev + delta);
-  count.textContent = parseInt(count.textContent || 0) + delta;
-
-  stagingArea[itemName] = Math.max(0, (stagingArea[itemName] || 0) + delta);
-
-  amount.textContent = `£${(stagingArea[itemName] * productPrices[itemName]).toFixed(2)}`;
-  storage.set("stagingArea", stagingArea);
-}
 
 function incAmount({ cartItem, itemName, amount }) {
   const stagingArea = basket.stagArea();
-  updateItems(1, cartItem, itemName, amount);
+  basket.updItms(1, cartItem, itemName, amount);
   announce(`${itemName} quantity increased to ${stagingArea[itemName]}`);
-  updateTotal();
+  basket.updTot();
 }
 
 function decAmount({ product, cartItem, itemName, amount }) {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
-  updateItems(-1, cartItem, itemName, amount);
+  basket.updItms(-1, cartItem, itemName, amount);
   if (stagingArea[itemName] === 0) {
     service.removeItem(cartItem, itemName);
     announce(` ${itemName} was completely removed from the basket`);
     if (basketItems.length === 0) {
       announce("the basket is now empty");
-      emptyState(product);
+      basket.empBask(product);
     }
-    updateTotal();
+    basket.updTot();
   } else {
     announce(`${itemName} quantity decreased to ${stagingArea[itemName]}`);
-    updateTotal();
+    basket.updTot();
   }
 }
 
 function remItem({ product, cartItem, itemName }) {
   service.removeItem(cartItem, itemName);
   announce(` ${itemName} was completely removed from the basket`);
-  updateTotal();
-  emptyState(product);
+  basket.updTot();
+  basket.empBask(product);
 }
 const basketDom = {
   "plus-btn": incAmount,
@@ -109,7 +50,7 @@ function genOrderNo(product) {
   service.processOrder();
   if (product) product.innerHTML = "";
   announce(`The receipt for order ${hash} is now available to print`);
-  updateTotal();
+  basket.updTot();
 }
 
 function exitBasket() {
@@ -141,11 +82,13 @@ function genCartItem(key) {
     `;
   return div;
 }
+
 function basketHandler(e, product, cartItem, itemName, amount) {
   const editBasket = basketDom[e.target.className];
   if (editBasket) editBasket({ product, cartItem, itemName, amount });
   if (e.target.closest(".remove")) remItem({ product, cartItem, itemName });
 }
+
 function resetBasket(product) {
   storage.remove("basketItems");
   storage.remove("stagingArea");
@@ -153,6 +96,7 @@ function resetBasket(product) {
   if (product) product.innerHTML = "";
   announce("The basket is now empty");
 }
+
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
@@ -167,7 +111,7 @@ export function initBasket() {
 
   window.addEventListener("message", (event) => {
     if (event.data.action === "updateBasket") {
-      updateTotal();
+      basket.updTot();
     }
   });
 
@@ -180,15 +124,15 @@ export function initBasket() {
     basketHandler(e, product, cartItem, itemName, amount);
   });
 
-  // RESET ALL
+  // RESET BASKET
   eliminate.onclick = function () {
     if (Object.keys(stagingArea).length === 0) {
       announce("The basket was empty to begin with");
       return;
     }
     resetBasket(product);
-    updateTotal();
-    emptyState(product);
+    basket.updTot();
+    basket.empBask(product);
   };
 
   // PROCESS ORDER
@@ -206,11 +150,11 @@ export function initBasket() {
   // ITEMS IN BASKET
   function renderBasket() {
     product.innerHTML = "";
-    emptyState(product);
+    basket.empBask(product);
     basketItems.forEach((key) => {
       product.appendChild(genCartItem(key));
     });
-    updateTotal();
+    basket.updTot();
   }
   renderBasket();
 }
