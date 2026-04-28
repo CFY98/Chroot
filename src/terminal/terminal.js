@@ -5,8 +5,6 @@ import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 import { termOptions } from "./options.js";
 import { pageMap } from "./autocomplete.js";
 
-let histIdx = -1;
-
 // TERMINAL HISTORY FUNCTONS
 function getHist() {
   return storage.get("termHistory", []);
@@ -16,7 +14,7 @@ function setHist(termhistory) {
 }
 
 // HISTORY INDEX
-const termHistIdx = {
+const history = {
   termHist: getHist,
   index: -1,
 };
@@ -38,7 +36,7 @@ function termHandler(command, arg, parts, verb, block) {
 
 // TERMHISTORY HANDLERS
 function pushHist(val, input) {
-  const termHistory = termHistIdx.termHist();
+  const termHistory = history.termHist();
   if (val.trim()) {
     termHistory.unshift(val);
     if (termHistory.length > 15) termHistory.pop();
@@ -46,14 +44,26 @@ function pushHist(val, input) {
   }
   run(val);
   input.value = "";
-  return termHistIdx.index;
+  return history.index;
 }
 
 function lastHist(input) {
-  const termHistory = termHistIdx.termHist();
-  if (histIdx < termHistory.length - 1) histIdx++;
-  input.value = termHistory[histIdx] ?? "";
+  const termHistory = history.termHist();
+  if (history.index < termHistory.length - 1) history.index++;
+  input.value = termHistory[history.index] ?? "";
   announce("Previous Input:");
+}
+
+function nextHist(input) {
+  const termHistory = history.termHist();
+  if (history.index <= 0) {
+    history.index = -1;
+    input.value = "";
+    return;
+  }
+  history.index--;
+  input.value = termHistory[history.index] ?? "";
+  announce("Latest Input:");
 }
 // BOOT MESSAGE
 function boot() {
@@ -89,17 +99,8 @@ function pressUp(e, input) {
 }
 
 function pressDown(e, input) {
-  const termHistory = getHist();
-
   e.preventDefault();
-  if (histIdx <= 0) {
-    histIdx = -1;
-    input.value = "";
-    return;
-  }
-  histIdx--;
-  input.value = termHistory[histIdx] ?? "";
-  announce("Latest Input:");
+  nextHist(input);
 }
 
 function pressTab(e, input) {
