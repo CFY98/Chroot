@@ -6,7 +6,7 @@ import { basket } from "./baskstate.js";
 // INCREASE, DECREASE, AND REMOVE CART ITEM
 function incAmount({ cartItem, itemName, amount }) {
   const stagingArea = basket.stagArea();
-  basket.updateItems(1, cartItem, itemName, amount);
+  basket.updateStage(1, cartItem, itemName, amount);
   announce(`${itemName} quantity increased to ${stagingArea[itemName]}`);
   basket.updateTotal();
 }
@@ -14,7 +14,7 @@ function incAmount({ cartItem, itemName, amount }) {
 function decAmount({ product, cartItem, itemName, amount }) {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItems();
-  basket.updateItems(-1, cartItem, itemName, amount);
+  basket.updateStage(-1, cartItem, itemName, amount);
   if (stagingArea[itemName] === 0) {
     service.removeItem(cartItem, itemName);
     announce(` ${itemName} was completely removed from the basket`);

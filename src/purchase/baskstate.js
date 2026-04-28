@@ -1,6 +1,7 @@
 // IMPORTS
 import { storage } from "../tools/storage.js";
 import { productPrices } from "../tools/assets.js";
+import { announce } from "../tools/announcer.js";
 
 class Basket {
   constructor() {
@@ -32,7 +33,7 @@ class Basket {
 
     total.textContent = this.subtotal > 0 ? `£${this.subtotal.toFixed(2)}` : "";
   }
-  updateItems(delta, cartItem, itemName, amount) {
+  updateStage(delta, cartItem, itemName, amount) {
     const stagingArea = this.stagArea();
     const count = cartItem.querySelector(".count");
     const prev = parseInt(storage.get("itemCount", 0));
