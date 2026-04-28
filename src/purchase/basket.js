@@ -146,6 +146,13 @@ function basketHandler(e, product, cartItem, itemName, amount) {
   if (editBasket) editBasket({ product, cartItem, itemName, amount });
   if (e.target.closest(".remove")) remItem({ product, cartItem, itemName });
 }
+function resetBasket(product) {
+  storage.remove("basketItems");
+  storage.remove("stagingArea");
+  storage.set("itemCount", 0);
+  if (product) product.innerHTML = "";
+  announce("The basket is now empty");
+}
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
@@ -179,11 +186,7 @@ export function initBasket() {
       announce("The basket was empty to begin with");
       return;
     }
-    storage.remove("basketItems");
-    storage.remove("stagingArea");
-    storage.set("itemCount", 0);
-    if (product) product.innerHTML = "";
-    announce("The basket is now empty");
+    resetBasket(product);
     updateTotal();
     emptyState(product);
   };
