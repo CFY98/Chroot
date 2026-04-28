@@ -27,6 +27,7 @@ const basket = {
 
 function emptyState(basketItems, product) {
   if (Object.entries(basketItems).length === 0) {
+    storage.set("itemCount", 0);
     product.innerHTML = `<div class="empty"><p>Basket is Empty</p></div>`;
   }
 }
