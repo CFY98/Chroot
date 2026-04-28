@@ -2,7 +2,6 @@
 import { announce } from "../tools/announcer.js";
 import { storage } from "../tools/storage.js";
 import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
-import { filters } from "./cd.js";
 import { termOptions } from "./options.js";
 import { pageMap } from "./autocomplete.js";
 
