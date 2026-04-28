@@ -1,5 +1,5 @@
 // IMPORTS
-import { blank, addLine, printBlock } from "../tools/utilities.js";
+import { blank, addLine } from "../tools/utilities.js";
 import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import { storage } from "../tools/storage.js";
@@ -7,7 +7,7 @@ import { gitCmds } from "./git.js";
 import { cdPages } from "./cd.js";
 
 // TERMINAL OPTIONS
-export function ls({ command, block }) {
+function ls({ command, block }) {
   announce(
     "Type 'git', then add, followed by the item name to add it to the basket. Git, then reset, followed by the item name to removes it from the basket. To place orders, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
   );
@@ -23,7 +23,7 @@ export function ls({ command, block }) {
   blank(block);
 }
 
-export function help({ command, block }) {
+function help({ command, block }) {
   announce(
     "Type 'git', then add, followed by the item name to add it to the basket. Git, then reset, followed by the item name to removes it from the basket. To place orders, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
   );
@@ -39,7 +39,7 @@ export function help({ command, block }) {
   blank(block);
 }
 
-export function cd({ command, verb, arg, block }) {
+function cd({ command, verb, arg, block }) {
   if (!arg) {
     announce("Type 'ls' for all available pages");
     addLine(block, "hint: type 'ls' for all available pages", "warn");
@@ -58,7 +58,7 @@ export function cd({ command, verb, arg, block }) {
   }
 }
 
-export function about({ command, block }) {
+function about({ command, block }) {
   announce(
     "Chroot is a coffee roastery inspired by the Unix command line. For our opening-hours, type 'hours', 'ls' for a list of pages, and 'clear' to empty the terminal. Use the up and down arrow keys to toggle through the input history for efficiency",
   );
@@ -74,7 +74,7 @@ export function about({ command, block }) {
   blank(block);
 }
 
-export function hours({ command, block }) {
+function hours({ command, block }) {
   announce(
     "  Chroot is open from Monday to Friday between 7am to 6pm and 8am to 4pm on the weekends",
   );
@@ -85,7 +85,7 @@ export function hours({ command, block }) {
   blank(block);
 }
 
-export function git({ command, parts, verb, block }) {
+function git({ command, parts, verb, block }) {
   const action = parts[1];
   const items = parts.slice(2);
 
@@ -136,23 +136,23 @@ export function git({ command, parts, verb, block }) {
   }
 }
 
-export function exit({ block }) {
+function exit({ block }) {
   addLine(block, "There is no escaping good coffee", "warn");
   announcer("There is no escaping good coffee");
 }
 
-export function clear({ block }) {
+function clear({ block }) {
   output.innerHTML = "";
   announce("The terminal window contents have been cleared");
   return;
 }
 
-export function sudo({ block }) {
+function sudo({ block }) {
   addLine(block, "Our coffee only comes in wholebean", "warn");
   announce("Out coffee only comes in wholebean");
 }
 
-export function rm({ block }) {
+function rm({ block }) {
   addLine(block, "Permission denied. Admins only.", "error");
   announce("Permission denied, admins only");
 }
