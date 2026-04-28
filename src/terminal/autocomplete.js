@@ -1,4 +1,4 @@
-// IMPORTS 
+// IMPORTS
 import { announce } from "../tools/announcer.js";
 
 // PRESSTAB HELPERS
@@ -13,14 +13,13 @@ function autoComp(pages, parts, input, index) {
   input.value = parts.join(" ");
   announce(`Autocompleted to ${input.value}`);
 }
-function cdComp(parts, firstPart, input) {
+function cdComp({ parts, input, firstPart }) {
   const pages = ["beans", "equipment", "basket"];
-
   if (firstPart !== "cd") return;
   autoComp(pages, parts, input, 1);
 }
 
-function gitComp(parts, input, firstPart) {
+function gitComp({ parts, input }) {
   const actionWords = ["add", "reset"];
   const productPages = [
     "dripper",

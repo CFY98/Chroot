@@ -7,7 +7,7 @@ import { pageMap } from "./autocomplete.js";
 import { pushHist, lastHist, nextHist } from "./histstate.js";
 
 
-// HELPER FUNCTIONS
+// TERM HANDLER LOGIC 
 function termHandler(command, arg, parts, verb, block) {
   const handler = termOptions[verb];
 
@@ -65,7 +65,7 @@ function pressTab(e, input) {
   const parts = input.value.toLowerCase().split(/\s+/);
   const firstPart = parts[0];
   const inputOpts = pageMap[firstPart];
-  if (inputOpts) inputOpts(parts, input, firstPart);
+  if (inputOpts) inputOpts( { parts, input, firstPart });
 }
 
 // KEYPRESS HANDLERS MAP
