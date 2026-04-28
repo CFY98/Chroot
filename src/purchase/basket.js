@@ -16,10 +16,19 @@ function getBasket() {
 function getOrderNo() {
   return storage.get("orderNumber", []);
 }
+
+// BASKET STATE OBJECT MANAGER
+const basket = {
+  stagArea: getStage,
+  baskItem: getBasket,
+  orderNo: getOrderNo,
+  subtotal: 0,
+};
+
 export function initBasket() {
-  const stagingArea = getStage();
-  const basketItems = getBasket();
-  const orderNumber = getOrderNo();
+  const stagingArea = basket.stagArea();
+  const basketItems = basket.baskItem();
+  const orderNumber = basket.orderNo();
 
   // COSTS
   let subTotal = 0;
@@ -93,7 +102,7 @@ export function initBasket() {
       if (e.target.classList.contains("minus-btn")) {
         updateItems(-1);
         if (stagingArea[itemName] === 0) {
-          storage.removeItem(itemName, cartItem);
+          service.removeItem(itemName, cartItem);
           announce(` ${itemName} was completely removed from the basket`);
           if (basketItems.length === 0) {
             announce("the basket is now empty");
