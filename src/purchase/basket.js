@@ -48,14 +48,6 @@ function exitBasket() {
   if (activeBtn) activeBtn.classList.remove("active");
 }
 
-function resetBasket(product) {
-  storage.remove("basketItems");
-  storage.remove("stagingArea");
-  storage.set("itemCount", 0);
-  if (product) product.innerHTML = "";
-  announce("The basket is now empty");
-}
-
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItems();
@@ -89,7 +81,7 @@ export function initBasket() {
       announce("The basket was empty to begin with");
       return;
     }
-    resetBasket(product);
+    basket.resetBasket(product);
     basket.updateTotal();
     basket.emptyBasket(product);
   };

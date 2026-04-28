@@ -51,5 +51,12 @@ class Basket {
       product.innerHTML = `<div class="empty"><p>Basket is Empty</p></div>`;
     }
   }
+  resetBasket(product) {
+    storage.remove("basketItems");
+    storage.remove("stagingArea");
+    storage.set("itemCount", 0);
+    if (product) product.innerHTML = "";
+    announce("The basket is now empty");
+  }
 }
 export const basket = new Basket();
