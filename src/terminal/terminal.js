@@ -36,6 +36,7 @@ function termHandler(command, arg, parts, verb, block) {
   printBlock(block);
 }
 
+// TERMHISTORY HANDLERS
 function pushHist(val, input) {
   const termHistory = termHistIdx.termHist();
   if (val.trim()) {
@@ -48,6 +49,12 @@ function pushHist(val, input) {
   return termHistIdx.index;
 }
 
+function lastHist(input) {
+  const termHistory = termHistIdx.termHist();
+  if (histIdx < termHistory.length - 1) histIdx++;
+  input.value = termHistory[histIdx] ?? "";
+  announce("Previous Input:");
+}
 // BOOT MESSAGE
 function boot() {
   const block = createBlock();
@@ -77,12 +84,8 @@ function pressEnter(e, input) {
 }
 
 function pressUp(e, input) {
-  const termHistory = getHist();
-
   e.preventDefault();
-  if (histIdx < termHistory.length - 1) histIdx++;
-  input.value = termHistory[histIdx] ?? "";
-  announce("Previous Input:");
+  lastHist(input);
 }
 
 function pressDown(e, input) {
