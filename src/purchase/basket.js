@@ -36,15 +36,6 @@ function exitBasket() {
   if (activeBtn) activeBtn.classList.remove("active");
 }
 // RENDER BASKET FUNCTIONS
-function renderBasket(product) {
-  const basketItems = basket.baskItems();
-  product.innerHTML = "";
-  basket.emptyBasket(product);
-  basketItems.forEach((key) => {
-    product.appendChild(genCartItem(key));
-  });
-  basket.updateTotal();
-}
 function genCartItem(key) {
   const stagingArea = basket.stagArea();
   const qtyTotal = stagingArea[key] * productPrices[key];
