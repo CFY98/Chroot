@@ -12,14 +12,14 @@ function setHist(termhistory) {
 }
 
 // HISTORY INDEX
-export const history = {
+export const histIdx = {
   termHist: getHist,
   index: -1,
 };
 
 // TERMINAL HISTORY HANDLERS
 export function pushHist(val, input) {
-  const termHistory = history.termHist();
+  const termHistory = histIdx.termHist();
   if (val.trim()) {
     termHistory.unshift(val);
     if (termHistory.length > 15) termHistory.pop();
@@ -27,24 +27,24 @@ export function pushHist(val, input) {
   }
   run(val);
   input.value = "";
-  return history.index;
+  return histIdx.index;
 }
 
 export function lastHist(input) {
-  const termHistory = history.termHist();
-  if (history.index < termHistory.length - 1) history.index++;
-  input.value = termHistory[history.index] ?? "";
+  const termHistory = histIdx.termHist();
+  if (histIdx.index < termHistory.length - 1) histIdx.index++;
+  input.value = termHistory[histIdx.index] ?? "";
   announce("Previous Input:");
 }
 
 export function nextHist(input) {
-  const termHistory = history.termHist();
-  if (history.index <= 0) {
-    history.index = -1;
+  const termHistory = histIdx.termHist();
+  if (histIdx.index <= 0) {
+    histIdx.index = -1;
     input.value = "";
     return;
   }
-  history.index--;
-  input.value = termHistory[history.index] ?? "";
+  histIdx.index--;
+  input.value = termHistory[histIdx.index] ?? "";
   announce("Latest Input:");
 }
