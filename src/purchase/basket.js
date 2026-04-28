@@ -25,6 +25,12 @@ const basket = {
   subtotal: 0,
 };
 
+function emptyState(basketItems, product) {
+  if (Object.entries(basketItems).length === 0) {
+    product.innerHTML = `<div class="empty"><p>Basket is Empty</p></div>`;
+  }
+}
+
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
@@ -41,12 +47,6 @@ export function initBasket() {
   const eliminate = document.querySelector(".delete");
   const checkout = document.querySelector(".button");
   const total = document.querySelector(".total-amount");
-
-  function emptyState(basketItems) {
-    if (Object.entries(basketItems).length === 0) {
-      product.innerHTML = `<div class="empty"><p>Basket is Empty</p></div>`;
-    }
-  }
 
   function updateTotal(stagingArea) {
     document.querySelectorAll(".cart-item").forEach((cartItem) => {
@@ -106,7 +106,7 @@ export function initBasket() {
           announce(` ${itemName} was completely removed from the basket`);
           if (basketItems.length === 0) {
             announce("the basket is now empty");
-            emptyState(basketItems);
+            emptyState(basketItems, product);
           }
           updateTotal(stagingArea);
         } else {
@@ -122,7 +122,7 @@ export function initBasket() {
         const updatedStagingArea = storage.get("stagingArea", {});
         announce(` ${itemName} was completely removed from the basket`);
         updateTotal(updatedStagingArea);
-        emptyState(updatedBasketItems);
+        emptyState(updatedBasketItems, product);
       }
     });
   }
@@ -140,7 +140,7 @@ export function initBasket() {
       if (product) product.innerHTML = "";
       announce("The basket is now empty");
       updateTotal(stagingArea);
-      emptyState(basketItems);
+      emptyState(basketItems, product);
     };
   }
 
@@ -172,7 +172,7 @@ export function initBasket() {
     function renderBasket() {
       product.innerHTML = "";
 
-      emptyState(basketItems);
+      emptyState(basketItems, product);
 
       basketItems.forEach((key) => {
         const qtyTotal = stagingArea[key] * productPrices[key];
