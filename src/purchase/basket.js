@@ -65,14 +65,14 @@ function updateItems(delta, cartItem, itemName, amount) {
   storage.set("stagingArea", stagingArea);
 }
 
-function incAmount(cartItem, itemName, amount) {
+function incAmount({ cartItem, itemName, amount }) {
   const stagingArea = basket.stagArea();
   updateItems(1, cartItem, itemName, amount);
   announce(`${itemName} quantity increased to ${stagingArea[itemName]}`);
   updateTotal();
 }
 
-function decAmount(product, cartItem, itemName, amount) {
+function decAmount({ product, cartItem, itemName, amount }) {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
   updateItems(-1, cartItem, itemName, amount);
@@ -90,18 +90,16 @@ function decAmount(product, cartItem, itemName, amount) {
   }
 }
 
-const basketDom = {
-    incAmount: incAmount,
-    decAmount: decAmount,
-    remItem: remItem,
-};
-
-function remItem(product, cartItem, itemName, amount) {
+function remItem({ product, cartItem, itemName, amount }) {
   service.removeItem(cartItem, itemName);
   announce(` ${itemName} was completely removed from the basket`);
   updateTotal();
   emptyState(product);
 }
+const basketDom = {
+  "plus-btn": incAmount,
+  "minus-btn": decAmount,
+};
 
 export function initBasket() {
   const stagingArea = basket.stagArea();
@@ -128,13 +126,9 @@ export function initBasket() {
     if (!cartItem) return;
     const itemName = cartItem.querySelector(".name").textContent;
     const amount = cartItem.querySelector(".amount");
-
-    if (e.target.classList.contains("plus-btn"))
-      incAmount(cartItem, itemName, amount);
-    if (e.target.classList.contains("minus-btn"))
-      decAmount(product, cartItem, itemName, amount);
-    if (e.target.closest(".remove"))
-      remItem(product, cartItem, itemName, amount);
+    const editBasket = basketDom[e.target.className];
+      if (editBasket) editBasket({ product, cartItem, itemName, amount });
+      if (e.target.closest('.remove')) remItem({ product, cartItem, itemName, amount });
   });
 
   // RESET ALL
