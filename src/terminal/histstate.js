@@ -1,6 +1,7 @@
 // IMPORTS
 import { announce } from "../tools/announcer.js";
 import { storage } from "../tools/storage.js";
+import { run } from "./terminal.js";
 
 // TERMINAL HISTORY FUNCTONS
 function getHist() {

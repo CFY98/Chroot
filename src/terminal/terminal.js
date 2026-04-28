@@ -32,7 +32,7 @@ function boot() {
 }
 
 // COMMAND HANDLER
-function run(command) {
+export function run(command) {
   const cmd = command.trim().toLowerCase();
   if (!cmd) return;
 
