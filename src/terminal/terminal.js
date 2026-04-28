@@ -3,7 +3,7 @@ import { announce } from "../tools/announcer.js";
 import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 import { termOptions } from "./options.js";
 import { pageMap } from "./autocomplete.js";
-import { histIdx } from "./histstate.js";
+import { pushHist, lastHist, nextHist } from "./histstate.js";
 
 
 // TERM HANDLER LOGIC 
@@ -46,17 +46,17 @@ export function run(command) {
 // KEYPRESS HANDLERS
 function pressEnter({ input }) {
   const val = input.value;
-  histIdx.pushHist(val, input);
+  pushHist(val, input);
 }
 
 function pressUp({ e, input }) {
   e.preventDefault();
-  histIdx.lastHist(input);
+  lastHist(input);
 }
 
 function pressDown({ e, input }) {
   e.preventDefault();
-  histIdx.nextHist(input);
+  nextHist(input);
 }
 
 function pressTab({ e, input }) {
