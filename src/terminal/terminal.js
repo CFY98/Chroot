@@ -7,18 +7,25 @@ import { pageMap } from "./autocomplete.js";
 
 let histIdx = -1;
 
-// HELPER FUNCTONS
+// TERMINAL HISTORY FUNCTONS
 function getHist() {
   return storage.get("termHistory", []);
 }
-function sethist(termhistory) {
+function setHist(termhistory) {
   return storage.set("termhistory", termhistory);
 }
 
-function termHandler(verb, command) {
+// HISTORY INDEX
+const termHistIdx = {
+  termHist: getHist,
+  index: -1,
+};
+
+// HELPER FUNCTIONS
+function termHandler(command, arg, parts, verb, block) {
   const handler = termOptions[verb];
-  
-    if (handler) {
+
+  if (handler) {
     handler({ command, arg, parts, verb, block });
   } else {
     addLine(block, `bash: ${verb}: command not found`, "error");
@@ -28,10 +35,17 @@ function termHandler(verb, command) {
   addLine(block, `site@chroot ~ $ ${command}`, "prompt");
   printBlock(block);
 }
-// HISTORY INDEX
-const termHistIdx = {
-    termHist: getHist,
-    index: -1,
+
+function pushHist(val, input) {
+  const termHistory = termHistIdx.termHist();
+  if (val.trim()) {
+    termHistory.unshift(val);
+    if (termHistory.length > 15) termHistory.pop();
+    setHist(termHistory);
+  }
+  run(val);
+  input.value = "";
+  return termHistIdx.index;
 }
 
 // BOOT MESSAGE
@@ -53,22 +67,13 @@ function run(command) {
   const verb = parts[0];
   const arg = parts.slice(1).join(" ");
 
-  termHandler(verb, command);
+  termHandler(command, arg, parts, verb, block);
 }
 
 // KEYPRESS HANDLERS
 function pressEnter(e, input) {
   const val = input.value;
-  const termHistory = getHist();
-
-  if (val.trim()) {
-    termHistory.unshift(val);
-    if (termHistory.length > 15) termHistory.pop();
-    setHist(termHistory);
-  }
-  run(val);
-  input.value = "";
-  histIdx = -1;
+  pushHist(val, input);
 }
 
 function pressUp(e, input) {
