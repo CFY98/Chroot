@@ -4,9 +4,6 @@ import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import { basketHandler } from "./editquants.js";
 
-// SUBTOTAL
-let subtotal = 0;
-
 // HELPER FUNCTIONS
 function getStage() {
   return storage.get("stagingArea", {});
