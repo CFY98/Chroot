@@ -8,34 +8,34 @@ import { basket } from "./baskstate.js";
 
 function incAmount({ cartItem, itemName, amount }) {
   const stagingArea = basket.stagArea();
-  basket.updItms(1, cartItem, itemName, amount);
+  basket.updateItems(1, cartItem, itemName, amount);
   announce(`${itemName} quantity increased to ${stagingArea[itemName]}`);
-  basket.updTot();
+  basket.updateTotal();
 }
 
 function decAmount({ product, cartItem, itemName, amount }) {
   const stagingArea = basket.stagArea();
-  const basketItems = basket.baskItem();
-  basket.updItms(-1, cartItem, itemName, amount);
+  const basketItems = basket.baskItems();
+  basket.updateItems(-1, cartItem, itemName, amount);
   if (stagingArea[itemName] === 0) {
     service.removeItem(cartItem, itemName);
     announce(` ${itemName} was completely removed from the basket`);
     if (basketItems.length === 0) {
       announce("the basket is now empty");
-      basket.empBask(product);
+      basket.emptyBasket(product);
     }
-    basket.updTot();
+    basket.updateTotal();
   } else {
     announce(`${itemName} quantity decreased to ${stagingArea[itemName]}`);
-    basket.updTot();
+    basket.updateTotal();
   }
 }
 
 function remItem({ product, cartItem, itemName }) {
   service.removeItem(cartItem, itemName);
   announce(` ${itemName} was completely removed from the basket`);
-  basket.updTot();
-  basket.empBask(product);
+  basket.updateTotal();
+  basket.emptyBasket(product);
 }
 const basketDom = {
   "plus-btn": incAmount,
@@ -50,7 +50,7 @@ function genOrderNo(product) {
   service.processOrder();
   if (product) product.innerHTML = "";
   announce(`The receipt for order ${hash} is now available to print`);
-  basket.updTot();
+  basket.updateTotal();
 }
 
 function exitBasket() {
@@ -99,7 +99,7 @@ function resetBasket(product) {
 
 export function initBasket() {
   const stagingArea = basket.stagArea();
-  const basketItems = basket.baskItem();
+  const basketItems = basket.baskItems();
 
   // DOM ELEMENTS
   const product = document.querySelector(".cart-items");
@@ -111,7 +111,7 @@ export function initBasket() {
 
   window.addEventListener("message", (event) => {
     if (event.data.action === "updateBasket") {
-      basket.updTot();
+      basket.updateTotal();
     }
   });
 
@@ -131,8 +131,8 @@ export function initBasket() {
       return;
     }
     resetBasket(product);
-    basket.updTot();
-    basket.empBask(product);
+    basket.updateTotal();
+    basket.emptyBasket(product);
   };
 
   // PROCESS ORDER
@@ -150,11 +150,11 @@ export function initBasket() {
   // ITEMS IN BASKET
   function renderBasket() {
     product.innerHTML = "";
-    basket.empBask(product);
+    basket.emptyBasket(product);
     basketItems.forEach((key) => {
       product.appendChild(genCartItem(key));
     });
-    basket.updTot();
+    basket.updateTotal();
   }
   renderBasket();
 }
