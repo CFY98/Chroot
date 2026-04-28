@@ -4,15 +4,29 @@ import { productPrices } from "../tools/assets.js";
 import { router } from "../tools/routerSPA.js";
 import service, { storage } from "../tools/storage.js";
 
+// HELPER FUNCTIONS
+function getStage() {
+  return storage.get("stagingArea", {});
+}
+
+function getBasket() {
+  return storage.get("basketItems", []);
+}
+
+function getOrderNo() {
+  return storage.get("orderNumber", []);
+}
 export function initBasket() {
-  const stagingArea = storage.get("stagingArea", {});
-  const basketItems = storage.get("basketItems", []);
-  const orderNumber = storage.get("orderNumber", []);
+  const stagingArea = getStage();
+  const basketItems = getBasket();
+  const orderNumber = getOrderNo();
+
   // COSTS
   let subTotal = 0;
 
   // BASKET SETTINGS
   const product = document.querySelector(".cart-items");
+  if (!product) return;
 
   // BASKET BUTTONS
   const eliminate = document.querySelector(".delete");
