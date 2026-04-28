@@ -90,7 +90,7 @@ function decAmount({ product, cartItem, itemName, amount }) {
   }
 }
 
-function remItem(product, cartItem, itemName, amount) {
+function remItem({ product, cartItem, itemName, amount }) {
   service.removeItem(cartItem, itemName);
   announce(` ${itemName} was completely removed from the basket`);
   updateTotal();
@@ -117,6 +117,30 @@ function exitBasket() {
   if (activeBtn) activeBtn.classList.remove("active");
 }
 
+function genCartItem(key, product) {
+  const stagingArea = basket.stagArea();
+  const qtyTotal = stagingArea[key] * productPrices[key];
+  const div = document.createElement("div");
+  div.classList.add("cart-item");
+  div.innerHTML = `
+      <div class="image-box">
+        <img src="/Images/${key}.jpg" alt="${key}" />
+      </div>
+      <div class="about">
+        <div class="name">${key}</div>
+      </div>
+      <div class="counter">
+        <div class="plus-btn" role="button" aria-label="Increases quantity by one">+</div>
+        <div class="count" aria-label="Displays number of selected item in basket">${stagingArea[key]}</div>
+        <div class="minus-btn" role="button" aria-label="Increases quantity by one">-</div>
+      </div>
+      <div class="cost">
+        <div class="amount">£${qtyTotal.toFixed(2)}</div>
+        <div class="remove" role="button" aria-label="Removes item from basket"><u>Remove</u></div>
+      </div>
+    `;
+    return div;
+}
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
@@ -144,7 +168,7 @@ export function initBasket() {
     const editBasket = basketDom[e.target.className];
     if (editBasket) editBasket({ product, cartItem, itemName, amount });
     if (e.target.closest(".remove"))
-      remItem(product, cartItem, itemName, amount);
+      remItem({ product, cartItem, itemName, amount });
   });
 
   // RESET ALL
@@ -177,31 +201,9 @@ export function initBasket() {
   // ITEMS IN BASKET
   function renderBasket() {
     product.innerHTML = "";
-
     emptyState(product);
-
     basketItems.forEach((key) => {
-      const qtyTotal = stagingArea[key] * productPrices[key];
-      const div = document.createElement("div");
-      div.classList.add("cart-item");
-      div.innerHTML = `
-      <div class="image-box">
-        <img src="/Images/${key}.jpg" alt="${key}" />
-      </div>
-      <div class="about">
-        <div class="name">${key}</div>
-      </div>
-      <div class="counter">
-        <div class="plus-btn" role="button" aria-label="Increases quantity by one">+</div>
-        <div class="count" aria-label="Displays number of selected item in basket">${stagingArea[key]}</div>
-        <div class="minus-btn" role="button" aria-label="Increases quantity by one">-</div>
-      </div>
-      <div class="cost">
-        <div class="amount">£${qtyTotal.toFixed(2)}</div>
-        <div class="remove" role="button" aria-label="Removes item from basket"><u>Remove</u></div>
-      </div>
-    `;
-      product.appendChild(div);
+        product.appendChild(genCartItem(key, product));
     });
     updateTotal();
   }
