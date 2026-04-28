@@ -4,7 +4,6 @@ import { productPrices } from "../tools/assets.js";
 import { router } from "../tools/routerSPA.js";
 import service, { storage } from "../tools/storage.js";
 import { basket } from "./baskstate.js";
-import { remItem, basketDom, basketHandler } from "./editquants.js";
 
 // PROCESS ORDER FUNCTIONS
 function genOrderNo(product) {
@@ -48,17 +47,6 @@ function exitBasket() {
   if (activeBtn) activeBtn.classList.remove("active");
 }
 
-// UPDATE BASKET DOM
-function updateBasket(product) {
-  product.addEventListener("click", (e) => {
-    const cartItem = e.target.closest(".cart-item");
-    if (!cartItem) return;
-    const itemName = cartItem.querySelector(".name").textContent;
-    const amount = cartItem.querySelector(".amount");
-    basketHandler(e, product, cartItem, itemName, amount);
-  });
-}
-
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItems();
@@ -66,7 +54,7 @@ export function initBasket() {
   // DOM ELEMENTS
   const product = document.querySelector(".cart-items");
   if (!product) return;
-  updateBasket(product);
+  basket.updateBasket(product);
 
   const eliminate = document.querySelector(".delete");
   if (!eliminate) return;

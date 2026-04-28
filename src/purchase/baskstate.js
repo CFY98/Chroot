@@ -2,6 +2,7 @@
 import { storage } from "../tools/storage.js";
 import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
+import { basketHandler } from "./editquants.js";
 
 class Basket {
   constructor() {
@@ -15,6 +16,15 @@ class Basket {
   }
   orderNo() {
     return storage.get("orderNumber", []);
+  }
+  updateBasket(product) {
+    product.addEventListener("click", (e) => {
+      const cartItem = e.target.closest(".cart-item");
+      if (!cartItem) return;
+      const itemName = cartItem.querySelector(".name").textContent;
+      const amount = cartItem.querySelector(".amount");
+      basketHandler(e, product, cartItem, itemName, amount);
+    });
   }
   updateTotal() {
     const stagingArea = this.stagArea();

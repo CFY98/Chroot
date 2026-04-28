@@ -29,13 +29,14 @@ function decAmount({ product, cartItem, itemName, amount }) {
   }
 }
 
-export function remItem({ product, cartItem, itemName }) {
+function remItem({ product, cartItem, itemName }) {
   service.removeItem(cartItem, itemName);
   announce(` ${itemName} was completely removed from the basket`);
   basket.updateTotal();
   basket.emptyBasket(product);
 }
-export const basketDom = {
+
+const basketDom = {
   "plus-btn": incAmount,
   "minus-btn": decAmount,
 };
