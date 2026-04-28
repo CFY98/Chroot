@@ -31,13 +31,28 @@ function emptyState(basketItems, product) {
   }
 }
 
+function updateTotal(stagingArea) {
+  const total = document.querySelector(".total-amount");
+  document.querySelectorAll(".cart-item").forEach((cartItem) => {
+    const name = cartItem.querySelector(".name").textContent;
+    const amount = cartItem.querySelector(".amount");
+    const count = cartItem.querySelector(".count");
+    count.textContent = stagingArea[name] || 0;
+    amount.textContent = `£${(stagingArea[name] * productPrices[name]).toFixed(2)}`;
+  });
+
+  basket.subtotal = Object.entries(stagingArea).reduce((sum, [key, value]) => {
+    return sum + value * productPrices[key];
+  }, 0);
+
+  total.textContent =
+    basket.subtotal > 0 ? `£${basket.subtotal.toFixed(2)}` : "";
+}
+
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
   const orderNumber = basket.orderNo();
-
-  // COSTS
-  let subTotal = 0;
 
   // BASKET SETTINGS
   const product = document.querySelector(".cart-items");
@@ -46,23 +61,6 @@ export function initBasket() {
   // BASKET BUTTONS
   const eliminate = document.querySelector(".delete");
   const checkout = document.querySelector(".button");
-  const total = document.querySelector(".total-amount");
-
-  function updateTotal(stagingArea) {
-    document.querySelectorAll(".cart-item").forEach((cartItem) => {
-      const name = cartItem.querySelector(".name").textContent;
-      const amount = cartItem.querySelector(".amount");
-      const count = cartItem.querySelector(".count");
-      count.textContent = stagingArea[name] || 0;
-      amount.textContent = `£${(stagingArea[name] * productPrices[name]).toFixed(2)}`;
-    });
-
-    subTotal = Object.entries(stagingArea).reduce((sum, [key, value]) => {
-      return sum + value * productPrices[key];
-    }, 0);
-
-    total.textContent = subTotal > 0 ? `£${subTotal.toFixed(2)}` : "";
-  }
 
   window.addEventListener("message", (event) => {
     if (event.data.action === "updateBasket") {
