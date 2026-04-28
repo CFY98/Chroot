@@ -35,8 +35,14 @@ function gitComp({ parts, input }) {
     autoComp(actionWords, parts, input, 1);
     return;
   }
+
   if (action === "add" || action === "reset") {
+    if (parts.length >= 3) {
+      autoComp(productPages, parts, input, parts.length - 1);
+      return;
+    }
     autoComp(productPages, parts, input, 2);
+    return;
   }
 }
 
