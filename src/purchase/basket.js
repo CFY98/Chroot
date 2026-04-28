@@ -17,6 +17,11 @@ function genOrderNo(product) {
   basket.updateTotal();
 }
 
+function exitBasket() {
+  const activeBtn = document.getElementById("basket-btn");
+  if (activeBtn) activeBtn.classList.remove("active");
+}
+
 function processOrder(product, checkout) {
   checkout.onclick = function () {
     const stagingArea = basket.stagArea();
@@ -31,10 +36,6 @@ function processOrder(product, checkout) {
   };
 }
 
-function exitBasket() {
-  const activeBtn = document.getElementById("basket-btn");
-  if (activeBtn) activeBtn.classList.remove("active");
-}
 // RENDER BASKET FUNCTIONS
 function genCartItem(key) {
   const stagingArea = basket.stagArea();
@@ -75,9 +76,6 @@ function clearBasket(product, eliminate) {
 }
 
 export function initBasket() {
-  const stagingArea = basket.stagArea();
-  const basketItems = basket.baskItems();
-
   // DOM ELEMENTS
   const product = document.querySelector(".cart-items");
   if (!product) return;
@@ -100,6 +98,7 @@ export function initBasket() {
   // ITEMS IN BASKET
   function renderBasket() {
     product.innerHTML = "";
+    const basketItems = basket.baskItems();
     basket.emptyBasket(product);
     basketItems.forEach((key) => {
       product.appendChild(genCartItem(key));
