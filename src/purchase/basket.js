@@ -90,7 +90,7 @@ function decAmount({ product, cartItem, itemName, amount }) {
   }
 }
 
-function remItem({ product, cartItem, itemName, amount }) {
+function remItem(product, cartItem, itemName, amount) {
   service.removeItem(cartItem, itemName);
   announce(` ${itemName} was completely removed from the basket`);
   updateTotal();
@@ -101,12 +101,15 @@ const basketDom = {
   "minus-btn": decAmount,
 };
 
-function genOrderNo() {
+function genOrderNo(product) {
   const hash = Math.random().toString(16).slice(2, 9);
   const orderNumber = basket.orderNo();
   orderNumber.push(hash);
   storage.set("orderNumber", orderNumber);
   service.processOrder();
+  if (product) product.innerHTML = "";
+  announce(`The receipt for order ${hash} is now available to print`);
+  updateTotal();
 }
 
 function exitBasket() {
@@ -117,7 +120,6 @@ function exitBasket() {
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
-  const orderNumber = basket.orderNo();
 
   // DOM ELEMENTS
   const product = document.querySelector(".cart-items");
@@ -142,7 +144,7 @@ export function initBasket() {
     const editBasket = basketDom[e.target.className];
     if (editBasket) editBasket({ product, cartItem, itemName, amount });
     if (e.target.closest(".remove"))
-      remItem({ product, cartItem, itemName, amount });
+      remItem(product, cartItem, itemName, amount);
   });
 
   // RESET ALL
@@ -166,11 +168,8 @@ export function initBasket() {
       announce("No order was placed since there were no items in the basket");
       return;
     }
-    genOrderNo();
-exitBasket();
-    if (product) product.innerHTML = "";
-    announce(`The receipt for order ${hash} is now available to print`);
-    updateTotal();
+    genOrderNo(product);
+    exitBasket();
     history.pushState({}, "", "/receipt");
     router("/receipt");
   };
