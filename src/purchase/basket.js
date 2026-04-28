@@ -17,6 +17,25 @@ function genOrderNo(product) {
   basket.updateTotal();
 }
 
+function processOrder(product, checkout) {
+  checkout.onclick = function () {
+    const stagingArea = basket.stagArea();
+    if (Object.keys(stagingArea).length === 0) {
+      announce("No order was placed since there were no items in the basket");
+      return;
+    }
+    genOrderNo(product);
+    exitBasket();
+    history.pushState({}, "", "/receipt");
+    router("/receipt");
+  };
+}
+
+function exitBasket() {
+  const activeBtn = document.getElementById("basket-btn");
+  if (activeBtn) activeBtn.classList.remove("active");
+}
+// RENDER BASKET FUNCTIONS
 function genCartItem(key) {
   const stagingArea = basket.stagArea();
   const qtyTotal = stagingArea[key] * productPrices[key];
@@ -42,11 +61,6 @@ function genCartItem(key) {
   return div;
 }
 
-function exitBasket() {
-  const activeBtn = document.getElementById("basket-btn");
-  if (activeBtn) activeBtn.classList.remove("active");
-}
-
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItems();
@@ -60,6 +74,7 @@ export function initBasket() {
   if (!eliminate) return;
   const checkout = document.querySelector(".button");
   if (!checkout) return;
+  processOrder(product, checkout);
 
   window.addEventListener("message", (event) => {
     if (event.data.action === "updateBasket") {
@@ -76,18 +91,6 @@ export function initBasket() {
     basket.resetBasket(product);
     basket.updateTotal();
     basket.emptyBasket(product);
-  };
-
-  // PROCESS ORDER
-  checkout.onclick = function () {
-    if (Object.keys(stagingArea).length === 0) {
-      announce("No order was placed since there were no items in the basket");
-      return;
-    }
-    genOrderNo(product);
-    exitBasket();
-    history.pushState({}, "", "/receipt");
-    router("/receipt");
   };
 
   // ITEMS IN BASKET
