@@ -50,7 +50,7 @@ function updateTotal(stagingArea) {
     basket.subtotal > 0 ? `£${basket.subtotal.toFixed(2)}` : "";
 }
 
-function updateItems(delta, stagingArea, itemName, cartItem, amount) {
+function updateItems(delta, stagingArea, cartItem, itemName, amount) {
   const count = cartItem.querySelector(".count");
   const prev = parseInt(storage.get("itemCount", 0));
   storage.set("itemCount", prev + delta);
@@ -60,6 +60,37 @@ function updateItems(delta, stagingArea, itemName, cartItem, amount) {
 
   amount.textContent = `£${(stagingArea[itemName] * productPrices[itemName]).toFixed(2)}`;
   storage.set("stagingArea", stagingArea);
+}
+
+function incAmount(stagingArea, cartItem, itemName, amount) {
+  updateItems(1, stagingArea, cartItem, itemName, amount);
+  announce(`${itemName} quantity increased to ${stagingArea[itemName]}`);
+  updateTotal(stagingArea);
+}
+
+function decAmount(stagingArea, basketItems, product, cartItem, itemName, amount) {
+  updateItems(-1, stagingArea, cartItem, itemName, amount);
+  if (stagingArea[itemName] === 0) {
+    service.removeItem(itemName, cartItem);
+    announce(` ${itemName} was completely removed from the basket`);
+    if (basketItems.length === 0) {
+      announce("the basket is now empty");
+      emptyState(basketItems, product);
+    }
+    updateTotal(stagingArea);
+  } else {
+    announce(`${itemName} quantity decreased to ${stagingArea[itemName]}`);
+    updateTotal(stagingArea);
+  }
+}
+
+function remItem(product, cartItem, itemName, amount) {
+  service.removeItem(cartItem, itemName);
+  const updatedBasketItems = basket.baskItem();
+  const updatedStagingArea = basket.stagArea();
+  announce(` ${itemName} was completely removed from the basket`);
+  updateTotal(updatedStagingArea);
+  emptyState(updatedBasketItems, product);
 }
 
 export function initBasket() {
@@ -73,6 +104,7 @@ export function initBasket() {
 
   // BASKET BUTTONS
   const eliminate = document.querySelector(".delete");
+  if (!eliminate) return;
   const checkout = document.querySelector(".button");
 
   window.addEventListener("message", (event) => {
@@ -88,37 +120,11 @@ export function initBasket() {
       const itemName = cartItem.querySelector(".name").textContent;
       const amount = cartItem.querySelector(".amount");
 
-      if (e.target.classList.contains("plus-btn")) {
-        updateItems(1, stagingArea, itemName, cartItem, amount);
-        announce(`${itemName} quantity increased to ${stagingArea[itemName]}`);
-        updateTotal(stagingArea);
-      }
-
-      if (e.target.classList.contains("minus-btn")) {
-        updateItems(-1, stagingArea, itemName, cartItem, amount);
-        if (stagingArea[itemName] === 0) {
-          service.removeItem(itemName, cartItem);
-          announce(` ${itemName} was completely removed from the basket`);
-          if (basketItems.length === 0) {
-            announce("the basket is now empty");
-            emptyState(basketItems, product);
-          }
-          updateTotal(stagingArea);
-        } else {
-          announce(
-            `${itemName} quantity decreased to ${stagingArea[itemName]}`,
-          );
-          updateTotal(stagingArea);
-        }
-      }
-      if (e.target.closest(".remove")) {
-        service.removeItem(itemName, cartItem);
-        const updatedBasketItems = storage.get("basketItems", []);
-        const updatedStagingArea = storage.get("stagingArea", {});
-        announce(` ${itemName} was completely removed from the basket`);
-        updateTotal(updatedStagingArea);
-        emptyState(updatedBasketItems, product);
-      }
+      if (e.target.classList.contains("plus-btn"))
+        incAmount(stagingArea, cartItem, itemName, amount);
+      if (e.target.classList.contains("minus-btn"))
+        decAmount(stagingArea, basketItems, product, cartItem, itemName, amount);
+      if (e.target.closest(".remove")) remItem(product, cartItem, itemName, amount);
     });
   }
 
