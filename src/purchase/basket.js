@@ -61,6 +61,19 @@ function genCartItem(key) {
   return div;
 }
 
+function clearBasket(product, eliminate) {
+  eliminate.onclick = function () {
+    const stagingArea = basket.stagArea();
+    if (Object.keys(stagingArea).length === 0) {
+      announce("The basket was empty to begin with");
+      return;
+    }
+    basket.resetBasket(product);
+    basket.updateTotal();
+    basket.emptyBasket(product);
+  };
+}
+
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItems();
@@ -72,6 +85,8 @@ export function initBasket() {
 
   const eliminate = document.querySelector(".delete");
   if (!eliminate) return;
+  clearBasket(product, eliminate);
+
   const checkout = document.querySelector(".button");
   if (!checkout) return;
   processOrder(product, checkout);
@@ -81,17 +96,6 @@ export function initBasket() {
       basket.updateTotal();
     }
   });
-
-  // RESET BASKET
-  eliminate.onclick = function () {
-    if (Object.keys(stagingArea).length === 0) {
-      announce("The basket was empty to begin with");
-      return;
-    }
-    basket.resetBasket(product);
-    basket.updateTotal();
-    basket.emptyBasket(product);
-  };
 
   // ITEMS IN BASKET
   function renderBasket() {
