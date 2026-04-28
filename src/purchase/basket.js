@@ -101,6 +101,19 @@ const basketDom = {
   "minus-btn": decAmount,
 };
 
+function genOrderNo() {
+  const hash = Math.random().toString(16).slice(2, 9);
+  const orderNumber = basket.orderNo();
+  orderNumber.push(hash);
+  storage.set("orderNumber", orderNumber);
+  service.processOrder();
+}
+
+function exitBasket() {
+  const activeBtn = document.getElementById("basket-btn");
+  if (activeBtn) activeBtn.classList.remove("active");
+}
+
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
@@ -127,8 +140,9 @@ export function initBasket() {
     const itemName = cartItem.querySelector(".name").textContent;
     const amount = cartItem.querySelector(".amount");
     const editBasket = basketDom[e.target.className];
-      if (editBasket) editBasket({ product, cartItem, itemName, amount });
-      if (e.target.closest('.remove')) remItem({ product, cartItem, itemName, amount });
+    if (editBasket) editBasket({ product, cartItem, itemName, amount });
+    if (e.target.closest(".remove"))
+      remItem({ product, cartItem, itemName, amount });
   });
 
   // RESET ALL
@@ -152,14 +166,8 @@ export function initBasket() {
       announce("No order was placed since there were no items in the basket");
       return;
     }
-    const hash = Math.random().toString(16).slice(2, 9);
-    orderNumber.push(hash);
-    storage.set("orderNumber", orderNumber);
-    service.processOrder();
-
-    const activeBtn = document.getElementById("basket-btn");
-    if (activeBtn) activeBtn.classList.remove("active");
-
+    genOrderNo();
+exitBasket();
     if (product) product.innerHTML = "";
     announce(`The receipt for order ${hash} is now available to print`);
     updateTotal();
