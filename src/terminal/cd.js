@@ -2,21 +2,21 @@
 import { addLine, blank } from "../tools/utilities.js";
 
 // cdPages
-export function beans(block) {
+ function beans(block) {
     blank(block);
     addLine(block, "  Blaze        £11.99", "info");
     addLine(block, "  Sunshine     £14.99", "info");
     addLine(block, "  Summit       £19.99", "info");
     blank(block);
 }
-export function equipment(block) {
+ function equipment(block) {
     blank(block);
     addLine(block, "  Filters      £9.99", "info");
     addLine(block, "  Dripper      £14.99", "info");
     addLine(block, "  Grinder      £129.99", "info");
     blank(block);
 }
-export function blaze(block) {
+ function blaze(block) {
     blank(block);
     addLine(block, "  Origin:      Huila, Colombia", "info");
     addLine(block, "  Varietal:    Pink Bourbon", "info");
@@ -30,7 +30,7 @@ export function blaze(block) {
     addLine(block, "  Price:       £11.99", "info");
     blank(block);
 }
-export function sunshine(block) {
+ function sunshine(block) {
     blank(block);
     addLine(block, "  Origin:      Yirgacheffe, Ethiopia", "info");
     addLine(block, "  Varietal:    Heirloom", "info");
@@ -44,7 +44,7 @@ export function sunshine(block) {
     addLine(block, "  Price:       £14.99", "info");
     blank(block);
 }
-export function summit(block) {
+ function summit(block) {
     blank(block);
     addLine(block, "  Origin:      Antigua, Guatemala", "info");
     addLine(block, "  Varietal:    Gesha", "info");
@@ -58,7 +58,7 @@ export function summit(block) {
     addLine(block, "  Price:       £19.99", "info");
     blank(block);
 }
-export function filters(block) {
+ function filters(block) {
     blank(block);
     addLine(block, "  Our in-house filters are designed", "info");
     addLine(block, "  to fit household favourites such as", "info");
@@ -69,7 +69,7 @@ export function filters(block) {
     addLine(block, "  Price:       £9.99", "info");
     blank(block);
 }
-export function dripper(block) {
+ function dripper(block) {
     blank(block);
     addLine(block, "  After years of testing, we are proud", "info");
     addLine(block, "  to introduce the Chroot Dripper!", "info");
@@ -85,7 +85,7 @@ export function dripper(block) {
     addLine(block, "  Price:       £14.99", "info");
     blank(block);
 }
-export function grinder(block) {
+ function grinder(block) {
     blank(block);
     addLine(block, "  Embrace the morning with the", "info");
     addLine(block, "  Chroot Grinder.", "info");
