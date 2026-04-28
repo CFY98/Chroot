@@ -50,6 +50,18 @@ function updateTotal(stagingArea) {
     basket.subtotal > 0 ? `£${basket.subtotal.toFixed(2)}` : "";
 }
 
+function updateItems(delta, stagingArea, itemName, cartItem, amount) {
+  const count = cartItem.querySelector(".count");
+  const prev = parseInt(storage.get("itemCount", 0));
+  storage.set("itemCount", prev + delta);
+  count.textContent = parseInt(count.textContent || 0) + delta;
+
+  stagingArea[itemName] = Math.max(0, (stagingArea[itemName] || 0) + delta);
+
+  amount.textContent = `£${(stagingArea[itemName] * productPrices[itemName]).toFixed(2)}`;
+  storage.set("stagingArea", stagingArea);
+}
+
 export function initBasket() {
   const stagingArea = basket.stagArea();
   const basketItems = basket.baskItem();
@@ -76,30 +88,14 @@ export function initBasket() {
       const itemName = cartItem.querySelector(".name").textContent;
       const amount = cartItem.querySelector(".amount");
 
-      function updateItems(delta) {
-        const count = cartItem.querySelector(".count");
-
-        const prev = parseInt(storage.get("itemCount", 0));
-        storage.set("itemCount", prev + delta);
-        count.textContent = parseInt(count.textContent || 0) + delta;
-
-        stagingArea[itemName] = Math.max(
-          0,
-          (stagingArea[itemName] || 0) + delta,
-        );
-
-        amount.textContent = `£${(stagingArea[itemName] * productPrices[itemName]).toFixed(2)}`;
-        storage.set("stagingArea", stagingArea);
-      }
-
       if (e.target.classList.contains("plus-btn")) {
-        updateItems(1);
+        updateItems(1, stagingArea, itemName, cartItem, amount);
         announce(`${itemName} quantity increased to ${stagingArea[itemName]}`);
         updateTotal(stagingArea);
       }
 
       if (e.target.classList.contains("minus-btn")) {
-        updateItems(-1);
+        updateItems(-1, stagingArea, itemName, cartItem, amount);
         if (stagingArea[itemName] === 0) {
           service.removeItem(itemName, cartItem);
           announce(` ${itemName} was completely removed from the basket`);
