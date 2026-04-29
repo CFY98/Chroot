@@ -45,35 +45,34 @@ function showToast(itemName) {
 }
 
 function baskIcon(itemName) {
-
-    const basketItems = storage.get("basketItems", []);
-      if (!basketItems.includes(itemName)) {
-        basketItems.push(itemName);
-        storage.set("basketItems", basketItems);
-      }
+  const basketItems = storage.get("basketItems", []);
+  if (!basketItems.includes(itemName)) {
+    basketItems.push(itemName);
+    storage.set("basketItems", basketItems);
+  }
 }
+
+function setStage(productPrices, itemName) {
+  const stagingArea = storage.get("stagingArea", {});
+  if (Object.hasOwn(productPrices, itemName)) {
+    stagingArea[itemName] = (stagingArea[itemName] || 0) + toAdd[itemName];
+    const prev = parseInt(storage.get("itemCount", 0));
+    storage.set("itemCount", prev + toAdd[itemName]);
+    storage.set("stagingArea", stagingArea);
+    announce(
+      `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
+    );
+  }
+}
+
 function toBasket(buy, itemName) {
   buy.onclick = function () {
-    const stagingArea = storage.get("stagingArea", {});
-    const basketItems = storage.get("basketItems", []);
-    if (Object.hasOwn(productPrices, itemName)) {
-      stagingArea[itemName] = (stagingArea[itemName] || 0) + toAdd[itemName];
-      const prev = parseInt(storage.get("itemCount", 0));
-      storage.set("itemCount", prev + toAdd[itemName]);
-      storage.set("stagingArea", stagingArea);
-
-      if (!basketItems.includes(itemName)) {
-        basketItems.push(itemName);
-        storage.set("basketItems", basketItems);
-      }
-      announce(
-        `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
-      );
-
-      showToast(itemName);
-    }
+    setStage(productPrices, itemName);
+    baskIcon(itemName);
+    showToast(itemName);
   };
 }
+
 export function initBuy(page) {
   const buy = document.querySelector(".buy");
   const toBuy = document.getElementById("purchase");
