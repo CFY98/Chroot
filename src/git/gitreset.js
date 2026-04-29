@@ -19,8 +19,9 @@ function itemToZero(item) {
   if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
 }
 
-function itemGone(item) {
+function itemGone(item, block) {
   const stagingArea = storage.get("stagingArea", {});
+  const basketItems = storage.get("basketItems", []);
   const itemQty = stagingArea[item] || 1;
   delete stagingArea[item];
 
@@ -38,7 +39,7 @@ function noneStaged(item, block) {
   const stagingArea = storage.get("stagingArea", {});
 
   if (stagingArea[item] === 0) {
-    itemGone(item);
+    itemGone(item, block);
   } else {
     addLine(block, `${item} unstaged`, "info");
     announce(
