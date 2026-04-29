@@ -14,10 +14,64 @@ function emptyDel(items, block) {
   }
 }
 
+function itemToZero(item) {
+  const basketItems = storage.get("basketItems", []);
+  const itemIndex = basketItems.findIndex((i) => i === item);
+  if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
+}
+
+function emptyStage(item) {
+  const stagingArea = storage.get("stagingArea", {});
+  const itemQty = stagingArea[item] || 1;
+  delete stagingArea[item];
+
+  itemToZero(item);
+
+  service.updItemCount(itemQty);
+
+  storage.set("basketItems", basketItems);
+  storage.set("stagingArea", stagingArea);
+  addLine(block, `${item} was unstaged`, "info");
+  announce(`${item} was completely removed from the basket`);
+}
+
+function noneStaged(item, block) {
+  const stagingArea = storage.get("stagingArea", {});
+
+  if (stagingArea[item] === 0) {
+    empytStage(item);
+  } else {
+    addLine(block, `${item} unstaged`, "info");
+    announce(
+      `${stagingArea[item] > 0 ? stagingArea[item] : "no"} ${item}${stagingArea[item] > 1 ? "s" : ""} ${stagingArea[item] > 1 ? "are" : "is"} in the basket`,
+    );
+  }
+}
+
+function itemFromStage(items, block) {
+  const stagingArea = storage.get("stagingArea", {});
+  items.forEach((item) => {
+    if (stagingArea[item]) {
+      stagingArea[item] -= 1;
+
+      service.updItemCount(-1);
+      noneStaged(item, block);
+    } else {
+      addLine(block, `'${item}' not staged`, "error");
+      announce(`${item} was not in the basket so nothing was removed`);
+    }
+  });
+}
 
 // GIT RESET (REMOVE ITEMS FROM BASKET)
-export function gitReset({ items, stagingArea, basketItems, block }) {
-  if (items[0]?.replace(/^-+/, "") === "hard") {
+export function gitReset({ items, block }) {
+  const stagingArea = storage.get("stagingArea", {});
+  const reset = items[0]?.replace(/^-+/, "");
+  if (!reset) {
+    emptyDel(items, block);
+    return;
+  }
+  if (reset === "hard") {
     storage.remove("basketItems");
     storage.remove("stagingArea");
     storage.set("itemCount", 0);
@@ -25,40 +79,8 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
     announce("The basket is now empty");
     return;
   }
-
-  emptyDel(block);
-
-  items.forEach((item) => {
-    if (stagingArea[item]) {
-      stagingArea[item] -= 1;
-
-      service.updItemCount(-1);
-
-      if (stagingArea[item] === 0) {
-        const itemQty = stagingArea[item] || 1;
-        delete stagingArea[item];
-
-        const itemIndex = basketItems.findIndex((i) => i === item);
-        if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
-
-        service.updItemCount(itemQty);
-
-        storage.set("basketItems", basketItems);
-        storage.set("stagingArea", stagingArea);
-        addLine(block, `${item} was unstaged`, "info");
-        announce(`${item} was completely removed from the basket`);
-      } else {
-        addLine(block, `${item} unstaged`, "info");
-        announce(
-          `${stagingArea[item] > 0 ? stagingArea[item] : "no"} ${item}${stagingArea[item] > 1 ? "s" : ""} ${stagingArea[item] > 1 ? "are" : "is"} in the basket`,
-        );
-      }
-    } else {
-      addLine(block, `'${item}' not staged`, "error");
-      announce(`${item} was not in the basket so nothing was removed`);
-    }
-    storage.set("stagingArea", stagingArea);
-  });
+  itemFromStage(items, block);
+  storage.set("stagingArea", stagingArea);
 }
 
 // GIT STATUS (CHECKS BASKET)
