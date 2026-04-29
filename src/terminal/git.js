@@ -7,13 +7,18 @@ import { gitReset } from "../git/gitreset.js";
 import { gitStatus } from "../git/gitstatus.js";
 import { gitCommit } from "../git/gitcommit.js";
 
+// GIT LOG HELPER
+function commitFirst(block) {
+  announce("No order was placed since there were no items in the basket");
+  addLine(block, "fatal: there are no commits yet", "error");
+  addLine(block, "hint: use 'git commit' first", "warn");
+}
 
 // GIT LOG (RECIEPT GENERATION)
-export function gitLog({ block, committed }) {
+function gitLog({ block }) {
+  const committed = storage.get("committed", {});
   if (Object.keys(committed).length === 0) {
-    announce("No order was placed since there were no items in the basket");
-    addLine(block, "fatal: there are no commits yet", "error");
-    addLine(block, "hint: use 'git commit' first", "warn");
+    commitFirst(block);
     return;
   }
   setTimeout(() => {
