@@ -1,5 +1,6 @@
 // IMPORTS
 import { announce } from "../tools/announcer.js";
+import { storage } from "../tools/storage.js";
 import { blank, addLine, printBlock, createBlock } from "../tools/utilities.js";
 import { termOptions } from "./options.js";
 import { pageMap } from "./autocomplete.js";
@@ -80,7 +81,8 @@ export function initTerminal() {
   // TERMINAL DOM
   const input = document.getElementById("cmd-input");
   const terminalEl = document.querySelector(".terminal");
-
+  const stagingArea = storage.get("stagingArea", {});
+  
   window.addEventListener("storage", (e) => {
     if (e.key === "stagingArea" && e.newValue === null) {
       Object.keys(stagingArea).forEach((key) => delete stagingArea[key]);
