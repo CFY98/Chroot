@@ -1,8 +1,6 @@
 // IMPORTS
 import { blank, addLine } from "../tools/utilities.js";
-import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
-import { storage } from "../tools/storage.js";
 import { gitCmds } from "../git/git.js";
 import { cdPages } from "./cd.js";
 
@@ -88,24 +86,12 @@ function hours({ command, block }) {
 function git({ parts, verb, block }) {
   const action = parts[1];
   const items = parts.slice(2);
-
-  const stagingArea = storage.get("stagingArea", {});
-  const basketItems = storage.get("basketItems", []);
-  const orderNumber = storage.get("orderNumber", []);
-  const orderMessage = storage.get("orderMessage", []);
-  const committed = storage.get("committed", {});
   const commands = gitCmds[action];
 
   if (commands) {
     commands({
       items,
       block,
-      stagingArea,
-      basketItems,
-      productPrices,
-      orderNumber,
-      orderMessage,
-      committed,
     });
   } else {
     announce(
