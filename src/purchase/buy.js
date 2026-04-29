@@ -44,6 +44,14 @@ function showToast(itemName) {
   }, 3000);
 }
 
+function baskIcon(itemName) {
+
+    const basketItems = storage.get("basketItems", []);
+      if (!basketItems.includes(itemName)) {
+        basketItems.push(itemName);
+        storage.set("basketItems", basketItems);
+      }
+}
 function toBasket(buy, itemName) {
   buy.onclick = function () {
     const stagingArea = storage.get("stagingArea", {});
