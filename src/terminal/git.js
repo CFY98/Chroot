@@ -24,22 +24,20 @@ function emptyDel(items, block) {
   }
 }
 
-export function gitAdd({ items, block }) {
+function checkBasket(item) {
+  const basketItems = storage.get("basketItems", []);
+  if (!basketItems.includes(item)) basketItems.push(item);
+  storage.set("basketItems", basketItems);
+}
+function addAll(all, products, block) {
   const stagingArea = storage.get("stagingArea", {});
   const basketItems = storage.get("basketItems", []);
-  const all = items[0]?.replace(/^-+/, "");
-  const products = Object.keys(productPrices);
-  if (!all) {
-    emptyAdd(items, block);
-    return;
-  };
   if (all === "all" || all.toUpperCase() === "A") {
     products.forEach((item) => {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
       storage.set("stagingArea", stagingArea);
-      
-      if (!basketItems.includes(item)) basketItems.push(item);
-      storage.set("basketItems", basketItems);
+
+      checkBasket(item);
 
       const prev = parseInt(storage.get("itemCount", 0));
       storage.set("itemCount", prev + 1);
@@ -49,7 +47,20 @@ export function gitAdd({ items, block }) {
     });
     return;
   }
-  
+}
+
+export function gitAdd({ items, block }) {
+  const stagingArea = storage.get("stagingArea", {});
+  const basketItems = storage.get("basketItems", []);
+  const all = items[0]?.replace(/^-+/, "");
+  const products = Object.keys(productPrices);
+
+  if (!all) {
+    emptyAdd(items, block);
+    return;
+  }
+  addAll(all, products, block);
+
   items.forEach((item) => {
     if (products.includes(item)) {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
@@ -58,10 +69,7 @@ export function gitAdd({ items, block }) {
       const prev = parseInt(storage.get("itemCount", 0));
       storage.set("itemCount", prev + 1);
 
-      if (!basketItems.includes(item)) {
-        basketItems.push(item);
-        storage.set("basketItems", basketItems);
-      }
+      checkBasket(item);
 
       addLine(block, `${item} staged for commit`, "info");
       announce(
@@ -84,7 +92,7 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
     announce("The basket is now empty");
     return;
   }
-  
+
   emptyDel(block);
 
   items.forEach((item) => {
