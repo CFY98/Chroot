@@ -47,7 +47,7 @@ export class orderService {
 
     this.storage.remove("basketItems");
     this.storage.remove("stagingArea");
-    this.storage.set("itemCount", 0);
+    this.storage.remove("itemCount");
   }
   removeItem(cartItem, itemName) {
     const stagingArea = this.storage.get("stagingArea", {});
