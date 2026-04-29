@@ -29,9 +29,14 @@ function checkBasket(item) {
   if (!basketItems.includes(item)) basketItems.push(item);
   storage.set("basketItems", basketItems);
 }
+
+export function updItemCount(delta) {
+  const prev = parseInt(storage.get("itemCount", 0));
+  storage.set("itemCount", prev + delta);
+}
+
 function addAll(all, products, block) {
   const stagingArea = storage.get("stagingArea", {});
-  const basketItems = storage.get("basketItems", []);
   if (all === "all" || all.toUpperCase() === "A") {
     products.forEach((item) => {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
@@ -39,8 +44,7 @@ function addAll(all, products, block) {
 
       checkBasket(item);
 
-      const prev = parseInt(storage.get("itemCount", 0));
-      storage.set("itemCount", prev + 1);
+      updItemCount(1);
 
       addLine(block, `${item} staged for commit`, "info");
       announce("One of every item was added to the basket");
@@ -51,7 +55,6 @@ function addAll(all, products, block) {
 
 export function gitAdd({ items, block }) {
   const stagingArea = storage.get("stagingArea", {});
-  const basketItems = storage.get("basketItems", []);
   const all = items[0]?.replace(/^-+/, "");
   const products = Object.keys(productPrices);
 
@@ -66,8 +69,7 @@ export function gitAdd({ items, block }) {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
       storage.set("stagingArea", stagingArea);
 
-      const prev = parseInt(storage.get("itemCount", 0));
-      storage.set("itemCount", prev + 1);
+      updItemCount(1);
 
       checkBasket(item);
 
@@ -99,8 +101,7 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
     if (stagingArea[item]) {
       stagingArea[item] -= 1;
 
-      const prev = parseInt(storage.get("itemCount", 0));
-      storage.set("itemCount", prev - 1);
+      updItemCount(-1);
 
       if (stagingArea[item] === 0) {
         const itemQty = stagingArea[item] || 1;
@@ -109,7 +110,8 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
         const itemIndex = basketItems.findIndex((i) => i === item);
         if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
 
-        storage.set("itemCount", prev - itemQty);
+        updItemCount(itemQty);
+
         storage.set("basketItems", basketItems);
         storage.set("stagingArea", stagingArea);
         addLine(block, `${item} was unstaged`, "info");
