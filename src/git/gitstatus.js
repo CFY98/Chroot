@@ -2,6 +2,7 @@
 import { productPrices } from "../tools/assets.js";
 import { addLine, blank } from "../tools/utilities.js";
 import { announce } from "../tools/announcer.js";
+import { storage } from "../tools/storage.js";
 
 // GIT STATUS HELPERS
 function stageEmpty(block) {
