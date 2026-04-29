@@ -3,37 +3,36 @@ import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import { storage, toAdd } from "../tools/storage.js";
 
-export function initBuy(page) {
-  const buy = document.querySelector(".buy");
-  const toBuy = document.getElementById("purchase");
-  const itemName = page.split("/").pop();
-  const counting = document.querySelector(".counting");
-  toAdd[itemName] = toAdd[itemName] || 1;
+function addNumber(delta, itemName, counting) {
+  toAdd[itemName] = (toAdd[itemName] || 0) + delta;
+  counting.textContent = toAdd[itemName];
+}
 
-  if (toBuy) {
-    toBuy.addEventListener("click", (e) => {
-      const itemQuantity = e.target.closest(".qty-counter");
-      if (!itemQuantity) return;
+function incProduct({ itemName, counting }) {
+  addNumber(1, itemName, counting);
+  announce(`${itemName} quantity increased to ${toAdd[itemName]}`);
+}
+function decProduct({ itemName, counting }) {
+  if (parseInt(counting.textContent) <= 1) return;
+  addNumber(-1, itemName, counting);
+  announce(`${itemName} quantity decreased to ${toAdd[itemName]}`);
+}
 
-      function addNumber(delta) {
-        toAdd[itemName] = (toAdd[itemName] || 0) + delta;
-        counting.textContent = toAdd[itemName];
-      }
+const productDom = {
+  "btn-plus": incProduct,
+  "btn-minus": decProduct,
+};
 
-      if (e.target.classList.contains("btn-plus")) {
-        addNumber(1);
-        announce(`${itemName} quantity increased to ${toAdd[itemName]}`);
-      }
+function itemHandler(toBuy, itemName, counting) {
+  toBuy.addEventListener("click", (e) => {
+    const itemQuantity = e.target.closest(".qty-counter");
+    if (!itemQuantity) return;
+    const quantHandler = productDom[e.target.className];
+    if (quantHandler) quantHandler({ itemName, counting });
+  });
+}
 
-      if (e.target.classList.contains("btn-minus")) {
-        if (parseInt(counting.textContent) <= 1) return;
-        addNumber(-1);
-        announce(`${itemName} quantity decreased to ${toAdd[itemName]}`);
-      }
-    });
-  }
-
-  if (buy) {
+function toBasket(buy) {
     buy.onclick = function () {
       const stagingArea = storage.get("stagingArea", {});
       const basketItems = storage.get("basketItems", []);
@@ -65,5 +64,17 @@ export function initBuy(page) {
         showToast();
       }
     };
-  }
+}
+export function initBuy(page) {
+  const buy = document.querySelector(".buy");
+  const toBuy = document.getElementById("purchase");
+  const itemName = page.split("/").pop();
+  const counting = document.querySelector(".counting");
+  toAdd[itemName] = toAdd[itemName] || 1;
+
+  if (!buy) return;
+  if (!counting) return;
+  if (!toBuy) return;
+  itemHandler(toBuy, itemName, counting);
+toBasket(buy);
 }
