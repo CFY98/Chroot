@@ -33,37 +33,37 @@ function itemHandler(toBuy, itemName, counting) {
 }
 
 function toBasket(buy) {
-    buy.onclick = function () {
-      const stagingArea = storage.get("stagingArea", {});
-      const basketItems = storage.get("basketItems", []);
-      if (Object.hasOwn(productPrices, itemName)) {
-        stagingArea[itemName] = (stagingArea[itemName] || 0) + toAdd[itemName];
-        const prev = parseInt(storage.get("itemCount", 0));
-        storage.set("itemCount", prev + toAdd[itemName]);
-        storage.set("stagingArea", stagingArea);
+  buy.onclick = function () {
+    const stagingArea = storage.get("stagingArea", {});
+    const basketItems = storage.get("basketItems", []);
+    if (Object.hasOwn(productPrices, itemName)) {
+      stagingArea[itemName] = (stagingArea[itemName] || 0) + toAdd[itemName];
+      const prev = parseInt(storage.get("itemCount", 0));
+      storage.set("itemCount", prev + toAdd[itemName]);
+      storage.set("stagingArea", stagingArea);
 
-        if (!basketItems.includes(itemName)) {
-          basketItems.push(itemName);
-          storage.set("basketItems", basketItems);
-        }
-        announce(
-          `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
-        );
-
-        let toastBox = document.getElementById("toastbox");
-        function showToast() {
-          let toast = document.createElement("div");
-          toast.classList.add("toast");
-          toast.innerHTML = `<img src="/Images/${itemName}.jpg" alt="${itemName}"/>${toAdd[itemName] > 1 ? `${itemName} x${toAdd[itemName]}` : itemName} added to the basket`;
-          toastBox.appendChild(toast);
-
-          setTimeout(() => {
-            toast.remove();
-          }, 3000);
-        }
-        showToast();
+      if (!basketItems.includes(itemName)) {
+        basketItems.push(itemName);
+        storage.set("basketItems", basketItems);
       }
-    };
+      announce(
+        `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
+      );
+
+      let toastBox = document.getElementById("toastbox");
+      function showToast() {
+        let toast = document.createElement("div");
+        toast.classList.add("toast");
+        toast.innerHTML = `<img src="/Images/${itemName}.jpg" alt="${itemName}"/>${toAdd[itemName] > 1 ? `${itemName} x${toAdd[itemName]}` : itemName} added to the basket`;
+        toastBox.appendChild(toast);
+
+        setTimeout(() => {
+          toast.remove();
+        }, 3000);
+      }
+      showToast();
+    }
+  };
 }
 export function initBuy(page) {
   const buy = document.querySelector(".buy");
@@ -76,5 +76,5 @@ export function initBuy(page) {
   if (!counting) return;
   if (!toBuy) return;
   itemHandler(toBuy, itemName, counting);
-toBasket(buy);
+  toBasket(buy);
 }
