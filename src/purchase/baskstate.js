@@ -87,5 +87,4 @@ export const basket = {
   updateTotal: updateTotal,
   updateStage: updateStage,
   resetBasket: resetBasket,
-  subtotal: 0,
 };
