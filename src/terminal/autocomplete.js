@@ -14,7 +14,16 @@ function autoComp(pages, parts, input, index) {
   announce(`Autocompleted to ${input.value}`);
 }
 function cdComp({ parts, input, firstPart }) {
-  const pages = ["beans", "equipment", "basket"];
+  const pages = [
+    "beans",
+    "equipment",
+    "dripper",
+    "filters",
+    "grinder",
+    "blaze",
+    "sunshine",
+    "summit",
+  ];
   if (firstPart !== "cd") return;
   autoComp(pages, parts, input, 1);
 }
