@@ -19,7 +19,7 @@ function itemToZero(item) {
   if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
 }
 
-function emptyStage(item) {
+function itemGone(item) {
   const stagingArea = storage.get("stagingArea", {});
   const itemQty = stagingArea[item] || 1;
   delete stagingArea[item];
@@ -38,7 +38,7 @@ function noneStaged(item, block) {
   const stagingArea = storage.get("stagingArea", {});
 
   if (stagingArea[item] === 0) {
-    emptyStage(item);
+    itemGone(item);
   } else {
     addLine(block, `${item} unstaged`, "info");
     announce(
@@ -47,12 +47,19 @@ function noneStaged(item, block) {
   }
 }
 
+function stageReset(block) {
+  storage.remove("basketItems");
+  storage.remove("stagingArea");
+  storage.set("itemCount", 0);
+  addLine(block, "All items unstaged", "info");
+  announce("The basket is now empty");
+}
+
 function itemFromStage(items, block) {
   const stagingArea = storage.get("stagingArea", {});
   items.forEach((item) => {
     if (stagingArea[item]) {
       stagingArea[item] -= 1;
-
       service.updItemCount(-1);
       noneStaged(item, block);
     } else {
@@ -71,11 +78,7 @@ export function gitReset({ items, block }) {
     return;
   }
   if (reset === "hard") {
-    storage.remove("basketItems");
-    storage.remove("stagingArea");
-    storage.set("itemCount", 0);
-    addLine(block, "All items unstaged", "info");
-    announce("The basket is now empty");
+    stageReset(block);
     return;
   }
   itemFromStage(items, block);

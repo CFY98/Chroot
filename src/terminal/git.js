@@ -4,6 +4,7 @@ import { announce } from "../tools/announcer.js";
 import { router } from "../tools/routerSPA.js";
 import service, { storage } from "../tools/storage.js";
 import { gitAdd } from "../git/gitadd.js";
+import { gitReset } from "../git/gitreset.js";
 
 
 // GIT STATUS (CHECKS BASKET)
