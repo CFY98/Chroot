@@ -3,7 +3,7 @@ import { blank, addLine } from "../tools/utilities.js";
 import { productPrices } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import { storage } from "../tools/storage.js";
-import { gitCmds } from "./git.js";
+import { gitCmds } from "../git/git.js";
 import { cdPages } from "./cd.js";
 
 // TERMINAL OPTIONS

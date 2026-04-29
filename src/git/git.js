@@ -2,6 +2,7 @@
 import { addLine } from "../tools/utilities.js";
 import { announce } from "../tools/announcer.js";
 import { router } from "../tools/routerSPA.js";
+import { storage } from "../tools/storage.js";
 import { gitAdd } from "../git/gitadd.js";
 import { gitReset } from "../git/gitreset.js";
 import { gitStatus } from "../git/gitstatus.js";
