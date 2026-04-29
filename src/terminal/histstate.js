@@ -3,23 +3,20 @@ import { announce } from "../tools/announcer.js";
 import { storage } from "../tools/storage.js";
 import { run } from "./terminal.js";
 
+// HISTORY INDEX
+let index = -1;
+
 // TERMINAL HISTORY FUNCTONS
 function getHist() {
   return storage.get("termHistory", []);
 }
-function setHist(termhistory) {
-  return storage.set("termhistory", termhistory);
+function setHist(termHistory) {
+  return storage.set("termhistory", termHistory);
 }
-
-// HISTORY INDEX
-export const histIdx = {
-  termHist: getHist,
-  index: -1,
-};
 
 // TERMINAL HISTORY HANDLERS
 export function pushHist(val, input) {
-  const termHistory = histIdx.termHist();
+  const termHistory = getHist();
   if (val.trim()) {
     termHistory.unshift(val);
     if (termHistory.length > 15) termHistory.pop();
@@ -27,24 +24,24 @@ export function pushHist(val, input) {
   }
   run(val);
   input.value = "";
-  return histIdx.index;
+  return index;
 }
 
 export function lastHist(input) {
-  const termHistory = histIdx.termHist();
-  if (histIdx.index < termHistory.length - 1) histIdx.index++;
-  input.value = termHistory[histIdx.index] ?? "";
+  const termHistory = getHist();
+  if (index < termHistory.length - 1) index++;
+  input.value = termHistory[index] ?? "";
   announce("Previous Input:");
 }
 
 export function nextHist(input) {
-  const termHistory = histIdx.termHist();
-  if (histIdx.index <= 0) {
-    histIdx.index = -1;
+  const termHistory = getHist();
+  if (index <= 0) {
+    index = -1;
     input.value = "";
     return;
   }
-  histIdx.index--;
-  input.value = termHistory[histIdx.index] ?? "";
+  index--;
+  input.value = termHistory[index] ?? "";
   announce("Latest Input:");
 }
