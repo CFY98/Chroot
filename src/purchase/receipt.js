@@ -3,6 +3,7 @@ import { tMode, productPrices } from "../tools/assets.js";
 import { tuiMode } from "../tools/routerSPA.js";
 import { storage } from "../tools/storage.js";
 
+// RECEIPT GENERATION FUNCTIONS
 async function downloadPDF(orderNumber) {
   const html2pdf = (await import("html2pdf.js")).default;
   const element = document.getElementById("invoice");
@@ -21,7 +22,9 @@ async function downloadPDF(orderNumber) {
     clone.classList.remove("printing");
   }
 }
-function printReceipt(orderNumber, print, receipt, orderEl, messageEl, total) {
+
+function printReceipt(orderNumber, print, elements) {
+  const { receipt, orderEl, messageEl, total } = elements;
   print.onclick = async function () {
     await downloadPDF(orderNumber);
     storage.remove("orderNumber");
@@ -55,6 +58,35 @@ function genReceiptItem(key, committed) {
   return div;
 }
 
+function orderInfo(orderNumber, orderMessage, orderEl, messageEl) {
+  if (orderEl) orderEl.textContent = `Order Number: ${orderNumber.at(-1)}`;
+  if (messageEl)
+    messageEl.textContent = orderMessage.at(-1)
+      ? `Order Message: ${orderMessage.at(-1)}`
+      : "";
+}
+
+function genReceipt(elements, data) {
+  const { receipt, orderEl, messageEl, total } = elements;
+  const { orderNumber, orderMessage, committed, purchased } = data;
+
+  let subTotal = 0;
+  receipt.innerHTML = "";
+
+  orderInfo(orderNumber, orderMessage, orderEl, messageEl);
+
+  purchased.forEach((key) => {
+    receipt.appendChild(genReceiptItem(key, committed));
+  });
+
+  subTotal = Object.entries(committed).reduce((sum, [key, value]) => {
+    return sum + value * productPrices[key];
+  }, 0);
+
+  total.textContent = subTotal > 0 ? `£${subTotal.toFixed(2)}` : "";
+}
+
+// MAIN INITIALISE RECEIPT FUNCTION
 export function initReceipt() {
   const orderNumber = storage.get("orderNumber", []);
   const orderMessage = storage.get("orderMessage", []);
@@ -73,25 +105,9 @@ export function initReceipt() {
   if (!orderEl) return;
   if (!messageEl) return;
 
-  printReceipt(orderNumber, print, receipt, orderEl, messageEl, total);
-  // RECEIPT GENERATION
-  if (receipt) {
-    let subTotal = 0;
-    receipt.innerHTML = "";
-    if (orderEl) orderEl.textContent = `Order Number: ${orderNumber.at(-1)}`;
-    if (messageEl)
-      messageEl.textContent = orderMessage.at(-1)
-        ? `Order Message: ${orderMessage.at(-1)}`
-        : "";
+  const elements = { receipt, orderEl, messageEl, total };
+  const data = { orderNumber, orderMessage, committed, purchased };
 
-    purchased.forEach((key) => {
-      receipt.appendChild(genReceiptItem(key, committed));
-    });
-
-    subTotal = Object.entries(committed).reduce((sum, [key, value]) => {
-      return sum + value * productPrices[key];
-    }, 0);
-
-    total.textContent = subTotal > 0 ? `£${subTotal.toFixed(2)}` : "";
-  }
+  printReceipt(orderNumber, print, elements);
+  genReceipt(elements, data);
 }
