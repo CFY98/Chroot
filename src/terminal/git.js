@@ -1,19 +1,9 @@
 // IMPORTS
-import { productPrices } from "../tools/assets.js";
 import { addLine, blank } from "../tools/utilities.js";
 import { announce } from "../tools/announcer.js";
 import { router } from "../tools/routerSPA.js";
 import service, { storage } from "../tools/storage.js";
-
-// GIT ADD (ADD ITEMS TO BASKET)
-function emptyAdd(items, block) {
-  if (items.length === 0) {
-    addLine(block, "Nothing specified, nothing added", "info");
-    addLine(block, "hint: try specifying the item you want to add ", "warn");
-    announce("No item was specified, so nothing was added to the basket");
-    return;
-  }
-}
+import { gitAdd } from "../git/gitadd.js";
 
 function emptyDel(items, block) {
   if (items.length === 0) {
@@ -24,65 +14,6 @@ function emptyDel(items, block) {
   }
 }
 
-function checkBasket(item) {
-  const basketItems = storage.get("basketItems", []);
-  if (!basketItems.includes(item)) basketItems.push(item);
-  storage.set("basketItems", basketItems);
-}
-
-export function updItemCount(delta) {
-  const prev = parseInt(storage.get("itemCount", 0));
-  storage.set("itemCount", prev + delta);
-}
-
-function addAll(all, products, block) {
-  const stagingArea = storage.get("stagingArea", {});
-  if (all === "all" || all.toUpperCase() === "A") {
-    products.forEach((item) => {
-      stagingArea[item] = (stagingArea[item] || 0) + 1;
-      storage.set("stagingArea", stagingArea);
-
-      checkBasket(item);
-
-      updItemCount(1);
-
-      addLine(block, `${item} staged for commit`, "info");
-      announce("One of every item was added to the basket");
-    });
-    return;
-  }
-}
-
-export function gitAdd({ items, block }) {
-  const stagingArea = storage.get("stagingArea", {});
-  const all = items[0]?.replace(/^-+/, "");
-  const products = Object.keys(productPrices);
-
-  if (!all) {
-    emptyAdd(items, block);
-    return;
-  }
-  addAll(all, products, block);
-
-  items.forEach((item) => {
-    if (products.includes(item)) {
-      stagingArea[item] = (stagingArea[item] || 0) + 1;
-      storage.set("stagingArea", stagingArea);
-
-      updItemCount(1);
-
-      checkBasket(item);
-
-      addLine(block, `${item} staged for commit`, "info");
-      announce(
-        `${stagingArea[item]} ${item}${stagingArea[item] === 1 ? "" : "s"} ${stagingArea[item] > 1 ? "are" : "is"} in the basket`,
-      );
-    } else {
-      addLine(block, `fatal: '${item}' not found`, "error");
-      announce(` ${item} does not exist so it was not added to the basket`);
-    }
-  });
-}
 
 // GIT RESET (REMOVE ITEMS FROM BASKET)
 export function gitReset({ items, stagingArea, basketItems, block }) {
@@ -101,7 +32,7 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
     if (stagingArea[item]) {
       stagingArea[item] -= 1;
 
-      updItemCount(-1);
+      service.updItemCount(-1);
 
       if (stagingArea[item] === 0) {
         const itemQty = stagingArea[item] || 1;
@@ -110,7 +41,7 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
         const itemIndex = basketItems.findIndex((i) => i === item);
         if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
 
-        updItemCount(itemQty);
+        service.updItemCount(itemQty);
 
         storage.set("basketItems", basketItems);
         storage.set("stagingArea", stagingArea);
