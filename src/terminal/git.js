@@ -6,14 +6,38 @@ import { router } from "../tools/routerSPA.js";
 import service, { storage } from "../tools/storage.js";
 
 // GIT ADD (ADD ITEMS TO BASKET)
-export function gitAdd({ items, stagingArea, basketItems, block }) {
+function emptyAdd(items, block) {
+  if (items.length === 0) {
+    addLine(block, "Nothing specified, nothing added", "info");
+    addLine(block, "hint: try specifying the item you want to add ", "warn");
+    announce("No item was specified, so nothing was added to the basket");
+    return;
+  }
+}
+
+function emptyDel(items, block) {
+  if (items.length === 0) {
+    addLine(block, "Nothing specified, nothing removed", "info");
+    addLine(block, "hint: specifiy the item you want to remove", "warn");
+    announce("specify the items you want to remove from the basket");
+    return;
+  }
+}
+
+export function gitAdd({ items, block }) {
+  const stagingArea = storage.get("stagingArea", {});
+  const basketItems = storage.get("basketItems", []);
   const all = items[0]?.replace(/^-+/, "");
   const products = Object.keys(productPrices);
+  if (!all) {
+    emptyAdd(items, block);
+    return;
+  };
   if (all === "all" || all.toUpperCase() === "A") {
     products.forEach((item) => {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
       storage.set("stagingArea", stagingArea);
-
+      
       if (!basketItems.includes(item)) basketItems.push(item);
       storage.set("basketItems", basketItems);
 
@@ -25,13 +49,7 @@ export function gitAdd({ items, stagingArea, basketItems, block }) {
     });
     return;
   }
-  if (items.length === 0) {
-    addLine(block, "Nothing specified, nothing added", "info");
-    addLine(block, "hint: try specifying the item you want to add ", "warn");
-    announce("No item was specified, so nothing was added to the basket");
-    return;
-  }
-
+  
   items.forEach((item) => {
     if (products.includes(item)) {
       stagingArea[item] = (stagingArea[item] || 0) + 1;
@@ -66,12 +84,8 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
     announce("The basket is now empty");
     return;
   }
-  if (items.length === 0) {
-    addLine(block, "Nothing specified, nothing removed", "info");
-    addLine(block, "hint: specifiy the item you want to remove", "warn");
-    announce("specify the items you want to remove from the basket");
-    return;
-  }
+  
+  emptyDel(block);
 
   items.forEach((item) => {
     if (stagingArea[item]) {
@@ -92,10 +106,12 @@ export function gitReset({ items, stagingArea, basketItems, block }) {
         storage.set("stagingArea", stagingArea);
         addLine(block, `${item} was unstaged`, "info");
         announce(`${item} was completely removed from the basket`);
-      } else { addLine(block, `${item} unstaged`, "info");
-      announce(
-        `${stagingArea[item] > 0 ? stagingArea[item] : "no"} ${item}${stagingArea[item] > 1 ? "s" : ""} ${stagingArea[item] > 1 ? "are" : "is"} in the basket`,
-      );}
+      } else {
+        addLine(block, `${item} unstaged`, "info");
+        announce(
+          `${stagingArea[item] > 0 ? stagingArea[item] : "no"} ${item}${stagingArea[item] > 1 ? "s" : ""} ${stagingArea[item] > 1 ? "are" : "is"} in the basket`,
+        );
+      }
     } else {
       addLine(block, `'${item}' not staged`, "error");
       announce(`${item} was not in the basket so nothing was removed`);
