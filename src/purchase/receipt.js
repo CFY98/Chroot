@@ -35,6 +35,26 @@ function printReceipt(orderNumber, print, receipt, orderEl, messageEl, total) {
     tMode(tuiMode);
   };
 }
+
+function genReceiptItem(key, committed) {
+  const qtyTotal = committed[key] * productPrices[key];
+  const div = document.createElement("div");
+  div.classList.add("receipt-item");
+  div.innerHTML = `
+      <div class="image-box">
+        <img src="/Images/${key}.jpg" alt="${key}" />
+      </div>
+      <div class="about">
+        <div class="item-name">${key}</div>
+      </div>
+        <div class="item-count">${committed[key]}</div>
+      <div class="receipt-cost">
+        <div class="item-amount">£${qtyTotal.toFixed(2)}</div>
+      </div>
+    `;
+  return div;
+}
+
 export function initReceipt() {
   const orderNumber = storage.get("orderNumber", []);
   const orderMessage = storage.get("orderMessage", []);
@@ -65,23 +85,9 @@ export function initReceipt() {
         : "";
 
     purchased.forEach((key) => {
-      const qtyTotal = committed[key] * productPrices[key];
-      const div = document.createElement("div");
-      div.classList.add("receipt-item");
-      div.innerHTML = `
-      <div class="image-box">
-        <img src="/Images/${key}.jpg" alt="${key}" />
-      </div>
-      <div class="about">
-        <div class="item-name">${key}</div>
-      </div>
-        <div class="item-count">${committed[key]}</div>
-      <div class="receipt-cost">
-        <div class="item-amount">£${qtyTotal.toFixed(2)}</div>
-      </div>
-    `;
-      receipt.appendChild(div);
+      receipt.appendChild(genReceiptItem(key, committed));
     });
+
     subTotal = Object.entries(committed).reduce((sum, [key, value]) => {
       return sum + value * productPrices[key];
     }, 0);
