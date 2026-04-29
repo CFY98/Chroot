@@ -32,7 +32,19 @@ function itemHandler(toBuy, itemName, counting) {
   });
 }
 
-function toBasket(buy) {
+function showToast(itemName) {
+  let toastBox = document.getElementById("toastbox");
+  let toast = document.createElement("div");
+  toast.classList.add("toast");
+  toast.innerHTML = `<img src="/Images/${itemName}.jpg" alt="${itemName}"/>${toAdd[itemName] > 1 ? `${itemName} x${toAdd[itemName]}` : itemName} added to the basket`;
+  toastBox.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+function toBasket(buy, itemName) {
   buy.onclick = function () {
     const stagingArea = storage.get("stagingArea", {});
     const basketItems = storage.get("basketItems", []);
@@ -50,18 +62,7 @@ function toBasket(buy) {
         `${stagingArea[itemName]} ${itemName}${stagingArea[itemName] === 1 ? "" : "s"} ${stagingArea[itemName] > 1 ? "are" : "is"} in the basket`,
       );
 
-      let toastBox = document.getElementById("toastbox");
-      function showToast() {
-        let toast = document.createElement("div");
-        toast.classList.add("toast");
-        toast.innerHTML = `<img src="/Images/${itemName}.jpg" alt="${itemName}"/>${toAdd[itemName] > 1 ? `${itemName} x${toAdd[itemName]}` : itemName} added to the basket`;
-        toastBox.appendChild(toast);
-
-        setTimeout(() => {
-          toast.remove();
-        }, 3000);
-      }
-      showToast();
+      showToast(itemName);
     }
   };
 }
@@ -76,5 +77,5 @@ export function initBuy(page) {
   if (!counting) return;
   if (!toBuy) return;
   itemHandler(toBuy, itemName, counting);
-  toBasket(buy);
+  toBasket(buy, itemName);
 }
