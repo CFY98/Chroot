@@ -85,7 +85,7 @@ function hours({ command, block }) {
   blank(block);
 }
 
-function git({ command, parts, verb, block }) {
+function git({ parts, verb, block }) {
   const action = parts[1];
   const items = parts.slice(2);
 
