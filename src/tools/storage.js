@@ -30,6 +30,10 @@ export class orderService {
   constructor(storage) {
     this.storage = storage;
   }
+  updItemCount(delta) {
+    const prev = parseInt(this.storage.get("itemCount", 0));
+    storage.set("itemCount", prev + delta);
+  }
   processOrder() {
     const basketItems = this.storage.get("basketItems", []);
     const stagingArea = this.storage.get("stagingArea", {});
