@@ -63,7 +63,8 @@ chroot/V3
 │
 └───src
     ├───css  — stylesheets for each page/component
-    ├───product__purchase — basket, buy, and receipt logic
+    ├───git — git commands logic for terminal
+    ├───purchase — basket, buy, and receipt logic
     ├───terminal — terminal emulator and commands
     └───tools — shared utilities, router, and state
 ```
