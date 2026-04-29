@@ -138,10 +138,10 @@ function git({ command, parts, verb, block }) {
 
 function exit({ block }) {
   addLine(block, "There is no escaping good coffee", "warn");
-  announcer("There is no escaping good coffee");
+  announce("There is no escaping good coffee");
 }
 
-function clear({ block }) {
+function clear() {
   output.innerHTML = "";
   announce("The terminal window contents have been cleared");
   return;
