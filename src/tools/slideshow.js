@@ -53,6 +53,17 @@ function moveToSlide(index, list, slides, dots) {
   });
 }
 
+function resetAutoSlide(list, slides, dots) {
+  clearInterval(autoSlideInterval);
+  startAutoSlide(list, slides, dots);
+}
+
+function startAutoSlide(list, slides, dots) {
+  autoSlideInterval = setInterval(() => {
+    moveToSlide(active + 1, list, slides, dots);
+  }, 3000);
+}
+
 function checkIndex(list, slides, dots) {
   list.addEventListener("transitionend", (e) => {
     if (e.propertyName !== "transform") return;
@@ -70,6 +81,18 @@ function checkIndex(list, slides, dots) {
   });
 }
 
+function nextButton(list, slides, dots, next) {
+  next.onclick = () => {
+    moveToSlide(active + 1, list, slides, dots);
+    resetAutoSlide(list, slides, dots);
+  };
+}
+function prevButton(list, slides, dots, prev) {
+  prev.onclick = () => {
+    moveToSlide(active - 1, list, slides, dots);
+    resetAutoSlide(list, slides, dots);
+  };
+}
 export function initSlideshow() {
   const slideshow = document.getElementById("slideshow");
   if (!slideshow) return;
@@ -97,27 +120,21 @@ export function initSlideshow() {
   window.addEventListener("resize", setInitialPosition);
 
   // ARROW BUTTONS
-  next.onclick = () => moveToSlide(active + 1, list, slides, dots);
-  prev.onclick = () => moveToSlide(active - 1, list, slides, dots);
+  nextButton(list, slides, dots, next);
+  prevButton(list, slides, dots, prev);
 
-  // SLIDE TRANSITIONS AND DOTS MATCH
   moveToSlide(active, list, slides, dots);
-  
   // SLIDE INDEX RELATIVE TO CLONES
   checkIndex(list, slides, dots);
 
   // AUTOMATIC FUNCTIONS FOR SLIDES AND DOTS
-  function startAutoSlide(list, slides, dots) {
-    autoSlideInterval = setInterval(() => {
-      moveToSlide(active + 1, list, slides, dots);
-    }, 3000);
-  }
   startAutoSlide(list, slides, dots);
 
   function clickDots(list, slides, dots) {
     dots.forEach((li, key) => {
       li.addEventListener("click", function () {
         moveToSlide(key + 1, list, slides, dots);
+        resetAutoSlide(list, slides, dots);
       });
     });
   }
