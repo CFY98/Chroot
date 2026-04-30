@@ -32,10 +32,11 @@ export const productPrices = {
 
 // FUNCTIONS
 export function tMode(tuiMode) {
-  if (tuiMode) {
-    history.pushState({}, "", "/terminal");
-    router("/terminal");
+  if (!tuiMode) {
+    history.pushState({}, "", "/");
+    router("/");
+    return;
   }
-  history.pushState({}, "", "/");
-  router("/");
+  history.pushState({}, "", "/terminal");
+  router("/terminal");
 }
