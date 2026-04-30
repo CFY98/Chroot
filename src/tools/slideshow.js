@@ -1,19 +1,18 @@
-// GLOBAL VARIABLE
+// GLOBAL VARIABLES
 let active = 1;
 let autoSlideInterval;
 let slideWidth;
+let isTransitioning = false;
 
 // SLIDESHOW HELPERS
+// SLIDESHOW START POSITION
 function setInitialPosition(slides, list) {
   slideWidth = slides[0].offsetWidth;
   list.style.transition = "none";
   list.style.transform = `translateX(-${active * slideWidth}px)`;
 }
 
-//     moveToSlide(active + 1);
-//   }, 3000);
-// }
-
+// CAPTIONS
 function showCaption(slides) {
   slides.forEach((slide, i) => {
     const caption = slide.querySelector(".slidecaption");
@@ -22,6 +21,7 @@ function showCaption(slides) {
   });
 }
 
+// DOTS LOGIC
 function updateDots(dots, index) {
   if (!dots.length) return;
   index = (index + dots.length) % dots.length;
@@ -30,16 +30,23 @@ function updateDots(dots, index) {
   dots[index].classList.add("active");
 }
 
-function moveToSlide(index, list, slides, dots) {
-  active = index;
-  slideWidth = slides[0].offsetWidth;
-  list.style.transition = "transform 0.4s ease-in-out";
-  list.style.transform = `translateX(-${active * slideWidth}px)`;
+function clickDots(list, slides, dots) {
+  dots.forEach((li, key) => {
+    li.addEventListener("click", function () {
+      moveToSlide(key + 1, list, slides, dots);
+      resetAutoSlide(list, slides, dots);
+    });
+  });
+}
 
-  let realIndex = (active - 1 + dots.length) % dots.length;
+// AUTOSLIDE LOGIC
+function autoSlideTimer(list, slides, dots) {
+  autoSlideInterval = setInterval(() => {
+    moveToSlide(active + 1, list, slides, dots);
+  }, 3000);
+}
 
-  updateDots(dots, realIndex);
-
+function updateSlide(slides, realIndex) {
   slides.forEach((slide, i) => {
     const caption = slide.querySelector(".slidecaption");
     if (!caption) return;
@@ -53,17 +60,25 @@ function moveToSlide(index, list, slides, dots) {
   });
 }
 
+function moveToSlide(index, list, slides, dots) {
+  active = index;
+  slideWidth = slides[0].offsetWidth;
+  list.style.transition = "transform 0.4s ease-in-out";
+  list.style.transform = `translateX(-${active * slideWidth}px)`;
+
+  let realIndex = (active - 1 + dots.length) % dots.length;
+
+  updateDots(dots, realIndex);
+  updateSlide(slides, realIndex);
+}
+
+// INTERVAL RESETTER
 function resetAutoSlide(list, slides, dots) {
   clearInterval(autoSlideInterval);
-  startAutoSlide(list, slides, dots);
+  autoSlideTimer(list, slides, dots);
 }
 
-function startAutoSlide(list, slides, dots) {
-  autoSlideInterval = setInterval(() => {
-    moveToSlide(active + 1, list, slides, dots);
-  }, 3000);
-}
-
+// SLIDESHOW CLONE CHECKER
 function checkIndex(list, slides, dots) {
   list.addEventListener("transitionend", (e) => {
     if (e.propertyName !== "transform") return;
@@ -81,6 +96,7 @@ function checkIndex(list, slides, dots) {
   });
 }
 
+// NAVIGATION HANDLERS
 function nextButton(list, slides, dots, next) {
   next.onclick = () => {
     moveToSlide(active + 1, list, slides, dots);
@@ -93,6 +109,8 @@ function prevButton(list, slides, dots, prev) {
     resetAutoSlide(list, slides, dots);
   };
 }
+
+// MAIN SLIDESHOW
 export function initSlideshow() {
   const slideshow = document.getElementById("slideshow");
   if (!slideshow) return;
@@ -123,21 +141,15 @@ export function initSlideshow() {
   nextButton(list, slides, dots, next);
   prevButton(list, slides, dots, prev);
 
+  // INITIAL AUTOSLIDE RENDER
   moveToSlide(active, list, slides, dots);
+
   // SLIDE INDEX RELATIVE TO CLONES
   checkIndex(list, slides, dots);
 
-  // AUTOMATIC FUNCTIONS FOR SLIDES AND DOTS
-  startAutoSlide(list, slides, dots);
+  // TIMER FOR AUTOSLIDE
+  autoSlideTimer(list, slides, dots);
 
-  function clickDots(list, slides, dots) {
-    dots.forEach((li, key) => {
-      li.addEventListener("click", function () {
-        moveToSlide(key + 1, list, slides, dots);
-        resetAutoSlide(list, slides, dots);
-      });
-    });
-  }
   clickDots(list, slides, dots);
   updateDots(dots, 0);
 }
