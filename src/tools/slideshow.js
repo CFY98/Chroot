@@ -46,7 +46,7 @@ function autoSlideTimer(list, slides, dots) {
   }, 3000);
 }
 
-function updateSlide(slides, realIndex) {
+function updateCaption(slides, realIndex) {
   slides.forEach((slide, i) => {
     const caption = slide.querySelector(".slidecaption");
     if (!caption) return;
@@ -71,7 +71,12 @@ function moveToSlide(index, list, slides, dots) {
   let realIndex = (active - 1 + dots.length) % dots.length;
 
   updateDots(dots, realIndex);
-  updateSlide(slides, realIndex);
+  updateCaption(slides, realIndex);
+
+  // IF TRANSITIONED DOESN'T FIRE
+  setTimeout(() => {
+    isTransitioning = false;
+  }, 500);
 }
 
 // INTERVAL RESETTER
@@ -153,7 +158,7 @@ export function initSlideshow() {
 
   // TIMER FOR AUTOSLIDE
   autoSlideTimer(list, slides, dots);
-  
+
   // DOTS AS NAV BUTTONS
   clickDots(list, slides, dots);
 
