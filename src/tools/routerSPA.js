@@ -11,29 +11,13 @@ function homePage(page, screenContent) {
   announce(`The ${routes[page].title} page has loaded`);
   initSlideshow();
 }
-export function router(page) {
-  const screenContent = document.getElementById("app");
-  const route = routes[page];
 
-  screenContent.replaceChildren();
+function errorPage(screenContent) {
+  screenContent.innerHTML = "<p>404 - Page not found.</p>";
+  announce("404 error, page not found");
+}
 
-  if (!route) {
-    screenContent.innerHTML = "<p>404 - Page not found.</p>";
-    announce("404 error, page not found");
-    return;
-  }
-
-  if (page === "/") {
-    homePage(page, screenContent);
-    return;
-  }
-
-  if (!route) {
-    screenContent.innerHTML = "<p>404 - Page not found.</p>";
-    announce("404 error, page not found");
-    return;
-  }
-
+function renderPage(page, screenContent, route) {
   fetch(route.path)
     .then((res) => res.text())
     .then((html) => {
@@ -44,6 +28,23 @@ export function router(page) {
       screenContent.innerHTML = "<p>404 - Page not found.</p>";
       announce("404 error, page not found");
     });
+}
+export function router(page) {
+  const screenContent = document.getElementById("app");
+  const route = routes[page];
+
+  screenContent.replaceChildren();
+
+  if (!route) {
+    errorPage(screenContent);
+    return;
+  }
+
+  if (page === "/") {
+    homePage(page, screenContent);
+    return;
+  }
+  renderPage(page, screenContent, route);
 }
 
 // NAV BUTTONS
