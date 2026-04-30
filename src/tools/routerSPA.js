@@ -6,16 +6,25 @@ import { routes, tMode } from "./assets.js";
 // ROUTER FUNCTION
 const homeContent = document.getElementById("app").innerHTML;
 
+function homePage(page, screenContent) {
+  screenContent.innerHTML = homeContent;
+  announce(`The ${routes[page].title} page has loaded`);
+  initSlideshow();
+}
 export function router(page) {
   const screenContent = document.getElementById("app");
   const route = routes[page];
 
   screenContent.replaceChildren();
 
+  if (!route) {
+    screenContent.innerHTML = "<p>404 - Page not found.</p>";
+    announce("404 error, page not found");
+    return;
+  }
+
   if (page === "/") {
-    screenContent.innerHTML = homeContent;
-    announce(`The ${routes[page].title} has loaded`);
-    initSlideshow();
+    homePage(page, screenContent);
     return;
   }
 
