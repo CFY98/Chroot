@@ -1,3 +1,9 @@
+// SLIDE STARTING POSITION
+function setInitialPosition() {
+  slideWidth = slides[0].offsetWidth;
+  list.style.transition = "none";
+  list.style.transform = `translateX(-${active * slideWidth}px)`;
+}
 export function initSlideshow() {
   const slideshow = document.getElementById("slideshow");
   if (!slideshow) return;
@@ -20,12 +26,6 @@ export function initSlideshow() {
 
   slides = slideshow.querySelectorAll(".list figure");
 
-  // SLIDE STARTING POSITION
-  function setInitialPosition() {
-    slideWidth = slides[0].offsetWidth;
-    list.style.transition = "none";
-    list.style.transform = `translateX(-${active * slideWidth}px)`;
-  }
   setInitialPosition();
 
   // FIRST CAPTION
