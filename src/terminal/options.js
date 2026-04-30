@@ -54,7 +54,7 @@ function cd({ command, verb, arg, block }) {
     addLine(block, `hint: type 'ls' to see available pages`, "warn");
   } else {
     addLine(block, `site@chroot ~/${command} $`, "success");
-    cdPages[arg](block);
+    cdPages[arg]({ block });
   }
 }
 

@@ -8,7 +8,7 @@ import { pushHist, lastHist, nextHist } from "./histstate.js";
 
 
 // TERM HANDLER LOGIC 
-function termHandler(command, arg, parts, verb, block) {
+function termHandler({ command, arg, parts, verb, block }) {
   const handler = termOptions[verb];
 
   if (handler) {
