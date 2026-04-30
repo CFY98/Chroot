@@ -7,7 +7,7 @@ import { cdPages } from "./cd.js";
 // TERMINAL OPTIONS
 function ls({ command, block }) {
   announce(
-    "The product pages are 'beans' which houses are selection of coffee beans and 'gear' which encompasses our coffee gear selection. For the shopping cart, type 'basket'. Alternatively, type 'git' followed by the command 'status'. For more information about our selected produces, type 'cd' followed by the name of the desired product.",
+    " To navigate to any page, type 'cd' followed by the desired page. The product pages are 'beans' which houses our selection of coffee beans and 'gear' which encompasses our coffee gear selection. The 'basket' page encompasses the shopping basket. For more information about our selected produces, type 'cd' followed by the name of the desired product.",
   );
   addLine(block, `site@chroot ~/${command} $`, "success");
   blank(block);
