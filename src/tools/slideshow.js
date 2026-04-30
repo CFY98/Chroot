@@ -30,6 +30,29 @@ function updateDots(dots, index) {
   dots[index].classList.add("active");
 }
 
+function moveToSlide(index, list, slides, dots) {
+  active = index;
+  slideWidth = slides[0].offsetWidth;
+  list.style.transition = "transform 0.4s ease-in-out";
+  list.style.transform = `translateX(-${active * slideWidth}px)`;
+
+  let realIndex = (active - 1 + dots.length) % dots.length;
+
+  updateDots(dots, realIndex);
+
+  slides.forEach((slide, i) => {
+    const caption = slide.querySelector(".slidecaption");
+    if (!caption) return;
+    if (i === realIndex + 1) {
+      caption.classList.add("show");
+    } else {
+      setTimeout(() => {
+        caption.classList.remove("show");
+      }, 300);
+    }
+  });
+}
+
 function checkIndex(list, slides, dots) {
   list.addEventListener("transitionend", (e) => {
     if (e.propertyName !== "transform") return;
@@ -77,30 +100,9 @@ export function initSlideshow() {
   next.onclick = () => moveToSlide(active + 1, list, slides, dots);
   prev.onclick = () => moveToSlide(active - 1, list, slides, dots);
 
-  // SLIDE TRANSITIONS AND DOTS MATCH:w
-  function moveToSlide(index, list, slides, dots) {
-    active = index;
-    slideWidth = slides[0].offsetWidth;
-    list.style.transition = "transform 0.4s ease-in-out";
-    list.style.transform = `translateX(-${active * slideWidth}px)`;
-
-    let realIndex = (active - 1 + dots.length) % dots.length;
-
-    updateDots(dots, realIndex);
-
-    slides.forEach((slide, i) => {
-      const caption = slide.querySelector(".slidecaption");
-      if (!caption) return;
-      if (i === realIndex + 1) {
-        caption.classList.add("show");
-      } else {
-        setTimeout(() => {
-          caption.classList.remove("show");
-        }, 300);
-      }
-    });
-  }
-
+  // SLIDE TRANSITIONS AND DOTS MATCH
+  moveToSlide(active, list, slides, dots);
+  
   // SLIDE INDEX RELATIVE TO CLONES
   checkIndex(list, slides, dots);
 
@@ -112,11 +114,13 @@ export function initSlideshow() {
   }
   startAutoSlide(list, slides, dots);
 
-  dots.forEach((li, key) => {
-    li.addEventListener("click", function () {
-      moveToSlide(key + 1, list, slides, dots);
+  function clickDots(list, slides, dots) {
+    dots.forEach((li, key) => {
+      li.addEventListener("click", function () {
+        moveToSlide(key + 1, list, slides, dots);
+      });
     });
-  });
-
+  }
+  clickDots(list, slides, dots);
   updateDots(dots, 0);
 }
