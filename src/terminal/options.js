@@ -7,17 +7,19 @@ import { cdPages } from "./cd.js";
 // TERMINAL OPTIONS
 function ls({ command, block }) {
   announce(
-    "Type 'git', then add, followed by the item name to add it to the basket. Git, then reset, followed by the item name to removes it from the basket. To place orders, type 'git' followed by commit. To navigate, type 'cd' followed by the page name or use the buttons in the navigation bar. For more information, type about",
+    "The product pages are 'beans' which houses are selection of coffee beans and 'gear' which encompasses our coffee gear selection. For the shopping cart, type 'basket'. Alternatively, type 'git' followed by the command 'status'. For more information about our selected produces, type 'cd' followed by the name of the desired product.",
   );
   addLine(block, `site@chroot ~/${command} $`, "success");
   blank(block);
-  addLine(block, "Available commands:", "info");
-  addLine(block, "  ls           lists all pages", "info");
-  addLine(block, "  git          tracks changes in order", "info");
-  addLine(block, "  cd           navigate to a page", "info");
-  addLine(block, "  about        about Chroot", "info");
-  addLine(block, "  hours        opening hours", "info");
-  addLine(block, "  clear        clear the terminal", "info");
+  addLine(block, "  drwxr-xr-x        beans", "info");
+  addLine(block, "  drwxr-xr-x        equipment", "info");
+  addLine(block, "  drwxr-xr-x        basket", "info");
+  addLine(block, "  drwxr-xr-xr--x    blaze", "info");
+  addLine(block, "  drwxr-xr-xr--x    sunshine", "info");
+  addLine(block, "  drwxr-xr-xr--x    summit", "info");
+  addLine(block, "  drwxr-xr-xr--x    filters", "info");
+  addLine(block, "  drwxr-xr-xr--x    dripper", "info");
+  addLine(block, "  drwxr-xr-xr--x    grinder", "info");
   blank(block);
 }
 

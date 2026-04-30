@@ -41,7 +41,7 @@ export function run(command) {
   const verb = parts[0];
   const arg = parts.slice(1).join(" ");
 
-  termHandler(command, arg, parts, verb, block);
+  termHandler({ command, arg, parts, verb, block });
 }
 
 // KEYPRESS HANDLERS
