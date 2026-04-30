@@ -1,9 +1,19 @@
 // SLIDE STARTING POSITION
-function setInitialPosition() {
-  slideWidth = slides[0].offsetWidth;
+function setInitialPosition(slideshow, slides, active) {
+  const slideWidth = slides[0].offsetWidth;
+  const list = slideshow.querySelector(".list");
   list.style.transition = "none";
   list.style.transform = `translateX(-${active * slideWidth}px)`;
 }
+
+function showCaption(slides, active) {
+  slides.forEach((slide, i) => {
+    const caption = slide.querySelector(".slidecaption");
+    if (!caption) return;
+    if (i === active) caption.classList.add("show");
+  });
+}
+
 export function initSlideshow() {
   const slideshow = document.getElementById("slideshow");
   if (!slideshow) return;
@@ -26,14 +36,10 @@ export function initSlideshow() {
 
   slides = slideshow.querySelectorAll(".list figure");
 
-  setInitialPosition();
+  setInitialPosition(slideshow, slides, active);
 
   // FIRST CAPTION
-  slides.forEach((slide, i) => {
-    const caption = slide.querySelector(".slidecaption");
-    if (!caption) return;
-    if (i === active) caption.classList.add("show");
-  });
+  showCaption(slides, active);
 
   window.addEventListener("resize", setInitialPosition);
 
