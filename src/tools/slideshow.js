@@ -1,22 +1,49 @@
+// GLOBAL VARIABLE
+let active = 1;
+let autoSlideInterval;
+let slideWidth;
+
 // SLIDESHOW HELPERS
-function setInitialPosition(slideshow, slides, active) {
-  const slideWidth = slides[0].offsetWidth;
-  const list = slideshow.querySelector(".list");
+function setInitialPosition(slides, list) {
+  slideWidth = slides[0].offsetWidth;
   list.style.transition = "none";
   list.style.transform = `translateX(-${active * slideWidth}px)`;
 }
 
-function startAutoSlide(autoSlideInterval) {
-  autoSlideInterval = setInterval(() => {
-    moveToSlide(active + 1);
-  }, 3000);
-}
+//     moveToSlide(active + 1);
+//   }, 3000);
+// }
 
-function showCaption(slides, active) {
+function showCaption(slides) {
   slides.forEach((slide, i) => {
     const caption = slide.querySelector(".slidecaption");
     if (!caption) return;
     if (i === active) caption.classList.add("show");
+  });
+}
+
+function updateDots(dots, index) {
+  if (!dots.length) return;
+  index = (index + dots.length) % dots.length;
+
+  document.querySelector(".dots li.active")?.classList.remove("active");
+  dots[index].classList.add("active");
+}
+
+function checkIndex(list, slides, dots) {
+  list.addEventListener("transitionend", (e) => {
+    if (e.propertyName !== "transform") return;
+    if (active >= slides.length - 1) {
+      list.style.transition = "none";
+      active = 1;
+      list.style.transform = `translateX(-${active * slideWidth}px)`;
+      updateDots(dots, 0);
+    } else if (active <= 0) {
+      list.style.transition = "none";
+      active = slides.length - 2;
+      list.style.transform = `translateX(-${active * slideWidth}px)`;
+      updateDots(dots, slides.length - 3);
+    }
   });
 }
 
@@ -29,10 +56,6 @@ export function initSlideshow() {
   const prev = document.getElementById("prev");
   const next = document.getElementById("next");
 
-  let active = 1;
-  let autoSlideInterval;
-  let slideWidth;
-
   // CLONES
   const firstClone = slides[0].cloneNode(true);
   const lastClone = slides[slides.length - 1].cloneNode(true);
@@ -43,19 +66,19 @@ export function initSlideshow() {
   slides = slideshow.querySelectorAll(".list figure");
 
   // SLIDE STARTING POSITION
-  setInitialPosition(slideshow, slides, active);
+  setInitialPosition(slides, list);
 
   // FIRST CAPTION
-  showCaption(slides, active);
+  showCaption(slides);
 
   window.addEventListener("resize", setInitialPosition);
 
   // ARROW BUTTONS
-  next.onclick = () => moveToSlide(active + 1);
-  prev.onclick = () => moveToSlide(active - 1);
+  next.onclick = () => moveToSlide(active + 1, list, slides, dots);
+  prev.onclick = () => moveToSlide(active - 1, list, slides, dots);
 
-  // SLIDE TRANSITIONS AND DOTS MATCH
-  function moveToSlide(index) {
+  // SLIDE TRANSITIONS AND DOTS MATCH:w
+  function moveToSlide(index, list, slides, dots) {
     active = index;
     slideWidth = slides[0].offsetWidth;
     list.style.transition = "transform 0.4s ease-in-out";
@@ -63,7 +86,7 @@ export function initSlideshow() {
 
     let realIndex = (active - 1 + dots.length) % dots.length;
 
-    updateDots(realIndex);
+    updateDots(dots, realIndex);
 
     slides.forEach((slide, i) => {
       const caption = slide.querySelector(".slidecaption");
@@ -79,42 +102,21 @@ export function initSlideshow() {
   }
 
   // SLIDE INDEX RELATIVE TO CLONES
-  list.addEventListener("transitionend", (e) => {
-    if (e.propertyName !== "transform") return;
-    if (active >= slides.length - 1) {
-      list.style.transition = "none";
-      active = 1;
-      list.style.transform = `translateX(-${active * slideWidth}px)`;
-      updateDots(0);
-    } else if (active <= 0) {
-      list.style.transition = "none";
-      active = slides.length - 2;
-      list.style.transform = `translateX(-${active * slideWidth}px)`;
-      updateDots(slides.length - 3);
-    }
-  });
+  checkIndex(list, slides, dots);
 
   // AUTOMATIC FUNCTIONS FOR SLIDES AND DOTS
-  function startAutoSlide(autoSlideInterval) {
+  function startAutoSlide(list, slides, dots) {
     autoSlideInterval = setInterval(() => {
-      moveToSlide(active + 1);
+      moveToSlide(active + 1, list, slides, dots);
     }, 3000);
   }
-  startAutoSlide(autoSlideInterval);
+  startAutoSlide(list, slides, dots);
 
   dots.forEach((li, key) => {
     li.addEventListener("click", function () {
-      moveToSlide(key + 1);
+      moveToSlide(key + 1, list, slides, dots);
     });
   });
 
-  function updateDots(index) {
-    if (!dots.length) return;
-    index = (index + dots.length) % dots.length;
-
-    slideshow.querySelector(".dots li.active")?.classList.remove("active");
-    dots[index].classList.add("active");
-  }
-
-  updateDots(0);
+  updateDots(dots, 0);
 }
