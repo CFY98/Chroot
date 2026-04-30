@@ -19,9 +19,10 @@ export function announce(message) {
 
 // PAGE ANNOUNCEMENTS
 export function uiAnnounce(page) {
-  announce(`The ${routes[page].title} page has loaded`);
   for (let key in toAdd) delete toAdd[key];
-  if (page === ("/beans" || page === "/equipment")) return;
+  if (!routes[page]) return;
+  announce(`The ${routes[page].title} page has loaded`);
+  if (page === "/beans" || page === "/equipment") return;
   else if (page === "/terminal") initTerminal();
   else if (page === "/basket") initBasket();
   else if (page === "/receipt") initReceipt();

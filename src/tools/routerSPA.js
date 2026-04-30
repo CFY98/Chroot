@@ -70,7 +70,7 @@ document.querySelectorAll(".nav-btn").forEach((navBtn) => {
 const title = document.getElementById("title");
 title.addEventListener("click", (e) => {
   e.preventDefault();
-  e.stopPropagation();
+  
   tMode(tuiMode);
 
   if (activeBtn) activeBtn.classList.remove("active");
