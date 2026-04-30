@@ -120,6 +120,13 @@ function prevButton(list, slides, dots, prev) {
 
 // MAIN SLIDESHOW
 export function initSlideshow() {
+  // RESET STATE
+  active = 1;
+  isTransitioning = false;
+  clearInterval(autoSlideInterval);
+  autoSlideInterval = undefined;
+  slideWidth = 0
+
   const slideshow = document.getElementById("slideshow");
   if (!slideshow) return;
   const list = slideshow.querySelector(".list");
