@@ -35,8 +35,7 @@ export function tMode(tuiMode) {
   if (tuiMode) {
     history.pushState({}, "", "/terminal");
     router("/terminal");
-  } else {
-    history.pushState({}, "", "/");
-    router("/");
   }
+  history.pushState({}, "", "/");
+  router("/");
 }
