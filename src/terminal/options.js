@@ -128,6 +128,7 @@ function exit({ block }) {
 }
 
 function clear() {
+  const output = document.getElementById("terminal-output");
   output.innerHTML = "";
   announce("The terminal window contents have been cleared");
   return;
