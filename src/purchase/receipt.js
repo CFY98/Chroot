@@ -1,6 +1,6 @@
 // IMPORTS
-import { tMode, productPrices } from "../tools/assets.js";
-import { tuiMode } from "../tools/routerSPA.js";
+import { productPrices } from "../tools/assets.js";
+import { tuiMode, tMode } from "../terminal/tuimode.js";
 import { storage } from "../tools/storage.js";
 
 // RECEIPT GENERATION FUNCTIONS

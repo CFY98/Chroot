@@ -1,7 +1,8 @@
 // IMPORTS
 import { announce, uiAnnounce } from "./announcer.js";
 import { initSlideshow } from "./slideshow.js";
-import { routes, tMode } from "./assets.js";
+import { routes } from "./assets.js";
+import { tuiMode, tMode } from "../terminal/tuimode.js";
 
 // ROUTER FUNCTION
 const homeContent = document.getElementById("app").innerHTML;
@@ -29,6 +30,7 @@ function renderPage(page, screenContent, route) {
       announce("404 error, page not found");
     });
 }
+
 export function router(page) {
   const screenContent = document.getElementById("app");
   const route = routes[page];
@@ -53,6 +55,7 @@ let activeBtn = null;
 document.querySelectorAll(".nav-btn").forEach((navBtn) => {
   navBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    if (navBtn.id === "title") return;
     const page = `/${e.target.textContent.trim().toLowerCase()}`;
     history.pushState({}, "", page);
     router(page);
@@ -63,33 +66,16 @@ document.querySelectorAll(".nav-btn").forEach((navBtn) => {
   });
 });
 
-// TUI MODE VARIABLE
-export let tuiMode = false;
-
-// TOGGLE
-const toggle = document.querySelector(".titlebar-text");
-toggle.addEventListener("click", (e) => {
-  e.preventDefault();
-  toggle.classList.toggle("active");
-
-  if (toggle.classList.contains("active")) {
-    toggle.dataset.text = "Terminal Mode";
-    toggle.dataset.hover = "Change: Visual Mode";
-  } else {
-    toggle.dataset.text = "Visual Mode";
-    toggle.dataset.hover = "Change: Terminal Mode";
-  }
-
-  tuiMode = !tuiMode;
-  tMode(tuiMode);
-  document.querySelector(".nav-btn.active")?.classList.remove("active");
-});
-
 // TITLE BUTTON
 const title = document.getElementById("title");
 title.addEventListener("click", (e) => {
   e.preventDefault();
+  e.stopPropagation();
   tMode(tuiMode);
+
+  if (activeBtn) activeBtn.classList.remove("active");
+  title.classList.add("active");
+  activeBtn = title;
 });
 
 // PRODUCT PAGES

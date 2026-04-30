@@ -1,6 +1,3 @@
-// IMPORTS
-import { router } from "./routerSPA.js";
-
 // ROUTES OBJECT
 export const routes = {
   "/": { path: "/index.html", title: "home" },
@@ -29,14 +26,3 @@ export const productPrices = {
   dripper: 14.99,
   grinder: 129.99,
 };
-
-// FUNCTIONS
-export function tMode(tuiMode) {
-  if (!tuiMode) {
-    history.pushState({}, "", "/");
-    router("/");
-  } else {
-    history.pushState({}, "", "/terminal");
-    router("/terminal");
-  }
-}
