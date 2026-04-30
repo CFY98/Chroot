@@ -61,6 +61,8 @@ function updateSlide(slides, realIndex) {
 }
 
 function moveToSlide(index, list, slides, dots) {
+  if (isTransitioning) return;
+  isTransitioning = true;
   active = index;
   slideWidth = slides[0].offsetWidth;
   list.style.transition = "transform 0.4s ease-in-out";
@@ -82,6 +84,7 @@ function resetAutoSlide(list, slides, dots) {
 function checkIndex(list, slides, dots) {
   list.addEventListener("transitionend", (e) => {
     if (e.propertyName !== "transform") return;
+    isTransitioning = false;
     if (active >= slides.length - 1) {
       list.style.transition = "none";
       active = 1;
@@ -124,6 +127,7 @@ export function initSlideshow() {
   const firstClone = slides[0].cloneNode(true);
   const lastClone = slides[slides.length - 1].cloneNode(true);
 
+  // ADD CLONES TO LIST
   list.appendChild(firstClone);
   list.insertBefore(lastClone, slides[0]);
 
@@ -135,7 +139,7 @@ export function initSlideshow() {
   // FIRST CAPTION
   showCaption(slides);
 
-  window.addEventListener("resize", setInitialPosition);
+  window.addEventListener("resize", () => setInitialPosition(slides, list));
 
   // ARROW BUTTONS
   nextButton(list, slides, dots, next);
@@ -149,7 +153,10 @@ export function initSlideshow() {
 
   // TIMER FOR AUTOSLIDE
   autoSlideTimer(list, slides, dots);
-
+  
+  // DOTS AS NAV BUTTONS
   clickDots(list, slides, dots);
+
+  // UPDATE DOT INDICATOR
   updateDots(dots, 0);
 }
