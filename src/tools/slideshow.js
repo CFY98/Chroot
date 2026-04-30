@@ -1,9 +1,15 @@
-// SLIDE STARTING POSITION
+// SLIDESHOW HELPERS
 function setInitialPosition(slideshow, slides, active) {
   const slideWidth = slides[0].offsetWidth;
   const list = slideshow.querySelector(".list");
   list.style.transition = "none";
   list.style.transform = `translateX(-${active * slideWidth}px)`;
+}
+
+function startAutoSlide(autoSlideInterval) {
+  autoSlideInterval = setInterval(() => {
+    moveToSlide(active + 1);
+  }, 3000);
 }
 
 function showCaption(slides, active) {
@@ -36,6 +42,7 @@ export function initSlideshow() {
 
   slides = slideshow.querySelectorAll(".list figure");
 
+  // SLIDE STARTING POSITION
   setInitialPosition(slideshow, slides, active);
 
   // FIRST CAPTION
@@ -57,8 +64,6 @@ export function initSlideshow() {
     let realIndex = (active - 1 + dots.length) % dots.length;
 
     updateDots(realIndex);
-
-    resetAutoSlide();
 
     slides.forEach((slide, i) => {
       const caption = slide.querySelector(".slidecaption");
@@ -90,16 +95,12 @@ export function initSlideshow() {
   });
 
   // AUTOMATIC FUNCTIONS FOR SLIDES AND DOTS
-  function startAutoSlide() {
+  function startAutoSlide(autoSlideInterval) {
     autoSlideInterval = setInterval(() => {
       moveToSlide(active + 1);
     }, 3000);
   }
-  function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    startAutoSlide();
-  }
-  startAutoSlide();
+  startAutoSlide(autoSlideInterval);
 
   dots.forEach((li, key) => {
     li.addEventListener("click", function () {
