@@ -21,6 +21,20 @@ function showCaption(slides) {
   });
 }
 
+function updateCaption(slides, realIndex) {
+  slides.forEach((slide, i) => {
+    const caption = slide.querySelector(".slidecaption");
+    if (!caption) return;
+    if (i === realIndex + 1) {
+      caption.classList.add("show");
+    } else {
+      setTimeout(() => {
+        caption.classList.remove("show");
+      }, 300);
+    }
+  });
+}
+
 // DOTS LOGIC
 function updateDots(dots, index) {
   if (!dots.length) return;
@@ -39,30 +53,36 @@ function clickDots(list, slides, dots) {
   });
 }
 
+// NAVIGATION HANDLERS
+function nextButton(list, slides, dots, next) {
+  next.onclick = () => {
+    next.disabled = true;
+    moveToSlide(active + 1, list, slides, dots);
+  };
+}
+function prevButton(list, slides, dots, prev) {
+  prev.onclick = () => {
+    prev.disabled = true;
+    moveToSlide(active - 1, list, slides, dots);
+  };
+}
+
 // AUTOSLIDE LOGIC
-function autoSlideTimer(list, slides, dots) {
+function startAutoSlide(list, slides, dots) {
   autoSlideInterval = setInterval(() => {
     moveToSlide(active + 1, list, slides, dots);
   }, 3000);
 }
 
-function updateCaption(slides, realIndex) {
-  slides.forEach((slide, i) => {
-    const caption = slide.querySelector(".slidecaption");
-    if (!caption) return;
-    if (i === realIndex + 1) {
-      caption.classList.add("show");
-    } else {
-      setTimeout(() => {
-        caption.classList.remove("show");
-      }, 300);
-    }
-  });
+function resetAutoSlide(list, slides, dots) {
+  clearInterval(autoSlideInterval);
+  startAutoSlide(list, slides, dots);
 }
 
 function moveToSlide(index, list, slides, dots) {
   if (isTransitioning) return;
   isTransitioning = true;
+  resetAutoSlide(list, slides, dots);
   active = index;
   slideWidth = slides[0].offsetWidth;
   list.style.transition = "transform 0.4s ease-in-out";
@@ -79,17 +99,13 @@ function moveToSlide(index, list, slides, dots) {
   }, 500);
 }
 
-// INTERVAL RESETTER
-function resetAutoSlide(list, slides, dots) {
-  clearInterval(autoSlideInterval);
-  autoSlideTimer(list, slides, dots);
-}
-
 // SLIDESHOW CLONE CHECKER
-function checkIndex(list, slides, dots) {
+function checkIndex(list, slides, dots, next, prev) {
   list.addEventListener("transitionend", (e) => {
     if (e.propertyName !== "transform") return;
     isTransitioning = false;
+    next.disabled = false;
+    prev.disabled = false;
     if (active >= slides.length - 1) {
       list.style.transition = "none";
       active = 1;
@@ -104,20 +120,6 @@ function checkIndex(list, slides, dots) {
   });
 }
 
-// NAVIGATION HANDLERS
-function nextButton(list, slides, dots, next) {
-  next.onclick = () => {
-    moveToSlide(active + 1, list, slides, dots);
-    resetAutoSlide(list, slides, dots);
-  };
-}
-function prevButton(list, slides, dots, prev) {
-  prev.onclick = () => {
-    moveToSlide(active - 1, list, slides, dots);
-    resetAutoSlide(list, slides, dots);
-  };
-}
-
 // MAIN SLIDESHOW
 export function initSlideshow() {
   // RESET STATE
@@ -125,7 +127,7 @@ export function initSlideshow() {
   isTransitioning = false;
   clearInterval(autoSlideInterval);
   autoSlideInterval = undefined;
-  slideWidth = 0
+  slideWidth = 0;
 
   const slideshow = document.getElementById("slideshow");
   if (!slideshow) return;
@@ -157,14 +159,11 @@ export function initSlideshow() {
   nextButton(list, slides, dots, next);
   prevButton(list, slides, dots, prev);
 
-  // INITIAL AUTOSLIDE RENDER
-  moveToSlide(active, list, slides, dots);
+  // START AUTOSLIDE
+  startAutoSlide(list, slides, dots);
 
   // SLIDE INDEX RELATIVE TO CLONES
-  checkIndex(list, slides, dots);
-
-  // TIMER FOR AUTOSLIDE
-  autoSlideTimer(list, slides, dots);
+  checkIndex(list, slides, dots, next, prev);
 
   // DOTS AS NAV BUTTONS
   clickDots(list, slides, dots);
