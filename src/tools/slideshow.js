@@ -155,19 +155,14 @@ export function initSlideshow() {
 
   window.addEventListener("resize", () => setInitialPosition(slides, list));
 
-  // ARROW BUTTONS
+  // MANUAL NAV BUTTONS
   nextButton(list, slides, dots, next);
   prevButton(list, slides, dots, prev);
-
+  clickDots(list, slides, dots);
+  
   // START AUTOSLIDE
   startAutoSlide(list, slides, dots);
 
   // SLIDE INDEX RELATIVE TO CLONES
   checkIndex(list, slides, dots, next, prev);
-
-  // DOTS AS NAV BUTTONS
-  clickDots(list, slides, dots);
-
-  // UPDATE DOT INDICATOR
-  updateDots(dots, 0);
 }
