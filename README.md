@@ -1,31 +1,31 @@
 # Chroot
 
-A fictional e-commerce UI built around a terminal interface. Users interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
+A concept e-commerce UI built around a terminal interface. Alongside the conventional point-and-click, users can interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
 
-After sending to testers, new features were added based on user-feedback.
+Iterated on user feedback from external testers to introduce new features for V3.
 
 ## ✨ Features
 
-- **Responsive Basket UI** — Dynamic cart rendering with item quantities.
-- **Local Storage** — Live basket updates across pages via localStorage.
-- **SPA Routing** — Updated from the iframes of V2 convenient navigation for the GUI mode.
-- **PDF Generation** — Client-side PDF generation via html2pdf library.
-- **Screen Reader Announcer** — ARIA live regions with custom announcements to assist screen reader users.
+- **Responsive Basket UI** — Dynamic cart rendering with real-time quantity management and state synchronisation across components.
+- **Accessibility** — ARIA live regions with custom announcements to ensure full screen reader compatibility.
+- **Persistence** — localStorage for live basket state across pages, with local state object for pre-basket quantity adjustment.
+- **SPA Routing** — Fetch-based content rendering for seamless navigation across UI modes.
+- **Client-side PDF Generation** — On-demand receipt generation via deferred module import of html2pdf, with print-state cleanup via try/finally.
 
-## 💻 GUI Mode Features
+## 💻 Visual Mode Features
 
-The UI has been updated to feature both a GUI and a TUI mode depending on the user's preference so the user no longer has to use the terminal should they see fit.
+The UI features dual modes which users can select depending on their preferences. Visual mode offers the more traditional e-commerce UI experience. 
 
-- **Toast Notifications** — Informs users when items are added to the basket.
-- **State Memory** — locally-saved object for adjusting item quantities before adding to basket.
+- **Toast Notifications** — Non-blocking user feedback for basket interactions.
+- **State Memory** — In-memory state object for adjusting item quantities before adding to basket.
 
-## ⌨️ TUI Mode Features
+## ⌨️ Terminal Mode Features
 
-Users can switch to TUI mode if they prefer working in a terminal.
+Users can switch to Terminal mode if they prefer working in a terminal.
 
-- **Keyboard Navigation** — History indexes accessible via arrow-keys and tab for autocomplete, a'la inspiration from a terminal interface.
-- **Git commands** — Inspired use of Git Commands to interact with the basket via add, reset, status, commit, and log.
-- **Autocomplete** - Tab completion for commands and arguments based on the current input.
+- **Git-inspired Commands** — Git-style commands (add, reset, status, commit, log) for basket interaction.
+- **Keyboard Navigation** — History indexes accessible via arrow-keys for fast lookup.
+- **Autocomplete** — Tab completion for commands and arguments based on the current input.
 
 ## 🔗 Link
 
@@ -41,7 +41,7 @@ Users can switch to TUI mode if they prefer working in a terminal.
 ## Project Structure
 
 ```
-chroot/V3
+Chroot/
 |   .gitignore
 |   index.html
 |   LICENSE
@@ -50,23 +50,23 @@ chroot/V3
 |   README.md
 |   vercel.json
 |
-├───public — static assets served directly (images, favicon, pages)
-|   ├───pages — HTML pages organised by category
-│   |    ├───coffee
-│   |    ├───gear
-│   |    ├───tabs
-│   |    └───ui
+├───public/ — static assets served directly (images, favicon, pages)
+|   ├───pages/ — HTML pages organised by category
+│   |    ├───coffee/
+│   |    ├───gear/
+│   |    ├───tabs/
+│   |    └───ui/
 │   |
 │   ├───favicon.ico
-|   ├───Images
+|   ├───Images/
 |   └───screenshots
 │
-└───src
-    ├───css  — stylesheets for each page/component
-    ├───git — git commands logic for terminal
-    ├───purchase — basket, buy, and receipt logic
-    ├───terminal — terminal emulator and commands
-    └───tools — shared utilities, router, and state
+└───src/
+    ├───css/  — stylesheets for each page/component
+    ├───git/ — git commands logic for terminal
+    ├───purchase/ — basket, buy, and receipt logic
+    ├───terminal/ — terminal emulator and commands
+    └───tools/ — shared utilities, router, and state
 ```
 
 ## Installation
@@ -115,9 +115,9 @@ npm run build
 
 - **HTML**: Provides basic structure and layout of the website.
 - **CSS**: Used for styling the website.
-- **JavaScript**: Used to create a functional terminal with git-style commands and infrastructure to tracks items in the basket. localStorage acts as the communication bridge between the terminal page and the basket, with a setInterval polling for changes and dynamically rendering cart items into the DOM via innerHTML and appendChild. Event delegation handles clicks on dynamically created elements.
+- **JavaScript**: Functional terminal with Git-style commands, localStorage as a cross-page communication bridge, and dynamic DOM rendering with event delegation.
 - **ARIA**: Live regions, semantic roles and labels for screen reader support.
-- **Vite**: Deployment server and bundler.
+- **Vite**: Development server and bundler.
 - **Vercel**: Hosts the site with a custom rewrite rule for SPA routing
 
 ## 📄 License
