@@ -58,7 +58,7 @@ if (terminalEl) {
   // BOOT MESSAGE
   function boot() {
     const block = createBlock();
-    addLine(block, "chroot v2.0.0 - speciality coffee; go Git it!", "info");
+    addLine(block, "chroot v0.2.0 - speciality coffee; go Git it!", "info");
     addLine(block, "Type 'help' for available commands.", "info");
     blank(block);
     printBlock(block);
