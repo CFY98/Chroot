@@ -2,7 +2,7 @@
 
 A concept e-commerce UI built around a terminal interface. Alongside the conventional point-and-click, users can interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
 
-Iterated on user feedback from external testers to introduce new features for V3.
+Iterated on user feedback from external testers to introduce new features for v0.2.1.
 
 ## ✨ Features
 
@@ -33,10 +33,10 @@ Users can switch to Terminal mode if they prefer working in a terminal.
 
 ## 📸 Screenshots (Tablet View)
 
-![Landing Page](./public/screenshots/V3_GUI_Landing_Page.png)
-![Basket UI](./public/screenshots/V3_basket_page.png)
-![Terminal User Interface Example](./public/screenshots/V3_tui_mode.png)
-![PDF Result](./public/screenshots/V3_saved_receipt.png)
+![Landing Page](./public/screenshots/v0.2.1_GUI_Landing_Page.png)
+![Basket UI](./public/screenshots/v0.2.1_basket_page.png)
+![Terminal User Interface Example](./public/screenshots/v0.2.1_tui_mode.png)
+![PDF Result](./public/screenshots/v0.2.1_saved_receipt.png)
 
 ## Project Structure
 
