@@ -5,7 +5,7 @@ function Hours() {
   return (
     <div className={styles["hours-container"]}>
       <div className={styles["opening-container"]}>
-        <h3 className={`${styles["sub-heading"]} fadein`}></h3>
+        <h3 className={`${styles["sub-heading"]} fadein`}>Opening Hours</h3>
         <p className={`${styles.times} fadein`}>
           Mondays - Fridays: 07:00 → 18:00
           <br />
