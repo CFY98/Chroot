@@ -19,7 +19,7 @@ function Story() {
         <img
           src="/Images/coffee-roaster.jpg"
           alt="Coffee being roasted by trained professional"
-          className="roaster fadein"
+          className={`${styles.roaster} fadein`}
         />
       </div>
     </div>
