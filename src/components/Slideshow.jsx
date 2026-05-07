@@ -10,8 +10,8 @@ function Slideshow() {
         Change the root of your trajectory with coffee
         <br />
       </p>
-      <div id="slideshow" class="fadein">
-        <div class="list">
+      <div id="slideshow" className="fadein">
+        <div className="list">
           <SlideCards
             src="/Images/coffee-roastery.jpg"
             alt="State-of-the-Art Roastery"
