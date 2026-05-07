@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-.dots li {
+.dot {
   list-style: none;
   background-color: var(--arrows);
   cursor: pointer;
@@ -22,11 +22,11 @@
     width 0.5s;
 }
 
-.dots li.active {
+.dot.active {
   width: clamp(2rem, 3vw + 2rem, 5rem);
 }
 
-.dots li:hover,
-.dots li.active:hover {
+.dot:hover,
+.dot.active:hover {
   background-color: rgba(0, 0, 0, 0.25);
 }
