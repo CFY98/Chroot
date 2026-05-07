@@ -6,7 +6,7 @@ import Dots from "./Dots";
 
 function Slideshow() {
   return (
-    <div className={styles.container}>
+    <div className={styles["slideshow-container"]}>
       <p id="tagline" className="fadein">
         Change the root of your trajectory with coffee
         <br />
