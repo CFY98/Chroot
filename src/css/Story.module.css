@@ -31,3 +31,36 @@
   object-fit: cover;
   border-radius: 10px;
 }
+/* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS - LAPTOPS ------ */
+@media only screen and (max-width: 1280px) {
+    .story {
+        width: 95%;
+    }
+}
+/* ------ TABLETS ------ */
+@media only screen and (max-width: 768px) {
+    .story {
+        width: 95%;
+        align-items: stretch;
+    }
+    .ethos {
+        width: 95%;
+    }
+}
+/* ------ PHONES ------ */
+@media only screen and (max-width: 480px) {
+    .story {
+        width: 100%;
+        flex-direction: column;
+    }
+    .ethos {
+        width: 94%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .roaster {
+        width: 94%;
+        margin: 0 auto;
+    }
+}
