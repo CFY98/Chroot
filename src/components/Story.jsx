@@ -4,9 +4,9 @@ import styles from "../css/Story.module.css";
 function Story() {
   return (
     <div className={styles["story-container"]}>
-      <h3 className="sub-heading fadein">Our Story</h3>
-      <div className="story">
-        <p className="ethos fadein">
+      <h3 className={`${styles.subheading} fadein`}>Our Story</h3>
+      <div className={styles.story}>
+        <p className={`${styles.ethos} fadein`}>
           Founded in 2015, we aim to champion farmers and producers with a focus
           on sustainability and ethical practises.
           <br />
