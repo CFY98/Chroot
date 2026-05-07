@@ -1,6 +1,9 @@
+//IMPORTS
+import styles from "../css/Story.module.css";
+
 function Story() {
   return (
-    <div className="story-container">
+    <div className={styles["story-container"]}>
       <h3 className="sub-heading fadein">Our Story</h3>
       <div className="story">
         <p className="ethos fadein">
