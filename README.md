@@ -2,14 +2,14 @@
 
 A concept e-commerce UI built around a terminal interface. Alongside the conventional point-and-click, users can interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
 
-Iterated on user feedback from external testers to introduce new features for v0.2.1.
+Iterated on user feedback from external testers to introduce new features since v0.2.1.
 
 ## ✨ Features
 
 - **Responsive Basket UI** — Dynamic cart rendering with real-time quantity management and state synchronisation across components.
 - **Accessibility** — ARIA live regions with custom announcements to ensure full screen reader compatibility.
 - **Persistence** — localStorage for live basket state across pages, with local state object for pre-basket quantity adjustment.
-- **SPA Routing** — Fetch-based content rendering for seamless navigation across UI modes.
+- **SPA Routing** — React Router for seamless client-side navigation across UI modes.
 - **Client-side PDF Generation** — On-demand receipt generation via deferred module import of html2pdf, with print-state cleanup via try/finally.
 
 ## 💻 Visual Mode Features
@@ -62,11 +62,13 @@ Chroot/
 |   └───screenshots
 │
 └───src/
-    ├───css/  — stylesheets for each page/component
-    ├───git/ — git commands logic for terminal
-    ├───purchase/ — basket, buy, and receipt logic
-    ├───terminal/ — terminal emulator and commands
-    └───tools/ — shared utilities, router, and state
+    ├───components/      — reusable React components
+    ├───css/             — stylesheets for each page/component
+    ├───git/             — git commands logic for terminal
+    ├───pages/           — React page components
+    ├───purchase/        — basket, buy, and receipt logic
+    ├───terminal/        — terminal emulator and commands
+    └───tools/           — shared utilities, router, and state
 ```
 
 ## Installation
@@ -115,10 +117,11 @@ npm run build
 
 - **HTML**: Provides basic structure and layout of the website.
 - **CSS**: Used for styling the website.
-- **JavaScript**: Functional terminal with Git-style commands, localStorage as a cross-page communication bridge, and dynamic DOM rendering with event delegation.
+- **JavaScript**: Functional terminal with Git-style commands, localStorage as a cross-page communication bridge, and DOM manipulation via useEffect for slideshow for slideshow and scroll transitions.
+- **React**: Component-based UI with hooks, CSS modules, and React Router for client-side navigation.
 - **ARIA**: Live regions, semantic roles and labels for screen reader support.
 - **Vite**: Development server and bundler.
-- **Vercel**: Hosts the site with a custom rewrite rule for SPA routing
+- **Vercel**: Hosts the site with a rewrite rule to support React Router client-side navigation.
 
 ## 📄 License
 
