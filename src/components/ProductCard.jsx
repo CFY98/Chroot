@@ -4,10 +4,10 @@ import styles from "../css/ProductCard.module.css";
 function ProductCard({ src, alt, arialabel, href, itemName, itemPrice }) {
   return (
     <div className={styles["captions-container"]}>
-      <img src={src} alt={alt} className="fadein" />
+      <img src={src} alt={alt} className={`${styles.product} fadein`} />
       <div className={styles.caption}>
         <a className={styles.more} aria-label={arialabel} href={href} data-link>
-          {true} More info
+          More info
         </a>
       </div>
       <div className={`${styles.information} fadein`}>
