@@ -238,11 +238,11 @@ body {
 }
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DISABLE HOVER EFFECT ON TOUCH DEVICES ------ */
-@media (hover: hover) {
-  .nav-btn:hover {
-    background: var(--border);
-  }
-}
+/* @media (hover: hover) { */
+/*   .nav-btn:hover { */
+/*     background: var(--border); */
+/*   } */
+/* } */
 /* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
   .dot-r {
@@ -264,11 +264,11 @@ body {
     top: 0;
     z-index: 10;
   }
-  .socials {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-  }
+  /* .socials { */
+  /*   position: sticky; */
+  /*   bottom: 0; */
+  /*   z-index: 10; */
+  /* } */
   .dot-r {
     margin-left: 0.9rem;
   }
