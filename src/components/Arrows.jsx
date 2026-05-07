@@ -3,7 +3,7 @@ import styles from "../css/Arrows.module.css";
 
 function ArrowButtons() {
   return (
-    <div classname={styles.arrows}>
+    <div className={styles.arrows}>
       <button id="prev" aria-label="previous slide of the slideshow">
         &lt;
       </button>
