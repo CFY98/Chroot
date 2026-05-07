@@ -41,9 +41,9 @@ function updateCaption(slides, realIndex) {
 function updateDots(dots, index) {
   if (!dots.length) return;
   index = (index + dots.length) % dots.length;
-
-  document.querySelector(".dots li.active")?.classList.remove("active");
-  dots[index].classList.add("active");
+ const activeDot = document.querySelector("[data-component='dots']").dataset.setActive;
+  dots.forEach(dot => dot.classList.remove(activeDot));
+  dots[index].classList.add(activeDot);
 }
 
 function clickDots(list, slides, dots) {
