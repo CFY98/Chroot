@@ -15,21 +15,23 @@ function setInitialPosition(slides, list) {
 // CAPTIONS
 function showCaption(slides) {
   slides.forEach((slide, i) => {
-    const caption = slide.querySelector(".slidecaption");
+    const caption = slide.querySelector("[data-component='caption']");
     if (!caption) return;
-    if (i === active) caption.classList.add("show");
+    const showClass = caption.dataset.showClass;
+    if (i === active) caption.classList.add(showClass);
   });
 }
 
 function updateCaption(slides, realIndex) {
   slides.forEach((slide, i) => {
-    const caption = slide.querySelector(".slidecaption");
+    const caption = slide.querySelector("[data-component='caption']");
     if (!caption) return;
+    const showClass = caption.dataset.showClass;
     if (i === realIndex + 1) {
-      caption.classList.add("show");
+      caption.classList.add(showClass);
     } else {
       setTimeout(() => {
-        caption.classList.remove("show");
+        caption.classList.remove(showClass);
       }, 300);
     }
   });
@@ -129,11 +131,11 @@ export function initSlideshow() {
   autoSlideInterval = undefined;
   slideWidth = 0;
 
-  const slideshow = document.getElementById("slideshow");
+  const slideshow = document.querySelector("[data-component='slideshow']");
   if (!slideshow) return;
-  const list = slideshow.querySelector(".list");
-  let slides = slideshow.querySelectorAll(".list figure");
-  const dots = document.querySelectorAll(".dots li");
+  const list = slideshow.querySelector("[data-component='list']");
+  let slides = slideshow.querySelectorAll("figure");
+  const dots = document.querySelectorAll("[data-component='dots'] li");
   const prev = document.getElementById("prev");
   const next = document.getElementById("next");
 
@@ -145,7 +147,7 @@ export function initSlideshow() {
   list.appendChild(firstClone);
   list.insertBefore(lastClone, slides[0]);
 
-  slides = slideshow.querySelectorAll(".list figure");
+  slides = slideshow.querySelectorAll("figure");
 
   // SLIDE STARTING POSITION
   setInitialPosition(slides, list);
