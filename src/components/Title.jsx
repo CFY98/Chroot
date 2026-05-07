@@ -1,5 +1,8 @@
+//IMPORTS
+import styles from "../css/Title.module.css";
+
 function Title({ title }) {
-  <p id="items" className="fadein">
+  <p className={`${styles.title} fadein`}>
     {title}
   </p>;
 }
