@@ -3,10 +3,14 @@ import styles from "../css/Dots.module.css";
 
 function Dots() {
   return (
-    <ul className={styles.dots}>
-      <li className={`${styles.dots} ${styles.active}`}></li>
-      <li className={`${styles.dots} ${styles.active}`}></li>
-      <li className={`${styles.dots} ${styles.active}`}></li>
+    <ul
+      data-component="dots"
+      data-set-active={styles.active}
+      className={styles.dots}
+    >
+      <li className={`${styles.dot} ${styles.active}`}></li>
+      <li className={styles.dot}></li>
+      <li className={styles.dot}></li>
     </ul>
   );
 }
