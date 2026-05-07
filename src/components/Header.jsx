@@ -1,11 +1,14 @@
+//IMPORTS
+import styles from "../css/Header.module.css";
+
 function Header() {
   return (
-    <div className="titlebar">
-      <span className="dot dot-r"></span>
-      <span className="dot dot-y"></span>
-      <span className="dot dot-g"></span>
+    <div className={styles.titlebar}>
+      <span className={`${styles.dot} ${styles["dot-r"]}`}></span>
+      <span className={`${styles.dot} ${styles["dot-y"]}`}></span>
+      <span className={`${styles.dot} ${styles["dot-g"]}`}></span>
       <span
-        className="titlebar-text"
+        className={styles["titlebar-text"]}
         data-text="Visual Mode"
         data-hover="Change: Terminal Mode"
       ></span>
