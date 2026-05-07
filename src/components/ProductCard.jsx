@@ -3,7 +3,7 @@ import styles from "../css/ProductCard.module.css";
 
 function ProductCard({ src, alt, arialabel, href, itemName, itemPrice }) {
   return (
-    <div className={styles["captions-container"]}>
+    <div className={styles["caption-container"]}>
       <img src={src} alt={alt} className={`${styles.product} fadein`} />
       <div className={styles.caption}>
         <a className={styles.more} aria-label={arialabel} href={href} data-link>
