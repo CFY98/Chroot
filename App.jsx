@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import Beans from "/src/pages/tabs/Beans";
+import Home from "/src/pages/Home";
+import Beans from "/src/pages/Beans";
 import NavBar from "./src/components/NavBar";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <NavBar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/beans" element={<Beans />} />
       </Routes>
     </>
