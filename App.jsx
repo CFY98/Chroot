@@ -1,15 +1,16 @@
-import { Routes, Route } from "react-router-dom"
-import { Beans } from "/src/pages/tabs/Beans";
+import { Routes, Route } from "react-router-dom";
+import Beans from "/src/pages/tabs/Beans";
+import NavBar from "./src/components/NavBar";
 
 function App() {
-    return (
-        <>
-            <Routes>
-                <Route path="/beans" element={<Beans />} />
-            </Routes>
-        </>
-    )
+  return (
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/beans" element={<Beans />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
-
+export default App;
