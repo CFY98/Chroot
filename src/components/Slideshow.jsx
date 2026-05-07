@@ -1,6 +1,7 @@
 //IMPORTS
 import SlideCards from "./SlideCards";
 import ArrowButtons from "./ArrowButtons";
+import Dots from "./Dots";
 
 function Slideshow() {
   return (
@@ -28,6 +29,7 @@ function Slideshow() {
           />
         </div>
         <ArrowButtons />
+        <Dots />
       </div>
     </div>
   );
