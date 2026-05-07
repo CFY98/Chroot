@@ -32,6 +32,10 @@ function Slideshow() {
         <Arrows />
         <Dots />
       </div>
+      <p className={`${styles.info} fadein`}>
+        Our drinks are made with some of the finest, single-origin coffees the
+        world has to offer.
+      </p>
     </div>
   );
 }
