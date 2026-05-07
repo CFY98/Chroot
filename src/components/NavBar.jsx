@@ -2,12 +2,18 @@
 import { NavLink } from "react-router-dom";
 import styles from "../css/NavBar.module.css";
 
-function NavBar() {
+function NavBar({ tuiMode }) {
   return (
     <div className={styles["nav-buttons"]}>
-      <div className={styles["nav-btn"]} id="title">
+      <NavLink
+        id="title"
+        to={tuiMode ? "/terminal" : "/"}
+        className={({ isActive }) =>
+          `${styles["nav-btn"]} ${isActive ? styles.active : ""}`
+        }
+      >
         (Chroot)
-      </div>
+      </NavLink>
       <NavLink
         to="/beans"
         className={({ isActive }) =>

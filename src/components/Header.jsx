@@ -1,10 +1,8 @@
 //IMPORTS
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/Header.module.css";
 
-function Header() {
-  const [tuiMode, setTuiMode] = useState(false);
+function Header({ tuiMode, setTuiMode }) {
   const navigate = useNavigate();
 
   function checkMode() {

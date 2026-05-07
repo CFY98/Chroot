@@ -1,5 +1,6 @@
+//IMPORTS
 import { Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Beans from "./pages/Beans";
 import Equipment from "./pages/Equipment";
@@ -9,6 +10,7 @@ import Footer from "./components/Footer";
 import { handleScroll } from "./tools/transitions";
 
 function App() {
+  const [tuiMode, setTuiMode] = useState(false);
   useEffect(() => {
     handleScroll();
   }, []);
@@ -16,8 +18,8 @@ function App() {
   return (
     <>
       <div className="top-container fadein">
-        <Header />
-        <NavBar />
+        <Header tuiMode={tuiMode} setTuiMode={setTuiMode}/>
+        <NavBar tuiMode={tuiMode}/>
       </div>
     <div className="app">
       <Routes>
