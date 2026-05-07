@@ -7,12 +7,12 @@ import Dots from "./Dots";
 function Slideshow() {
   return (
     <div className={styles["slideshow-container"]}>
-      <p id="tagline" className="fadein">
+      <p className={styles.tagline}>
         Change the root of your trajectory with coffee
         <br />
       </p>
-      <div id={styles.slideshow} className="fadein">
-        <div className="list">
+      <div className={`${styles.slideshow} fadein`}>
+        <div className={`${styles.slideshow} ${styles.list}`}>
           <SlideCards
             src="/Images/coffee-roastery.jpg"
             alt="State-of-the-Art Roastery"
