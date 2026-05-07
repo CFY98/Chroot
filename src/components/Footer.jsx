@@ -1,7 +1,10 @@
+//IMPORTS
+import styles from "../css/Footer.module.css";
+
 function Footer() {
   return (
-    <div className="socials">
-      <a href="https://github.com/CFY98/Chroot" className="fa-brands fa-github"></a>
+    <div className={styles.socials}>
+      <a href="https://github.com/CFY98/Chroot" className={`${styles["fa-brands"]} ${styles["fa-github"]}`}></a>
     </div>
   );
 }
