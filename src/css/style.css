@@ -40,6 +40,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+}
+
+#root{
+  min-height:100vh;
+  display: flex;
+  flex-direction:column;
 }
 
 .wrapper {
@@ -163,55 +170,55 @@ body {
   visibility: visible;
 }
 /* ------ NAVIGATION ------ */
-.nav-buttons {
-  font-family: "IBM Plex Sans";
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  border: 1px solid var(--border);
-  border-top: none;
-  background-color: var(--t-window);
-}
+/* .nav-buttons { */
+/*   font-family: "IBM Plex Sans"; */
+/*   width: 100%; */
+/*   display: flex; */
+/*   align-items: center; */
+/*   justify-content: space-evenly; */
+/*   border: 1px solid var(--border); */
+/*   border-top: none; */
+/*   background-color: var(--t-window); */
+/* } */
 
-.nav-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(0.2rem, 0.75vw, 1rem);
-  font-size: clamp(0.5rem, 2vw + 0.6rem, 2rem);
-  color: var(--muted);
-  border-right: var(--border) 1px solid;
-  cursor: pointer;
-  transition:
-    border-color 0.15s,
-    color 0.15s;
-  user-select: none;
-  list-style: none;
-}
+/* .nav-btn { */
+/*   width: 100%; */
+/*   display: flex; */
+/*   align-items: center; */
+/*   justify-content: center; */
+/*   padding: clamp(0.2rem, 0.75vw, 1rem); */
+/*   font-size: clamp(0.5rem, 2vw + 0.6rem, 2rem); */
+/*   color: var(--muted); */
+/*   border-right: var(--border) 1px solid; */
+/*   cursor: pointer; */
+/*   transition: */
+/*     border-color 0.15s, */
+/*     color 0.15s; */
+/*   user-select: none; */
+/*   list-style: none; */
+/* } */
 
-.nav-btn:last-child {
-  border-right: none;
-}
+/* .nav-btn:last-child { */
+/*   border-right: none; */
+/* } */
 
-.nav-btn:hover {
-  background: var(--border);
-}
+/* .nav-btn:hover { */
+/*   background: var(--border); */
+/* } */
 
-.nav-btn.active {
-  background: var(--border);
-  border-right-color: var(--b-right);
-}
+/* .nav-btn.active { */
+/*   background: var(--border); */
+/*   border-right-color: var(--b-right); */
+/* } */
 /* ------ SOCIALS ------ */
-.socials {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  width: 100%;
-  padding: min(1rem, 3%);
-  background-color: var(--bg);
-  border-top: var(--border) solid 1px;
-}
+/* .socials { */
+/*   display: grid; */
+/*   grid-template-columns: 1fr auto 1fr; */
+/*   width: 100%; */
+/*   padding: min(1rem, 3%); */
+/*   background-color: var(--bg); */
+/*   border-top: var(--border) solid 1px; */
+/* } */
 
 .fa-brands {
   grid-column: 2;
