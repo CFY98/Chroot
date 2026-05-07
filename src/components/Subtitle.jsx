@@ -1,6 +1,9 @@
+//IMPORTS
+import styles from "../css/Subtitle.module.css";
+
 function Subtitle({ subtitle }) {
   return (
-    <p id="items" className="fadein">
+    <p className={`${styles.subtitle} fadein`}>
       {subtitle}
     </p>
   );
