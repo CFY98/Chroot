@@ -1,4 +1,4 @@
-import "../css/pages.css";
+import styles from "../css/Beans.module.css";
 import Title from "../components/Title";
 import Subtitle from "../components/Subtitle";
 import ProductCard from "../components/ProductCard";
@@ -7,9 +7,9 @@ function Beans() {
   return (
     <>
       <Title title="Coffee Beans" />
-      <div id="product-wrapper">
+      <div className={styles["product-wrapper"]}>
         <Subtitle subtitle="Please browse our selection of coffee beans" />
-        <div className="products">
+        <div className={styles.products}>
           <ProductCard
             src="/Images/blaze.jpg"
             alt="Picture of coffee beans called Blaze."
