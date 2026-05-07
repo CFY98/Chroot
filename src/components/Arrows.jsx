@@ -1,4 +1,6 @@
-import styles from "../css/arrows.module.css"
+//IMPORTS
+import styles from "../css/Arrows.module.css";
+
 function ArrowButtons() {
   return (
     <div classname={styles.arrows}>
