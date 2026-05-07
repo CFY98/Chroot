@@ -4,7 +4,7 @@ import styles from "../css/SlideCards.module.css";
 function SlideCards({ src, alt, caption }) {
   return (
     <figure>
-      <img src={src} className={styles.slide} alt={alt} />
+      <img src={src} alt={alt} />
       <div className={styles.slidecaption}>
         <p>{caption}</p>
       </div>
