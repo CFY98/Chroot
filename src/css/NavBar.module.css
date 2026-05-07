@@ -38,3 +38,10 @@
   background: var(--border);
   border-right-color: var(--b-right);
 }
+/* ------ RESPONSIVE DESIGN ------ */
+/* ------ DISABLE HOVER EFFECT ON TOUCH DEVICES ------ */
+@media (hover: hover) {
+  .nav-btn:hover {
+    background: var(--border);
+  }
+}
