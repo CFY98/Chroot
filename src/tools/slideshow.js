@@ -41,8 +41,9 @@ function updateCaption(slides, realIndex) {
 function updateDots(dots, index) {
   if (!dots.length) return;
   index = (index + dots.length) % dots.length;
- const activeDot = document.querySelector("[data-component='dots']").dataset.setActive;
-  dots.forEach(dot => dot.classList.remove(activeDot));
+  const activeDot = document.querySelector("[data-component='dots']").dataset
+    .setActive;
+  dots.forEach((dot) => dot.classList.remove(activeDot));
   dots[index].classList.add(activeDot);
 }
 
@@ -161,7 +162,7 @@ export function initSlideshow() {
   nextButton(list, slides, dots, next);
   prevButton(list, slides, dots, prev);
   clickDots(list, slides, dots);
-  
+
   // START AUTOSLIDE
   startAutoSlide(list, slides, dots);
 
