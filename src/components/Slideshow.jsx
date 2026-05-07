@@ -1,5 +1,5 @@
 //IMPORTS
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styles from "../css/Slideshow.module.css";
 import SlideCards from "./SlideCards";
 import Arrows from "./Arrows";
@@ -7,7 +7,10 @@ import Dots from "./Dots";
 import { initSlideshow } from "../tools/slideshow";
 
 function Slideshow() {
+  const initialised = useRef(false);
   useEffect(() => {
+    if (initialised.current) return;
+    initialised.current = true;
     initSlideshow();
   }, []);
 
