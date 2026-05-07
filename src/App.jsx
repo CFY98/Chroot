@@ -14,8 +14,10 @@ function App() {
 
   return (
     <>
-      <Header />
-      <NavBar />
+      <div className="top-container fadein">
+        <Header />
+        <NavBar />
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/beans" element={<Beans />} />
