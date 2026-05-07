@@ -18,10 +18,12 @@ function App() {
         <Header />
         <NavBar />
       </div>
+    <div className="app">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/beans" element={<Beans />} />
       </Routes>
+    </div>
       <Footer />
     </>
   );
