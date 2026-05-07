@@ -109,7 +109,7 @@ npm run build
 - **PostgreSQL**: Database to store products and orders.
 - **Wishlist**: Implement git-style command, Git stash, alongside a button for Visual mode to save products, backed by database storage.
 - **Backend Cart System**: Save carts per user, update quantities and persist data. 
-- **Backend API**: Django to handle requests from the UI and interact with the PostgreSQL database.
+- **Backend API**: Node.js to handle requests from the UI and interact with the PostgreSQL database.
 
 ## ⛏️ Tech Stack
 
