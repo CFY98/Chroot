@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/css/main.css" />
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <title>Home</title>
   </head>
@@ -16,134 +15,136 @@
       aria-atomic="true"
       aria-live="assertive"
     ></div>
+    <!-- REACT DOM -->   
+    <div id="root"> </div>
     <!-- WRAPPER -->
-    <div class="wrapper">
-      <!-- TITLE CONTAINER -->
-      <div class="top-container fadein">
-        <!-- <p class="title">Chroot</p> -->
-        <div class="titlebar">
-          <span class="dot dot-r"></span>
-          <span class="dot dot-y"></span>
-          <span class="dot dot-g"></span>
-          <span
-            class="titlebar-text"
-            data-text="Visual Mode"
-            data-hover="Change: Terminal Mode"
-          ></span>
-        </div>
-        <div class="nav-buttons">
-          <div class="nav-btn" id="title">(Chroot)</div>
-          <div class="nav-btn">Beans</div>
-          <div class="nav-btn">Equipment</div>
-          <div id="basket-btn" class="nav-btn">Basket</div>
-        </div>
-      </div>
-      <!-- WINDOW CONTAINER -->
-      <div class="window-container">
-        <!-- GUI INTERFACE -->
-        <div class="gui">
-          <div id="app" class="app">
-            <!-- SLIDESHOW -->
-            <div class="slideshow-container">
-              <p id="tagline" class="fadein">
-                Change the root of your trajectory with coffee
-                <br />
-              </p>
-              <div id="slideshow" class="fadein">
-                <div class="list">
-                  <figure>
-                    <img
-                      src="/Images/coffee-roastery.jpg"
-                      class="slide"
-                      alt="State-of-the-art Cafe"
-                    />
-                    <div class="slidecaption">
-                      <p>State-of-the-Art Roastery</p>
-                    </div>
-                  </figure>
-                  <figure>
-                    <img
-                      src="/Images/coffee-cherries.jpg"
-                      class="slide"
-                      alt="Fresh Coffee Beans from Source."
-                    />
-                    <div class="slidecaption">
-                      <p>Producer-Led Partnerships</p>
-                    </div>
-                  </figure>
-                  <figure>
-                    <img
-                      src="/Images/cafebar.jpg"
-                      class="slide"
-                      alt="Professionally trained baristas at your service."
-                    />
-                    <div class="slidecaption">
-                      <p>Taste-Tests Available</p>
-                    </div>
-                  </figure>
-                </div>
-                <div class="arrows">
-                  <button
-                    id="prev"
-                    aria-label="previous slide of the slideshow"
-                  >
-                    &lt;
-                  </button>
-                  <button id="next" aria-label="next slide of the slideshow">
-                    &gt;
-                  </button>
-                </div>
-                <ul class="dots">
-                  <li class="active"></li>
-                  <li class="active"></li>
-                  <li class="active"></li>
-                </ul>
-              </div>
-              <p id="info" class="fadein">
-                Our drinks are made with some of the finest, single-origin
-                coffees the world has to offer.
-              </p>
-            </div>
-            <!-- SLIDESHOW END -->
-            <div class="story-container">
-              <h3 class="sub-heading fadein">Our Story</h3>
-              <div class="story">
-                <p class="ethos fadein">
-                  Founded in 2015, we aim to champion farmers and producers with
-                  a focus on sustainability and ethical practises.
-                  <br /><br />With professionals trained in-house from
-                  production to delivery, rest assured that your orders are in
-                  safe hands.<br /><br />
-                </p>
-                <img
-                  src="/Images/coffee-roaster.jpg"
-                  alt="Coffee being roasted by trained professional"
-                  class="roaster fadein"
-                />
-              </div>
-            </div>
-            <!-- OPENING HOURS CONTAINER -->
-            <div class="hours-container">
-              <div class="opening-container">
-                <h3 class="sub-heading fadein">Opening Hours</h3>
-                <p class="times fadein">
-                  Mondays - Fridays: 07:00 → 18:00<br />Saturdays - Sundays:
-                  08:00 → 16:00
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- APP END -->
-        </div>
-        <!-- GUI END -->
-      </div>
-      <!-- CONTAINER END -->
-    </div>
-    <!-- WRAPPER END -->
+    <!-- <div class="wrapper"> -->
+    <!--   <!-1- TITLE CONTAINER -1-> -->
+    <!--   <div class="top-container fadein"> -->
+    <!--     <!-1- <p class="title">Chroot</p> -1-> -->
+    <!--     <div class="titlebar"> -->
+    <!--       <span class="dot dot-r"></span> -->
+    <!--       <span class="dot dot-y"></span> -->
+    <!--       <span class="dot dot-g"></span> -->
+    <!--       <span -->
+    <!--         class="titlebar-text" -->
+    <!--         data-text="Visual Mode" -->
+    <!--         data-hover="Change: Terminal Mode" -->
+    <!--       ></span> -->
+    <!--     </div> -->
+    <!--     <div class="nav-buttons"> -->
+    <!--       <div class="nav-btn" id="title">(Chroot)</div> -->
+    <!--       <div class="nav-btn">Beans</div> -->
+    <!--       <div class="nav-btn">Equipment</div> -->
+    <!--       <div id="basket-btn" class="nav-btn">Basket</div> -->
+    <!--     </div> -->
+    <!--   </div> -->
+    <!--   <!-1- WINDOW CONTAINER -1-> -->
+    <!--   <div class="window-container"> -->
+    <!--     <!-1- GUI INTERFACE -1-> -->
+    <!--     <div class="gui"> -->
+    <!--       <div id="app" class="app"> -->
+    <!--         <!-1- SLIDESHOW -1-> -->
+    <!--         <div class="slideshow-container"> -->
+    <!--           <p id="tagline" class="fadein"> -->
+    <!--             Change the root of your trajectory with coffee -->
+    <!--             <br /> -->
+    <!--           </p> -->
+    <!--           <div id="slideshow" class="fadein"> -->
+    <!--             <div class="list"> -->
+    <!--               <figure> -->
+    <!--                 <img -->
+    <!--                   src="/Images/coffee-roastery.jpg" -->
+    <!--                   class="slide" -->
+    <!--                   alt="State-of-the-art Cafe" -->
+    <!--                 /> -->
+    <!--                 <div class="slidecaption"> -->
+    <!--                   <p>State-of-the-Art Roastery</p> -->
+    <!--                 </div> -->
+    <!--               </figure> -->
+    <!--               <figure> -->
+    <!--                 <img -->
+    <!--                   src="/Images/coffee-cherries.jpg" -->
+    <!--                   class="slide" -->
+    <!--                   alt="Fresh Coffee Beans from Source." -->
+    <!--                 /> -->
+    <!--                 <div class="slidecaption"> -->
+    <!--                   <p>Producer-Led Partnerships</p> -->
+    <!--                 </div> -->
+    <!--               </figure> -->
+    <!--               <figure> -->
+    <!--                 <img -->
+    <!--                   src="/Images/cafebar.jpg" -->
+    <!--                   class="slide" -->
+    <!--                   alt="Professionally trained baristas at your service." -->
+    <!--                 /> -->
+    <!--                 <div class="slidecaption"> -->
+    <!--                   <p>Taste-Tests Available</p> -->
+    <!--                 </div> -->
+    <!--               </figure> -->
+    <!--             </div> -->
+    <!--             <div class="arrows"> -->
+    <!--               <button -->
+    <!--                 id="prev" -->
+    <!--                 aria-label="previous slide of the slideshow" -->
+    <!--               > -->
+    <!--                 &lt; -->
+    <!--               </button> -->
+    <!--               <button id="next" aria-label="next slide of the slideshow"> -->
+    <!--                 &gt; -->
+    <!--               </button> -->
+    <!--             </div> -->
+    <!--             <ul class="dots"> -->
+    <!--               <li class="active"></li> -->
+    <!--               <li class="active"></li> -->
+    <!--               <li class="active"></li> -->
+    <!--             </ul> -->
+    <!--           </div> -->
+    <!--           <p id="info" class="fadein"> -->
+    <!--             Our drinks are made with some of the finest, single-origin -->
+    <!--             coffees the world has to offer. -->
+    <!--           </p> -->
+    <!--         </div> -->
+    <!--         <!-1- SLIDESHOW END -1-> -->
+    <!--         <div class="story-container"> -->
+    <!--           <h3 class="sub-heading fadein">Our Story</h3> -->
+    <!--           <div class="story"> -->
+    <!--             <p class="ethos fadein"> -->
+    <!--               Founded in 2015, we aim to champion farmers and producers with -->
+    <!--               a focus on sustainability and ethical practises. -->
+    <!--               <br /><br />With professionals trained in-house from -->
+    <!--               production to delivery, rest assured that your orders are in -->
+    <!--               safe hands.<br /><br /> -->
+    <!--             </p> -->
+    <!--             <img -->
+    <!--               src="/Images/coffee-roaster.jpg" -->
+    <!--               alt="Coffee being roasted by trained professional" -->
+    <!--               class="roaster fadein" -->
+    <!--             /> -->
+    <!--           </div> -->
+    <!--         </div> -->
+    <!--         <!-1- OPENING HOURS CONTAINER -1-> -->
+    <!--         <div class="hours-container"> -->
+    <!--           <div class="opening-container"> -->
+    <!--             <h3 class="sub-heading fadein">Opening Hours</h3> -->
+    <!--             <p class="times fadein"> -->
+    <!--               Mondays - Fridays: 07:00 → 18:00<br />Saturdays - Sundays: -->
+    <!--               08:00 → 16:00 -->
+    <!--             </p> -->
+    <!--           </div> -->
+    <!--         </div> -->
+    <!--       </div> -->
+    <!--       <!-1- APP END -1-> -->
+    <!--     </div> -->
+    <!--     <!-1- GUI END -1-> -->
+    <!--   </div> -->
+    <!--   <!-1- CONTAINER END -1-> -->
+    <!-- </div> -->
+    <!-- <!-1- WRAPPER END -1-> -->
     <!-- SOCIAL MEDIA -->
-    <div class="socials">
-      <a href="https://github.com/CFY98/Chroot" class="fa-brands fa-github"></a>
-    </div>
-    <script type="module" src="/src/main.js"></script>
+    <!-- <div class="socials"> -->
+    <!--   <a href="https://github.com/CFY98/Chroot" class="fa-brands fa-github"></a> -->
+    <!-- </div> -->
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
