@@ -1,6 +1,6 @@
 //IMPORTS
 import SlideCards from "./SlideCards";
-import ArrowButtons from "./ArrowButtons";
+import Arrows from "./Arrows";
 import Dots from "./Dots";
 
 function Slideshow() {
@@ -28,7 +28,7 @@ function Slideshow() {
             caption="Taste-Tests Available"
           />
         </div>
-        <ArrowButtons />
+        <Arrows />
         <Dots />
       </div>
     </div>

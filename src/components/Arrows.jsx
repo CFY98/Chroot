@@ -1,6 +1,7 @@
+import styles from "../css/arrows.module.css"
 function ArrowButtons() {
   return (
-    <div classname="arrows">
+    <div classname={styles.arrows}>
       <button id="prev" aria-label="previous slide of the slideshow">
         &lt;
       </button>
