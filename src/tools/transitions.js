@@ -6,7 +6,7 @@ document.addEventListener("routeChange", handleScroll);
 const observer = new MutationObserver(handleScroll);
 observer.observe(document.body, { childList: true, subtree: true });
 
-function handleScroll() {
+export function handleScroll() {
   const targets = document.querySelectorAll(".fadein");
 
   targets.forEach(function (target) {
