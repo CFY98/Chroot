@@ -1,4 +1,4 @@
-import styles from "../css/Beans.module.css";
+import styles from "../css/Catalogue.module.css";
 import Title from "../components/Title";
 import Subtitle from "../components/Subtitle";
 import ProductCard from "../components/ProductCard";
