@@ -12,7 +12,7 @@ function Slideshow() {
         <br />
       </p>
       <div className={`${styles.slideshow} fadein`}>
-        <div className={`${styles.slideshow} ${styles.list}`}>
+        <div className={styles.list}>
           <SlideCards
             src="/Images/coffee-roastery.jpg"
             alt="State-of-the-Art Roastery"
@@ -24,7 +24,7 @@ function Slideshow() {
             caption="Producer-Led Partnerships"
           />
           <SlideCards
-            src="/Images/cafebarjpg"
+            src="/Images/cafebar.jpg"
             alt="Professionally trained barista preparing taster"
             caption="Taste-Tests Available"
           />
