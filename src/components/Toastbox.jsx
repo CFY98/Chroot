@@ -1,8 +1,9 @@
 //IMPORTS
 import styles from "../css/Toastbox.module.css";
 import { useState, useEffect } from "react";
+import { toAdd } from "../tools/storage.js";
 
-function Toastbox() {
+function Toastbox({ itemName }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -14,7 +15,14 @@ function Toastbox() {
 
   return (
     <div className={styles.toastbox}>
-      <div className={styles.toast}>{message}</div> : null;
+      {itemName && (
+        <div className={styles.toast}>
+          <img src={`/Images/${itemName}.jpg`} alt={itemName} />
+          {toAdd[itemName] > 1
+            ? `${itemName} x${toAdd[itemName]} added to the basket`
+            : `${itemName} added to the basket`}
+        </div>
+      )}
     </div>
   );
 }
