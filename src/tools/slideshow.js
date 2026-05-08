@@ -1,3 +1,6 @@
+//IMPORTS
+import { announce } from "../tools/announcer.js";
+
 // GLOBAL VARIABLES
 let active = 1;
 let autoSlideInterval;
@@ -6,7 +9,7 @@ let isTransitioning = false;
 
 // SLIDESHOW CLEANUP
 export function cleanupSlideshow() {
-  clearInterval(autoSlideInterval)
+  clearInterval(autoSlideInterval);
 }
 
 // SLIDESHOW START POSITION
@@ -55,6 +58,7 @@ function clickDots(list, slides, dots) {
   dots.forEach((li, key) => {
     li.addEventListener("click", function () {
       moveToSlide(key + 1, list, slides, dots);
+      announce(`Moved to slide ${key + 1}`);
       resetAutoSlide(list, slides, dots);
     });
   });
@@ -63,12 +67,16 @@ function clickDots(list, slides, dots) {
 // NAVIGATION HANDLERS
 function nextButton(list, slides, dots, next) {
   next.onclick = () => {
+    const target = active + 1 > dots.length ? 1 : active + 1;
+    announce(`Moved to slide ${target}`);
     next.disabled = true;
     moveToSlide(active + 1, list, slides, dots);
   };
 }
 function prevButton(list, slides, dots, prev) {
   prev.onclick = () => {
+    const target = active - 1 <= 0 ? dots.length : active - 1;
+    announce(`Moved to slide ${target}`);
     prev.disabled = true;
     moveToSlide(active - 1, list, slides, dots);
   };
