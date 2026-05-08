@@ -1,9 +1,11 @@
 // IMPORTS
+import styles from "../css/Basket.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { announce } from "../tools/announcer.js";
 import service, { storage } from "../tools/storage.js";
-import { basket } from "../purchase/baskstate.js";
+import { basket } from "../tools/baskstate.js";
+import Title from "../components/Title";
 import CartCard from "../components/CartCard";
 
 // PROCESS ORDER FUNCTIONS
@@ -28,7 +30,6 @@ function Basket() {
     orderNumber.push(hash);
     storage.set("orderNumber", orderNumber);
     service.processOrder();
-    if (product) product.innerHTML = "";
     announce(`The receipt for order ${hash} is now available to print`);
     updateBasketState();
   }
@@ -54,33 +55,51 @@ function Basket() {
   }
 
   return (
-    <div className="basket-container">
-      <div className="cart-items">
-        {basketItems.length === 0 ? (
-          <div className="empty">
-            <p>Basket is Empty</p>
+    <>
+      <Title title="Shopping Basket" />
+      <div className={styles["cart-container"]}>
+        <div className={styles.header}>
+          <div
+            className={styles.delete}
+            aria-label="Click to clear the basket"
+            onClick={clearBasket}
+          >
+            Reset All
           </div>
-        ) : (
-          basketItems.map((key) => (
-            <CartCard
-              key={key}
-              itemName={key}
-              stagingArea={stagingArea}
-              onUpdate={updateBasketState}
-            />
-          ))
-        )}
+        </div>
+        <hr />
+        <div className={styles["cart-items"]}>
+          {basketItems.length === 0 ? (
+            <div className={styles.empty}>
+              <p>Basket is Empty</p>
+            </div>
+          ) : (
+            basketItems.map((key) => (
+              <CartCard
+                key={key}
+                itemName={key}
+                stagingArea={stagingArea}
+                onUpdate={updateBasketState}
+              />
+            ))
+          )}
+        </div>
+        <hr />
+        <div className={styles.checkout}>
+          <div className={styles.total}>Total</div>
+          <div className={styles["total-amount"]}>
+            {subtotal > 0 ? `£${subtotal.toFixed(2)}` : ""}
+          </div>
+          <button
+            className={styles.button}
+            aria-label="Click to confirm order"
+            onClick={processOrder}
+          >
+            Checkout
+          </button>
+        </div>
       </div>
-      <div className="total-amount">
-        {subtotal > 0 ? `£${subtotal.toFixed(2)}` : ""}
-      </div>
-      <button className="delete" onClick={clearBasket}>
-        Clear
-      </button>
-      <button className="button" onClick={processOrder}>
-        Checkout
-      </button>
-    </div>
+    </>
   );
 }
 

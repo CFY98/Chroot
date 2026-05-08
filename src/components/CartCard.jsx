@@ -1,6 +1,6 @@
 //IMPORTS
 import styles from "../css/CartCard.module.css";
-import { basket } from "../purchase/baskstate.js";
+import { basket } from "../tools/baskstate.js";
 import { productPrices } from "../tools/assets.js";
 
 function CartCard({ itemName }) {

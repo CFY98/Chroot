@@ -1,6 +1,6 @@
 // IMPORTS
-import { storage } from "../tools/storage.js";
-import { announce } from "../tools/announcer.js";
+import { storage } from "./storage.js";
+import { announce } from "./announcer.js";
 
 // HELPER FUNCTIONS
 function getStage() {
