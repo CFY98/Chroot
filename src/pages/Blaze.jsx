@@ -31,7 +31,7 @@ function Blaze() {
             price="£11.99"
           />
         </div>
-        <Counter itemName="blaze" setToast={setToast}/>
+        <Counter itemName="Blaze" setToast={setToast}/>
         {toast && <Toastbox itemName={toast.itemName} count={toast.count} clearToast={() => setToast(null)} />}
       </div>
     </>
