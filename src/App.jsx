@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Beans from "./pages/Beans";
 import Blaze from "./pages/Blaze";
 import Sunshine from "./pages/Sunshine";
+import Summit from "./pages/Summit";
 import Equipment from "./pages/Equipment";
 import Basket from "./pages/Basket";
 import Footer from "./components/Footer";
@@ -32,6 +33,7 @@ function App() {
         <Route path="/basket" element={<Basket />} />
         <Route path="/blaze" element={<Blaze />} />
         <Route path="/sunshine" element={<Sunshine />} />
+        <Route path="/summit" element={<Summit />} />
       </Routes>
     </div>
       <Footer />
