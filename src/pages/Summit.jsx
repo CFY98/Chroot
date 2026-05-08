@@ -31,7 +31,7 @@ function Summit() {
             price="£14.99"
           />
         </div>
-        <Counter itemName="Summit" setToast={setToast} />
+        <Counter itemName="summit" setToast={setToast} />
         {toast && (
           <Toastbox
             itemName={toast.itemName}

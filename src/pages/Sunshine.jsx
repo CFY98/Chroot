@@ -31,7 +31,7 @@ function Sunshine() {
             price="£14.99"
           />
         </div>
-        <Counter itemName="Sunshine" setToast={setToast} />
+        <Counter itemName="sunshine" setToast={setToast} />
         {toast && (
           <Toastbox
             itemName={toast.itemName}

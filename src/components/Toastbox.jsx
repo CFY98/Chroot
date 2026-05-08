@@ -1,6 +1,7 @@
 //IMPORTS
 import styles from "../css/Toastbox.module.css";
 import { useEffect } from "react";
+import { toTitleCase } from "../tools/assets.js";
 
 function Toastbox({ itemName, count, clearToast }) {
   useEffect(() => {
@@ -16,8 +17,8 @@ function Toastbox({ itemName, count, clearToast }) {
         <div className={styles.toast}>
           <img src={`/Images/${itemName}.jpg`} alt={itemName} />
           {count > 1
-            ? `${itemName} x${count} added to the basket`
-            : `${itemName} added to the basket`}
+            ? `${toTitleCase(itemName)} x${count} added to the basket`
+            : `${toTitleCase(itemName)} added to the basket`}
         </div>
       )}
     </div>

@@ -1,7 +1,7 @@
 //IMPORTS
 import styles from "../css/CartCard.module.css";
 import { basket } from "../tools/baskstate.js";
-import { productPrices } from "../tools/assets.js";
+import { productPrices, toTitleCase } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import service, { storage } from "../tools/storage.js";
 
@@ -49,7 +49,7 @@ function CartCard({ itemName, onRemove, onUpdate }) {
         <img src={`/Images/${itemName}.jpg`} alt={itemName} />
       </div>
       <div className={styles.about}>
-        <div className={styles.name}>{itemName}</div>
+        <div className={styles.name}>{toTitleCase(itemName)}</div>
       </div>
       <div className={styles.counter}>
         <div
