@@ -21,7 +21,7 @@ function Beans() {
             src="/Images/blaze.jpg"
             alt="Picture of coffee beans called Blaze."
             arialabel="More information on Blaze."
-            href="/blaze"
+            path="/blaze"
             itemName="Blaze (200g)"
             itemPrice="£11.99"
           />
@@ -29,7 +29,7 @@ function Beans() {
             src="/Images/sunshine.jpg"
             alt="Picture of coffee beans called Sunshine."
             arialabel="More information on Sunshine."
-            href="/sunshine"
+            path="/sunshine"
             itemName="Sunshine (200g)"
             itemPrice="£14.99"
           />
@@ -37,7 +37,7 @@ function Beans() {
             src="/Images/summit.jpg"
             alt="Picture of coffee beans called Summit."
             arialabel="More information on Summit."
-            href="/summit"
+            path="/summit"
             itemName="Summit (150g)"
             itemPrice="£19.99"
           />

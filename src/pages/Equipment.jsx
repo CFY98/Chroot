@@ -21,7 +21,7 @@ function Equipment() {
             src="/Images/filters.jpg"
             alt="Picture of Chroot Filters"
             arialabel="More information on our Chroot Filters."
-            href="/filters"
+            path="/filters"
             itemName="Filters"
             itemPrice="£9.99"
           />
@@ -29,7 +29,7 @@ function Equipment() {
             src="/Images/dripper.jpg"
             alt="Picture of Chroot Dripper"
             arialabel="More information on our Chroot Dripper."
-            href="/dripper"
+            path="/dripper"
             itemName="Dripper"
             itemPrice="£14.99"
           />
@@ -37,7 +37,7 @@ function Equipment() {
             src="/Images/grinder.jpg"
             alt="Picture of Chroot Coffee Grinder"
             arialabel="More information on our Chroot Coffee Grinder."
-            href="/grinder"
+            path="/grinder"
             itemName="Grinder"
             itemPrice="£129.99"
           />
