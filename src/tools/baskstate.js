@@ -18,7 +18,7 @@ function getOrderNo() {
 function resetBasket() {
   storage.remove("basketItems");
   storage.remove("stagingArea");
-  storage.set("itemCount", 0);
+  storage.remove("itemCount");
   announce("The basket is now empty");
 }
 
