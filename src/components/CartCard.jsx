@@ -1,7 +1,7 @@
 //IMPORTS
 import styles from "../css/CartCard.module.css";
 import { basket } from "../purchase/baskstate.js";
-import { productPrices } from "../tools/assests.js";
+import { productPrices } from "../tools/assets.js";
 
 function CartCard({ itemName }) {
   const stagingArea = basket.stagArea();
