@@ -38,7 +38,7 @@ function Basket() {
   function processOrder() {
     const stagingArea = basket.stagArea();
     if (Object.keys(stagingArea).length === 0) {
-      announce("No order was placed since there were no items in the basket");
+      announce("Add items to the basket to place an order");
       return;
     }
     genOrderNo();
@@ -48,7 +48,7 @@ function Basket() {
   function clearBasket() {
     const stagingArea = basket.stagArea();
     if (Object.keys(stagingArea).length === 0) {
-      announce("The basket was empty to begin with");
+      announce("The basket is already empty");
       return;
     }
     basket.resetBasket();
