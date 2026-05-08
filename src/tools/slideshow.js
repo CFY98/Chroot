@@ -58,7 +58,12 @@ function clickDots(list, slides, dots) {
   dots.forEach((li, key) => {
     li.addEventListener("click", function () {
       moveToSlide(key + 1, list, slides, dots);
-      announce(`Moved to slide ${key + 1}`);
+      const target = key + 1;
+      const targetSlide = slides[target];
+      const captionText =
+        targetSlide?.querySelector("[data-component='caption'] p")
+          ?.textContent || `Slide ${key + 1}`;
+      announce(`Slide ${target} of ${dots.length}: ${captionText}`);
       resetAutoSlide(list, slides, dots);
     });
   });
@@ -68,7 +73,11 @@ function clickDots(list, slides, dots) {
 function nextButton(list, slides, dots, next) {
   next.onclick = () => {
     const target = active + 1 > dots.length ? 1 : active + 1;
-    announce(`Moved to slide ${target}`);
+    const targetSlide = slides[target];
+    const captionText =
+      targetSlide?.querySelector("[data-component='caption'] p")?.textContent ||
+      `Slide ${target}`;
+    announce(`Slide ${target} of ${dots.length}: ${captionText}`);
     next.disabled = true;
     moveToSlide(active + 1, list, slides, dots);
   };
@@ -76,7 +85,11 @@ function nextButton(list, slides, dots, next) {
 function prevButton(list, slides, dots, prev) {
   prev.onclick = () => {
     const target = active - 1 <= 0 ? dots.length : active - 1;
-    announce(`Moved to slide ${target}`);
+    const targetSlide = slides[target];
+    const captionText =
+      targetSlide?.querySelector("[data-component='caption'] p")?.textContent ||
+      `Slide ${target}`;
+    announce(`Slide ${target} of ${dots.length}: ${captionText}`);
     prev.disabled = true;
     moveToSlide(active - 1, list, slides, dots);
   };
