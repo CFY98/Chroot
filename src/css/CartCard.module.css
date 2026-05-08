@@ -1,0 +1,76 @@
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr;
+}
+.cart-item {
+  align-items: center;
+  width: 90%;
+  min-height: 30%;
+  margin: 0 auto;
+  padding-top: min(7rem, 5%);
+}
+.image-box {
+  text-align: center;
+  margin-right: auto;
+  margin-left: 11%;
+}
+.image-box img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.name {
+  font-size: clamp(0.5rem, 1.6vw + 0.5rem, 2rem);
+  line-height: 10px;
+  font-weight: 300;
+  color: var(--text);
+}
+.counter {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.plus-btn,
+.minus-btn {
+  width: clamp(1.5rem, 2vw + 1rem, 3rem);
+  height: clamp(1.5rem, 2vw + 1rem, 3rem);
+  border-radius: 50%;
+  background-color: var(--green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(0.9rem, 2vw + 1rem, 2.5rem);
+  font-weight: 300;
+  color: var(--text);
+  cursor: pointer;
+}
+.minus-btn {
+  background-color: var(--red);
+}
+.btn:hover {
+  color: var(--hover);
+  opacity: 0.9;
+}
+.count {
+  font-size: clamp(0.3rem, 1.2vw + 0.5rem, 1.8rem);
+  font-weight: 300;
+  color: var(--text);
+}
+.cost {
+  justify-self: end;
+  margin-top: 1.5rem;
+  margin-right: 12%;
+}
+.amount {
+  text-align: right;
+  font-size: clamp(0.5rem, 1.5vw + 0.5rem, 2rem);
+}
+.remove {
+  text-align: right;
+  font-size: clamp(0.7rem, 1.2vw + 0.5rem, 1.8rem);
+  padding-top: 1%;
+  cursor: pointer;
+  color: var(--muted);
+}
