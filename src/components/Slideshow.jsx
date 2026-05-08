@@ -4,12 +4,12 @@ import styles from "../css/Slideshow.module.css";
 import SlideCards from "./SlideCards";
 import Arrows from "./Arrows";
 import Dots from "./Dots";
-import { initSlideshow } from "../tools/slideshow";
+import { cleanupSlideshow, initSlideshow } from "../tools/slideshow";
 
 function Slideshow() {
   const initialised = useRef(false);
   useEffect(() => {
-    if (initialised.current) return;
+    if (initialised.current) return () => cleanupSlideshow();
     initialised.current = true;
     initSlideshow();
   }, []);

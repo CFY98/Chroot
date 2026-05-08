@@ -4,7 +4,11 @@ let autoSlideInterval;
 let slideWidth;
 let isTransitioning = false;
 
-// SLIDESHOW HELPERS
+// SLIDESHOW CLEANUP
+export function cleanupSlideshow() {
+  clearInterval(autoSlideInterval)
+}
+
 // SLIDESHOW START POSITION
 function setInitialPosition(slides, list) {
   slideWidth = slides[0].offsetWidth;
