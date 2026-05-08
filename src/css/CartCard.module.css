@@ -74,3 +74,55 @@
   cursor: pointer;
   color: var(--muted);
 }
+/* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS - LAPTOPS ------ */
+@media only screen and (max-width: 1280px) {
+  .image-box img {
+    width: 4rem;
+    height: 4rem;
+  }
+  .cost {
+    grid-column: 4;
+    margin-top: 1.8rem;
+  }
+  .remove {
+    padding-top: 1%;
+    cursor: pointer;
+    color: var(--muted);
+  }
+}
+/* ------ TABLETS ------ */
+@media only screen and (max-width: 768px) {
+  .cost {
+    margin-top: 1.3rem;
+  }
+  .image-box img {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+/* ------ PHONES ------*/
+@media only screen and (max-width: 480px) {
+  .cart-item {
+    grid-template-columns: 0 1fr 1fr 1fr;
+  }
+  .cart-item {
+    width: 95%;
+  }
+  .image-box img {
+    display: none;
+  }
+  .name {
+    grid-column: 2;
+  }
+  .counter {
+    grid-column: 3;
+    width: 100%;
+  }
+  .cost {
+    grid-column: 4;
+    margin-right: 15%;
+    margin-top: 1rem;
+  }
+}
