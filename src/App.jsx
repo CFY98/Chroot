@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Beans from "./pages/Beans";
 import Blaze from "./pages/Blaze";
+import Sunshine from "./pages/Sunshine";
 import Equipment from "./pages/Equipment";
 import Basket from "./pages/Basket";
 import Footer from "./components/Footer";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/equipment" element={<Equipment />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="/blaze" element={<Blaze />} />
+        <Route path="/sunshine" element={<Sunshine />} />
       </Routes>
     </div>
       <Footer />
