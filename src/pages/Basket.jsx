@@ -14,14 +14,13 @@ function Basket() {
     announce("The Basket page has loaded");
   }, []);
 
-  const [basketItems, setBasketItems] = useState(basket.baskItems());
   const [stagingArea, setStagingArea] = useState(basket.stagArea());
+  const basketItems = Object.keys(stagingArea);
   const [itemCount, setItemCount] = useState(storage.get("itemCount", 0));
   const [subtotal, setSubtotal] = useState(basket.subtotal);
   const navigate = useNavigate();
 
   function updateBasketState() {
-    setBasketItems(basket.baskItems());
     setStagingArea(basket.stagArea());
     setItemCount(storage.get("itemCount", 0));
     setSubtotal(basket.subtotal);
@@ -56,10 +55,11 @@ function Basket() {
     updateBasketState();
   }
 
-  function removeCard(itemName){
-    setBasketItems(prev =>
-      prev.filter(item => item !== itemName)
-    );
+  function removeCard(itemName) {
+    delete stagingArea[itemName];
+    storage.set("stagingArea", stagingArea);
+    updateBasketState();
+    announce(`${itemName} has been removed from the basket`);
   }
 
   return (

@@ -20,11 +20,10 @@ function CartCard({ itemName, onRemove, onUpdate }) {
 
   function decAmount(itemName) {
     const stagingArea = basket.stagArea();
-    const basketItems = basket.baskItems();
     stagingArea[itemName] -= 1;
     service.updItemCount(-1);
     if (stagingArea[itemName] === 0) {
-      if (basketItems.length === 0) {
+      if (Object.keys(stagingArea).length === 0) {
         announce("the basket is now empty");
         basket.resetBasket();
       }

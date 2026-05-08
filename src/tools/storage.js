@@ -35,9 +35,9 @@ export class orderService {
     storage.set("itemCount", prev + delta);
   }
   processOrder() {
-    const basketItems = this.storage.get("basketItems", []);
     const stagingArea = this.storage.get("stagingArea", {});
 
+    const basketItems = Object.keys(stagingArea);
     const committed = this.storage.get("committed", {});
     Object.assign(committed, stagingArea);
     const purchased = this.storage.get("purchased", []).concat(basketItems);
@@ -45,7 +45,6 @@ export class orderService {
     this.storage.set("purchased", purchased);
     this.storage.set("committed", committed);
 
-    this.storage.remove("basketItems");
     this.storage.remove("stagingArea");
     this.storage.remove("itemCount");
   }
@@ -56,11 +55,6 @@ export class orderService {
     announce(`${itemName} was completely removed from the basket`);
 
     delete stagingArea[itemName];
-    const basketItems = this.storage.get("basketItems", []);
-    const itemIndex = basketItems.findIndex((i) => i === itemName);
-
-    if (itemIndex !== -1) basketItems.splice(itemIndex, 1);
-    this.storage.set("basketItems", basketItems);
     this.storage.set("stagingArea", stagingArea);
     this.storage.set("itemCount", count - itemQty);
   }
