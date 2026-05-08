@@ -33,6 +33,7 @@
 
 .caption {
   position: absolute;
+  text-decoration: none;
   inset: 0;
   background-color: var(--t-window);
   opacity: 0.9;
