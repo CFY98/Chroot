@@ -56,7 +56,7 @@ function Counter({ itemName, setToast }) {
           className={styles.counting}
           aria-label="Number of items to add to basket"
         >
-          1
+          {count}
         </div>
         <div
           className={styles["btn-minus"]}
