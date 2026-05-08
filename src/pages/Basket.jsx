@@ -16,12 +16,14 @@ function Basket() {
 
   const [basketItems, setBasketItems] = useState(basket.baskItems());
   const [stagingArea, setStagingArea] = useState(basket.stagArea());
+  const [itemCount, setItemCount] = useState(storage.get("itemCount", 0));
   const [subtotal, setSubtotal] = useState(basket.subtotal);
   const navigate = useNavigate();
 
   function updateBasketState() {
     setBasketItems(basket.baskItems());
     setStagingArea(basket.stagArea());
+    setItemCount(storage.get("itemCount", 0));
     setSubtotal(basket.subtotal);
   }
   function genOrderNo() {
@@ -54,6 +56,12 @@ function Basket() {
     updateBasketState();
   }
 
+  function removeCard(itemName){
+    setBasketItems(prev =>
+      prev.filter(item => item !== itemName)
+    );
+  }
+
   return (
     <>
       <Title title="Shopping Basket" />
@@ -80,6 +88,7 @@ function Basket() {
                 itemName={key}
                 stagingArea={stagingArea}
                 onUpdate={updateBasketState}
+                onRemove={removeCard}
               />
             ))
           )}
