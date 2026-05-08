@@ -1,13 +1,17 @@
 // IMPORTS
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { announce } from "../tools/announcer.js";
 import service, { storage } from "../tools/storage.js";
-import { basket } from "./baskstate.js";
+import { basket } from "../purchase/baskstate.js";
 import CartCard from "../components/CartCard";
 
 // PROCESS ORDER FUNCTIONS
 function Basket() {
+  useEffect(() => {
+    announce("The Basket page has loaded");
+  }, []);
+
   const [basketItems, setBasketItems] = useState(basket.baskItems());
   const [stagingArea, setStagingArea] = useState(basket.stagArea());
   const [subtotal, setSubtotal] = useState(basket.subtotal);

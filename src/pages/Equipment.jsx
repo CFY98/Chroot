@@ -1,10 +1,16 @@
 //IMPORTS
+import { useEffect } from "react";
+import { announce } from "../tools/announcer.js";
 import styles from "../css/Catalogue.module.css";
 import Title from "../components/Title";
 import Subtitle from "../components/Subtitle";
 import ProductCard from "../components/ProductCard";
 
 function Equipment() {
+  useEffect(() => {
+    announce("The Equipment page has loaded");
+  }, []);
+
   return (
     <>
       <Title title="Brewing Equipment" />
