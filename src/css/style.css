@@ -94,6 +94,7 @@ body {
   transform: none;
   visibility: visible;
 }
+
 /* ------ SOCIALS ------ */
 .fa-brands {
   grid-column: 2;
@@ -111,6 +112,7 @@ body {
 .fa-github {
   color: var(--text);
 }
+
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ TABLETS ------ */
 @media only screen and (max-width: 768px) {
