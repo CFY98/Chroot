@@ -82,6 +82,7 @@ function nextButton(list, slides, dots, next) {
     moveToSlide(active + 1, list, slides, dots);
   };
 }
+
 function prevButton(list, slides, dots, prev) {
   prev.onclick = () => {
     const target = active - 1 <= 0 ? dots.length : active - 1;
