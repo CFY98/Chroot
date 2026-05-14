@@ -85,29 +85,6 @@ hr {
     margin-right: 5%;
   }
 }
-/* ------ LAPTOPS ------ */
-@media only screen and (max-width: 1024px) {
-  .order,
-  .message {
-    margin: 1% 1%;
-  }
-  .print {
-    margin: 1% 1%;
-    width: 20%;
-    margin-right: 2%;
-  }
-}
-/* ------ TABLETS ------ */
-@media only screen and (max-width: 768px) {
-  .order,
-  .message {
-    margin: 1% 1%;
-  }
-  .order {
-    margin-left: 2%;
-  }
-}
-/* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
   .receipt-container {
     width: 80%;
@@ -119,6 +96,10 @@ hr {
     padding: 0.5em 0.5em;
     flex-direction: column;
     align-items: center;
+  }
+  .order,
+  .message {
+    margin: 0 auto;
   }
   .print {
     width: 40%;
