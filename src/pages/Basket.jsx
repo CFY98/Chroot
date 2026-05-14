@@ -2,9 +2,10 @@
 import styles from "../css/Basket.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { announce } from "../tools/announcer.js";
 import service, { storage } from "../tools/storage.js";
+import { announce } from "../tools/announcer.js";
 import { basket } from "../tools/baskstate.js";
+import { processOrder, clearBasket, removeCard } from "../hooks/basketActions.js";
 import Title from "../components/Title";
 import CartCard from "../components/CartCard";
 
@@ -25,41 +26,24 @@ function Basket() {
     setItemCount(storage.get("itemCount", 0));
     setSubtotal(basket.subtotal);
   }
-  function genOrderNo() {
-    const hash = Math.random().toString(16).slice(2, 9);
-    const orderNumber = basket.orderNo();
-    orderNumber.push(hash);
-    storage.set("orderNumber", orderNumber);
-    service.processOrder();
-    announce(`The receipt for order ${hash} is now available to print`);
-    updateBasketState();
-  }
 
-  function processOrder() {
-    const stagingArea = basket.stagArea();
-    if (Object.keys(stagingArea).length === 0) {
-      announce("Add items to the basket to place an order");
-      return;
+  function handleOrder() {
+    if (processOrder()){
+      updateBasketState();
+      navigate("/receipt");
     }
-    genOrderNo();
-    navigate("/receipt");
   }
 
-  function clearBasket() {
-    const stagingArea = basket.stagArea();
-    if (Object.keys(stagingArea).length === 0) {
-      announce("The basket is already empty");
-      return;
+  function basketReset() {
+    if (clearBasket()){
+      updateBasketState();
     }
-    basket.resetBasket();
-    updateBasketState();
   }
 
-  function removeCard(itemName) {
-    delete stagingArea[itemName];
-    storage.set("stagingArea", stagingArea);
-    updateBasketState();
-    announce(`${itemName} has been removed from the basket`);
+  function removeItem(itemName) {
+    if (removeCard(itemName)) {
+      updateBasketState();
+    }
   }
 
   return (
@@ -70,7 +54,7 @@ function Basket() {
           <div
             className={styles.delete}
             aria-label="Click to clear the basket"
-            onClick={clearBasket}
+            onClick={basketReset}
           >
             Reset All
           </div>
@@ -88,7 +72,7 @@ function Basket() {
                 itemName={key}
                 stagingArea={stagingArea}
                 onUpdate={updateBasketState}
-                onRemove={removeCard}
+                onRemove={removeItem}
               />
             ))
           )}
@@ -102,7 +86,7 @@ function Basket() {
           <button
             className={styles.button}
             aria-label="Click to confirm order"
-            onClick={processOrder}
+            onClick={handleOrder}
           >
             Checkout
           </button>
