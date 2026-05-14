@@ -1,0 +1,50 @@
+.receipt-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  width: 90%;
+  min-height: 30%;
+  margin: auto;
+  padding-top: min(3.5rem, 6%);
+  padding-bottom: min(3rem, 3%);
+}
+.image-box {
+  text-align: center;
+  margin-right: auto;
+  margin-left: 11%;
+}
+.image-box img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.about {
+  margin-left: 14%;
+}
+.item-name {
+  font-size: 1.5rem;
+  line-height: 10px;
+  font-weight: 300;
+  color: var(--text);
+}
+.item-count {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 300;
+  color: var(--text);
+}
+.receipt-cost {
+  text-align: right;
+  margin-right: 10%;
+  margin-top: 0;
+}
+.item-amount {
+  font-size: 1.5rem;
+}
+hr {
+  margin-top: 1.5%;
+  margin-right: 7%;
+  width: 86%;
+  margin-left: auto;
+}
