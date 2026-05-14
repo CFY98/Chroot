@@ -4,43 +4,22 @@ import { basket } from "../tools/baskstate.js";
 import { productPrices, toTitleCase } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import service, { storage } from "../tools/storage.js";
+import { incAmount, decAmount, remItem } from "../hooks/cartActions.js";
 
 function CartCard({ itemName, onRemove, onUpdate }) {
   const stagingArea = basket.stagArea();
   const qtyTotal = stagingArea[itemName] * productPrices[itemName];
 
-  function incAmount(itemName) {
-    const stagingArea = basket.stagArea();
-    stagingArea[itemName] += 1;
-    service.updItemCount(1);
-    storage.set("stagingArea", stagingArea);
-    announce(`${itemName} quantity increased to ${stagingArea[itemName]}`);
-    onUpdate(itemName);
+  function addAmount(itemName) {
+    if (incAmount(itemName)) onUpdate(itemName);
   }
 
-  function decAmount(itemName) {
-    const stagingArea = basket.stagArea();
-    stagingArea[itemName] -= 1;
-    service.updItemCount(-1);
-    if (stagingArea[itemName] === 0) {
-      if (Object.keys(stagingArea).length === 0) {
-        announce("the basket is now empty");
-        basket.resetBasket();
-      }
-      service.removeItem(itemName);
-      onRemove(itemName);
-      announce(`${itemName} was completely removed from the basket`);
-    } else {
-      announce(`${itemName} quantity decreased to ${stagingArea[itemName]}`);
-    }
-    storage.set("stagingArea", stagingArea);
-    onUpdate(itemName);
+  function redAmount(itemName) {
+    if (decAmount(itemName)) onUpdate(itemName);
   }
 
-  function remItem(itemName) {
-    service.removeItem(itemName);
-    onRemove(itemName);
-    announce(`${itemName} was completely removed from the basket`);
+  function delItem(itemName) {
+    if (remItem(itemName)) onRemove(itemName);
   }
 
   return (
@@ -55,7 +34,7 @@ function CartCard({ itemName, onRemove, onUpdate }) {
         <div
           className={styles["plus-btn"]}
           role="button"
-          onClick={() => incAmount(itemName)}
+          onClick={() => addAmount(itemName)}
           aria-label="Increases quantity by one"
         >
           +
@@ -69,7 +48,7 @@ function CartCard({ itemName, onRemove, onUpdate }) {
         <div
           className={styles["minus-btn"]}
           role="button"
-          onClick={() => decAmount(itemName)}
+          onClick={() => redAmount(itemName)}
           aria-label="Increases quantity by one"
         >
           -
@@ -80,7 +59,7 @@ function CartCard({ itemName, onRemove, onUpdate }) {
         <div
           className={styles.remove}
           role="button"
-          onClick={() => remItem(itemName)}
+          onClick={() => delItem(itemName)}
           aria-label="Removes item from basket"
         >
           <u>Remove</u>
