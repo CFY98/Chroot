@@ -63,3 +63,75 @@
   margin-top: 1%;
   text-align: right;
 }
+hr {
+  margin-top: 1.5%;
+  margin-right: 7%;
+  width: 86%;
+  margin-left: auto;
+}
+/*------ RESPONSIVE DESIGN ------*/
+/* ------ DESKTOPS ------ */
+@media only screen and (max-width: 1280px) {
+  .receipt-container {
+    width: 85%;
+  }
+  .order,
+  .message {
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+  .print {
+    margin: 1% 1%;
+    margin-right: 5%;
+  }
+}
+/* ------ LAPTOPS ------ */
+@media only screen and (max-width: 1024px) {
+  .order,
+  .message {
+    margin: 1% 1%;
+  }
+  .print {
+    margin: 1% 1%;
+    width: 20%;
+    margin-right: 2%;
+  }
+}
+/* ------ TABLETS ------ */
+@media only screen and (max-width: 768px) {
+  .order,
+  .message {
+    margin: 1% 1%;
+  }
+  .order {
+    margin-left: 2%;
+  }
+}
+/* ------ PHONES ------*/
+@media only screen and (max-width: 480px) {
+  .receipt-container {
+    width: 80%;
+  }
+  .message {
+    margin-bottom: 3%;
+  }
+  .bar {
+    padding: 0.5em 0.5em;
+    flex-direction: column;
+    align-items: center;
+  }
+  .print {
+    width: 40%;
+    height: 40%;
+    margin: 3% 2%;
+    align-items: center;
+  }
+  .receipt-total {
+    font-size: 1.2rem;
+  }
+  .receipt-amount {
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    text-align: right;
+  }
+}

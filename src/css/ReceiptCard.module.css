@@ -42,9 +42,34 @@
 .item-amount {
   font-size: 1.5rem;
 }
-hr {
-  margin-top: 1.5%;
-  margin-right: 7%;
-  width: 86%;
-  margin-left: auto;
+
+/*------ RESPONSIVE DESIGN ------*/
+/* ------ TABLETS ------ */
+@media only screen and (max-width: 768px) {
+  .image-box img {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+/* ------ PHONES ------*/
+@media only screen and (max-width: 480px) {
+  .receipt-item {
+    grid-template-columns: 0 0.5fr 0.5fr 0.5fr;
+  }
+  .image-box img {
+    display: none;
+  }
+  .item-name {
+    font-size: 1rem;
+    margin-right: auto;
+    margin-left: -9%;
+  }
+  .item-count {
+    font-size: 0.8rem;
+  }
+  .item-amount {
+    font-size: 1rem;
+    margin-right: auto;
+    margin-left: 10%;
+  }
 }

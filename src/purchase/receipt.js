@@ -1,6 +1,5 @@
 // IMPORTS
 import { productPrices } from "../tools/assets.js";
-import { tuiMode, tMode } from "../terminal/tuimode.js";
 import { storage } from "../tools/storage.js";
 
 // RECEIPT GENERATION FUNCTIONS
@@ -35,7 +34,6 @@ function printReceipt(orderNumber, print, elements) {
     if (orderEl) orderEl.textContent = "Order Number:";
     if (messageEl) messageEl.textContent = "";
     total.textContent = "";
-    tMode(tuiMode);
   };
 }
 
