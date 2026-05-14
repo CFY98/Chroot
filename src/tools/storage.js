@@ -36,13 +36,9 @@ export class orderService {
   }
   processOrder() {
     const stagingArea = this.storage.get("stagingArea", {});
-
-    const basketItems = Object.keys(stagingArea);
     const committed = this.storage.get("committed", {});
     Object.assign(committed, stagingArea);
-    const purchased = this.storage.get("purchased", []).concat(basketItems);
 
-    this.storage.set("purchased", purchased);
     this.storage.set("committed", committed);
 
     this.storage.remove("stagingArea");
