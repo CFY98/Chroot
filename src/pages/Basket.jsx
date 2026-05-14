@@ -5,7 +5,12 @@ import { useNavigate } from "react-router-dom";
 import service, { storage } from "../tools/storage.js";
 import { announce } from "../tools/announcer.js";
 import { basket } from "../tools/baskstate.js";
-import { processOrder, clearBasket, removeCard } from "../hooks/basketActions.js";
+import { productPrices } from "../tools/assets.js";
+import {
+  processOrder,
+  clearBasket,
+  removeCard,
+} from "../hooks/basketActions.js";
 import Title from "../components/Title";
 import CartCard from "../components/CartCard";
 
@@ -18,7 +23,11 @@ function Basket() {
   const [stagingArea, setStagingArea] = useState(basket.stagArea());
   const basketItems = Object.keys(stagingArea);
   const [itemCount, setItemCount] = useState(storage.get("itemCount", 0));
-  const [subtotal, setSubtotal] = useState(basket.subtotal);
+  const [subtotal, setSubtotal] = useState(() => {
+    return Object.entries(stagingArea).reduce((sum, [key, value]) => {
+      return sum + value * (productPrices[key] || 0);
+    }, 0);
+  });
   const navigate = useNavigate();
 
   function updateBasketState() {
@@ -28,14 +37,14 @@ function Basket() {
   }
 
   function handleOrder() {
-    if (processOrder()){
+    if (processOrder()) {
       updateBasketState();
       navigate("/receipt");
     }
   }
 
   function basketReset() {
-    if (clearBasket()){
+    if (clearBasket()) {
       updateBasketState();
     }
   }
