@@ -5,8 +5,8 @@
   width: 90%;
   min-height: 30%;
   margin: auto;
-  padding-top: min(3.5rem, 6%);
-  padding-bottom: min(3rem, 3%);
+  padding-top: min(2rem, 2%);
+  padding-bottom: min(2rem, 2%);
 }
 .image-box {
   text-align: center;
@@ -22,25 +22,23 @@
 .about {
   margin-left: 14%;
 }
-.item-name {
-  font-size: 1.5rem;
-  line-height: 10px;
+.item-name,
+.item-count,
+.item-amount {
   font-weight: 300;
+  font-size: 1.5rem;
   color: var(--text);
 }
+.item-name {
+  line-height: 10px;
+}
 .item-count {
-  font-size: 1.5rem;
   text-align: center;
-  font-weight: 300;
-  color: var(--text);
 }
 .receipt-cost {
   text-align: right;
   margin-right: 10%;
   margin-top: 0;
-}
-.item-amount {
-  font-size: 1.5rem;
 }
 
 /*------ RESPONSIVE DESIGN ------*/
