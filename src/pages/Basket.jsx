@@ -10,7 +10,7 @@ import {
   processOrder,
   clearBasket,
   removeCard,
-} from "../hooks/basketActions.js";
+} from "../tools/basketActions.js";
 import Title from "../components/Title";
 import CartCard from "../components/CartCard";
 
