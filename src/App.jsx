@@ -14,6 +14,7 @@ import Dripper from "./pages/Dripper";
 import Filters from "./pages/Filters";
 import Grinder from "./pages/Grinder";
 import Basket from "./pages/Basket";
+import Receipt from "./pages/Receipt";
 import Footer from "./components/Footer";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/filters" element={<Filters />} />
           <Route path="/grinder" element={<Grinder />} />
           <Route path="/basket" element={<Basket />} />
+          <Route path="/receipt" element={<Receipt tuiMode={tuiMode} />} />
         </Routes>
       </div>
       <Footer />
