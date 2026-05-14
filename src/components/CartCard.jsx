@@ -4,7 +4,7 @@ import { basket } from "../tools/baskstate.js";
 import { productPrices, toTitleCase } from "../tools/assets.js";
 import { announce } from "../tools/announcer.js";
 import service, { storage } from "../tools/storage.js";
-import { incAmount, decAmount, remItem } from "../hooks/cartActions.js";
+import { incAmount, decAmount, remItem } from "../tools/cartActions.js";
 
 function CartCard({ itemName, onRemove, onUpdate }) {
   const stagingArea = basket.stagArea();
