@@ -33,10 +33,10 @@ Users can switch to Terminal mode if they prefer working in a terminal.
 
 ## 📸 Screenshots (Tablet View)
 
-![Landing Page](./public/screenshots/v0.2.1_GUI_Landing_Page.png)
-![Basket UI](./public/screenshots/v0.2.1_basket_page.png)
-![Terminal User Interface Example](./public/screenshots/v0.2.1_tui_mode.png)
-![PDF Result](./public/screenshots/v0.2.1_saved_receipt.png)
+![Landing Page](./public/screenshots/landingpage.png)
+![Basket UI](./public/screenshots/basketui.png)
+![Terminal User Interface Example](./public/screenshots/terminalui.png)
+![PDF Result](./public/screenshots/invoice.png)
 
 ## Project Structure
 
