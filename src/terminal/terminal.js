@@ -49,7 +49,7 @@ export function run(command, navigate) {
 }
 
 // KEYPRESS HANDLERS
-function pressEnter({ e, input, navigate }) {
+function pressEnter({ input, navigate }) {
   const val = input.value;
   pushHist(val, input, navigate);
 }
