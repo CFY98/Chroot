@@ -60,7 +60,7 @@ hr {
 }
 .receipt-total {
   width: 100%;
-  font-size: clamp(0.9rem, 2vw + 1rem, 1.5rem);
+  font-size: clamp(0.9rem, 2vw + 1rem, 1.6rem);
   padding-right: 7%;
   padding-top: 2%;
 }
