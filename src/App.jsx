@@ -2,21 +2,21 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { handleScroll } from "./tools/transitions";
-import Header from "./components/Header";
-import NavBar from "./components/NavBar";
-import Home from "./pages/Home";
-import Terminal from "./pages/Terminal";
-import Beans from "./pages/Beans";
-import Blaze from "./pages/Blaze";
-import Sunshine from "./pages/Sunshine";
-import Summit from "./pages/Summit";
-import Equipment from "./pages/Equipment";
-import Dripper from "./pages/Dripper";
-import Filters from "./pages/Filters";
-import Grinder from "./pages/Grinder";
-import Basket from "./pages/Basket";
-import Receipt from "./pages/Receipt";
-import Footer from "./components/Footer";
+import Header from "./components/sections/Header";
+import NavBar from "./components/navigation/NavBar";
+import Home from "./routes/Home";
+import Terminal from "./routes/Terminal";
+import Beans from "./routes/Beans";
+import Blaze from "./routes/Blaze";
+import Sunshine from "./routes/Sunshine";
+import Summit from "./routes/Summit";
+import Equipment from "./routes/Equipment";
+import Dripper from "./routes/Dripper";
+import Filters from "./routes/Filters";
+import Grinder from "./routes/Grinder";
+import Basket from "./routes/Basket";
+import Receipt from "./routes/Receipt";
+import Footer from "./components/sections/Footer";
 
 function App() {
   const [tuiMode, setTuiMode] = useState(false);
