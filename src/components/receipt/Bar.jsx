@@ -12,7 +12,7 @@ function Bar({ onPrint }) {
         Order Number: {orderNumber.at(-1)}
       </p>
       <p className={`${styles.message} message`}>
-        {orderMessage.at(-1) ? `Order Message: ${orderMessage.at(-1)}` : ""}
+        {orderMessage.at(-1) ? `Order Message: "${orderMessage.at(-1)}"` : ""}
       </p>
       <button
         className={`${styles.print} print`}
