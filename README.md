@@ -52,7 +52,7 @@ Chroot/
 ├── package.json
 ├── package-lock.json
 │
-├───public/ — static assets served directly (images, favicon, pages)
+├───public/               — static assets served directly
 │    ├── favicon.ico
 │    ├── Images
 │    └── screenshots
@@ -60,7 +60,7 @@ Chroot/
 └───src/
      ├───App.jsx          — root component, routing, and layout
      ├───Main.jsx         — React entry point 
-     ├───main.js          — imports transistions script 
+     ├───main.js          — imports transitions script 
      ├───components/      — reusable React components
      ├───css/             — stylesheets for global styles and each page/component
      ├───git/             — git commands logic for terminal
