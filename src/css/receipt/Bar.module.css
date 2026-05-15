@@ -1,7 +1,7 @@
 .bar {
   background-color: var(--border);
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   padding: 5% 5%;
   gap: 1rem;
@@ -9,14 +9,22 @@
 }
 .order,
 .message {
-  margin-left: auto;
-  margin-right: 10%;
   text-align: center;
   font-size: clamp(0.7rem, 1vw + 0.5rem, 1.5rem);
 }
+.order {
+  margin-right: auto;
+  margin-left: 10%;
+}
+.message {
+  margin-left: auto;
+  margin-right: 10%;
+}
 .print {
-  width: 93%;
+  width: 80%;
   padding: 10px;
+  margin-right: auto;
+  margin-left: 12%;
   border: none;
   background: linear-gradient(to bottom right, var(--hover), var(--path));
   border-radius: 20px;
@@ -35,6 +43,7 @@
     margin-bottom: 1%;
   }
   .print {
+    width: 90%;
     margin: 1% 1%;
     margin-right: 5%;
   }
