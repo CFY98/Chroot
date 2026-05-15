@@ -44,8 +44,9 @@ Users can switch to Terminal mode if they prefer working in a terminal.
 Chroot/
 ├── .gitignore
 ├── index.html
-├── LICENSE
-├── README.md
+├── LICENSE               — Apache 2.0 License 
+├── README.md             — this file
+├── CHANGELOG.md          — log of all iterative changes between versions
 ├── vercel.json
 ├── vite.config.js
 ├── package.json
