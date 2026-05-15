@@ -1,22 +1,7 @@
-// ROUTES OBJECT
-export const routes = {
-  "/": { path: "/index.html", title: "home" },
-  "/beans": { path: "/pages/tabs/beans.html", title: "beans" },
-  "/equipment": {
-    path: "/pages/tabs/equipment.html",
-    title: "equipment",
-  },
-  "/basket": { path: "/pages/tabs/basket.html", title: "basket" },
-  "/terminal": { path: "/pages/ui/terminal.html", title: "terminal" },
-  "/receipt": { path: "/pages/ui/receipt.html", title: "receipt" },
-  "/blaze": { path: "/pages/coffee/blaze.html", title: "blaze" },
-  "/sunshine": { path: "/pages/coffee/sunshine.html", title: "sunshine" },
-  "/summit": { path: "/pages/coffee/summit.html", title: "summit" },
-  "/filters": { path: "/pages/gear/filters.html", title: "filters" },
-  "/dripper": { path: "/pages/gear/dripper.html", title: "dripper" },
-  "/grinder": { path: "/pages/gear/grinder.html", title: "grinder" },
-};
-
+// TITLE CASE
+export function toTitleCase(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
 // PRODUCTS
 export const productPrices = {
   blaze: 11.99,

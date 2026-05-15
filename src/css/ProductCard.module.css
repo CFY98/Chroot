@@ -1,0 +1,62 @@
+.information {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 1rem 1rem;
+}
+
+.itemnames {
+  font-weight: 300;
+  font-size: clamp(1rem, 1vw + 0.5rem, 3rem);
+  color: var(--text);
+}
+
+.prices {
+  font-weight: 200;
+  font-size: clamp(0.8rem, 1vw + 0.5rem, 3rem);
+  color: var(--muted);
+}
+
+.product {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.caption-container {
+  width: 90%;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+}
+
+.caption {
+  position: absolute;
+  text-decoration: none;
+  inset: 0;
+  background-color: var(--t-window);
+  opacity: 0.9;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.caption-container:hover .caption {
+  transform: translateY(0%);
+}
+
+.more {
+  color: var(--text);
+  font-family: "JetBrains Mono";
+  font-size: clamp(1rem, 2vw + 2rem, 5rem);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.more:hover {
+  color: var(--hover);
+}

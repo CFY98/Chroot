@@ -1,11 +1,3 @@
-// IMPORTS
-import { initTerminal } from "../terminal/terminal.js";
-import { initBasket } from "../purchase/basket.js";
-import { initReceipt } from "../purchase/receipt.js";
-import { initBuy } from "../purchase/buy.js";
-import { routes } from "./assets.js";
-import { toAdd } from "./storage.js";
-
 // ANNOUNCEMENTS
 export function announce(message) {
   const announcer =
@@ -17,14 +9,3 @@ export function announce(message) {
   announcer.textContent = message;
 }
 
-// PAGE ANNOUNCEMENTS
-export function uiAnnounce(page) {
-  for (let key in toAdd) delete toAdd[key];
-  if (!routes[page]) return;
-  announce(`The ${routes[page].title} page has loaded`);
-  if (page === "/beans" || page === "/equipment") return;
-  else if (page === "/terminal") initTerminal();
-  else if (page === "/basket") initBasket();
-  else if (page === "/receipt") initReceipt();
-  else initBuy(page);
-}

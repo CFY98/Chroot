@@ -1,7 +1,6 @@
 // IMPORTS
 import { addLine } from "../tools/utilities.js";
 import { announce } from "../tools/announcer.js";
-import { router } from "../tools/routerSPA.js";
 import { storage } from "../tools/storage.js";
 import { gitAdd } from "../git/gitadd.js";
 import { gitReset } from "../git/gitreset.js";
@@ -16,15 +15,14 @@ function commitFirst(block) {
 }
 
 // GIT LOG (RECIEPT GENERATION)
-function gitLog({ block }) {
+function gitLog({ block, navigate }) {
   const committed = storage.get("committed", {});
   if (Object.keys(committed).length === 0) {
     commitFirst(block);
     return;
   }
   setTimeout(() => {
-    window.history.pushState({}, "", "/receipt");
-    router("/receipt");
+    navigate("/receipt");
   }, 100);
 }
 

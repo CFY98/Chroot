@@ -1,10 +1,17 @@
+//IMPORTS
+import { announce } from "../tools/announcer.js";
+
 // GLOBAL VARIABLES
 let active = 1;
 let autoSlideInterval;
 let slideWidth;
 let isTransitioning = false;
 
-// SLIDESHOW HELPERS
+// SLIDESHOW CLEANUP
+export function cleanupSlideshow() {
+  clearInterval(autoSlideInterval);
+}
+
 // SLIDESHOW START POSITION
 function setInitialPosition(slides, list) {
   slideWidth = slides[0].offsetWidth;
@@ -15,21 +22,23 @@ function setInitialPosition(slides, list) {
 // CAPTIONS
 function showCaption(slides) {
   slides.forEach((slide, i) => {
-    const caption = slide.querySelector(".slidecaption");
+    const caption = slide.querySelector("[data-component='caption']");
     if (!caption) return;
-    if (i === active) caption.classList.add("show");
+    const showClass = caption.dataset.showClass;
+    if (i === active) caption.classList.add(showClass);
   });
 }
 
 function updateCaption(slides, realIndex) {
   slides.forEach((slide, i) => {
-    const caption = slide.querySelector(".slidecaption");
+    const caption = slide.querySelector("[data-component='caption']");
     if (!caption) return;
+    const showClass = caption.dataset.showClass;
     if (i === realIndex + 1) {
-      caption.classList.add("show");
+      caption.classList.add(showClass);
     } else {
       setTimeout(() => {
-        caption.classList.remove("show");
+        caption.classList.remove(showClass);
       }, 300);
     }
   });
@@ -39,15 +48,22 @@ function updateCaption(slides, realIndex) {
 function updateDots(dots, index) {
   if (!dots.length) return;
   index = (index + dots.length) % dots.length;
-
-  document.querySelector(".dots li.active")?.classList.remove("active");
-  dots[index].classList.add("active");
+  const activeDot = document.querySelector("[data-component='dots']").dataset
+    .setActive;
+  dots.forEach((dot) => dot.classList.remove(activeDot));
+  dots[index].classList.add(activeDot);
 }
 
 function clickDots(list, slides, dots) {
   dots.forEach((li, key) => {
     li.addEventListener("click", function () {
       moveToSlide(key + 1, list, slides, dots);
+      const target = key + 1;
+      const targetSlide = slides[target];
+      const captionText =
+        targetSlide?.querySelector("[data-component='caption'] p")
+          ?.textContent || `Slide ${key + 1}`;
+      announce(`Slide ${target} of ${dots.length}: ${captionText}`);
       resetAutoSlide(list, slides, dots);
     });
   });
@@ -56,12 +72,25 @@ function clickDots(list, slides, dots) {
 // NAVIGATION HANDLERS
 function nextButton(list, slides, dots, next) {
   next.onclick = () => {
+    const target = active + 1 > dots.length ? 1 : active + 1;
+    const targetSlide = slides[target];
+    const captionText =
+      targetSlide?.querySelector("[data-component='caption'] p")?.textContent ||
+      `Slide ${target}`;
+    announce(`Slide ${target} of ${dots.length}: ${captionText}`);
     next.disabled = true;
     moveToSlide(active + 1, list, slides, dots);
   };
 }
+
 function prevButton(list, slides, dots, prev) {
   prev.onclick = () => {
+    const target = active - 1 <= 0 ? dots.length : active - 1;
+    const targetSlide = slides[target];
+    const captionText =
+      targetSlide?.querySelector("[data-component='caption'] p")?.textContent ||
+      `Slide ${target}`;
+    announce(`Slide ${target} of ${dots.length}: ${captionText}`);
     prev.disabled = true;
     moveToSlide(active - 1, list, slides, dots);
   };
@@ -129,11 +158,11 @@ export function initSlideshow() {
   autoSlideInterval = undefined;
   slideWidth = 0;
 
-  const slideshow = document.getElementById("slideshow");
+  const slideshow = document.querySelector("[data-component='slideshow']");
   if (!slideshow) return;
-  const list = slideshow.querySelector(".list");
-  let slides = slideshow.querySelectorAll(".list figure");
-  const dots = document.querySelectorAll(".dots li");
+  const list = slideshow.querySelector("[data-component='list']");
+  let slides = slideshow.querySelectorAll("figure");
+  const dots = document.querySelectorAll("[data-component='dots'] li");
   const prev = document.getElementById("prev");
   const next = document.getElementById("next");
 
@@ -145,7 +174,7 @@ export function initSlideshow() {
   list.appendChild(firstClone);
   list.insertBefore(lastClone, slides[0]);
 
-  slides = slideshow.querySelectorAll(".list figure");
+  slides = slideshow.querySelectorAll("figure");
 
   // SLIDE STARTING POSITION
   setInitialPosition(slides, list);
@@ -159,7 +188,7 @@ export function initSlideshow() {
   nextButton(list, slides, dots, next);
   prevButton(list, slides, dots, prev);
   clickDots(list, slides, dots);
-  
+
   // START AUTOSLIDE
   startAutoSlide(list, slides, dots);
 

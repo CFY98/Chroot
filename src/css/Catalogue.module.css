@@ -1,0 +1,26 @@
+.product-wrapper {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  margin-bottom: min(3rem, 1%);
+}
+/* /1* ------ RESPONSIVE DESIGN ------ *1/ */
+/* ------ DESKTOPS - PHONES ------ */
+@media only screen and (max-width: 1280px) {
+  .product-wrapper {
+    width: 95%;
+  }
+}

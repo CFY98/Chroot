@@ -1,0 +1,90 @@
+.dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+.dot-r {
+  background: var(--red);
+  margin-left: 0.1rem;
+}
+.dot-y {
+  background: var(--amber);
+}
+.dot-g {
+  background: var(--green);
+}
+
+.titlebar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: clamp(0.4rem, 1.3vw, 1.5rem);
+  background: var(--bar);
+  border: 1px solid var(--border);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.titlebar-text {
+  margin-left: auto;
+  margin-right: min(0.5rem, 3%);
+  font-family: "IBM Plex Sans";
+  font-size: clamp(1rem, 1vw + 0.1rem, 1.5rem);
+  text-align: center;
+  color: transparent;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  background: var(--notification);
+  padding: min(0.5rem, 0.5%);
+  border-radius: 5px;
+}
+
+.titlebar-text::after,
+.titlebar-text.active::after {
+  content: attr(data-text);
+  color: var(--text);
+}
+
+.titlebar-text:hover::after,
+.titlebar-text.active:hover::after {
+  content: attr(data-hover);
+  color: var(--hover);
+}
+
+.titlebar-text.active {
+  color: transparent;
+}
+/* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS ------ */
+@media only screen and (max-width: 1280px) {
+  .dot-r {
+    margin-left: 0.5rem;
+  }
+}
+
+/* ------ LAPTOPS ------ */
+@media only screen and (max-width: 1024px) {
+  .dot-r {
+    margin-left: 0.7rem;
+  }
+}
+
+/* ------ TABLETS ------ */
+@media only screen and (max-width: 768px) {
+  .top-container {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .dot-r {
+    margin-left: 0.9rem;
+  }
+}
+/* ------ PHONES ------ */
+@media only screen and (max-width: 480px) {
+  .dot-r {
+    margin-left: 1rem;
+  }
+}

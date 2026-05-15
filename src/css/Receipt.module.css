@@ -1,0 +1,118 @@
+.receipt-container {
+  margin: 0 auto;
+  width: 90%;
+  height: 100%;
+  background-color: var(--t-window);
+  border-radius: 10px;
+}
+.bar {
+  background-color: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2% 2%;
+  border-radius: 10px;
+}
+.order,
+.message {
+  margin-right: auto;
+  margin-left: 5%;
+  text-align: center;
+  font-size: clamp(0.7rem, 1vw + 0.5rem, 1.5rem);
+  text-decoration: underline;
+}
+.print {
+  width: 20%;
+  margin-right: 5%;
+  padding: 1% 1%;
+  border: none;
+  background: linear-gradient(to bottom right, var(--hover), var(--path));
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-family: "JetBrains Mono";
+  font-weight: 300;
+  color: var(--text);
+}
+.receipt-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+.receipt-checkout {
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: 7%;
+  padding-bottom: 5%;
+  width: 28%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  justify-self: flex-end;
+}
+.receipt-total {
+  width: 100%;
+  font-size: 1.8rem;
+  text-align: right;
+}
+.receipt-amount {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-top: 1%;
+  text-align: right;
+}
+hr {
+  margin-top: 1.5%;
+  margin-right: 7%;
+  width: 86%;
+  margin-left: auto;
+}
+/*------ RESPONSIVE DESIGN ------*/
+/* ------ DESKTOPS ------ */
+@media only screen and (max-width: 1280px) {
+  .receipt-container {
+    width: 85%;
+  }
+  .order,
+  .message {
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+  .print {
+    margin: 1% 1%;
+    margin-right: 5%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .receipt-container {
+    width: 80%;
+  }
+  .message {
+    margin-bottom: 3%;
+  }
+  .bar {
+    padding: 0.5em 0.5em;
+    flex-direction: column;
+    align-items: center;
+  }
+  .order,
+  .message {
+    margin: 0 auto;
+  }
+  .print {
+    width: 40%;
+    height: 40%;
+    margin: 3% 2%;
+    align-items: center;
+  }
+  .receipt-total {
+    font-size: 1.2rem;
+  }
+  .receipt-amount {
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    text-align: right;
+  }
+}

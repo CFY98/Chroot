@@ -1,0 +1,66 @@
+.story-container {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: var(--border) solid 1px;
+  margin-top: auto;
+}
+
+.subheading {
+  font-size: clamp(2rem, 2.5vw + 1rem, 4rem);
+  padding: min(3rem, 5%);
+  font-family: "IBM Plex Sans";
+}
+.story {
+  display: flex;
+  width: 66%;
+  align-items: center;
+  gap: min(1rem, 5%);
+  margin-bottom: clamp(2rem, 2vw + 2rem, 4rem);
+}
+.ethos {
+  width: 50%;
+  font-size: clamp(0.5rem, 1.2vw + 0.5rem, 2rem);
+}
+.roaster {
+  width: 50%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+}
+/* ------ RESPONSIVE DESIGN ------ */
+/* ------ DESKTOPS - LAPTOPS ------ */
+@media only screen and (max-width: 1280px) {
+    .story {
+        width: 95%;
+    }
+}
+/* ------ TABLETS ------ */
+@media only screen and (max-width: 768px) {
+    .story {
+        width: 95%;
+        align-items: stretch;
+    }
+    .ethos {
+        width: 95%;
+    }
+}
+/* ------ PHONES ------ */
+@media only screen and (max-width: 480px) {
+    .story {
+        width: 100%;
+        flex-direction: column;
+    }
+    .ethos {
+        width: 94%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .roaster {
+        width: 94%;
+        margin: 0 auto;
+    }
+}

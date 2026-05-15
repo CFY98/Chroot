@@ -1,0 +1,32 @@
+.dots {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: clamp(1rem, 2vw + 1rem, 3rem);
+  bottom: clamp(1rem, 1vw + 1rem, 1.5rem);
+  box-sizing: border-box;
+}
+
+.dot {
+  list-style: none;
+  background-color: var(--arrows);
+  cursor: pointer;
+  width: clamp(1.5rem, 2vw + 1rem, 2rem);
+  height: clamp(1.5rem, 2vw + 1rem, 2rem);
+  margin: min(1rem, 4%);
+  border-radius: 40px;
+  display: inline-block;
+  transition:
+    background-color ease 500ms,
+    width 0.5s;
+}
+
+.dot.active {
+  width: clamp(2rem, 3vw + 2rem, 5rem);
+}
+
+.dot:hover,
+.dot.active:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}

@@ -1,0 +1,48 @@
+.nav-buttons {
+  font-family: "IBM Plex Sans";
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid var(--border);
+  border-top: none;
+  background-color: var(--t-window);
+}
+
+.nav-btn {
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.2rem, 0.75vw, 1rem);
+  font-size: clamp(0.5rem, 2vw + 0.6rem, 2rem);
+  color: var(--muted);
+  border-right: var(--border) 1px solid;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+  user-select: none;
+  list-style: none;
+}
+
+.nav-btn:last-child {
+  border-right: none;
+}
+
+.nav-btn:hover {
+  background: var(--border);
+}
+
+.nav-btn.active {
+  background: var(--border);
+  border-right-color: var(--b-right);
+}
+/* ------ RESPONSIVE DESIGN ------ */
+/* ------ DISABLE HOVER EFFECT ON TOUCH DEVICES ------ */
+@media (hover: hover) {
+  .nav-btn:hover {
+    background: var(--border);
+  }
+}
