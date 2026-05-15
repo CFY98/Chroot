@@ -23,6 +23,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/):
 - Vanilla JS slideshow and scroll transitions preserved with `useEffect`
 - Terminal preserved via `useEffect`
 
+### Fixed
+- PDF receipt has custom css module to ensure receipt items don't "break" across pages
+
 ## [[v0.2.1] - Vanilla JS](https://github.com/CFY98/Chroot/tree/v0.2.1)
 ### Added
 - Visual mode with point-and-click navigation
