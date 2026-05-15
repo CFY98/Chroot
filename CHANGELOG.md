@@ -22,7 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/):
 ### Improved
 - Vanilla JS slideshow and scroll transitions preserved with `useEffect`
 - Terminal preserved via `useEffect`
-- App.jx handles transitions script import over main.js
+- App.jsx handles transitions script import over main.js
 
 ### Fixed
 - PDF receipt has custom css module to ensure receipt items don't "break" across pages
