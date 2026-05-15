@@ -36,8 +36,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/):
 - Responsive carousel with caption animations
 
 ### Changed
-- SPA router with fetch promise-chaining in favor of iframes
-- `HTML2PDF` in favor of `window.print()`
+- SPA router with fetch promise-chaining in favour of iframes
+- `HTML2PDF` in favour of `window.print()`
 
 ### Improved
 - Carousel from legacy version includes disablers preventing jumping between slides during manual navigation
