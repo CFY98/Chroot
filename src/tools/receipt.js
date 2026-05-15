@@ -16,6 +16,7 @@ async function downloadPDF(orderNumber, invoiceRef) {
       scale: 2,
       useCORS: true,
       logging: true,
+      windowWidth: 1200,
     },
     jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
   };
