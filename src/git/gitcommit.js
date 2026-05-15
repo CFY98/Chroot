@@ -1,6 +1,7 @@
 // IMPORTS
 import { addLine } from "../tools/utilities.js";
 import { announce } from "../tools/announcer.js";
+import { toTitleCase } from "../tools/assets.js";
 import service, { storage } from "../tools/storage.js";
 
 // GIT COMMIT HELPERS
@@ -29,7 +30,7 @@ function pushOrder(message, hash) {
   const orderMessage = storage.get("orderMessage", []);
   orderNumber.push(hash);
   storage.set("orderNumber", orderNumber);
-  orderMessage.push(message);
+  orderMessage.push(toTitleCase(message));
   storage.set("orderMessage", orderMessage);
   service.processOrder();
 }
