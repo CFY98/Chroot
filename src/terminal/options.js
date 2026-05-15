@@ -85,7 +85,7 @@ function hours({ command, block }) {
   blank(block);
 }
 
-function git({ parts, verb, block }) {
+function git({ parts, verb, block, navigate }) {
   const action = parts[1];
   const items = parts.slice(2);
   const commands = gitCmds[action];
@@ -94,6 +94,7 @@ function git({ parts, verb, block }) {
     commands({
       items,
       block,
+      navigate,
     });
   } else {
     announce(
