@@ -25,7 +25,7 @@ function PDF() {
         <div className={styles.bar}>
           <p className={styles.order}>Order Number: {orderNumber.at(-1)}</p>
           <p className={styles.message}>
-            {orderMessage.at(-1) ? `Order Message: ${orderMessage.at(-1)}` : ""}
+            {orderMessage.at(-1) ? `Order Message: "${orderMessage.at(-1)}"` : ""}
           </p>
         </div>
         <div className={styles["receipt-items"]}>
