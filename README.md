@@ -2,7 +2,7 @@
 
 A concept e-commerce UI built around a terminal interface. Alongside the conventional point-and-click, users can interact with the shop using familiar git commands to browse, stage, and commit items to their basket.
 
-Iterated on user feedback from external testers to introduce new features since v0.2.1.
+Iterated on user feedback from external testers to introduce new features from v0.2.1 onwards.
 
 ## ✨ Features
 
@@ -42,33 +42,30 @@ Users can switch to Terminal mode if they prefer working in a terminal.
 
 ```
 Chroot/
-|   .gitignore
-|   index.html
-|   LICENSE
-|   package-lock.json
-|   package.json
-|   README.md
-|   vercel.json
-|
+├── .gitignore
+├── index.html
+├── LICENSE
+├── README.md
+├── vercel.json
+├── vite.config.js
+├── package.json
+├── package-lock.json
+│
 ├───public/ — static assets served directly (images, favicon, pages)
-|   ├───pages/ — HTML pages organised by category
-│   |    ├───coffee/
-│   |    ├───gear/
-│   |    ├───tabs/
-│   |    └───ui/
-│   |
-│   ├───favicon.ico
-|   ├───Images/
-|   └───screenshots
+│    ├── favicon.ico
+│    ├── Images
+│    └── screenshots
 │
 └───src/
-    ├───components/      — reusable React components
-    ├───css/             — stylesheets for each page/component
-    ├───git/             — git commands logic for terminal
-    ├───pages/           — React page components
-    ├───purchase/        — basket, buy, and receipt logic
-    ├───terminal/        — terminal emulator and commands
-    └───tools/           — shared utilities, router, and state
+     ├───App.jsx          — root component, routing, and layout
+     ├───Main.jsx         — React entry point 
+     ├───main.js          — imports transistions script 
+     ├───components/      — reusable React components
+     ├───css/             — stylesheets for global styles and each page/component
+     ├───git/             — git commands logic for terminal
+     ├───pages/           — React page components
+     ├───terminal/        — terminal emulator and commands
+     └───tools/           — shared utilities, state, basket and purchase logic
 ```
 
 ## Installation
@@ -117,7 +114,7 @@ npm run build
 
 - **HTML**: Provides basic structure and layout of the website.
 - **CSS**: Used for styling the website.
-- **JavaScript**: Functional terminal with Git-style commands, localStorage as a cross-page communication bridge, and DOM manipulation via useEffect for slideshow for slideshow and scroll transitions.
+- **JavaScript**: Functional terminal with Git-style commands, localStorage as a cross-page communication bridge, and DOM manipulation via useEffect for slideshow and scroll transitions.
 - **React**: Component-based UI with hooks, CSS modules, and React Router for client-side navigation.
 - **ARIA**: Live regions, semantic roles and labels for screen reader support.
 - **Vite**: Development server and bundler.
