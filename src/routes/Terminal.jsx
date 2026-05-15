@@ -17,17 +17,17 @@ function Terminal() {
 
   return (
     <div
-      className={styles.terminal}
+      className={`${styles.terminal} fadein`}
       data-component="terminal"
       role="region"
       aria-label="terminal navigation"
     >
-      <div className={styles["input-row"]}>
+      <div className={`${styles["input-row"]} fadein`}>
         <span className={styles.prompt} aria-hidden="true">
-          site@chroot <span className={styles.path}> ~ $</span>
+          site@chroot <span className={`${styles.path} fadein`}> ~ $</span>
         </span>
         <input
-          className={styles["cmd-input"]}
+          className={`${styles["cmd-input"]} fadein`}
           data-component="cmd-input"
           type="text"
           autoComplete="off"
