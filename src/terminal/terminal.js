@@ -29,7 +29,7 @@ function termHandler({ command, arg, parts, verb, block, navigate }) {
 // BOOT MESSAGE
 function boot() {
   const block = createBlock();
-  addLine(block, "chroot v0.2.1 - speciality coffee", "info");
+  addLine(block, "chroot v0.3.0 - speciality coffee", "info");
   addLine(block, "Type 'help' for available commands", "info");
   blank(block);
   printBlock(block);
