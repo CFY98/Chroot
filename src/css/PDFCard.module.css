@@ -27,7 +27,7 @@
 .item-amount {
   font-weight: 300;
   font-size: 1.5rem;
-  color: var(--text);
+  color: var(--muted);
 }
 .item-name {
   line-height: 10px;
