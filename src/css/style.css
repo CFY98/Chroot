@@ -81,6 +81,64 @@ body {
   flex: 1;
 }
 
+/* ------ TERMINAL OUTPUT ------ */
+.terminal-output {
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.terminal-output::-webkit-scrollbar {
+  width: 4px;
+}
+.terminal-output::-webkit-scrollbar-track {
+  background: transparent;
+}
+.terminal-output::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* ------ LINE OUTPUTS ------ */
+.line {
+  font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  opacity: 0;
+  animation: fadein 0.15s forwards;
+}
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+.line.prompt {
+  color: var(--green);
+}
+.line.cmd {
+  color: var(--text);
+}
+.line.info {
+  color: var(--muted);
+}
+.line.success {
+  color: var(--green);
+}
+.line.error {
+  color: var(--red);
+}
+.line.warn {
+  color: var(--amber);
+}
+.line.blank {
+  min-height: 0.8rem;
+}
 /* ------ FADEIN EFFECTS ------ */
 .fadein {
   opacity: 0;
