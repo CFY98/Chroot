@@ -52,7 +52,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/):
 ### Changed
 - Interactive terminal input in place of Easter-Egg
 
-### Deprecated
+### Removed
 - Image carousel
 
 ## [[v0.1.0] - Legacy](https://github.com/CFY98/Chroot/tree/v0.2.1)
