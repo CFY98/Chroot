@@ -1,2 +1,0 @@
-// IMPORTS
-import "./tools/transitions";
