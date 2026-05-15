@@ -69,8 +69,8 @@ chroot/V2
 ├── screenshots             # Folder for screenshots of the desktop view
 │     └──screenshots*6      # Screenshots used in this README
 │
-├── index.html               # Landing page with terminal interface
-├── style.css                # Main stylesheet which contains the house style
+├── index.html              # Landing page with terminal interface
+├── style.css               # Main stylesheet which contains the house style
 ├── LICENSE                 # MIT License
 └── README.md               # This page
 ```
