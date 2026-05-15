@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/):
 - `Fixed` for any bug fixes.
 - `Improved` for performance improvements.
 
-## [v0.3.0] - React Conversion
+## [[v0.3.0] - React Conversion](https://github.com/CFY98/Chroot/compare/c715cd2...8deb8ab)
 ### Added
 - React component-based UI
 - CSS Modules for React components
@@ -23,7 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/):
 - Vanilla JS slideshow and scroll transitions preserved with `useEffect`
 - Terminal preserved via `useEffect`
 
-## [v0.2.1] - Vanilla JS
+## [[v0.2.1] - Vanilla JS](https://github.com/CFY98/Chroot/tree/v0.2.1)
 ### Added
 - Visual mode with point-and-click navigation
 - Toast notifications
@@ -38,7 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/):
 ### Improved
 - Carousel from legacy version includes disablers preventing jumping between slides during manual navigation
 
-## [v0.2.0] - Prototype
+## [[v0.2.0] - Prototype](https://github.com/CFY98/Chroot/tree/v0.2.0)
 ### Added
 - Terminal input to utilise Git-style commands for basket UI
 - Local Storage to track live basket updates
@@ -52,7 +52,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/):
 ### Deprecated
 - Image carousel
 
-## [v0.1.0] - Legacy
+## [[v0.1.0] - Legacy](https://github.com/CFY98/Chroot/tree/v0.2.1)
 ### Added
 - Multi-page navigation with `anchor` links
 - Rotating hero section with previous/next controls for carousel
