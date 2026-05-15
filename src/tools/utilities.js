@@ -11,7 +11,7 @@ export function addLine(block, text, cls = "") {
 }
 
 export function printBlock(block) {
-  const output = document.getElementById("terminal-output");
+  const output = document.querySelector(".terminal-output");
   output.prepend(block);
   output.scrollTop = 0;
 }

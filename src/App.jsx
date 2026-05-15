@@ -5,6 +5,7 @@ import { handleScroll } from "./tools/transitions";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
+import Terminal from "./pages/Terminal";
 import Beans from "./pages/Beans";
 import Blaze from "./pages/Blaze";
 import Sunshine from "./pages/Sunshine";
@@ -32,6 +33,7 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/terminal" element={<Terminal />} />
           <Route path="/beans" element={<Beans />} />
           <Route path="/blaze" element={<Blaze />} />
           <Route path="/sunshine" element={<Sunshine />} />

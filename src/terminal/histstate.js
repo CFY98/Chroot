@@ -7,14 +7,14 @@ import { run } from "./terminal.js";
 let index = -1;
 
 // TERMINAL HISTORY HANDLERS
-export function pushHist(val, input) {
+export function pushHist(val, input, navigate) {
   const termHistory = storage.get("termHistory", []);
   if (val.trim()) {
     termHistory.unshift(val);
     if (termHistory.length > 15) termHistory.pop();
     storage.set("termHistory", termHistory);
   }
-  run(val);
+  run(val, navigate);
   input.value = "";
   return index;
 }
