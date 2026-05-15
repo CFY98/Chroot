@@ -1,0 +1,35 @@
+.receipt-checkout {
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: 7%;
+  padding-bottom: 5%;
+  width: 28%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  justify-self: flex-end;
+}
+.receipt-total {
+  width: 100%;
+  font-size: 1.8rem;
+  text-align: right;
+}
+.receipt-amount {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-top: 1%;
+  text-align: right;
+}
+/* ------ RESPONSIVE DESIGN ------ */
+@media only screen and (max-width: 480px) {
+  .receipt-total {
+    font-size: 1.2rem;
+  }
+  .receipt-amount {
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    text-align: right;
+  }
+}
