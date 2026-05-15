@@ -14,8 +14,8 @@
   margin-left: 11%;
 }
 .image-box img {
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   object-fit: cover;
 }
