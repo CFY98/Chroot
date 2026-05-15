@@ -2,7 +2,7 @@
 import styles from "../css/Receipt.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { printReceipt } from "../purchase/receipt.js";
+import { printReceipt } from "../tools/receipt.js";
 import { announce } from "../tools/announcer.js";
 import { storage } from "../tools/storage.js";
 import { productPrices } from "../tools/assets.js";
