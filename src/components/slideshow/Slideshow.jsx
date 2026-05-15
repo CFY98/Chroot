@@ -11,7 +11,8 @@ function Slideshow() {
   useEffect(() => {
     if (initialised.current) return () => cleanupSlideshow();
     initialised.current = true;
-    initSlideshow();
+    requestAnimationFrame(() => initSlideshow());
+    return () => cleanupSlideshow();
   }, []);
 
   return (
