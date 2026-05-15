@@ -1,5 +1,5 @@
 // IMPORTS
-import styles from "../css/Basket.module.css";
+import styles from "../css/basket/Basket.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import service, { storage } from "../tools/storage.js";

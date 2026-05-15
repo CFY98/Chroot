@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Toastbox.module.css";
+import styles from "../../css/ui/Toastbox.module.css";
 import { useEffect } from "react";
 import { toTitleCase } from "../../tools/assets.js";
 

@@ -1,6 +1,6 @@
 //IMPORTS
 import { useEffect, useRef } from "react";
-import styles from "../../css/Slideshow.module.css";
+import styles from "../../css/slideshow/Slideshow.module.css";
 import SlideCards from "./SlideCards";
 import Arrows from "./Arrows";
 import Dots from "./Dots";

@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/ProductCard.module.css";
+import styles from "../../css/product/ProductCard.module.css";
 import { NavLink } from "react-router-dom";
 
 function ProductCard({ src, alt, arialabel, path, itemName, itemPrice }) {

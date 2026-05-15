@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/ReceiptCard.module.css";
+import styles from "../../css/receipt/ReceiptCard.module.css";
 import { productPrices, toTitleCase } from "../../tools/assets.js";
 import { storage } from "../../tools/storage.js";
 

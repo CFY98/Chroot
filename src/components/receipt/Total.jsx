@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Total.module.css";
+import styles from "../../css/receipt/Total.module.css";
 import { storage } from "../../tools/storage.js";
 import { productPrices } from "../../tools/assets.js";
 

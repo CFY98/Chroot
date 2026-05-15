@@ -1,6 +1,6 @@
 //IMPORTS
 import { NavLink } from "react-router-dom";
-import styles from "../../css/NavBar.module.css";
+import styles from "../../css/navigation/NavBar.module.css";
 
 function NavBar({ tuiMode }) {
   return (

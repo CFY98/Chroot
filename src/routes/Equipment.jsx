@@ -1,7 +1,7 @@
 //IMPORTS
+import styles from "../css/product/Catalogue.module.css";
 import { useEffect } from "react";
 import { announce } from "../tools/announcer.js";
-import styles from "../css/Catalogue.module.css";
 import Title from "../components/ui/Title";
 import Subtitle from "../components/ui/Subtitle";
 import ProductCard from "../components/product/ProductCard";

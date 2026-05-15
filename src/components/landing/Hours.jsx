@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Hours.module.css";
+import styles from "../../css/landing/Hours.module.css";
 
 function Hours() {
   return (

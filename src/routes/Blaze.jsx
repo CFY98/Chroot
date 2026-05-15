@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../css/CatWrapper.module.css";
+import styles from "../css/product/CatWrapper.module.css";
 import { useState } from "react";
 import Title from "../components/ui/Title";
 import Toastbox from "../components/ui/Toastbox";

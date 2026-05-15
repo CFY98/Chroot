@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Footer.module.css";
+import styles from "../../css/sections/Footer.module.css";
 
 function Footer() {
   return (

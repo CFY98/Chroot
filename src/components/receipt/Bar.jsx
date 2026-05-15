@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Bar.module.css";
+import styles from "../../css/receipt/Bar.module.css";
 import { storage } from "../../tools/storage.js";
 
 function Bar({ onPrint }) {

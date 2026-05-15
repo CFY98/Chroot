@@ -1,6 +1,6 @@
 //IMPORTS
 import { useNavigate } from "react-router-dom";
-import styles from "../../css/Header.module.css";
+import styles from "../../css/sections/Header.module.css";
 
 function Header({ tuiMode, setTuiMode }) {
   const navigate = useNavigate();

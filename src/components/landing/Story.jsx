@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Story.module.css";
+import styles from "../../css/landing/Story.module.css";
 
 function Story() {
   return (

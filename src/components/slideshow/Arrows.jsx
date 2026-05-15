@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Arrows.module.css";
+import styles from "../../css/slideshow/Arrows.module.css";
 
 function ArrowButtons() {
   return (

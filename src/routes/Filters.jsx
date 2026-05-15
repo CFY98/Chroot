@@ -1,4 +1,5 @@
-import styles from "../css/CatWrapper.module.css";
+//IMPORTS
+import styles from "../css/product/CatWrapper.module.css";
 import { useState } from "react";
 import Title from "../components/ui/Title";
 import FiltFluff from "../components/product/FiltFluff";

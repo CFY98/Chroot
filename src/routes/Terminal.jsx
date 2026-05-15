@@ -1,5 +1,5 @@
 //INPUTS
-import styles from "../css/Terminal.module.css";
+import styles from "../css/ui/Terminal.module.css";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { initTerminal, cleanupTerminal } from "../terminal/terminal.js";

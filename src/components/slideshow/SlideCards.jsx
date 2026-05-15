@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/SlideCards.module.css";
+import styles from "../../css/slideshow/SlideCards.module.css";
 
 function SlideCards({ src, alt, caption }) {
   return (

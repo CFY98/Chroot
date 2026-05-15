@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../css/Receipt.module.css";
+import styles from "../css/receipt/Receipt.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { printReceipt } from "../tools/receipt.js";

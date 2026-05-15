@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/CartCard.module.css";
+import styles from "../../css/basket/CartCard.module.css";
 import { basket } from "../../tools/baskstate.js";
 import { productPrices, toTitleCase } from "../../tools/assets.js";
 import { announce } from "../../tools/announcer.js";

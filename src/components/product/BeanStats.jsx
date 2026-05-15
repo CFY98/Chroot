@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Stats.module.css";
+import styles from "../../css/product/Stats.module.css";
 
 function BeanStats({
   origin,

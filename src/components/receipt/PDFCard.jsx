@@ -1,6 +1,6 @@
 
 //IMPORTS
-import styles from "../../css/PDFCard.module.css";
+import styles from "../../css/receipt/PDFCard.module.css";
 import { productPrices, toTitleCase } from "../../tools/assets.js";
 import { storage } from "../../tools/storage.js";
 

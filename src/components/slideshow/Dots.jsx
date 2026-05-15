@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Dots.module.css";
+import styles from "../../css/slideshow/Dots.module.css";
 
 function Dots() {
   return (

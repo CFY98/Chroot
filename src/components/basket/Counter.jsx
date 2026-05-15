@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Counter.module.css";
+import styles from "../../css/basket/Counter.module.css";
 import { useState } from "react";
 import service, { storage } from "../../tools/storage.js";
 import { announce } from "../../tools/announcer.js";

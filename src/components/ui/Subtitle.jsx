@@ -1,5 +1,5 @@
 //IMPORTS
-import styles from "../../css/Subtitle.module.css";
+import styles from "../../css/ui/Subtitle.module.css";
 
 function Subtitle({ subtitle, className }) {
   return (
