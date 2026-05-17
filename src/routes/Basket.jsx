@@ -23,17 +23,13 @@ function Basket() {
   const [stagingArea, setStagingArea] = useState(basket.stagArea());
   const basketItems = Object.keys(stagingArea);
   const [itemCount, setItemCount] = useState(storage.get("itemCount", 0));
-  const [subtotal, setSubtotal] = useState(() => {
-    return Object.entries(stagingArea).reduce((sum, [key, value]) => {
-      return sum + value * (productPrices[key] || 0);
-    }, 0);
-  });
+  const [subtotal, setSubtotal] = useState(basket.subtotal());
   const navigate = useNavigate();
 
   function updateBasketState() {
     setStagingArea(basket.stagArea());
     setItemCount(storage.get("itemCount", 0));
-    setSubtotal(basket.subtotal);
+    setSubtotal(basket.subtotal());
   }
 
   function handleOrder() {

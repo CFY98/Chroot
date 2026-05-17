@@ -11,11 +11,11 @@ function CartCard({ itemName, onRemove, onUpdate }) {
   const qtyTotal = stagingArea[itemName] * productPrices[itemName];
 
   function addAmount(itemName) {
-    if (incAmount(itemName)) onUpdate(itemName);
+    if (incAmount(itemName)) onUpdate();
   }
 
   function redAmount(itemName) {
-    if (decAmount(itemName)) onUpdate(itemName);
+    if (decAmount(itemName)) onUpdate();
   }
 
   function delItem(itemName) {
