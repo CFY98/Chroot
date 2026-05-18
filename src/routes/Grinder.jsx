@@ -35,9 +35,9 @@ function Grinder() {
                 adventurous of drinkers.
               </>
             }
-            Burrs="48 Conical SS"
+            burrs="48 Conical SS"
             materials="7075 Alumninium"
-            Weight="600g"
+            weight="600g"
             price="£129.99"
           />
         </div>
