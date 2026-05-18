@@ -22,10 +22,10 @@ function Blaze() {
           <BeanStats
             origin="Huila, Columbia"
             varietal="Pink Bourbon"
-            altitude="1,600 - 1,900m"
+            altitude="1,600 — 1,900m"
             process="Washed"
             roast="Light"
-            harvest="March - June"
+            harvest="March — June"
             notes="Melon, Lemonade, Peach"
             quantity="200g"
             price="£11.99"

@@ -32,7 +32,7 @@ function Dripper() {
               </>
             }
             materials="BPA-Free Tritan Plastic"
-            size="1-4 Cups"
+            size="1—4 Cups"
             price="£14.99"
           />
         </div>

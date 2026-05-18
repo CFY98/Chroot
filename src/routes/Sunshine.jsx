@@ -22,10 +22,10 @@ function Sunshine() {
           <BeanStats
             origin="Yirgacheffe, Ethiopia"
             varietal="Heirloom"
-            altitude="1,800 - 2,200m"
+            altitude="1,800 — 2,200m"
             process="Natural"
             roast="Light"
-            harvest="November - January"
+            harvest="November — January"
             notes="Blueberry, Toffee, Cherry"
             quantity="200g"
             price="£14.99"

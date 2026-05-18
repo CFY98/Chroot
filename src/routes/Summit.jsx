@@ -20,15 +20,15 @@ function Summit() {
             />
           </div>
           <BeanStats
-            origin="Yirgacheffe, Ethiopia"
-            varietal="Heirloom"
-            altitude="1,800 - 2,200m"
-            process="Natural"
+            origin="Antigua, Guatemala"
+            varietal="Gesha"
+            altitude="1,500 — 1,700m"
+            process="Honey"
             roast="Light"
-            harvest="November - January"
-            notes="Blueberry, Toffee, Cherry"
-            quantity="200g"
-            price="£14.99"
+            harvest="December — March"
+            notes="Jasmine, Bergamot, Pear"
+            quantity="150g"
+            price="£19.99"
           />
         </div>
         <Counter itemName="summit" setToast={setToast} />
