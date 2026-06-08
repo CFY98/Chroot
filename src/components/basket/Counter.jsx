@@ -43,39 +43,40 @@ function Counter({ itemName, setToast }) {
 	}
 
 	return (
-		<div className={styles.purchase}>
+		<section className={styles.purchase} aria-label="Number of items to add to basket"
+>
 			<div className={styles["qty-counter"]}>
-				<div
+				<button
 					className={styles["btn-plus"]}
-					role="button"
+					type="button"
 					onClick={increase}
 					aria-label="Increases quantity by one"
 				>
 					+
-				</div>
+				</button>
 				<div
 					className={styles.counting}
-					aria-label="Number of items to add to basket"
 				>
 					{count}
 				</div>
-				<div
+				<button
 					className={styles["btn-minus"]}
-					role="button"
+					type="button"
 					onClick={decrease}
 					aria-label="Increases quantity by one"
 				>
 					-
-				</div>
+				</button>
 			</div>
 			<button
 				className={styles.buy}
+				type="button"
 				onClick={addToBasket}
 				aria-label="click to add to basket"
 			>
 				Add to Basket
 			</button>
-		</div>
+		</section>
 	);
 }
 

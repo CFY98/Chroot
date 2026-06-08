@@ -16,6 +16,7 @@
 	width: clamp(1.5rem, 2vw + 1rem, 3rem);
 	height: clamp(1.5rem, 2vw + 1rem, 3rem);
 	border-radius: 50%;
+	border: none;
 	background-color: var(--green);
 	display: flex;
 	justify-content: center;
