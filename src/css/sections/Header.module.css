@@ -39,6 +39,7 @@
 	background: var(--notification);
 	padding: min(0.5rem, 0.5%);
 	border-radius: 5px;
+	border: none;
 }
 
 .titlebar-text::after,
