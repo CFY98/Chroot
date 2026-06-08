@@ -7,7 +7,9 @@ function Footer() {
 			<a
 				href="https://github.com/CFY98/Chroot"
 				className="fa-brands fa-github"
-			></a>
+			>
+				<span className="sr-only">GitHub repository for Chroot</span>
+			</a>
 		</div>
 	);
 }

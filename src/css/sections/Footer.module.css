@@ -6,6 +6,16 @@
 	background-color: var(--bg);
 	border-top: var(--border) solid 1px;
 }
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ TABLETS & PHONES ------ */
 @media only screen and (max-width: 768px) {
