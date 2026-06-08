@@ -17,10 +17,9 @@ function Terminal() {
 	}, []);
 
 	return (
-		<div
+		<section
 			className={`${styles.terminal} fadein`}
 			data-component="terminal"
-			role="region"
 			aria-label="terminal navigation"
 		>
 			<div className={`${styles["input-row"]} fadein`}>
@@ -39,7 +38,7 @@ function Terminal() {
 				/>
 			</div>
 			<div className="terminal-output" aria-hidden="true"></div>
-		</div>
+		</section>
 	);
 }
 
