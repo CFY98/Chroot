@@ -17,7 +17,7 @@ function Summit() {
 					<div className={styles["catalogue-item"]}>
 						<img
 							src="/Images/summit.jpg"
-							alt="Picture of the coffee beans called Summit."
+							alt="Coffee beans called Summit."
 						/>
 					</div>
 					<BeanStats

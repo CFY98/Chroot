@@ -17,7 +17,7 @@ function Sunshine() {
 					<div className={styles["catalogue-item"]}>
 						<img
 							src="/Images/sunshine.jpg"
-							alt="Picture of the coffee beans called Sunshine."
+							alt="Coffee beans called Sunshine."
 						/>
 					</div>
 					<BeanStats

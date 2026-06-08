@@ -17,7 +17,7 @@ function Dripper() {
 					<div className={styles["catalogue-item"]}>
 						<img
 							src="/Images/dripper.jpg"
-							alt="Picture of the Chroot Dripper."
+							alt="Chroot Dripper."
 						/>
 					</div>
 					<DripFluff

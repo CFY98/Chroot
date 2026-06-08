@@ -20,7 +20,7 @@ function Equipment() {
 				<div className={styles.products}>
 					<ProductCard
 						src="/Images/filters.jpg"
-						alt="Picture of Chroot Filters"
+						alt="Chroot Filters"
 						arialabel="More information on our Chroot Filters."
 						path="/filters"
 						itemName="Filters"
@@ -28,7 +28,7 @@ function Equipment() {
 					/>
 					<ProductCard
 						src="/Images/dripper.jpg"
-						alt="Picture of Chroot Dripper"
+						alt="Chroot Dripper"
 						arialabel="More information on our Chroot Dripper."
 						path="/dripper"
 						itemName="Dripper"
@@ -36,7 +36,7 @@ function Equipment() {
 					/>
 					<ProductCard
 						src="/Images/grinder.jpg"
-						alt="Picture of Chroot Coffee Grinder"
+						alt="Chroot Coffee Grinder"
 						arialabel="More information on our Chroot Coffee Grinder."
 						path="/grinder"
 						itemName="Grinder"

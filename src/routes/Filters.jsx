@@ -17,7 +17,7 @@ function Filters() {
 					<div className={styles["catalogue-item"]}>
 						<img
 							src="/Images/dripper.jpg"
-							alt="Picture of the Chroot Filters."
+							alt="Chroot Filters."
 						/>
 					</div>
 					<FiltFluff

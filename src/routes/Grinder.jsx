@@ -17,7 +17,7 @@ function Grinder() {
 					<div className={styles["catalogue-item"]}>
 						<img
 							src="/Images/grinder.jpg"
-							alt="Picture of the Chroot Grinder."
+							alt="Chroot Grinder."
 						/>
 					</div>
 					<GrindFluff

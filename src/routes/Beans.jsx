@@ -20,7 +20,7 @@ function Beans() {
 				<div className={styles.products}>
 					<ProductCard
 						src="/Images/blaze.jpg"
-						alt="Picture of coffee beans called Blaze."
+						alt="Coffee beans called Blaze."
 						arialabel="More information on Blaze."
 						path="/blaze"
 						itemName="Blaze (200g)"
@@ -28,7 +28,7 @@ function Beans() {
 					/>
 					<ProductCard
 						src="/Images/sunshine.jpg"
-						alt="Picture of coffee beans called Sunshine."
+						alt="Coffee beans called Sunshine."
 						arialabel="More information on Sunshine."
 						path="/sunshine"
 						itemName="Sunshine (200g)"
@@ -36,7 +36,7 @@ function Beans() {
 					/>
 					<ProductCard
 						src="/Images/summit.jpg"
-						alt="Picture of coffee beans called Summit."
+						alt="Coffee beans called Summit."
 						arialabel="More information on Summit."
 						path="/summit"
 						itemName="Summit (150g)"

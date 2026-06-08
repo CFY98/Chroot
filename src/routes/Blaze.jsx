@@ -1,5 +1,4 @@
 //IMPORTS
-
 import { useState } from "react";
 import Counter from "../components/basket/Counter";
 import BeanStats from "../components/product/BeanStats";
@@ -17,7 +16,7 @@ function Blaze() {
 					<div className={styles["catalogue-item"]}>
 						<img
 							src="/Images/blaze.jpg"
-							alt="Picture of the coffee beans called Blaze."
+							alt="Coffee beans called Blaze."
 						/>
 					</div>
 					<BeanStats
