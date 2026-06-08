@@ -1,10 +1,8 @@
 //IMPORTS
 import styles from "../../css/basket/CartCard.module.css";
-import { announce } from "../../tools/announcer.js";
 import { productPrices, toTitleCase } from "../../tools/assets.js";
 import { basket } from "../../tools/baskstate.js";
 import { decAmount, incAmount, remItem } from "../../tools/cartActions.js";
-import service, { storage } from "../../tools/storage.js";
 
 function CartCard({ itemName, onRemove, onUpdate }) {
 	const stagingArea = basket.stagArea();
@@ -30,40 +28,39 @@ function CartCard({ itemName, onRemove, onUpdate }) {
 			<div className={styles.about}>
 				<div className={styles.name}>{toTitleCase(itemName)}</div>
 			</div>
-			<div className={styles.counter}>
-				<div
+			<section className={styles.counter} aria-label="Displays the quantity of the selected item in basket">
+				<button
 					className={styles["plus-btn"]}
-					role="button"
+					type="button"
 					onClick={() => addAmount(itemName)}
 					aria-label="Increases quantity by one"
 				>
 					+
-				</div>
+				</button>
 				<div
 					className={styles.count}
-					aria-label="Displays number of selected item in basket"
 				>
 					{stagingArea[itemName]}
 				</div>
-				<div
+				<button
 					className={styles["minus-btn"]}
-					role="button"
+					type="button"
 					onClick={() => redAmount(itemName)}
 					aria-label="Increases quantity by one"
 				>
 					-
-				</div>
-			</div>
+				</button>
+			</section>
 			<div className={styles.cost}>
 				<div className={styles.amount}>£{qtyTotal.toFixed(2)}</div>
-				<div
+				<button
 					className={styles.remove}
-					role="button"
+					type="button"
 					onClick={() => delItem(itemName)}
 					aria-label="Removes item from basket"
 				>
 					<u>Remove</u>
-				</div>
+				</button>
 			</div>
 		</div>
 	);
