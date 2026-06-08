@@ -8,8 +8,8 @@ function ProductCard({ src, alt, arialabel, path, itemName, itemPrice }) {
 		<>
 			<div className={styles["caption-container"]}>
 				<img src={src} alt={alt} className={`${styles.product} fadein`} />
-				<NavLink className={styles.caption} to={path}>
-					<div className={styles.more} aria-label={arialabel} data-link>
+				<NavLink className={styles.caption} to={path} aria-label={arialabel}>
+					<div className={styles.more} data-link>
 						More info
 					</div>
 				</NavLink>
