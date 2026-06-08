@@ -15,6 +15,7 @@ function Bar({ onPrint }) {
 				{orderMessage.at(-1) ? `Order Message: "${orderMessage.at(-1)}"` : ""}
 			</p>
 			<button
+				type="button"
 				className={`${styles.print} print`}
 				aria-label="print PDF"
 				onClick={onPrint}
