@@ -1,85 +1,85 @@
 .cart-container {
-  margin: 0 auto;
-  width: 90%;
-  background-color: var(--t-window);
-  border-radius: 10px;
-  margin-bottom: 3rem;
+	margin: 0 auto;
+	width: 90%;
+	background-color: var(--t-window);
+	border-radius: 10px;
+	margin-bottom: 3rem;
 }
 .header {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
 }
 .delete {
-  text-align: right;
-  color: var(--red);
-  font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
-  text-decoration: underline;
-  cursor: pointer;
-  padding-top: clamp(1rem, 2vw + 1rem, 3rem);
-  padding-bottom: clamp(1rem, 2vw + 1rem, 3rem);
-  margin-right: 7%;
+	text-align: right;
+	color: var(--red);
+	font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
+	text-decoration: underline;
+	cursor: pointer;
+	padding-top: clamp(1rem, 2vw + 1rem, 3rem);
+	padding-bottom: clamp(1rem, 2vw + 1rem, 3rem);
+	margin-right: 7%;
 }
 hr {
-  margin-top: 5%;
-  margin-right: 7%;
-  width: 86%;
-  margin-left: auto;
+	margin-top: 5%;
+	margin-right: 7%;
+	width: 86%;
+	margin-left: auto;
 }
 .checkout {
-  margin-top: 2%;
-  margin-left: auto;
-  margin-right: 7%;
-  padding-bottom: 5%;
-  width: 28%;
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-  justify-self: flex-end;
+	margin-top: 2%;
+	margin-left: auto;
+	margin-right: 7%;
+	padding-bottom: 5%;
+	width: 28%;
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-end;
+	justify-self: flex-end;
 }
 .total {
-  width: 100%;
-  font-size: clamp(1.2rem, 2vw + 0.5rem, 2.5rem);
-  text-align: right;
+	width: 100%;
+	font-size: clamp(1.2rem, 2vw + 0.5rem, 2.5rem);
+	text-align: right;
 }
 .total-amount {
-  font-size: clamp(1.2rem, 2.5vw + 0.5rem, 3rem);
-  font-weight: 300;
-  text-align: right;
+	font-size: clamp(1.2rem, 2.5vw + 0.5rem, 3rem);
+	font-weight: 300;
+	text-align: right;
 }
 .button {
-  width: 55%;
-  height: clamp(2rem, 2vw + 2rem, 5rem);
-  border: none;
-  background: linear-gradient(to bottom right, var(--hover), var(--path));
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: clamp(0.9rem, 1vw + 0.7rem, 3rem);
-  font-family: "JetBrains Mono";
-  font-weight: 300;
-  color: var(--text);
+	width: 55%;
+	height: clamp(2rem, 2vw + 2rem, 5rem);
+	border: none;
+	background: linear-gradient(to bottom right, var(--hover), var(--path));
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: clamp(0.9rem, 1vw + 0.7rem, 3rem);
+	font-family: "JetBrains Mono";
+	font-weight: 300;
+	color: var(--text);
 }
 .empty {
-  font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
-  text-align: center;
-  margin: 4.5%;
+	font-size: clamp(0.7rem, 1vw + 0.5rem, 2rem);
+	text-align: center;
+	margin: 4.5%;
 }
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DESKTOPS - LAPTOPS ------ */
 @media only screen and (max-width: 1280px) {
-  .cart-container {
-    width: 85%;
-  }
-  .button {
-    width: 70%;
-  }
+	.cart-container {
+		width: 85%;
+	}
+	.button {
+		width: 70%;
+	}
 }
 /* ------ PHONES ------*/
 @media only screen and (max-width: 480px) {
-  .button {
-    width: 100%;
-  }
+	.button {
+		width: 100%;
+	}
 }

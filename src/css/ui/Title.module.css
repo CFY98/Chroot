@@ -1,9 +1,8 @@
 .title {
-  text-align: center;
-  font-size: clamp(2rem, 7vw - 1rem, 6rem);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: min(0.5em, 5%);
+	text-align: center;
+	font-size: clamp(2rem, 7vw - 1rem, 6rem);
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--muted);
+	padding: min(0.5em, 5%);
 }
-

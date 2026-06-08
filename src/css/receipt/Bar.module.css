@@ -1,72 +1,72 @@
 .bar {
-  background-color: var(--border);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  padding: 5% 5%;
-  gap: 1rem;
-  border-radius: 10px;
+	background-color: var(--border);
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
+	padding: 5% 5%;
+	gap: 1rem;
+	border-radius: 10px;
 }
 .order,
 .message {
-  text-align: center;
-  font-size: clamp(0.7rem, 1vw + 0.5rem, 1.5rem);
+	text-align: center;
+	font-size: clamp(0.7rem, 1vw + 0.5rem, 1.5rem);
 }
 .order {
-  margin-right: auto;
-  margin-left: 10%;
+	margin-right: auto;
+	margin-left: 10%;
 }
 .message {
-  margin-left: auto;
-  margin-right: 10%;
+	margin-left: auto;
+	margin-right: 10%;
 }
 .print {
-  width: 80%;
-  padding: 10px;
-  margin-right: auto;
-  margin-left: 12%;
-  border: none;
-  background: linear-gradient(to bottom right, var(--hover), var(--path));
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: clamp(1rem, 2vw, 2rem);
-  font-family: "JetBrains Mono";
-  font-weight: 300;
-  color: var(--text);
+	width: 80%;
+	padding: 10px;
+	margin-right: auto;
+	margin-left: 12%;
+	border: none;
+	background: linear-gradient(to bottom right, var(--hover), var(--path));
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: clamp(1rem, 2vw, 2rem);
+	font-family: "JetBrains Mono";
+	font-weight: 300;
+	color: var(--text);
 }
 /*------ RESPONSIVE DESIGN ------*/
 /* ------ DESKTOPS ------ */
 @media only screen and (max-width: 1280px) {
-  .order,
-  .message {
-    margin-top: 1%;
-    margin-bottom: 1%;
-  }
-  .print {
-    width: 90%;
-    margin: 1% 1%;
-    margin-right: 5%;
-  }
+	.order,
+	.message {
+		margin-top: 1%;
+		margin-bottom: 1%;
+	}
+	.print {
+		width: 90%;
+		margin: 1% 1%;
+		margin-right: 5%;
+	}
 }
 @media only screen and (max-width: 480px) {
-  .bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-  .order,
-  .message {
-    margin: 0 auto;
-    padding: 2% 2%;
-  }
-  .message {
-    margin-bottom: 3%;
-  }
-  .print {
-    width: 40%;
-    height: 40%;
-    margin: 2% 2%;
-    align-items: center;
-  }
+	.bar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0;
+	}
+	.order,
+	.message {
+		margin: 0 auto;
+		padding: 2% 2%;
+	}
+	.message {
+		margin-bottom: 3%;
+	}
+	.print {
+		width: 40%;
+		height: 40%;
+		margin: 2% 2%;
+		align-items: center;
+	}
 }

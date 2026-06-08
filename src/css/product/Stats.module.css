@@ -1,35 +1,36 @@
 .statistics {
-  width: 100%;
-  margin-top: min(1rem, 1%);
+	width: 100%;
+	margin-top: min(1rem, 1%);
 }
 .stats {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: bold;
-  font-size: clamp(1rem, 1vw + 0.2rem, 3rem);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: bold;
+	font-size: clamp(1rem, 1vw + 0.2rem, 3rem);
 }
 .fluff {
-  font-weight: 300;
-  font-family: "IBM Plex Sans";
-  justify-content: center;
-  text-align: center;
-  font-size: clamp(1.1rem, 1vw + 0.5rem, 3rem);
+	font-weight: 300;
+	font-family: "IBM Plex Sans";
+	justify-content: center;
+	text-align: center;
+	font-size: clamp(1.1rem, 1vw + 0.5rem, 3rem);
 }
 .result {
-  font-weight: 300;
-  font-size: clamp(1rem, 1vw + 0.1rem, 3rem);
+	font-weight: 300;
+	font-size: clamp(1rem, 1vw + 0.1rem, 3rem);
 }
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DESKTOPS - PHONES ------ */
 @media only screen and (max-width: 1280px) {
-  .statistics {
-    width: 95%;
-    margin: 0 auto;
-    margin-top: min(1rem, 1%);
-    margin-bottom: 3rem;
-  }
-  .stats, .result {
-    font-size: calc(1vw + 0.6rem);
-  }
+	.statistics {
+		width: 95%;
+		margin: 0 auto;
+		margin-top: min(1rem, 1%);
+		margin-bottom: 3rem;
+	}
+	.stats,
+	.result {
+		font-size: calc(1vw + 0.6rem);
+	}
 }

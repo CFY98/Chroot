@@ -1,43 +1,43 @@
 .catalogue-wrapper {
-  margin: 0 auto;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	margin: 0 auto;
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .catalogue-container {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: min(1rem, 8%);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin-bottom: min(1rem, 8%);
 }
 .catalogue-item {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 10px;
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	border-radius: 10px;
 }
 .catalogue-item img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 10px;
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	border-radius: 10px;
 }
 /* ------ RESPONSIVE DESIGN ------ */
 /* ------ DESKTOPS - PHONES ------ */
 @media only screen and (max-width: 1280px) {
-  .catalogue-wrapper {
-    width: 95%;
-  }
-  .catalogue-container {
-    flex-direction: column;
-    width: 90%;
-  }
-  .catalogue-item {
-    width: 100%;
-    margin: 0 auto;
-  }
+	.catalogue-wrapper {
+		width: 95%;
+	}
+	.catalogue-container {
+		flex-direction: column;
+		width: 90%;
+	}
+	.catalogue-item {
+		width: 100%;
+		margin: 0 auto;
+	}
 }
