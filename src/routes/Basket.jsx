@@ -1,19 +1,16 @@
 // IMPORTS
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CartCard from "../components/basket/CartCard";
 import Title from "../components/ui/Title";
 import styles from "../css/basket/Basket.module.css";
 import { announce } from "../tools/announcer.js";
-import { productPrices } from "../tools/assets.js";
 import {
 	clearBasket,
 	processOrder,
 	removeCard,
 } from "../tools/basketActions.js";
 import { basket } from "../tools/baskstate.js";
-import service, { storage } from "../tools/storage.js";
 
 // PROCESS ORDER FUNCTIONS
 function Basket() {
@@ -23,13 +20,11 @@ function Basket() {
 
 	const [stagingArea, setStagingArea] = useState(basket.stagArea());
 	const basketItems = Object.keys(stagingArea);
-	const [itemCount, setItemCount] = useState(storage.get("itemCount", 0));
 	const [subtotal, setSubtotal] = useState(basket.subtotal());
 	const navigate = useNavigate();
 
 	function updateBasketState() {
 		setStagingArea(basket.stagArea());
-		setItemCount(storage.get("itemCount", 0));
 		setSubtotal(basket.subtotal());
 	}
 
@@ -57,13 +52,14 @@ function Basket() {
 			<Title title="Shopping Basket" />
 			<div className={styles["cart-container"]}>
 				<div className={styles.header}>
-					<div
+					<button
+						type="button"
 						className={styles.delete}
 						aria-label="Click to clear the basket"
 						onClick={basketReset}
 					>
 						Reset All
-					</div>
+					</button>
 				</div>
 				<hr />
 				<div className={styles["cart-items"]}>
@@ -90,6 +86,7 @@ function Basket() {
 						{subtotal > 0 ? `£${subtotal.toFixed(2)}` : ""}
 					</div>
 					<button
+						type="button"
 						className={styles.button}
 						aria-label="Click to confirm order"
 						onClick={handleOrder}
