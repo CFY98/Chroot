@@ -104,11 +104,11 @@ npm run build
 ```
 
 ## 📌 Future Developments
-1. **Aesthetic Overhaul**: Full UI redesign (approx. start Summer 2026).
-2. **PostgreSQL**: Database to store products and orders (approx. start Fall 2026).
-3. **Backend Cart System**: Save carts per user, update quantities and persist data (approx. start Fall 2026). 
-4. **Backend API**: Node.js to handle requests from the UI and interact with the PostgreSQL database (approx. start Winter 2026).
-5. **Wishlist**: Implement git-style command, Git stash, alongside a button for Visual mode to save products, backed by database storage (approx. start Winter 2027).
+1. **Aesthetic Overhaul**: Full UI redesign.
+2. **PostgreSQL**: Database to store products and orders.
+3. **Backend Cart System**: Save carts per user, update quantities and persist data.
+4. **Backend API**: Node.js to handle requests from the UI and interact with the PostgreSQL database.
+5. **Wishlist**: Implement git-style command, Git stash, alongside a button for Visual mode to save products, backed by database storage.
 
 ## ⛏️ Tech Stack
 
